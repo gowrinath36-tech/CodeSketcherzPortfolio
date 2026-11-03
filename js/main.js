@@ -3,7 +3,7 @@
   const panels = ids.map(id => document.getElementById(id));
   const contactForm = document.getElementById('contactForm');
 
-  let currentIndex = 0;
+  let currentIndex = -1;
   let hasNavigatedFromHero = false;
   let isTransitioning = false;
   let transitionTimeout = null;
@@ -122,7 +122,27 @@
   function goToSection(to, { historyMode = 'replace', hash = true } = {}) {
     const targetIndex = typeof to === 'number' ? to : ids.indexOf(to);
     if (targetIndex < 0 || targetIndex >= ids.length) return;
-    if (targetIndex === currentIndex && panels[currentIndex].classList.contains('active') && !isTransitioning) return;
+    if (currentIndex !== -1 && targetIndex === currentIndex && panels[currentIndex].classList.contains('active') && !isTransitioning) return;
+
+    // Initial boot: display target section immediately with zero slide animation
+    if (currentIndex === -1) {
+      currentIndex = targetIndex;
+      panels.forEach((p, i) => {
+        const isActive = (i === targetIndex);
+        p.classList.toggle('active', isActive);
+        p.style.display = isActive ? 'block' : 'none';
+        p.style.visibility = isActive ? 'visible' : 'hidden';
+        p.style.transform = '';
+        p.style.transition = '';
+        p.setAttribute('aria-hidden', String(!isActive));
+        if (isActive) {
+          p.scrollTop = 0;
+          initLenis(p);
+        }
+      });
+      syncUI(targetIndex, { historyMode, hash });
+      return;
+    }
 
     // If an animation is already running, complete it immediately
     if (isTransitioning) {
@@ -136,7 +156,7 @@
     currentIndex = targetIndex;
     syncUI(targetIndex, { historyMode, hash });
 
-    // Initial instant load or identical panel
+    // Fallback instant load if panel is missing or identical
     if (!currentPanel || currentPanel === targetPanel) {
       panels.forEach((p, i) => {
         const isActive = (i === targetIndex);
@@ -262,7 +282,8 @@
   // Keyboard Arrow / PageDown Navigation
   document.addEventListener('keydown', e => {
     if (e.altKey || e.ctrlKey || e.metaKey || e.target.closest('input,textarea,select')) return;
-    if (['ArrowRight', 'PageDown', 'ArrowDown'].includes(e.key)) {
+
+    if (e.key === 'ArrowRight') {
       e.preventDefault();
       if (currentIndex < ids.length - 1) {
         if (!hasNavigatedFromHero) {
@@ -272,12 +293,42 @@
           goToSection(currentIndex + 1, { historyMode: 'replace' });
         }
       }
+      return;
     }
-    if (['ArrowLeft', 'PageUp', 'ArrowUp'].includes(e.key)) {
+
+    if (e.key === 'ArrowLeft') {
       e.preventDefault();
       if (currentIndex > 0) {
         goToSection(currentIndex - 1, { historyMode: 'replace' });
       }
+      return;
+    }
+
+    if (['ArrowDown', 'PageDown'].includes(e.key)) {
+      const panel = panels[currentIndex];
+      if (!panel) return;
+      const atBottom = Math.ceil(panel.scrollTop + panel.clientHeight) >= panel.scrollHeight;
+      if (atBottom && currentIndex < ids.length - 1) {
+        e.preventDefault();
+        if (!hasNavigatedFromHero) {
+          hasNavigatedFromHero = true;
+          goToSection(currentIndex + 1, { historyMode: 'push' });
+        } else {
+          goToSection(currentIndex + 1, { historyMode: 'replace' });
+        }
+      }
+      return;
+    }
+
+    if (['ArrowUp', 'PageUp'].includes(e.key)) {
+      const panel = panels[currentIndex];
+      if (!panel) return;
+      const atTop = panel.scrollTop <= 0;
+      if (atTop && currentIndex > 0) {
+        e.preventDefault();
+        goToSection(currentIndex - 1, { historyMode: 'replace' });
+      }
+      return;
     }
   });
 
