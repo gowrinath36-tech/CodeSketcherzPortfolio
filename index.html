@@ -19,8 +19,10 @@
 
 <body>
   <header class="site-header">
-    <a class="brand" href="#start" data-section="hero" aria-label="Code Sketchers home"><span
-        class="brand-mark">C<span>•</span>S</span><span class="brand-text">CODE<br>SKETCHERS</span></a>
+    <a class="brand" href="#start" data-section="hero" aria-label="Code Sketchers home">
+      <span class="brand-mark">C<span>•</span>S</span>
+      <span class="brand-text">CODE<br>SKETCHERS</span>
+    </a>
     <nav class="header-nav" aria-label="Sections">
       <button class="nav-item about-nav-item" data-section="about">ABOUT PAGE</button>
       <button class="nav-item" data-section="services">SERVICES</button>
@@ -33,34 +35,37 @@
   </header>
 
   <main class="deck" id="deck">
-    <!-- 00 / HERO -->
-    <section class="panel hero active" id="hero" aria-label="Hero section">
+    <!-- 00 / HERO (Bold Black & Yellow Ribbon Accent) -->
+    <section class="panel section-panel hero active" id="hero" aria-label="Hero section">
       <div class="panel-inner">
-        <div class="hero-stage">
-          <div class="hero-kicker"><span class="live-dot"></span> INDEPENDENT CREATIVE TECHNOLOGY STUDIO <span
-              class="hero-year">EST. 2026</span></div>
-          <div class="hero-copy">
-            <p class="eyebrow">MAKE IT MEAN SOMETHING.</p>
-            <h1>We make<br><span class="highlight">good ideas</span><br>work harder<span class="period">.</span></h1>
-            <p class="hero-description">Strategy, design and digital experiences for people ready to make a difference.</p>
+        <div class="section-top">
+          <span>00 / STUDIO</span>
+          <span>INDEPENDENT CREATIVE TECHNOLOGY · EST. 2026</span>
+        </div>
+
+        <div class="section-main">
+          <p class="eyebrow">MAKE IT MEAN SOMETHING.</p>
+          <h1>We make<br><span class="highlight">good ideas</span><br>work harder<span class="period">.</span></h1>
+          <p class="section-desc">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+        </div>
+
+        <!-- Wave Ribbon Divider -->
+        <div class="wave-ribbon wave-strip-yellow" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,24 C240,64 480,-12 720,28 C960,68 1200,8 1440,32 L1440,80 L0,80 Z" fill="currentColor" opacity="0.35"/>
+            <path d="M0,42 C300,76 540,16 800,48 C1060,80 1260,26 1440,50 L1440,80 L0,80 Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- Team Scaffold Slot -->
+        <div class="team-slot hero-slot" data-slot="hero">
+          <div class="slot-badge">
+            <span>WORKSPACE SLOT / HERO CANVAS</span>
+            <code>team-slot[data-slot="hero"]</code>
           </div>
-          <div class="orbit-stage" aria-label="Creative projects orbiting the studio">
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-            <div class="orbit-core"><span>CS</span><small>IDEAS<br>IN MOTION</small></div>
-            <div class="floating-card card-yellow"><span class="card-label">01 /
-                BRAND</span><strong>Think<br>different.</strong><span class="card-arrow">↗</span></div>
-            <div class="floating-card card-blue"><span class="card-label">02 / DIGITAL</span>
-              <div class="mini-window"><i></i><i></i><i></i><b>build<br>better</b></div>
-            </div>
-            <div class="floating-card card-white"><span class="card-label">03 / EXPERIENCE</span>
-              <div class="shape-stack"><i></i><i></i><i></i></div><span class="tiny-note">DESIGN WITH<br>INTENTION</span>
-            </div>
-            <div class="floating-card card-black"><span class="card-label">04 /
-                IDEAS</span><strong>Why<br>not?</strong><span class="spark">✳</span></div>
+          <div class="slot-placeholder hero-placeholder">
+            <div class="slot-hint">Hero components, interactive 3D / canvas / brand showcase slot</div>
           </div>
-          <div class="hero-bottom"><span>SCROLL DOWN TO EXPLORE · OR USE THE HEADER</span><span
-              class="bottom-location">CHENNAI · EVERYWHERE</span></div>
         </div>
 
         <div class="section-next-wrap">
@@ -69,7 +74,6 @@
 
         <footer class="section-footer">
           <div class="footer-main-grid">
-            <!-- Column 1: Brand -->
             <div class="footer-brand-col">
               <div class="footer-brand">
                 <span class="footer-brand-mark">C<span>•</span>S</span>
@@ -79,7 +83,6 @@
               <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
             </div>
 
-            <!-- Column 2: Navigation -->
             <div class="footer-nav-col">
               <span class="footer-col-label">NAVIGATION</span>
               <nav class="footer-nav">
@@ -92,7 +95,6 @@
               </nav>
             </div>
 
-            <!-- Column 3: Social & Contact -->
             <div class="footer-contact-col">
               <span class="footer-col-label">CONNECT</span>
               <div class="footer-social-row">
@@ -130,18 +132,38 @@
       </div>
     </section>
 
-    <!-- 01 / ABOUT -->
-    <section class="panel section-panel problem" id="about" aria-label="About page">
+    <!-- 01 / ABOUT (White Canvas with Yellow Wave Divider) -->
+    <section class="panel section-panel about" id="about" aria-label="About">
       <div class="panel-inner">
-        <div class="section-top"><span>01 / ABOUT PAGE</span><span>WHAT WE BELIEVE</span></div>
-        <div class="section-main">
-          <p class="eyebrow">WHO WE ARE, IN A NUTSHELL.</p>
-          <h2>We turn ideas<br>into <span class="highlight">experiences.</span></h2>
-          <p class="section-desc">Code Sketchers is a creative studio bringing strategy, design and technology together to
-            make thoughtful digital experiences and brands.</p>
+        <div class="section-top">
+          <span>01 / ABOUT PAGE</span>
+          <span>STUDIO PROFILE & VISION</span>
         </div>
-        <div class="statement-strip"><span>LESS NOISE</span><b>✳</b><span>MORE MEANING</span><b>✳</b><span>REAL
-            MOMENTUM</span></div>
+
+        <div class="section-main">
+          <p class="eyebrow">THE WAY WE THINK.</p>
+          <h2>Curiosity driven.<br><span class="highlight">Purpose built.</span></h2>
+          <p class="section-desc">We bring strategy, design, and technology together to create thoughtful digital experiences with lasting momentum.</p>
+        </div>
+
+        <!-- Wave Ribbon Divider -->
+        <div class="wave-ribbon wave-strip-yellow" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,24 C240,64 480,-12 720,28 C960,68 1200,8 1440,32 L1440,80 L0,80 Z" fill="currentColor" opacity="0.35"/>
+            <path d="M0,42 C300,76 540,16 800,48 C1060,80 1260,26 1440,50 L1440,80 L0,80 Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- Team Scaffold Slot: Centered Workspace -->
+        <div class="team-slot content-slot" data-slot="about">
+          <div class="slot-badge">
+            <span>WORKSPACE SLOT / ABOUT CONTENT</span>
+            <code>team-slot[data-slot="about"]</code>
+          </div>
+          <div class="slot-placeholder content-placeholder">
+            <div class="slot-hint">Team profile, studio story, philosophy or interactive manifesto slot</div>
+          </div>
+        </div>
 
         <div class="section-next-wrap">
           <button class="section-next-btn" data-next-target="services">NEXT SECTION <span>↘</span></button>
@@ -149,7 +171,6 @@
 
         <footer class="section-footer">
           <div class="footer-main-grid">
-            <!-- Column 1: Brand -->
             <div class="footer-brand-col">
               <div class="footer-brand">
                 <span class="footer-brand-mark">C<span>•</span>S</span>
@@ -159,7 +180,6 @@
               <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
             </div>
 
-            <!-- Column 2: Navigation -->
             <div class="footer-nav-col">
               <span class="footer-col-label">NAVIGATION</span>
               <nav class="footer-nav">
@@ -172,7 +192,6 @@
               </nav>
             </div>
 
-            <!-- Column 3: Social & Contact -->
             <div class="footer-contact-col">
               <span class="footer-col-label">CONNECT</span>
               <div class="footer-social-row">
@@ -191,7 +210,7 @@
                 </a>
                 <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                   </svg>
                 </a>
               </div>
@@ -210,19 +229,57 @@
       </div>
     </section>
 
-    <!-- 02 / SERVICES -->
+    <!-- 02 / SERVICES (Dark Studio Mode with Card Grid Slots) -->
     <section class="panel section-panel services" id="services" aria-label="Services">
       <div class="panel-inner">
-        <div class="section-top"><span>02 / SERVICES</span><span>GOOD THINKING, MADE VISIBLE</span></div>
+        <div class="section-top">
+          <span>02 / SERVICES</span>
+          <span>CAPABILITIES & OFFERINGS</span>
+        </div>
+
         <div class="section-main">
           <p class="eyebrow">WHAT WE BRING TO THE TABLE</p>
           <h2>Small studio.<br><span class="highlight">Big picture.</span></h2>
+          <p class="section-desc">Flexible disciplines built around product thinking, brand architecture, and resilient execution.</p>
         </div>
-        <div class="service-list"><button><span>01</span><strong>Brand strategy &
-              identity</strong><b>↗</b></button><button><span>02</span><strong>Websites & digital
-              products</strong><b>↗</b></button><button><span>03</span><strong>Creative campaigns &
-              content</strong><b>↗</b></button><button><span>04</span><strong>Experiences &
-              innovation</strong><b>↗</b></button></div>
+
+        <!-- Wave Ribbon Divider -->
+        <div class="wave-ribbon wave-strip-yellow" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,24 C240,64 480,-12 720,28 C960,68 1200,8 1440,32 L1440,80 L0,80 Z" fill="currentColor" opacity="0.35"/>
+            <path d="M0,42 C300,76 540,16 800,48 C1060,80 1260,26 1440,50 L1440,80 L0,80 Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- Team Scaffold Slot: Services Grid -->
+        <div class="team-slot grid-slot" data-slot="services">
+          <div class="slot-badge">
+            <span>WORKSPACE SLOT / SERVICES GRID</span>
+            <code>team-slot[data-slot="services"]</code>
+          </div>
+          <div class="slot-grid-scaffold">
+            <div class="slot-card">
+              <span class="slot-num">01 / DISCIPLINE</span>
+              <strong class="slot-title">Brand Strategy & Identity</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+            <div class="slot-card">
+              <span class="slot-num">02 / DISCIPLINE</span>
+              <strong class="slot-title">Websites & Digital Products</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+            <div class="slot-card">
+              <span class="slot-num">03 / DISCIPLINE</span>
+              <strong class="slot-title">Creative Content & Campaigns</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+            <div class="slot-card">
+              <span class="slot-num">04 / DISCIPLINE</span>
+              <strong class="slot-title">Experience & Innovation</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+          </div>
+        </div>
 
         <div class="section-next-wrap">
           <button class="section-next-btn" data-next-target="work">NEXT SECTION <span>↘</span></button>
@@ -230,7 +287,6 @@
 
         <footer class="section-footer">
           <div class="footer-main-grid">
-            <!-- Column 1: Brand -->
             <div class="footer-brand-col">
               <div class="footer-brand">
                 <span class="footer-brand-mark">C<span>•</span>S</span>
@@ -240,7 +296,6 @@
               <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
             </div>
 
-            <!-- Column 2: Navigation -->
             <div class="footer-nav-col">
               <span class="footer-col-label">NAVIGATION</span>
               <nav class="footer-nav">
@@ -253,7 +308,6 @@
               </nav>
             </div>
 
-            <!-- Column 3: Social & Contact -->
             <div class="footer-contact-col">
               <span class="footer-col-label">CONNECT</span>
               <div class="footer-social-row">
@@ -291,22 +345,51 @@
       </div>
     </section>
 
-    <!-- 03 / WORK -->
+    <!-- 03 / WORK (Crisp White Canvas with Showcase Slots) -->
     <section class="panel section-panel work" id="work" aria-label="Our work">
       <div class="panel-inner">
-        <div class="section-top"><span>03 / OUR WORK</span><span>SELECTED EXPERIMENTS & COLLABORATIONS</span></div>
+        <div class="section-top">
+          <span>03 / OUR WORK</span>
+          <span>SELECTED EXPERIMENTS & PROJECTS</span>
+        </div>
+
         <div class="section-main">
           <p class="eyebrow">WORK THAT WORKS</p>
           <h2>Made with<br><span class="highlight">curiosity.</span></h2>
+          <p class="section-desc">Projects engineered for impact across visual craft, interaction, and technical performance.</p>
         </div>
-        <div class="work-grid">
-          <article class="work-tile yellow"><span>BRAND / 2025</span><strong>Good things<br>grow here.</strong><i>↗</i>
-          </article>
-          <article class="work-tile blue"><span>DIGITAL / 2025</span>
-            <div class="tile-browser"><b>hello, future.</b><small>Make room for better.</small><span>EXPLORE ↗</span>
+
+        <!-- Wave Ribbon Divider -->
+        <div class="wave-ribbon wave-strip-yellow" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,24 C240,64 480,-12 720,28 C960,68 1200,8 1440,32 L1440,80 L0,80 Z" fill="currentColor" opacity="0.35"/>
+            <path d="M0,42 C300,76 540,16 800,48 C1060,80 1260,26 1440,50 L1440,80 L0,80 Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- Team Scaffold Slot: Project Showcase -->
+        <div class="team-slot grid-slot" data-slot="work">
+          <div class="slot-badge">
+            <span>WORKSPACE SLOT / PROJECT SHOWCASE</span>
+            <code>team-slot[data-slot="work"]</code>
+          </div>
+          <div class="slot-grid-scaffold work-showcase-scaffold">
+            <div class="slot-card project-slot-card">
+              <span class="slot-num">PROJECT / 01</span>
+              <strong class="slot-title">Showcase Item One</strong>
+              <div class="slot-box-inner"></div>
             </div>
-          </article>
-          <article class="work-tile white"><span>CAMPAIGN / 2024</span><strong>MAKE<br>WAVES.</strong><i>✳</i></article>
+            <div class="slot-card project-slot-card">
+              <span class="slot-num">PROJECT / 02</span>
+              <strong class="slot-title">Showcase Item Two</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+            <div class="slot-card project-slot-card">
+              <span class="slot-num">PROJECT / 03</span>
+              <strong class="slot-title">Showcase Item Three</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+          </div>
         </div>
 
         <div class="section-next-wrap">
@@ -315,7 +398,6 @@
 
         <footer class="section-footer">
           <div class="footer-main-grid">
-            <!-- Column 1: Brand -->
             <div class="footer-brand-col">
               <div class="footer-brand">
                 <span class="footer-brand-mark">C<span>•</span>S</span>
@@ -325,7 +407,6 @@
               <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
             </div>
 
-            <!-- Column 2: Navigation -->
             <div class="footer-nav-col">
               <span class="footer-col-label">NAVIGATION</span>
               <nav class="footer-nav">
@@ -338,7 +419,6 @@
               </nav>
             </div>
 
-            <!-- Column 3: Social & Contact -->
             <div class="footer-contact-col">
               <span class="footer-col-label">CONNECT</span>
               <div class="footer-social-row">
@@ -376,19 +456,36 @@
       </div>
     </section>
 
-    <!-- 04 / TESTIMONIAL -->
+    <!-- 04 / TESTIMONIAL (Soft Dark Layout with Quote Slot) -->
     <section class="panel section-panel testimonial" id="testimonial" aria-label="Testimonials">
       <div class="panel-inner">
-        <div class="section-top"><span>04 / TESTIMONIAL</span><span>WORDS FROM OUR COLLABORATORS</span></div>
-        <div class="testimonial-stage">
-          <div class="section-main">
-            <p class="eyebrow">GOOD WORK. GOOD PEOPLE.</p>
-            <h2>Don't just<br>take <span class="highlight">our word.</span></h2>
+        <div class="section-top">
+          <span>04 / TESTIMONIAL</span>
+          <span>WORDS FROM OUR COLLABORATORS</span>
+        </div>
+
+        <div class="section-main">
+          <p class="eyebrow">GOOD WORK. GOOD PEOPLE.</p>
+          <h2>Don't just<br>take <span class="highlight">our word.</span></h2>
+          <p class="section-desc">What collaborators, founders, and teams say about building with Code Sketchers.</p>
+        </div>
+
+        <!-- Wave Ribbon Divider -->
+        <div class="wave-ribbon wave-strip-yellow" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,24 C240,64 480,-12 720,28 C960,68 1200,8 1440,32 L1440,80 L0,80 Z" fill="currentColor" opacity="0.35"/>
+            <path d="M0,42 C300,76 540,16 800,48 C1060,80 1260,26 1440,50 L1440,80 L0,80 Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- Team Scaffold Slot: Testimonials & Proof -->
+        <div class="team-slot content-slot" data-slot="testimonial">
+          <div class="slot-badge">
+            <span>WORKSPACE SLOT / TESTIMONIAL & SOCIAL PROOF</span>
+            <code>team-slot[data-slot="testimonial"]</code>
           </div>
-          <div class="testimonial-card"><span class="quote-mark">“</span>
-            <blockquote>Code Sketchers brought clarity, creativity and care to every step. The result felt like us—only
-              sharper, more confident and ready for what's next.</blockquote>
-            <div class="quote-by"><strong>CLIENT NAME</strong><span>Founder / Brand partner</span></div>
+          <div class="slot-placeholder quote-placeholder">
+            <div class="slot-hint">Client quote slider, video testimonials, or partner logo cloud slot</div>
           </div>
         </div>
 
@@ -398,7 +495,6 @@
 
         <footer class="section-footer">
           <div class="footer-main-grid">
-            <!-- Column 1: Brand -->
             <div class="footer-brand-col">
               <div class="footer-brand">
                 <span class="footer-brand-mark">C<span>•</span>S</span>
@@ -408,7 +504,6 @@
               <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
             </div>
 
-            <!-- Column 2: Navigation -->
             <div class="footer-nav-col">
               <span class="footer-col-label">NAVIGATION</span>
               <nav class="footer-nav">
@@ -421,7 +516,6 @@
               </nav>
             </div>
 
-            <!-- Column 3: Social & Contact -->
             <div class="footer-contact-col">
               <span class="footer-col-label">CONNECT</span>
               <div class="footer-social-row">
@@ -459,23 +553,46 @@
       </div>
     </section>
 
-    <!-- 05 / CONTACT -->
+    <!-- 05 / CONTACT (Studio Black with Clean Form Wrapper) -->
     <section class="panel section-panel contact" id="contact" aria-label="Contact">
       <div class="panel-inner">
-        <div class="section-top"><span>05 / CONTACT FORM</span><span>HAVE A GOOD ONE IN MIND?</span></div>
-        <div class="contact-layout">
-          <div>
-            <p class="eyebrow">THE NEXT GOOD THING STARTS HERE.</p>
-            <h2>Let's make<br><span class="highlight">something</span><br>matter.</h2><a class="email-link"
-              href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
+        <div class="section-top">
+          <span>05 / CONTACT FORM</span>
+          <span>HAVE A GOOD ONE IN MIND?</span>
+        </div>
+
+        <div class="section-main">
+          <p class="eyebrow">THE NEXT GOOD THING STARTS HERE.</p>
+          <h2>Let's make<br><span class="highlight">something</span><br>matter<span class="period">.</span></h2>
+        </div>
+
+        <!-- Wave Ribbon Divider -->
+        <div class="wave-ribbon wave-strip-yellow" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,24 C240,64 480,-12 720,28 C960,68 1200,8 1440,32 L1440,80 L0,80 Z" fill="currentColor" opacity="0.35"/>
+            <path d="M0,42 C300,76 540,16 800,48 C1060,80 1260,26 1440,50 L1440,80 L0,80 Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- Team Scaffold Slot: Contact Wrapper -->
+        <div class="team-slot form-slot" data-slot="contact">
+          <div class="slot-badge">
+            <span>WORKSPACE SLOT / CONTACT ENGINE</span>
+            <code>team-slot[data-slot="contact"]</code>
           </div>
-          <form id="contactForm"><label>Your name<input required name="name" placeholder="Name"></label><label>Your
-              email<input required type="email" name="email" placeholder="Email address"></label><label>What are you
-              thinking?<textarea required name="message" rows="3"
-                placeholder="A little about your idea..."></textarea></label><button type="submit">SEND AN ENQUIRY
-              ↗</button>
-            <p class="form-note" id="formNote">This demo opens your email app to send the message.</p>
-          </form>
+          <div class="contact-wrapper">
+            <div class="contact-prompt-col">
+              <p class="contact-prompt-text">We'd love to hear about what you're working on and explore how we can collaborate.</p>
+              <a class="email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
+            </div>
+            <form id="contactForm">
+              <label>Your name<input required name="name" placeholder="Name"></label>
+              <label>Your email<input required type="email" name="email" placeholder="Email address"></label>
+              <label>What are you thinking?<textarea required name="message" rows="3" placeholder="A little about your idea..."></textarea></label>
+              <button type="submit">SEND AN ENQUIRY ↗</button>
+              <p class="form-note" id="formNote">This demo opens your email app to send the message.</p>
+            </form>
+          </div>
         </div>
 
         <div class="section-next-wrap">
@@ -484,7 +601,6 @@
 
         <footer class="section-footer">
           <div class="footer-main-grid">
-            <!-- Column 1: Brand -->
             <div class="footer-brand-col">
               <div class="footer-brand">
                 <span class="footer-brand-mark">C<span>•</span>S</span>
@@ -494,7 +610,6 @@
               <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
             </div>
 
-            <!-- Column 2: Navigation -->
             <div class="footer-nav-col">
               <span class="footer-col-label">NAVIGATION</span>
               <nav class="footer-nav">
@@ -507,7 +622,6 @@
               </nav>
             </div>
 
-            <!-- Column 3: Social & Contact -->
             <div class="footer-contact-col">
               <span class="footer-col-label">CONNECT</span>
               <div class="footer-social-row">
@@ -545,29 +659,56 @@
       </div>
     </section>
 
-    <!-- 06 / ABOUT US -->
+    <!-- 06 / ABOUT US (Paper White Canvas with 4 Team Workspace Slots) -->
     <section class="panel section-panel aboutus" id="aboutus" aria-label="About us">
       <div class="panel-inner">
-        <div class="section-top"><span>06 / ABOUT US</span><span>THE PEOPLE BEHIND THE PIXELS</span></div>
+        <div class="section-top">
+          <span>06 / ABOUT US</span>
+          <span>THE PEOPLE BEHIND THE PIXELS</span>
+        </div>
+
         <div class="section-main">
           <p class="eyebrow">CURIOUS MINDS. COLLABORATIVE SPIRITS.</p>
           <h2>Meet the<br><span class="highlight">makers.</span></h2>
-          <p class="section-desc">We are a team of thinkers, designers and makers who believe good ideas deserve
-            thoughtful execution. We work together, stay curious and build things with purpose.</p>
+          <p class="section-desc">We are a team of 4 thinkers, designers and makers who believe good ideas deserve thoughtful execution.</p>
         </div>
-        <div class="team-grid">
-          <article><b>01</b>
-            <h3>Nithish</h3>
-            <p>Contact & conversations</p>
-          </article>
-          <article><b>02</b>
-            <h3>Gowri</h3>
-            <p>About us & studio story</p>
-          </article>
-          <article><b>03</b>
-            <h3>Kabilan</h3>
-            <p>Footer & finishing details</p>
-          </article>
+
+        <!-- Wave Ribbon Divider -->
+        <div class="wave-ribbon wave-strip-yellow" aria-hidden="true">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,24 C240,64 480,-12 720,28 C960,68 1200,8 1440,32 L1440,80 L0,80 Z" fill="currentColor" opacity="0.35"/>
+            <path d="M0,42 C300,76 540,16 800,48 C1060,80 1260,26 1440,50 L1440,80 L0,80 Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- Team Scaffold Slot: Team Roster (4 Members) -->
+        <div class="team-slot grid-slot" data-slot="aboutus">
+          <div class="slot-badge">
+            <span>WORKSPACE SLOT / TEAM ROSTER (4 MEMBERS)</span>
+            <code>team-slot[data-slot="aboutus"]</code>
+          </div>
+          <div class="slot-grid-scaffold team-4-scaffold">
+            <div class="slot-card">
+              <span class="slot-num">01 / TEAM</span>
+              <strong class="slot-title">Member 1 Slot</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+            <div class="slot-card">
+              <span class="slot-num">02 / TEAM</span>
+              <strong class="slot-title">Member 2 Slot</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+            <div class="slot-card">
+              <span class="slot-num">03 / TEAM</span>
+              <strong class="slot-title">Member 3 Slot</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+            <div class="slot-card">
+              <span class="slot-num">04 / TEAM</span>
+              <strong class="slot-title">Member 4 Slot</strong>
+              <div class="slot-box-inner"></div>
+            </div>
+          </div>
         </div>
 
         <div class="section-next-wrap">
@@ -576,7 +717,6 @@
 
         <footer class="section-footer">
           <div class="footer-main-grid">
-            <!-- Column 1: Brand -->
             <div class="footer-brand-col">
               <div class="footer-brand">
                 <span class="footer-brand-mark">C<span>•</span>S</span>
@@ -586,7 +726,6 @@
               <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
             </div>
 
-            <!-- Column 2: Navigation -->
             <div class="footer-nav-col">
               <span class="footer-col-label">NAVIGATION</span>
               <nav class="footer-nav">
@@ -599,7 +738,6 @@
               </nav>
             </div>
 
-            <!-- Column 3: Social & Contact -->
             <div class="footer-contact-col">
               <span class="footer-col-label">CONNECT</span>
               <div class="footer-social-row">
@@ -618,7 +756,7 @@
                 </a>
                 <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                   </svg>
                 </a>
               </div>
