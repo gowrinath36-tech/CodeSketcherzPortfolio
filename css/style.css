@@ -1044,3 +1044,582 @@ body.start-here-visible .about-nav-item::before {
     animation: none !important;
   }
 }
+
+/* ==========================================
+   CODE SKETCHERS - NEW SERVICES DESIGN
+========================================== */
+
+.services-content {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px 0 35px;
+}
+
+.services-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: end;
+    margin-bottom: 35px;
+    animation: serviceFade 0.8s ease both;
+}
+
+.services-label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #2563EB;
+}
+
+.services-intro h3 {
+    font-size: clamp(30px, 4vw, 48px);
+    letter-spacing: -2px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.services-intro h3 span,
+.services-bottom h3 span {
+    color: #2563EB;
+}
+
+.services-intro > p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #71717a;
+    max-width: 470px;
+    margin: 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.service-card {
+    min-height: 260px;
+    position: relative;
+    padding: 25px;
+    border-radius: 13px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(23,23,23,0.06);
+    transition:
+        transform 0.4s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.4s ease;
+    animation: serviceFade 0.7s ease both;
+}
+
+.service-card:nth-child(2) { animation-delay: .1s; }
+.service-card:nth-child(3) { animation-delay: .2s; }
+.service-card:nth-child(4) { animation-delay: .3s; }
+.service-card:nth-child(5) { animation-delay: .4s; }
+.service-card:nth-child(6) { animation-delay: .5s; }
+
+.service-card:hover {
+    transform: translateY(-9px) scale(1.015);
+    box-shadow: 0 20px 35px rgba(23,23,23,.13);
+}
+
+.service-yellow {
+    background: #FFC928;
+    color: #171717;
+}
+
+.service-blue {
+    background: #2563EB;
+    color: white;
+}
+
+.service-dark {
+    background: #171717;
+    color: white;
+}
+
+.service-light {
+    background: white;
+    color: #171717;
+}
+
+.service-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 27px;
+}
+
+.service-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    opacity: .65;
+}
+
+.service-icon {
+    width: 43px;
+    height: 43px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    transition: transform .5s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: rotate(45deg) scale(1.12);
+}
+
+.service-card h3 {
+    font-size: 22px;
+    letter-spacing: -.7px;
+    margin: 0 0 12px;
+}
+
+.service-card > p {
+    font-size: 12.5px;
+    line-height: 1.8;
+    opacity: .76;
+    margin: 0 0 22px;
+    max-width: 340px;
+}
+
+.service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    padding-right: 20px;
+}
+
+.service-tags span {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    padding: 6px 9px;
+    border: 1px solid currentColor;
+    border-radius: 30px;
+    opacity: .75;
+}
+
+.service-arrow {
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    font-size: 19px;
+    transition: transform .3s ease;
+}
+
+.service-card:hover .service-arrow {
+    transform: translate(4px,-4px);
+}
+
+.services-bottom {
+    margin-top: 35px;
+    padding: 27px 30px;
+    background: #171717;
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.services-bottom .services-label {
+    color: #FFC928;
+}
+
+.services-bottom h3 {
+    font-size: clamp(20px, 3vw, 30px);
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.services-contact-btn {
+    background: #FFC928;
+    color: #171717;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: .3s ease;
+}
+
+.services-contact-btn:hover {
+    background: white;
+    transform: translateY(-4px);
+}
+
+/* ==========================================
+   CONTACT SECTION - NEW DESIGN
+========================================== */
+
+.panel.contact .panel-bottom-block.block-yellow {
+    background: #FFC928;
+    padding-top: 45px;
+}
+
+.new-contact-wrapper {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 22px;
+    align-items: stretch;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.contact-info-card {
+    position: relative;
+    overflow: hidden;
+    background: #171717;
+    color: white;
+    border-radius: 14px;
+    padding: clamp(25px, 4vw, 45px);
+    min-height: 490px;
+    animation: serviceFade .8s ease both;
+}
+
+.contact-small-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #FFC928;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.contact-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FFC928;
+    box-shadow: 0 0 12px #FFC928;
+    animation: livePulse 1.5s infinite;
+}
+
+.contact-info-card h3 {
+    font-size: clamp(34px, 4vw, 53px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin: 32px 0 18px;
+}
+
+.contact-info-card h3 span {
+    color: #FFC928;
+}
+
+.contact-description {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #a1a1aa;
+    max-width: 390px;
+    margin-bottom: 35px;
+}
+
+.contact-detail {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 23px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-detail-icon {
+    width: 39px;
+    height: 39px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: #FFC928;
+    font-size: 19px;
+}
+
+.contact-detail div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-detail small {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: #71717a;
+}
+
+.contact-detail a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color .3s;
+}
+
+.contact-detail a:hover {
+    color: #FFC928;
+}
+
+.contact-decoration {
+    position: absolute;
+    right: 20px;
+    bottom: -38px;
+    font-size: 140px;
+    font-weight: 900;
+    letter-spacing: -15px;
+    color: rgba(255,201,40,.07);
+    pointer-events: none;
+}
+
+.contact-decoration span {
+    color: #FFC928;
+}
+
+/* CONTACT FORM CARD */
+
+.contact-form-card {
+    background: white;
+    border-radius: 14px;
+    padding: clamp(23px, 3vw, 38px);
+    color: #171717;
+    animation: serviceFade .9s ease both;
+}
+
+.contact-form-heading > span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #2563EB;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.contact-form-heading h3 {
+    font-size: clamp(23px, 3vw, 32px);
+    letter-spacing: -1px;
+    margin: 13px 0 8px;
+}
+
+.contact-form-heading p {
+    font-size: 12px;
+    color: #71717a;
+    margin-bottom: 27px;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#contactForm label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #52525b;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.contact-input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+}
+
+#contactForm input,
+#contactForm textarea,
+#contactForm select {
+    width: 100%;
+    min-width: 0;
+    background: #f5f5f4;
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    padding: 13px;
+    color: #171717;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0;
+    outline: none;
+    transition: border .3s, box-shadow .3s;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus,
+#contactForm select:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+}
+
+#contactForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+    color: #a1a1aa;
+}
+
+.contact-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 20px;
+    background: #171717;
+    color: #FFC928;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.contact-submit-btn:hover {
+    background: #2563EB;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37,99,235,.2);
+}
+
+.contact-submit-btn span {
+    font-size: 18px;
+}
+
+#contactForm .form-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0;
+    font-weight: 400;
+    color: #71717a;
+    margin: 0;
+    text-align: center;
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes serviceFade {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes livePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255,201,40,.6);
+    }
+    50% {
+        box-shadow: 0 0 0 7px rgba(255,201,40,0);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .new-contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info-card {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .services-intro {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        min-height: 245px;
+    }
+
+    .services-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .services-contact-btn {
+        width: 100%;
+    }
+
+    .contact-input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info-card h3 {
+        font-size: 38px;
+    }
+
+    .contact-form-card {
+        padding: 22px 17px;
+    }
+
+    .panel.contact .panel-bottom-block.block-yellow {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .service-card,
+    .contact-info-card,
+    .contact-form-card,
+    .services-intro {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .contact-live-dot {
+        animation: none !important;
+    }
+}
+/* Services workspace adjustment */
+.services-workspace {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+
+/* Contact layout adjustment */
+.new-contact-wrapper {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
