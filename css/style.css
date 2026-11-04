@@ -32,7 +32,7 @@ button {
 }
 
 /* ==========================================================================
-   Fixed Header Navigation
+   Fixed Header Navigation (Damini Header - Untouched)
    ========================================================================== */
 .site-header {
   position: fixed;
@@ -135,7 +135,7 @@ button {
 }
 
 /* ==========================================================================
-   Deck Container & Independent Scrollable Panels
+   Deck Container & Independent Scrollable Panels (Damini Slide Layout)
    ========================================================================== */
 .deck {
   position: fixed;
@@ -169,60 +169,32 @@ button {
   position: relative;
   width: 100%;
   min-height: 100%;
-  padding: 40px clamp(20px, 5vw, 60px) 0;
+  padding: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
 /* ==========================================================================
-   Alternating Section Themes
+   Two-Tone Section Architecture: Top Canvas
    ========================================================================== */
-/* Hero: Bold Studio Black */
-.panel.hero {
-  background: #171717;
-  color: #ffffff;
+.panel-top-canvas {
+  width: 100%;
+  padding: 40px clamp(24px, 6vw, 80px) 24px;
+  box-sizing: border-box;
 }
 
-/* About: Crisp Paper White */
-.panel.about {
+.panel-top-canvas.bg-white {
   background: #ffffff;
   color: #171717;
 }
 
-/* Services: Dark Studio Mode */
-.panel.services {
+.panel-top-canvas.bg-black {
   background: #171717;
   color: #ffffff;
 }
 
-/* Work: Crisp White Canvas */
-.panel.work {
-  background: #ffffff;
-  color: #171717;
-}
-
-/* Testimonial: Soft Dark Layout */
-.panel.testimonial {
-  background: #1a1a1d;
-  color: #ffffff;
-}
-
-/* Contact: Studio Black */
-.panel.contact {
-  background: #171717;
-  color: #ffffff;
-}
-
-/* About Us: Paper White */
-.panel.aboutus {
-  background: #ffffff;
-  color: #171717;
-}
-
-/* ==========================================================================
-   Section Top Meta & Typography
-   ========================================================================== */
+/* Top Meta Bar */
 .section-top {
   display: flex;
   justify-content: space-between;
@@ -234,26 +206,18 @@ button {
   margin-bottom: 24px;
 }
 
-/* Dark section tops */
-.panel.hero .section-top,
-.panel.services .section-top,
-.panel.testimonial .section-top,
-.panel.contact .section-top {
+.panel-top-canvas.bg-black .section-top {
   color: #a1a1aa;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Light section tops */
-.panel.about .section-top,
-.panel.work .section-top,
-.panel.aboutus .section-top {
+.panel-top-canvas.bg-white .section-top {
   color: #71717a;
   border-bottom: 1px solid rgba(23, 23, 23, 0.08);
 }
 
 .section-main {
   max-width: 900px;
-  margin-bottom: 8px;
 }
 
 .eyebrow {
@@ -288,189 +252,155 @@ button {
 .section-desc {
   font-size: clamp(14px, 1.6vw, 17px);
   line-height: 1.6;
-  max-width: 520px;
+  max-width: 540px;
   margin-top: 18px;
   opacity: 0.82;
 }
 
 /* ==========================================================================
-   Modern Wavy Ribbon Partition Strips
+   Seamless Wave Dividers - Zero Margin, Edge to Edge
    ========================================================================== */
-.wave-ribbon {
+.wave-divider-wrap {
   width: 100%;
-  height: clamp(42px, 6vw, 76px);
-  overflow: hidden;
   line-height: 0;
-  margin: 28px 0 34px;
   display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
+  z-index: 2;
 }
 
-.wave-ribbon svg {
+.wave-divider-wrap svg {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 56px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: bottom;
 }
 
-.wave-strip-yellow {
-  color: var(--yellow);
+/* Background matching per panel to ensure 100% seamless wave integration */
+.panel.about .wave-divider-wrap,
+.panel.work .wave-divider-wrap,
+.panel.testimonial .wave-divider-wrap {
+  background: #ffffff;
 }
 
-.wave-strip-black {
-  color: var(--black);
+.panel.services .wave-divider-wrap {
+  background: #f5f5f4;
 }
 
-.wave-strip-white {
-  color: #ffffff;
+.panel.hero .wave-divider-wrap,
+.panel.aboutus .wave-divider-wrap,
+.panel.contact .wave-divider-wrap {
+  background: #171717;
 }
 
 /* ==========================================================================
-   Clean Base Scaffold: Team Member Placeholder Slots
+   Solid Colored Blocks Attached to Wave
    ========================================================================== */
-.team-slot {
+.panel-bottom-block {
   width: 100%;
-  border-radius: 8px;
-  padding: clamp(20px, 3.5vw, 36px);
+  padding: 40px clamp(24px, 6vw, 80px) 60px;
   box-sizing: border-box;
-  margin-top: 6px;
-  position: relative;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  flex: 1;
 }
 
-/* Light section slot borders */
-.panel.about .team-slot,
-.panel.work .team-slot,
-.panel.aboutus .team-slot {
-  border: 1.5px dashed rgba(23, 23, 23, 0.18);
-  background: rgba(23, 23, 23, 0.02);
+.panel-bottom-block.block-yellow {
+  background: #ffc928;
+  color: #171717;
 }
 
-.panel.about .team-slot:hover,
-.panel.work .team-slot:hover,
-.panel.aboutus .team-slot:hover {
-  border-color: rgba(23, 23, 23, 0.38);
+.panel-bottom-block.block-black {
+  background: #171717;
+  color: #ffffff;
 }
 
-/* Dark section slot borders */
-.panel.hero .team-slot,
-.panel.services .team-slot,
-.panel.testimonial .team-slot,
-.panel.contact .team-slot {
-  border: 1.5px dashed rgba(255, 201, 40, 0.32);
-  background: rgba(255, 255, 255, 0.02);
+.panel-bottom-block.block-white {
+  background: #f5f5f4;
+  color: #171717;
 }
 
-.panel.hero .team-slot:hover,
-.panel.services .team-slot:hover,
-.panel.testimonial .team-slot:hover,
-.panel.contact .team-slot:hover {
-  border-color: rgba(255, 201, 40, 0.6);
-}
-
-/* Slot Meta Badge */
-.slot-badge {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  opacity: 0.85;
-}
-
-.slot-badge span {
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.slot-badge span::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--yellow);
-}
-
-.slot-badge code {
-  font-size: 9.5px;
-  padding: 3px 8px;
-  border-radius: 3px;
-  background: rgba(125, 125, 125, 0.12);
-  letter-spacing: 0.04em;
-}
-
-/* Slot Placeholder Containers */
-.slot-placeholder {
-  min-height: clamp(180px, 26vh, 300px);
+/* ==========================================================================
+   Team Workspace Slot Styling
+   ========================================================================== */
+.team-workspace {
+  border: 2px dashed rgba(23, 23, 23, 0.25);
+  border-radius: 8px;
+  min-height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px dashed rgba(125, 125, 125, 0.22);
-  border-radius: 6px;
-  padding: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  margin: 20px 0;
   text-align: center;
-}
-
-.slot-hint {
-  font-family: 'DM Mono', monospace;
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  opacity: 0.75;
-  max-width: 440px;
-}
-
-/* Scaffold Grids (Services, Work, Team) */
-.slot-grid-scaffold {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
-  width: 100%;
-}
-
-.team-4-scaffold {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.slot-card {
-  border: 1px dashed rgba(125, 125, 125, 0.25);
-  border-radius: 6px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 140px;
+  padding: 30px;
   box-sizing: border-box;
-  background: rgba(125, 125, 125, 0.03);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-.slot-card:hover {
+.team-workspace:hover {
+  border-color: rgba(23, 23, 23, 0.55);
+  background: rgba(23, 23, 23, 0.04);
+}
+
+.panel-bottom-block.block-black .team-workspace {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #aaa;
+}
+
+.panel-bottom-block.block-black .team-workspace:hover {
   border-color: var(--yellow);
-  transform: translateY(-2px);
+  background: rgba(255, 201, 40, 0.04);
 }
 
-.slot-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: var(--yellow);
+/* Testimonial Rich Black Card inside Yellow Block */
+.testimonial-rich-card {
+  background: #171717;
+  color: #ffffff;
+  border-radius: 14px;
+  padding: clamp(32px, 5vw, 56px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  margin: 16px 0;
+  text-align: left;
 }
 
-.slot-title {
-  font-size: 16px;
+.testimonial-rich-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(26px, 3.8vw, 42px);
   font-weight: 700;
-  margin: 10px 0 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0 0 14px;
 }
 
-.slot-box-inner {
-  height: 48px;
-  border-radius: 4px;
-  background: rgba(125, 125, 125, 0.08);
+.testimonial-rich-card p {
+  font-size: clamp(14px, 1.8vw, 17px);
+  line-height: 1.6;
+  color: #d4d4d8;
+  max-width: 650px;
+  margin: 0;
+}
+
+.testimonial-rich-card .testimonial-quote-icon {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 52px;
+  line-height: 1;
+  color: var(--yellow);
+  display: block;
+  margin-top: 14px;
+}
+
+.testimonial-rich-card .team-workspace {
+  border-color: rgba(255, 201, 40, 0.35);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+  margin-top: 20px;
 }
 
 /* ==========================================================================
@@ -481,6 +411,8 @@ button {
   grid-template-columns: 1fr 1.2fr;
   gap: clamp(24px, 4vw, 56px);
   align-items: start;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .contact-prompt-text {
@@ -493,220 +425,236 @@ button {
 .email-link {
   font-family: 'DM Mono', monospace;
   color: var(--yellow);
+  font-size: 15px;
   text-decoration: none;
-  font-size: 14px;
-  transition: opacity 0.2s;
-  display: inline-block;
+  border-bottom: 1px solid rgba(255, 201, 40, 0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
 }
 
 .email-link:hover {
-  opacity: 0.8;
-  text-decoration: underline;
+  border-color: var(--yellow);
 }
 
-.contact-wrapper form {
+#contactForm {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.contact-wrapper label {
+#contactForm label {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.08em;
   color: #a1a1aa;
 }
 
-.contact-wrapper input,
-.contact-wrapper textarea {
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  padding: 12px 14px;
-  font: inherit;
-  font-size: 13px;
+#contactForm input,
+#contactForm textarea {
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 4px;
-  outline: none;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-.contact-wrapper input:focus,
-.contact-wrapper textarea:focus {
+#contactForm input:focus,
+#contactForm textarea:focus {
+  outline: none;
   border-color: var(--yellow);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.07);
 }
 
-.contact-wrapper button {
+#contactForm button {
   border: 0;
   border-radius: 4px;
   background: var(--yellow);
   color: var(--black);
-  padding: 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
+  padding: 13px 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
   letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-weight: 700;
+  margin-top: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact-wrapper button:hover {
-  background: #ffffff;
+#contactForm button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(255, 201, 40, 0.2);
+  box-shadow: 0 8px 24px rgba(255, 201, 40, 0.28);
 }
 
 .form-note {
-  font-size: 10px;
-  color: #71717a;
   font-family: 'DM Mono', monospace;
-  margin: 4px 0 0;
+  font-size: 10.5px;
+  color: #71717a;
+  margin: 6px 0 0;
+  letter-spacing: 0.04em;
 }
 
 /* ==========================================================================
-   Inline Section Next Trigger Button
+   Section Next Trigger Button (.section-next-wrap)
    ========================================================================== */
 .section-next-wrap {
-  margin: 50px 0 40px;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: flex-end;
+  margin: 28px 0 16px;
+  width: 100%;
 }
 
 .section-next-btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: var(--black);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  padding: 14px 24px;
-  border-radius: 4px;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--black);
+  border: 1px solid rgba(23, 23, 23, 0.15);
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s, box-shadow 0.25s, color 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .section-next-btn span {
-  color: var(--yellow);
-  font-size: 17px;
+  font-size: 13px;
   line-height: 1;
-  transition: transform 0.25s;
+  transition: transform 0.2s ease;
 }
 
 .section-next-btn:hover {
-  background: var(--yellow);
-  color: var(--black);
-  border-color: var(--yellow);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(255, 201, 40, 0.3);
+  transform: translateY(-2px);
 }
 
 .section-next-btn:hover span {
-  color: var(--black);
   transform: translate(2px, 2px);
 }
 
-/* Contrast styling for light sections */
-.panel.about .section-next-btn,
-.panel.work .section-next-btn,
-.panel.aboutus .section-next-btn {
-  background: var(--black);
-  color: #ffffff;
-  border: 1px solid var(--black);
+/* Button contrast in yellow block */
+.panel-bottom-block.block-yellow .section-next-btn {
+  background: #ffffff;
+  color: #171717;
+  border-color: rgba(23, 23, 23, 0.15);
 }
 
-.panel.about .section-next-btn:hover,
-.panel.work .section-next-btn:hover,
-.panel.aboutus .section-next-btn:hover {
+.panel-bottom-block.block-yellow .section-next-btn:hover {
+  background: #171717;
+  color: #ffffff;
+  border-color: #171717;
+}
+
+/* Button contrast in white block */
+.panel-bottom-block.block-white .section-next-btn {
+  background: #171717;
+  color: #ffffff;
+  border-color: #171717;
+}
+
+.panel-bottom-block.block-white .section-next-btn:hover {
   background: var(--yellow);
   color: var(--black);
+  border-color: var(--yellow);
+}
+
+/* Button contrast in black block */
+.panel-bottom-block.block-black .section-next-btn {
+  background: #ffffff;
+  color: #171717;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.panel-bottom-block.block-black .section-next-btn:hover {
+  background: var(--yellow);
+  color: var(--black);
+  border-color: var(--yellow);
 }
 
 /* ==========================================================================
-   Full-Width Minimal Studio Footer (3-Column Layout & 100% Flush Floor)
+   Full-Width Minimal Studio Footer (100% Flush Floor)
    ========================================================================== */
 .section-footer {
   margin-top: auto;
-  margin-left: calc(-1 * clamp(20px, 5vw, 60px));
-  margin-right: calc(-1 * clamp(20px, 5vw, 60px));
+  width: 100%;
   margin-bottom: 0;
   border-radius: 0;
-  background: #0f0f10;
-  color: #fff;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 56px clamp(20px, 5vw, 60px) 28px;
+  background: #09090b;
+  color: #ffffff;
+  padding: clamp(36px, 5vw, 56px) clamp(24px, 6vw, 80px) 24px;
   box-sizing: border-box;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-main-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1.1fr 1.4fr;
-  gap: clamp(32px, 5vw, 64px);
-  padding-bottom: 44px;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: clamp(24px, 4vw, 48px);
+  padding-bottom: clamp(28px, 4vw, 40px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Column 1: Brand */
+/* Brand Column */
 .footer-brand-col {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .footer-brand {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 10px;
-  color: #ffffff;
-  text-decoration: none;
 }
 
 .footer-brand-mark {
+  font-family: 'DM Sans', sans-serif;
   font-size: 26px;
   font-weight: 800;
-  letter-spacing: -0.08em;
-  line-height: 1;
+  letter-spacing: -0.06em;
+  color: #ffffff;
 }
 
 .footer-brand-mark span {
   color: var(--yellow);
-  font-size: 15px;
 }
 
 .footer-brand-text {
-  font-size: 8.5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
   line-height: 0.95;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #ffffff;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
 }
 
 .footer-tagline {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   color: var(--yellow);
   margin: 0;
 }
 
 .footer-mission {
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 12.5px;
+  line-height: 1.55;
   color: #a1a1aa;
   max-width: 320px;
   margin: 0;
 }
 
-/* Column 2: Navigation */
+/* Navigation Column */
 .footer-nav-col {
   display: flex;
   flex-direction: column;
@@ -715,8 +663,7 @@ button {
 
 .footer-col-label {
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 9px;
   letter-spacing: 0.12em;
   color: #71717a;
   text-transform: uppercase;
@@ -726,71 +673,63 @@ button {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-items: flex-start;
 }
 
 .footer-nav-btn {
-  background: transparent;
+  background: none;
   border: 0;
-  padding: 4px 0;
-  color: #d4d4d8;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
+  padding: 0;
   text-align: left;
+  font-size: 13px;
+  color: #d4d4d8;
+  cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
+  width: max-content;
 }
 
 .footer-nav-btn:hover {
   color: var(--yellow);
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
-/* Column 3: Social & Contact */
+/* Connect Column */
 .footer-contact-col {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .footer-social-row {
   display: flex;
-  align-items: center;
   gap: 10px;
 }
 
 .social-icon-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  color: #d4d4d8;
-  background: rgba(255, 255, 255, 0.05);
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s, border-color 0.2s, background 0.2s;
+  color: #ffffff;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   text-decoration: none;
 }
 
-.social-icon-btn svg {
-  width: 18px;
-  height: 18px;
-}
-
 .social-icon-btn:hover {
-  transform: translateY(-3px);
-  color: var(--yellow);
-  border-color: rgba(255, 201, 40, 0.5);
-  background: rgba(255, 201, 40, 0.12);
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--black);
+  transform: translateY(-2px);
 }
 
 .footer-direct-contact {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .footer-contact-prompt {
@@ -962,8 +901,8 @@ body.start-here-visible .about-nav-item::before {
     padding: 9px 10px;
   }
 
-  .panel-inner {
-    padding: 28px 18px 0;
+  .panel-top-canvas {
+    padding: 28px 18px 16px;
   }
 
   .section-main h1,
@@ -975,16 +914,26 @@ body.start-here-visible .about-nav-item::before {
     font-size: 13.5px;
   }
 
+  .wave-divider-wrap svg {
+    height: 42px;
+  }
+
+  .panel-bottom-block {
+    padding: 28px 18px 40px;
+  }
+
+  .team-workspace {
+    min-height: 180px;
+    padding: 20px;
+  }
+
   .contact-wrapper {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 
   .section-footer {
-    margin-left: -18px;
-    margin-right: -18px;
-    padding: 40px 18px 24px;
-    margin-top: 40px;
+    padding: 36px 18px 24px;
   }
 
   .footer-main-grid {
