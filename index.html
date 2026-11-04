@@ -1,701 +1,1178 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code Sketchers · Independent Creative Technology Studio</title>
-  <meta name="description" content="Independent creative technology studio combining strategy, design, and thoughtful engineering.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Code Sketchers · Independent Creative Technology Studio</title>
+
+    <meta name="description"
+        content="Independent creative technology studio combining strategy, design, and thoughtful engineering.">
+
+    <meta name="theme-color" content="#171717">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <!-- Fixed Damini Header Navigation (Untouched) -->
-  <header class="site-header">
-    <a class="brand" href="#hero">
-      <div class="brand-mark">C<span>•</span>S</div>
-      <div class="brand-text">CODE<br>SKETCHERS</div>
-    </a>
-    <nav class="header-nav" aria-label="Primary sections">
-      <button class="nav-item about-nav-item" data-section="about">ABOUT PAGE</button>
-      <button class="nav-item" data-section="services">SERVICES</button>
-      <button class="nav-item" data-section="work">OUR WORK</button>
-      <button class="nav-item" data-section="testimonial">TESTIMONIAL</button>
-      <button class="nav-item" data-section="aboutus">ABOUT US</button>
-      <button class="nav-item" data-section="contact">CONTACT</button>
-    </nav>
-    <button class="work-cta" data-section="contact">LET'S WORK <span>↗</span></button>
-  </header>
 
-  <main class="deck" id="deck">
-    <!-- 00 / HERO (Studio Black Top with Yellow Wave & Yellow Bottom Block) -->
-    <section class="panel section-panel hero active" id="hero" aria-label="Hero section">
-      <div class="panel-inner">
-        <div class="panel-top-canvas bg-black">
-          <div class="section-top">
-            <span>00 / STUDIO</span>
-            <span>INDEPENDENT CREATIVE TECHNOLOGY · EST. 2026</span>
-          </div>
-          <div class="section-main">
-            <p class="eyebrow">MAKE IT MEAN SOMETHING.</p>
-            <h1>We make<br><span class="highlight">good ideas</span><br>work harder<span class="period">.</span></h1>
-            <p class="section-desc">Strategy, design, and digital experiences for people and brands ready to make a difference.</p>
-          </div>
-        </div>
+    <!-- =====================================
+         HEADER NAVIGATION
+    ====================================== -->
 
-        <!-- Seamless Wave Divider -->
-        <div class="wave-divider-wrap">
-          <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#ffc928"/>
-          </svg>
-        </div>
+    <header class="site-header">
 
-        <!-- Solid Yellow Bottom Block -->
-        <div class="panel-bottom-block block-yellow">
-          <div class="team-workspace" data-slot="hero">
-            TEAM WORKSPACE SLOT - HERO
-          </div>
-          <div class="section-next-wrap">
-            <button class="section-next-btn" data-next-target="about">NEXT SECTION <span>↘</span></button>
-          </div>
-        </div>
+        <a class="brand" href="#hero">
+            <div class="brand-mark">C<span>•</span>S</div>
+            <div class="brand-text">CODE<br>SKETCHERS</div>
+        </a>
 
-        <footer class="section-footer">
-          <div class="footer-main-grid">
-            <div class="footer-brand-col">
-              <div class="footer-brand">
-                <span class="footer-brand-mark">C<span>•</span>S</span>
-                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-              </div>
-              <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
-              <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+        <nav class="header-nav" aria-label="Primary sections">
+
+            <button class="nav-item about-nav-item" data-section="about">ABOUT PAGE</button>
+            <button class="nav-item" data-section="services">SERVICES</button>
+            <button class="nav-item" data-section="work">OUR WORK</button>
+            <button class="nav-item" data-section="testimonial">TESTIMONIAL</button>
+            <button class="nav-item" data-section="aboutus">ABOUT US</button>
+            <button class="nav-item" data-section="contact">CONTACT</button>
+
+        </nav>
+
+        <button class="work-cta" data-section="contact">
+            LET'S WORK <span>↗</span>
+        </button>
+
+    </header>
+
+
+    <main class="deck" id="deck">
+
+        <!-- =====================================
+             COMMON FOOTER DESIGN
+             Footer is included in each section.
+        ====================================== -->
+
+
+        <!-- =====================================
+             00 / HERO SECTION
+        ====================================== -->
+
+        <section class="panel section-panel hero active"
+            id="hero" aria-label="Hero section">
+
+            <div class="panel-inner">
+
+                <div class="panel-top-canvas bg-black">
+
+                    <div class="section-top">
+                        <span>00 / STUDIO</span>
+                        <span>INDEPENDENT CREATIVE TECHNOLOGY · EST. 2026</span>
+                    </div>
+
+                    <div class="section-main">
+
+                        <p class="eyebrow">MAKE IT MEAN SOMETHING.</p>
+
+                        <h1>
+                            We make<br>
+                            <span class="highlight">good ideas</span><br>
+                            work harder<span class="period">.</span>
+                        </h1>
+
+                        <p class="section-desc">
+                            Strategy, design, and digital experiences
+                            for people and brands ready to make a difference.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="wave-divider-wrap">
+                    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"
+                            fill="#ffc928"/>
+                    </svg>
+                </div>
+
+                <div class="panel-bottom-block block-yellow">
+
+                    <div class="team-workspace" data-slot="hero">
+                        TEAM WORKSPACE SLOT - HERO
+                    </div>
+
+                    <div class="section-next-wrap">
+                        <button class="section-next-btn"
+                            data-next-target="about">
+                            NEXT SECTION <span>↘</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <footer class="section-footer">
+
+                    <div class="footer-main-grid">
+
+                        <div class="footer-brand-col">
+                            <div class="footer-brand">
+                                <span class="footer-brand-mark">C<span>•</span>S</span>
+                                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
+                            </div>
+
+                            <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
+
+                            <p class="footer-mission">
+                                Independent creative technology studio combining
+                                strategy, design, and thoughtful engineering.
+                            </p>
+                        </div>
+
+                        <div class="footer-nav-col">
+                            <span class="footer-col-label">NAVIGATION</span>
+
+                            <nav class="footer-nav">
+                                <button class="footer-nav-btn" data-section="about">About Page</button>
+                                <button class="footer-nav-btn" data-section="services">Services</button>
+                                <button class="footer-nav-btn" data-section="work">Our Work</button>
+                                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
+                                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
+                                <button class="footer-nav-btn" data-section="contact">Contact</button>
+                            </nav>
+                        </div>
+
+                        <div class="footer-contact-col">
+                            <span class="footer-col-label">CONNECT</span>
+
+                            <div class="footer-social-row">
+                                <a href="https://instagram.com/_code_sketchers_"
+                                    target="_blank" rel="noopener"
+                                    aria-label="Instagram" class="social-icon-btn">◎</a>
+
+                                <a href="https://youtube.com/@codesketchers"
+                                    target="_blank" rel="noopener"
+                                    aria-label="YouTube" class="social-icon-btn">▶</a>
+
+                                <a href="https://wa.me/919999999999"
+                                    target="_blank" rel="noopener"
+                                    aria-label="WhatsApp" class="social-icon-btn">◉</a>
+                            </div>
+
+                            <div class="footer-direct-contact">
+                                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
+                                <a class="footer-email-link"
+                                    href="mailto:hello@codesketchers.studio">
+                                    hello@codesketchers.studio ↗
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-bottom-bar">
+                        <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
+                        <span>CHENNAI · EVERYWHERE</span>
+                    </div>
+
+                </footer>
+
             </div>
+        </section>
 
-            <div class="footer-nav-col">
-              <span class="footer-col-label">NAVIGATION</span>
-              <nav class="footer-nav">
-                <button class="footer-nav-btn" data-section="about">About Page</button>
-                <button class="footer-nav-btn" data-section="services">Services</button>
-                <button class="footer-nav-btn" data-section="work">Our Work</button>
-                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
-                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
-                <button class="footer-nav-btn" data-section="contact">Contact</button>
-              </nav>
+
+        <!-- =====================================
+             01 / ABOUT PAGE
+        ====================================== -->
+
+        <section class="panel section-panel about"
+            id="about" aria-label="About">
+
+            <div class="panel-inner">
+
+                <div class="panel-top-canvas bg-white">
+
+                    <div class="section-top">
+                        <span>01 / ABOUT PAGE</span>
+                        <span>STUDIO PROFILE &amp; VISION</span>
+                    </div>
+
+                    <div class="section-main">
+
+                        <p class="eyebrow">ABOUT PAGE</p>
+
+                        <h2>
+                            Small studio.<br>
+                            <span class="highlight">Big picture.</span>
+                        </h2>
+
+                        <p class="section-desc">
+                            We're an independent creative technology studio
+                            combining strategy, design, and thoughtful engineering
+                            to create digital products with lasting momentum.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="wave-divider-wrap">
+                    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"
+                            fill="#ffc928"/>
+                    </svg>
+                </div>
+
+                <div class="panel-bottom-block block-yellow">
+
+                    <div class="team-workspace" data-slot="about">
+                        TEAM WORKSPACE SLOT - ABOUT
+                    </div>
+
+                    <div class="section-next-wrap">
+                        <button class="section-next-btn"
+                            data-next-target="services">
+                            NEXT SECTION <span>↘</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <footer class="section-footer">
+                    <div class="footer-main-grid">
+
+                        <div class="footer-brand-col">
+                            <div class="footer-brand">
+                                <span class="footer-brand-mark">C<span>•</span>S</span>
+                                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
+                            </div>
+                            <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
+                            <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+                        </div>
+
+                        <div class="footer-nav-col">
+                            <span class="footer-col-label">NAVIGATION</span>
+                            <nav class="footer-nav">
+                                <button class="footer-nav-btn" data-section="about">About Page</button>
+                                <button class="footer-nav-btn" data-section="services">Services</button>
+                                <button class="footer-nav-btn" data-section="work">Our Work</button>
+                                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
+                                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
+                                <button class="footer-nav-btn" data-section="contact">Contact</button>
+                            </nav>
+                        </div>
+
+                        <div class="footer-contact-col">
+                            <span class="footer-col-label">CONNECT</span>
+                            <div class="footer-social-row">
+                                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" class="social-icon-btn">◎</a>
+                                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" class="social-icon-btn">▶</a>
+                                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="social-icon-btn">◉</a>
+                            </div>
+                            <div class="footer-direct-contact">
+                                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
+                                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-bottom-bar">
+                        <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
+                        <span>CHENNAI · EVERYWHERE</span>
+                    </div>
+                </footer>
+
             </div>
+        </section>
 
-            <div class="footer-contact-col">
-              <span class="footer-col-label">CONNECT</span>
-              <div class="footer-social-row">
-                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </a>
-                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                  </svg>
-                </a>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="footer-direct-contact">
-                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
-                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
-              </div>
+
+        <!-- =====================================
+             02 / SERVICES
+        ====================================== -->
+
+        <section class="panel section-panel services"
+            id="services" aria-label="Services">
+
+            <div class="panel-inner">
+
+                <div class="panel-top-canvas bg-black">
+
+                    <div class="section-top">
+                        <span>02 / SERVICES</span>
+                        <span>CAPABILITIES &amp; DISCIPLINES</span>
+                    </div>
+
+                    <div class="section-main">
+                        <p class="eyebrow">WHAT WE CREATE</p>
+
+                        <h2>
+                            Ideas into<br>
+                            <span class="highlight">impact.</span>
+                        </h2>
+
+                        <p class="section-desc">
+                            We bring creativity, technology and strategy
+                            together to create digital experiences that
+                            help businesses move forward.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="wave-divider-wrap">
+                    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,0 L1200,0 L1200,30 C1000,0 800,60 600,30 C400,0 200,60 0,30 Z"
+                            fill="#171717"/>
+                    </svg>
+                </div>
+
+                <div class="panel-bottom-block block-white">
+
+                    <!-- NEW SERVICES DESIGN -->
+
+                    <div class="team-workspace services-workspace"
+                        data-slot="services">
+
+                        <div class="services-content">
+
+                            <div class="services-intro">
+                                <div>
+                                    <span class="services-label">OUR EXPERTISE</span>
+                                    <h3>What we bring<br>to the <span>table.</span></h3>
+                                </div>
+
+                                <p>
+                                    From the first idea to the final product,
+                                    we create meaningful digital solutions
+                                    through thoughtful design, modern technology
+                                    and creative thinking.
+                                </p>
+                            </div>
+
+                            <div class="services-grid">
+
+                                <article class="service-card service-yellow">
+                                    <div class="service-card-top">
+                                        <span class="service-number">01 / DEVELOPMENT</span>
+                                        <span class="service-icon">✳</span>
+                                    </div>
+
+                                    <h3>Web Development</h3>
+
+                                    <p>
+                                        We build responsive, fast and modern
+                                        websites that communicate your brand
+                                        and create a great experience on every device.
+                                    </p>
+
+                                    <div class="service-tags">
+                                        <span>HTML</span>
+                                        <span>CSS</span>
+                                        <span>JavaScript</span>
+                                    </div>
+
+                                    <span class="service-arrow">↗</span>
+                                </article>
+
+
+                                <article class="service-card service-dark">
+                                    <div class="service-card-top">
+                                        <span class="service-number">02 / EXPERIENCE</span>
+                                        <span class="service-icon">◈</span>
+                                    </div>
+
+                                    <h3>UI / UX Design</h3>
+
+                                    <p>
+                                        We design simple, intuitive and
+                                        attractive interfaces that make
+                                        digital products easier to use.
+                                    </p>
+
+                                    <div class="service-tags">
+                                        <span>Wireframes</span>
+                                        <span>Prototypes</span>
+                                        <span>UI Design</span>
+                                    </div>
+
+                                    <span class="service-arrow">↗</span>
+                                </article>
+
+
+                                <article class="service-card service-light">
+                                    <div class="service-card-top">
+                                        <span class="service-number">03 / TECHNOLOGY</span>
+                                        <span class="service-icon">⌘</span>
+                                    </div>
+
+                                    <h3>Software Solutions</h3>
+
+                                    <p>
+                                        Custom digital tools and software
+                                        solutions designed to simplify
+                                        workflows and solve real business problems.
+                                    </p>
+
+                                    <div class="service-tags">
+                                        <span>Python</span>
+                                        <span>Automation</span>
+                                        <span>Software</span>
+                                    </div>
+
+                                    <span class="service-arrow">↗</span>
+                                </article>
+
+
+                                <article class="service-card service-dark">
+                                    <div class="service-card-top">
+                                        <span class="service-number">04 / IDENTITY</span>
+                                        <span class="service-icon">◎</span>
+                                    </div>
+
+                                    <h3>Brand Identity</h3>
+
+                                    <p>
+                                        We create memorable visual identities
+                                        that express your brand personality
+                                        and help you stand out.
+                                    </p>
+
+                                    <div class="service-tags">
+                                        <span>Logo Design</span>
+                                        <span>Branding</span>
+                                        <span>Graphics</span>
+                                    </div>
+
+                                    <span class="service-arrow">↗</span>
+                                </article>
+
+
+                                <article class="service-card service-light">
+                                    <div class="service-card-top">
+                                        <span class="service-number">05 / GROWTH</span>
+                                        <span class="service-icon">⌁</span>
+                                    </div>
+
+                                    <h3>Digital Marketing</h3>
+
+                                    <p>
+                                        We help brands build an online presence
+                                        through creative content, digital
+                                        campaigns and social media strategy.
+                                    </p>
+
+                                    <div class="service-tags">
+                                        <span>Social Media</span>
+                                        <span>SEO</span>
+                                        <span>Content</span>
+                                    </div>
+
+                                    <span class="service-arrow">↗</span>
+                                </article>
+
+
+                                <article class="service-card service-yellow">
+                                    <div class="service-card-top">
+                                        <span class="service-number">06 / INNOVATION</span>
+                                        <span class="service-icon">✧</span>
+                                    </div>
+
+                                    <h3>Creative Consulting</h3>
+
+                                    <p>
+                                        We turn early ideas into clear
+                                        strategies, helping businesses
+                                        discover new digital opportunities.
+                                    </p>
+
+                                    <div class="service-tags">
+                                        <span>Planning</span>
+                                        <span>Strategy</span>
+                                        <span>Innovation</span>
+                                    </div>
+
+                                    <span class="service-arrow">↗</span>
+                                </article>
+
+                            </div>
+
+                            <div class="services-bottom">
+
+                                <div>
+                                    <span class="services-label">HAVE A PROJECT IN MIND?</span>
+                                    <h3>Let's make something <span>meaningful.</span></h3>
+                                </div>
+
+                                <button class="services-contact-btn"
+                                    data-section="contact">
+                                    START A PROJECT ↗
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="section-next-wrap">
+                        <button class="section-next-btn"
+                            data-next-target="work">
+                            NEXT SECTION <span>↘</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <footer class="section-footer">
+                    <div class="footer-main-grid">
+
+                        <div class="footer-brand-col">
+                            <div class="footer-brand">
+                                <span class="footer-brand-mark">C<span>•</span>S</span>
+                                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
+                            </div>
+                            <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
+                            <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+                        </div>
+
+                        <div class="footer-nav-col">
+                            <span class="footer-col-label">NAVIGATION</span>
+                            <nav class="footer-nav">
+                                <button class="footer-nav-btn" data-section="about">About Page</button>
+                                <button class="footer-nav-btn" data-section="services">Services</button>
+                                <button class="footer-nav-btn" data-section="work">Our Work</button>
+                                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
+                                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
+                                <button class="footer-nav-btn" data-section="contact">Contact</button>
+                            </nav>
+                        </div>
+
+                        <div class="footer-contact-col">
+                            <span class="footer-col-label">CONNECT</span>
+                            <div class="footer-social-row">
+                                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" class="social-icon-btn">◎</a>
+                                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" class="social-icon-btn">▶</a>
+                                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="social-icon-btn">◉</a>
+                            </div>
+                            <div class="footer-direct-contact">
+                                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
+                                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-bottom-bar">
+                        <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
+                        <span>CHENNAI · EVERYWHERE</span>
+                    </div>
+                </footer>
+
             </div>
-          </div>
+        </section>
 
-          <div class="footer-bottom-bar">
-            <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
-            <span>CHENNAI · EVERYWHERE</span>
-          </div>
-        </footer>
-      </div>
-    </section>
 
-    <!-- 01 / ABOUT (Section 01: White Top, Yellow Wave & Solid Yellow Bottom Block) -->
-    <section class="panel section-panel about" id="about" aria-label="About">
-      <div class="panel-inner">
-        <div class="panel-top-canvas bg-white">
-          <div class="section-top">
-            <span>01 / ABOUT PAGE</span>
-            <span>STUDIO PROFILE &amp; VISION</span>
-          </div>
-          <div class="section-main">
-            <p class="eyebrow">ABOUT PAGE</p>
-            <h2>Small studio.<br><span class="highlight">Big picture.</span></h2>
-            <p class="section-desc">We're an independent creative technology studio combining strategy, design, and thoughtful engineering to create digital products with lasting momentum.</p>
-          </div>
-        </div>
+        <!-- =====================================
+             03 / OUR WORK
+        ====================================== -->
 
-        <!-- Seamless Wave Divider (Filled with Yellow #ffc928) -->
-        <div class="wave-divider-wrap">
-          <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#ffc928"/>
-          </svg>
-        </div>
+        <section class="panel section-panel work"
+            id="work" aria-label="Our work">
 
-        <!-- Solid Yellow Bottom Block -->
-        <div class="panel-bottom-block block-yellow">
-          <div class="team-workspace" data-slot="about">
-            TEAM WORKSPACE SLOT - ABOUT
-          </div>
-          <div class="section-next-wrap">
-            <button class="section-next-btn" data-next-target="services">NEXT SECTION <span>↘</span></button>
-          </div>
-        </div>
+            <div class="panel-inner">
 
-        <footer class="section-footer">
-          <div class="footer-main-grid">
-            <div class="footer-brand-col">
-              <div class="footer-brand">
-                <span class="footer-brand-mark">C<span>•</span>S</span>
-                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-              </div>
-              <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
-              <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+                <div class="panel-top-canvas bg-white">
+
+                    <div class="section-top">
+                        <span>03 / OUR WORK</span>
+                        <span>SELECTED ARCHIVE</span>
+                    </div>
+
+                    <div class="section-main">
+                        <p class="eyebrow">OUR WORK</p>
+
+                        <h2>
+                            Made with curiosity.<br>
+                            <span class="highlight">Portfolio showcases.</span>
+                        </h2>
+
+                        <p class="section-desc">
+                            A curation of recent collaborations across
+                            digital platforms, design systems and web architectures.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="wave-divider-wrap">
+                    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"
+                            fill="#ffc928"/>
+                    </svg>
+                </div>
+
+                <div class="panel-bottom-block block-yellow">
+
+                    <div class="team-workspace" data-slot="work">
+                        TEAM WORKSPACE SLOT - WORK
+                    </div>
+
+                    <div class="section-next-wrap">
+                        <button class="section-next-btn"
+                            data-next-target="testimonial">
+                            NEXT SECTION <span>↘</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <footer class="section-footer">
+                    <div class="footer-main-grid">
+
+                        <div class="footer-brand-col">
+                            <div class="footer-brand">
+                                <span class="footer-brand-mark">C<span>•</span>S</span>
+                                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
+                            </div>
+                            <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
+                            <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+                        </div>
+
+                        <div class="footer-nav-col">
+                            <span class="footer-col-label">NAVIGATION</span>
+                            <nav class="footer-nav">
+                                <button class="footer-nav-btn" data-section="about">About Page</button>
+                                <button class="footer-nav-btn" data-section="services">Services</button>
+                                <button class="footer-nav-btn" data-section="work">Our Work</button>
+                                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
+                                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
+                                <button class="footer-nav-btn" data-section="contact">Contact</button>
+                            </nav>
+                        </div>
+
+                        <div class="footer-contact-col">
+                            <span class="footer-col-label">CONNECT</span>
+                            <div class="footer-social-row">
+                                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" class="social-icon-btn">◎</a>
+                                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" class="social-icon-btn">▶</a>
+                                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="social-icon-btn">◉</a>
+                            </div>
+                            <div class="footer-direct-contact">
+                                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
+                                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-bottom-bar">
+                        <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
+                        <span>CHENNAI · EVERYWHERE</span>
+                    </div>
+                </footer>
+
             </div>
+        </section>
 
-            <div class="footer-nav-col">
-              <span class="footer-col-label">NAVIGATION</span>
-              <nav class="footer-nav">
-                <button class="footer-nav-btn" data-section="about">About Page</button>
-                <button class="footer-nav-btn" data-section="services">Services</button>
-                <button class="footer-nav-btn" data-section="work">Our Work</button>
-                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
-                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
-                <button class="footer-nav-btn" data-section="contact">Contact</button>
-              </nav>
+
+        <!-- =====================================
+             04 / TESTIMONIAL
+        ====================================== -->
+
+        <section class="panel section-panel testimonial"
+            id="testimonial" aria-label="Testimonials">
+
+            <div class="panel-inner">
+
+                <div class="panel-top-canvas bg-white">
+
+                    <div class="section-top">
+                        <span>04 / TESTIMONIAL</span>
+                        <span>CLIENT VOICES</span>
+                    </div>
+
+                    <div class="section-main">
+                        <p class="eyebrow">TESTIMONIAL</p>
+
+                        <h2>
+                            Don't just take<br>
+                            <span class="highlight">our word.</span>
+                        </h2>
+
+                        <p class="section-desc">
+                            Real relationships built on trust, craft,
+                            and measurable outcomes.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="wave-divider-wrap">
+                    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"
+                            fill="#ffc928"/>
+                    </svg>
+                </div>
+
+                <div class="panel-bottom-block block-yellow">
+
+                    <div class="testimonial-rich-card">
+
+                        <h3>Don't just take our word.</h3>
+
+                        <p>
+                            Great digital experiences begin with
+                            understanding, collaboration and creative thinking.
+                        </p>
+
+                        <span class="testimonial-quote-icon">“</span>
+
+                        <div class="team-workspace" data-slot="testimonial">
+                            TEAM WORKSPACE SLOT - TESTIMONIAL
+                        </div>
+
+                    </div>
+
+                    <div class="section-next-wrap">
+                        <button class="section-next-btn"
+                            data-next-target="aboutus">
+                            NEXT SECTION <span>↘</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <footer class="section-footer">
+                    <div class="footer-main-grid">
+
+                        <div class="footer-brand-col">
+                            <div class="footer-brand">
+                                <span class="footer-brand-mark">C<span>•</span>S</span>
+                                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
+                            </div>
+                            <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
+                            <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+                        </div>
+
+                        <div class="footer-nav-col">
+                            <span class="footer-col-label">NAVIGATION</span>
+                            <nav class="footer-nav">
+                                <button class="footer-nav-btn" data-section="about">About Page</button>
+                                <button class="footer-nav-btn" data-section="services">Services</button>
+                                <button class="footer-nav-btn" data-section="work">Our Work</button>
+                                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
+                                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
+                                <button class="footer-nav-btn" data-section="contact">Contact</button>
+                            </nav>
+                        </div>
+
+                        <div class="footer-contact-col">
+                            <span class="footer-col-label">CONNECT</span>
+                            <div class="footer-social-row">
+                                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" class="social-icon-btn">◎</a>
+                                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" class="social-icon-btn">▶</a>
+                                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="social-icon-btn">◉</a>
+                            </div>
+                            <div class="footer-direct-contact">
+                                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
+                                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-bottom-bar">
+                        <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
+                        <span>CHENNAI · EVERYWHERE</span>
+                    </div>
+                </footer>
+
             </div>
+        </section>
 
-            <div class="footer-contact-col">
-              <span class="footer-col-label">CONNECT</span>
-              <div class="footer-social-row">
-                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </a>
-                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                  </svg>
-                </a>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="footer-direct-contact">
-                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
-                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
-              </div>
+
+        <!-- =====================================
+             05 / ABOUT US
+        ====================================== -->
+
+        <section class="panel section-panel aboutus"
+            id="aboutus" aria-label="About us">
+
+            <div class="panel-inner">
+
+                <div class="panel-top-canvas bg-black">
+
+                    <div class="section-top">
+                        <span>05 / ABOUT US</span>
+                        <span>THE SQUAD</span>
+                    </div>
+
+                    <div class="section-main">
+                        <p class="eyebrow">ABOUT US</p>
+
+                        <h2>
+                            Meet the<br>
+                            <span class="highlight">squad.</span>
+                        </h2>
+
+                        <p class="section-desc">
+                            A creative team driven by curiosity,
+                            collaboration and a shared passion for
+                            building meaningful digital experiences.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="wave-divider-wrap">
+                    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"
+                            fill="#ffc928"/>
+                    </svg>
+                </div>
+
+                <div class="panel-bottom-block block-yellow">
+
+                    <div class="team-workspace" data-slot="aboutus">
+                        TEAM WORKSPACE SLOT - ABOUT US
+                    </div>
+
+                    <div class="section-next-wrap">
+                        <button class="section-next-btn"
+                            data-next-target="contact">
+                            NEXT SECTION <span>↘</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <footer class="section-footer">
+                    <div class="footer-main-grid">
+
+                        <div class="footer-brand-col">
+                            <div class="footer-brand">
+                                <span class="footer-brand-mark">C<span>•</span>S</span>
+                                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
+                            </div>
+                            <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
+                            <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+                        </div>
+
+                        <div class="footer-nav-col">
+                            <span class="footer-col-label">NAVIGATION</span>
+                            <nav class="footer-nav">
+                                <button class="footer-nav-btn" data-section="about">About Page</button>
+                                <button class="footer-nav-btn" data-section="services">Services</button>
+                                <button class="footer-nav-btn" data-section="work">Our Work</button>
+                                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
+                                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
+                                <button class="footer-nav-btn" data-section="contact">Contact</button>
+                            </nav>
+                        </div>
+
+                        <div class="footer-contact-col">
+                            <span class="footer-col-label">CONNECT</span>
+                            <div class="footer-social-row">
+                                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" class="social-icon-btn">◎</a>
+                                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" class="social-icon-btn">▶</a>
+                                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="social-icon-btn">◉</a>
+                            </div>
+                            <div class="footer-direct-contact">
+                                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
+                                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-bottom-bar">
+                        <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
+                        <span>CHENNAI · EVERYWHERE</span>
+                    </div>
+                </footer>
+
             </div>
-          </div>
+        </section>
 
-          <div class="footer-bottom-bar">
-            <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
-            <span>CHENNAI · EVERYWHERE</span>
-          </div>
-        </footer>
-      </div>
-    </section>
 
-    <!-- 02 / SERVICES (Section 02: Black Top, Black-to-White Wave & Solid White Bottom Block) -->
-    <section class="panel section-panel services" id="services" aria-label="Services">
-      <div class="panel-inner">
-        <div class="panel-top-canvas bg-black">
-          <div class="section-top">
-            <span>02 / SERVICES</span>
-            <span>CAPABILITIES &amp; DISCIPLINES</span>
-          </div>
-          <div class="section-main">
-            <p class="eyebrow">SERVICES</p>
-            <h2>What we do<span class="period">.</span></h2>
-            <p class="section-desc">Our main focus: providing custom engineering and consulting and business services.</p>
-          </div>
-        </div>
+        <!-- =====================================
+             06 / CONTACT
+        ====================================== -->
 
-        <!-- Seamless Wave Divider (Facing down, Black to Paper-White) -->
-        <div class="wave-divider-wrap">
-          <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,0 L1200,0 L1200,30 C1000,0 800,60 600,30 C400,0 200,60 0,30 Z" fill="#171717"/>
-          </svg>
-        </div>
+        <section class="panel section-panel contact"
+            id="contact" aria-label="Contact">
 
-        <!-- Solid White Bottom Block -->
-        <div class="panel-bottom-block block-white">
-          <div class="team-workspace" data-slot="services">
-            TEAM WORKSPACE SLOT - SERVICES
-          </div>
-          <div class="section-next-wrap">
-            <button class="section-next-btn" data-next-target="work">NEXT SECTION <span>↘</span></button>
-          </div>
-        </div>
+            <div class="panel-inner">
 
-        <footer class="section-footer">
-          <div class="footer-main-grid">
-            <div class="footer-brand-col">
-              <div class="footer-brand">
-                <span class="footer-brand-mark">C<span>•</span>S</span>
-                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-              </div>
-              <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
-              <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
+                <div class="panel-top-canvas bg-black">
+
+                    <div class="section-top">
+                        <span>06 / CONTACT FORM</span>
+                        <span>HAVE A GOOD ONE IN MIND?</span>
+                    </div>
+
+                    <div class="section-main">
+                        <p class="eyebrow">THE NEXT GOOD THING STARTS HERE.</p>
+
+                        <h2>
+                            Let's make<br>
+                            <span class="highlight">something</span><br>
+                            matter<span class="period">.</span>
+                        </h2>
+
+                        <p class="section-desc">
+                            Have a project, collaboration, or idea in mind?
+                            Reach out and let's explore what we can build together.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="wave-divider-wrap">
+                    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"
+                            fill="#ffc928"/>
+                    </svg>
+                </div>
+
+                <div class="panel-bottom-block block-yellow">
+
+                    <!-- NEW CONTACT DESIGN -->
+
+                    <div class="contact-wrapper new-contact-wrapper">
+
+                        <!-- LEFT CONTACT INFORMATION -->
+
+                        <div class="contact-info-card">
+
+                            <span class="contact-small-label">
+                                <span class="contact-live-dot"></span>
+                                AVAILABLE FOR NEW PROJECTS
+                            </span>
+
+                            <h3>
+                                Let's create<br>
+                                something<br>
+                                <span>amazing.</span>
+                            </h3>
+
+                            <p class="contact-description">
+                                Every great project starts with a conversation.
+                                Tell us your ideas, your goals and what you want
+                                to achieve. Let's take the next step together.
+                            </p>
+
+                            <div class="contact-detail">
+                                <span class="contact-detail-icon">✉</span>
+                                <div>
+                                    <small>EMAIL US</small>
+                                    <a href="mailto:hello@codesketchers.studio">
+                                        hello@codesketchers.studio
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-detail">
+                                <span class="contact-detail-icon">◎</span>
+                                <div>
+                                    <small>FOLLOW OUR JOURNEY</small>
+                                    <a href="https://instagram.com/_code_sketchers_"
+                                        target="_blank" rel="noopener">
+                                        Instagram ↗
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-detail">
+                                <span class="contact-detail-icon">▶</span>
+                                <div>
+                                    <small>WATCH OUR CONTENT</small>
+                                    <a href="https://youtube.com/@codesketchers"
+                                        target="_blank" rel="noopener">
+                                        YouTube ↗
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-decoration">C<span>•</span>S</div>
+
+                        </div>
+
+
+                        <!-- RIGHT CONTACT FORM -->
+
+                        <div class="contact-form-card">
+
+                            <div class="contact-form-heading">
+                                <span>01 — LET'S TALK</span>
+
+                                <h3>Tell us about your project.</h3>
+
+                                <p>
+                                    Fill in the details below and let's get started.
+                                </p>
+                            </div>
+
+                            <form id="contactForm">
+
+                                <div class="contact-input-row">
+
+                                    <label>
+                                        YOUR NAME
+
+                                        <input
+                                            required
+                                            name="name"
+                                            placeholder="Enter your name">
+                                    </label>
+
+                                    <label>
+                                        YOUR EMAIL
+
+                                        <input
+                                            required
+                                            type="email"
+                                            name="email"
+                                            placeholder="Enter your email">
+                                    </label>
+
+                                </div>
+
+                                <label>
+                                    PROJECT TYPE
+
+                                    <select name="project">
+                                        <option value="">Select a service</option>
+                                        <option>Web Development</option>
+                                        <option>UI / UX Design</option>
+                                        <option>Software Solutions</option>
+                                        <option>Brand Identity</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Creative Consulting</option>
+                                        <option>Other</option>
+                                    </select>
+                                </label>
+
+                                <label>
+                                    TELL US ABOUT YOUR IDEA
+
+                                    <textarea
+                                        required
+                                        name="message"
+                                        rows="4"
+                                        placeholder="Describe your project and what you have in mind..."></textarea>
+                                </label>
+
+                                <button type="submit" class="contact-submit-btn">
+                                    SEND YOUR MESSAGE <span>↗</span>
+                                </button>
+
+                                <p class="form-note" id="formNote">
+                                    Your message will open in your default email application.
+                                </p>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="section-next-wrap">
+                        <button class="section-next-btn"
+                            data-next-target="hero">
+                            BACK TO TOP <span>↗</span>
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT FOOTER -->
+
+                <footer class="section-footer">
+
+                    <div class="footer-main-grid">
+
+                        <div class="footer-brand-col">
+                            <div class="footer-brand">
+                                <span class="footer-brand-mark">C<span>•</span>S</span>
+                                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
+                            </div>
+
+                            <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
+
+                            <p class="footer-mission">
+                                Independent creative technology studio combining
+                                strategy, design, and thoughtful engineering.
+                            </p>
+                        </div>
+
+                        <div class="footer-nav-col">
+                            <span class="footer-col-label">NAVIGATION</span>
+
+                            <nav class="footer-nav">
+                                <button class="footer-nav-btn" data-section="about">About Page</button>
+                                <button class="footer-nav-btn" data-section="services">Services</button>
+                                <button class="footer-nav-btn" data-section="work">Our Work</button>
+                                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
+                                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
+                                <button class="footer-nav-btn" data-section="contact">Contact</button>
+                            </nav>
+                        </div>
+
+                        <div class="footer-contact-col">
+                            <span class="footer-col-label">CONNECT</span>
+
+                            <div class="footer-social-row">
+                                <a href="https://instagram.com/_code_sketchers_"
+                                    target="_blank" rel="noopener"
+                                    class="social-icon-btn">◎</a>
+
+                                <a href="https://youtube.com/@codesketchers"
+                                    target="_blank" rel="noopener"
+                                    class="social-icon-btn">▶</a>
+
+                                <a href="https://wa.me/919999999999"
+                                    target="_blank" rel="noopener"
+                                    class="social-icon-btn">◉</a>
+                            </div>
+
+                            <div class="footer-direct-contact">
+                                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
+
+                                <a class="footer-email-link"
+                                    href="mailto:hello@codesketchers.studio">
+                                    hello@codesketchers.studio ↗
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="footer-bottom-bar">
+                        <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
+                        <span>CHENNAI · EVERYWHERE</span>
+                    </div>
+
+                </footer>
+
             </div>
+        </section>
 
-            <div class="footer-nav-col">
-              <span class="footer-col-label">NAVIGATION</span>
-              <nav class="footer-nav">
-                <button class="footer-nav-btn" data-section="about">About Page</button>
-                <button class="footer-nav-btn" data-section="services">Services</button>
-                <button class="footer-nav-btn" data-section="work">Our Work</button>
-                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
-                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
-                <button class="footer-nav-btn" data-section="contact">Contact</button>
-              </nav>
-            </div>
+    </main>
 
-            <div class="footer-contact-col">
-              <span class="footer-col-label">CONNECT</span>
-              <div class="footer-social-row">
-                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </a>
-                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                  </svg>
-                </a>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="footer-direct-contact">
-                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
-                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
-              </div>
-            </div>
-          </div>
+    <!-- EXISTING WEBSITE JAVASCRIPT -->
 
-          <div class="footer-bottom-bar">
-            <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
-            <span>CHENNAI · EVERYWHERE</span>
-          </div>
-        </footer>
-      </div>
-    </section>
+    <script src="js/main.js"></script>
 
-    <!-- 03 / WORK (Section 03: White Top, Yellow Wave & Solid Yellow Bottom Block) -->
-    <section class="panel section-panel work" id="work" aria-label="Our work">
-      <div class="panel-inner">
-        <div class="panel-top-canvas bg-white">
-          <div class="section-top">
-            <span>03 / OUR WORK</span>
-            <span>SELECTED ARCHIVE</span>
-          </div>
-          <div class="section-main">
-            <p class="eyebrow">OUR WORK</p>
-            <h2>Made with curiosity.<br><span class="highlight">Portfolio showcases.</span></h2>
-            <p class="section-desc">A curation of recent collaborations across digital platforms, design systems, and web architectures.</p>
-          </div>
-        </div>
-
-        <!-- Seamless Wave Divider (Filled with Yellow #ffc928) -->
-        <div class="wave-divider-wrap">
-          <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#ffc928"/>
-          </svg>
-        </div>
-
-        <!-- Solid Yellow Bottom Block -->
-        <div class="panel-bottom-block block-yellow">
-          <div class="team-workspace" data-slot="work">
-            TEAM WORKSPACE SLOT - WORK
-          </div>
-          <div class="section-next-wrap">
-            <button class="section-next-btn" data-next-target="testimonial">NEXT SECTION <span>↘</span></button>
-          </div>
-        </div>
-
-        <footer class="section-footer">
-          <div class="footer-main-grid">
-            <div class="footer-brand-col">
-              <div class="footer-brand">
-                <span class="footer-brand-mark">C<span>•</span>S</span>
-                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-              </div>
-              <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
-              <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
-            </div>
-
-            <div class="footer-nav-col">
-              <span class="footer-col-label">NAVIGATION</span>
-              <nav class="footer-nav">
-                <button class="footer-nav-btn" data-section="about">About Page</button>
-                <button class="footer-nav-btn" data-section="services">Services</button>
-                <button class="footer-nav-btn" data-section="work">Our Work</button>
-                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
-                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
-                <button class="footer-nav-btn" data-section="contact">Contact</button>
-              </nav>
-            </div>
-
-            <div class="footer-contact-col">
-              <span class="footer-col-label">CONNECT</span>
-              <div class="footer-social-row">
-                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </a>
-                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                  </svg>
-                </a>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="footer-direct-contact">
-                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
-                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-bottom-bar">
-            <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
-            <span>CHENNAI · EVERYWHERE</span>
-          </div>
-        </footer>
-      </div>
-    </section>
-
-    <!-- 04 / TESTIMONIAL (Section 04: White Top, Yellow Wave & Solid Yellow Block with Rich Black Card) -->
-    <section class="panel section-panel testimonial" id="testimonial" aria-label="Testimonials">
-      <div class="panel-inner">
-        <div class="panel-top-canvas bg-white">
-          <div class="section-top">
-            <span>04 / TESTIMONIAL</span>
-            <span>CLIENT VOICES</span>
-          </div>
-          <div class="section-main">
-            <p class="eyebrow">TESTIMONIAL</p>
-            <h2>Don't just take<br><span class="highlight">our word.</span></h2>
-            <p class="section-desc">Real relationships built on trust, craft, and measurable outcome.</p>
-          </div>
-        </div>
-
-        <!-- Seamless Wave Divider (Filled with Yellow #ffc928) -->
-        <div class="wave-divider-wrap">
-          <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#ffc928"/>
-          </svg>
-        </div>
-
-        <!-- Solid Yellow Bottom Block containing Rich Black Card -->
-        <div class="panel-bottom-block block-yellow">
-          <div class="testimonial-rich-card">
-            <h3>Don't just take our word.</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-            <span class="testimonial-quote-icon">“</span>
-            <div class="team-workspace" data-slot="testimonial">
-              TEAM WORKSPACE SLOT - TESTIMONIAL
-            </div>
-          </div>
-          <div class="section-next-wrap">
-            <button class="section-next-btn" data-next-target="aboutus">NEXT SECTION <span>↘</span></button>
-          </div>
-        </div>
-
-        <footer class="section-footer">
-          <div class="footer-main-grid">
-            <div class="footer-brand-col">
-              <div class="footer-brand">
-                <span class="footer-brand-mark">C<span>•</span>S</span>
-                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-              </div>
-              <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
-              <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
-            </div>
-
-            <div class="footer-nav-col">
-              <span class="footer-col-label">NAVIGATION</span>
-              <nav class="footer-nav">
-                <button class="footer-nav-btn" data-section="about">About Page</button>
-                <button class="footer-nav-btn" data-section="services">Services</button>
-                <button class="footer-nav-btn" data-section="work">Our Work</button>
-                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
-                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
-                <button class="footer-nav-btn" data-section="contact">Contact</button>
-              </nav>
-            </div>
-
-            <div class="footer-contact-col">
-              <span class="footer-col-label">CONNECT</span>
-              <div class="footer-social-row">
-                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </a>
-                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                  </svg>
-                </a>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="footer-direct-contact">
-                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
-                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-bottom-bar">
-            <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
-            <span>CHENNAI · EVERYWHERE</span>
-          </div>
-        </footer>
-      </div>
-    </section>
-
-    <!-- 05 / ABOUT US (Section 05: Black Top, Yellow Accent Wave & Solid Yellow Bottom Block) -->
-    <section class="panel section-panel aboutus" id="aboutus" aria-label="About us">
-      <div class="panel-inner">
-        <div class="panel-top-canvas bg-black">
-          <div class="section-top">
-            <span>05 / ABOUT US</span>
-            <span>THE SQUAD</span>
-          </div>
-          <div class="section-main">
-            <p class="eyebrow">ABOUT US</p>
-            <h2>Meet the<br><span class="highlight">squad.</span></h2>
-            <p class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-          </div>
-        </div>
-
-        <!-- Seamless Wave Divider (Yellow Accent Band) -->
-        <div class="wave-divider-wrap">
-          <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#ffc928"/>
-          </svg>
-        </div>
-
-        <!-- Solid Yellow Bottom Block -->
-        <div class="panel-bottom-block block-yellow">
-          <div class="team-workspace" data-slot="aboutus">
-            TEAM WORKSPACE SLOT - ABOUT US
-          </div>
-          <div class="section-next-wrap">
-            <button class="section-next-btn" data-next-target="contact">NEXT SECTION <span>↘</span></button>
-          </div>
-        </div>
-
-        <footer class="section-footer">
-          <div class="footer-main-grid">
-            <div class="footer-brand-col">
-              <div class="footer-brand">
-                <span class="footer-brand-mark">C<span>•</span>S</span>
-                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-              </div>
-              <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
-              <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
-            </div>
-
-            <div class="footer-nav-col">
-              <span class="footer-col-label">NAVIGATION</span>
-              <nav class="footer-nav">
-                <button class="footer-nav-btn" data-section="about">About Page</button>
-                <button class="footer-nav-btn" data-section="services">Services</button>
-                <button class="footer-nav-btn" data-section="work">Our Work</button>
-                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
-                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
-                <button class="footer-nav-btn" data-section="contact">Contact</button>
-              </nav>
-            </div>
-
-            <div class="footer-contact-col">
-              <span class="footer-col-label">CONNECT</span>
-              <div class="footer-social-row">
-                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </a>
-                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                  </svg>
-                </a>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="footer-direct-contact">
-                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
-                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-bottom-bar">
-            <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
-            <span>CHENNAI · EVERYWHERE</span>
-          </div>
-        </footer>
-      </div>
-    </section>
-
-    <!-- 06 / CONTACT (Section 06: Black Top, Yellow Wave & Solid Black Bottom Block with Form) -->
-    <section class="panel section-panel contact" id="contact" aria-label="Contact">
-      <div class="panel-inner">
-        <div class="panel-top-canvas bg-black">
-          <div class="section-top">
-            <span>06 / CONTACT FORM</span>
-            <span>HAVE A GOOD ONE IN MIND?</span>
-          </div>
-          <div class="section-main">
-            <p class="eyebrow">THE NEXT GOOD THING STARTS HERE.</p>
-            <h2>Let's make<br><span class="highlight">something</span><br>matter<span class="period">.</span></h2>
-            <p class="section-desc">Have a project, collaboration, or idea in mind? Reach out and let's explore what we can build together.</p>
-          </div>
-        </div>
-
-        <!-- Seamless Wave Divider -->
-        <div class="wave-divider-wrap">
-          <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#ffc928"/>
-          </svg>
-        </div>
-
-        <!-- Solid Yellow Bottom Block containing Contact Form & Teammate Slot -->
-        <div class="panel-bottom-block block-yellow">
-          <div class="contact-wrapper">
-            <div class="contact-prompt-col">
-              <p class="contact-prompt-text">We'd love to hear about what you're working on and explore how we can collaborate.</p>
-              <a class="email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
-              <div class="team-workspace" data-slot="contact">
-                TEAM WORKSPACE SLOT - CONTACT
-              </div>
-            </div>
-            <form id="contactForm">
-              <label>YOUR NAME<input required name="name" placeholder="Name"></label>
-              <label>YOUR EMAIL<input required type="email" name="email" placeholder="Email address"></label>
-              <label>WHAT ARE YOU THINKING?<textarea required name="message" rows="3" placeholder="A little about your idea..."></textarea></label>
-              <button type="submit">SEND AN ENQUIRY ↗</button>
-              <p class="form-note" id="formNote">This opens your email client directly to reach our team.</p>
-            </form>
-          </div>
-
-          <div class="section-next-wrap">
-            <button class="section-next-btn" data-next-target="hero">BACK TO TOP <span>↗</span></button>
-          </div>
-        </div>
-
-        <footer class="section-footer">
-          <div class="footer-main-grid">
-            <div class="footer-brand-col">
-              <div class="footer-brand">
-                <span class="footer-brand-mark">C<span>•</span>S</span>
-                <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-              </div>
-              <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
-              <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
-            </div>
-
-            <div class="footer-nav-col">
-              <span class="footer-col-label">NAVIGATION</span>
-              <nav class="footer-nav">
-                <button class="footer-nav-btn" data-section="about">About Page</button>
-                <button class="footer-nav-btn" data-section="services">Services</button>
-                <button class="footer-nav-btn" data-section="work">Our Work</button>
-                <button class="footer-nav-btn" data-section="testimonial">Testimonial</button>
-                <button class="footer-nav-btn" data-section="aboutus">About Us</button>
-                <button class="footer-nav-btn" data-section="contact">Contact</button>
-              </nav>
-            </div>
-
-            <div class="footer-contact-col">
-              <span class="footer-col-label">CONNECT</span>
-              <div class="footer-social-row">
-                <a href="https://instagram.com/_code_sketchers_" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </a>
-                <a href="https://youtube.com/@codesketchers" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                  </svg>
-                </a>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
-                </a>
-              </div>
-              <div class="footer-direct-contact">
-                <span class="footer-contact-prompt">HAVE AN IDEA IN MIND?</span>
-                <a class="footer-email-link" href="mailto:hello@codesketchers.studio">hello@codesketchers.studio ↗</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-bottom-bar">
-            <span>© 2026 CODE SKETCHERS. ALL RIGHTS RESERVED.</span>
-            <span>CHENNAI · EVERYWHERE</span>
-          </div>
-        </footer>
-      </div>
-    </section>
-  </main>
-
-  <script src="js/main.js"></script>
 </body>
-
 </html>
