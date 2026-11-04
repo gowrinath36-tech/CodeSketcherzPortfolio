@@ -593,6 +593,52 @@
   }
 
   // ==========================================
+  // 10.5. THEME SYSTEM (LIGHT & DARK MODE)
+  // ==========================================
+
+  function initTheme() {
+    const toggleBtn = document.getElementById('themeToggle');
+    if (!toggleBtn) return;
+
+    const modeIcon = toggleBtn.querySelector('.mode-icon');
+
+    function updateButtonUI(theme) {
+      if (modeIcon) {
+        modeIcon.textContent = theme === 'dark' ? '\u2600' : '\uD83C\uDF19';
+      }
+      toggleBtn.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+      toggleBtn.setAttribute('title', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+    }
+
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    updateButtonUI(currentTheme);
+
+    toggleBtn.addEventListener('click', () => {
+      const active = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = active === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem('theme', next);
+      } catch (err) {
+        console.warn('localStorage theme save error:', err);
+      }
+      updateButtonUI(next);
+    });
+
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          const sysTheme = e.matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', sysTheme);
+          updateButtonUI(sysTheme);
+        }
+      });
+    }
+  }
+
+  initTheme();
+
+  // ==========================================
   // 11. INITIAL PAGE LOAD
   // ==========================================
 
