@@ -316,7 +316,6 @@ button {
   margin: 0;
   padding: 0;
   border: 0;
-  vertical-align: bottom;
 }
 
 /* Background matching per panel to ensure 100% seamless wave integration */
