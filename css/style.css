@@ -165,6 +165,42 @@ button {
   z-index: 2;
 }
 
+/* Panel Background Colors (Essential for smooth non-transparent transitions) */
+.panel.hero {
+  background: #171717;
+  color: #ffffff;
+}
+
+.panel.about {
+  background: #ffffff;
+  color: #171717;
+}
+
+.panel.services {
+  background: #171717;
+  color: #ffffff;
+}
+
+.panel.work {
+  background: #ffffff;
+  color: #171717;
+}
+
+.panel.testimonial {
+  background: #ffffff;
+  color: #171717;
+}
+
+.panel.aboutus {
+  background: #171717;
+  color: #ffffff;
+}
+
+.panel.contact {
+  background: #171717;
+  color: #ffffff;
+}
+
 .panel-inner {
   position: relative;
   width: 100%;
@@ -265,6 +301,8 @@ button {
   line-height: 0;
   display: block;
   margin: 0;
+  margin-top: -1px;
+  margin-bottom: -1px;
   padding: 0;
   border: 0;
   position: relative;
@@ -305,7 +343,7 @@ button {
   width: 100%;
   padding: 40px clamp(24px, 6vw, 80px) 60px;
   box-sizing: border-box;
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 .panel-bottom-block.block-yellow {
@@ -496,6 +534,51 @@ button {
   color: #71717a;
   margin: 6px 0 0;
   letter-spacing: 0.04em;
+}
+
+/* Contact Form Contrast when placed inside yellow bottom block */
+.panel-bottom-block.block-yellow .contact-prompt-text {
+  color: #171717;
+  font-weight: 500;
+}
+
+.panel-bottom-block.block-yellow .email-link {
+  color: #171717;
+  border-bottom: 2px solid #171717;
+  font-weight: 700;
+}
+
+.panel-bottom-block.block-yellow #contactForm label {
+  color: #171717;
+  font-weight: 600;
+}
+
+.panel-bottom-block.block-yellow #contactForm input,
+.panel-bottom-block.block-yellow #contactForm textarea {
+  background: #ffffff;
+  color: #171717;
+  border: 1.5px solid rgba(23, 23, 23, 0.2);
+}
+
+.panel-bottom-block.block-yellow #contactForm input:focus,
+.panel-bottom-block.block-yellow #contactForm textarea:focus {
+  border-color: #171717;
+  background: #ffffff;
+}
+
+.panel-bottom-block.block-yellow #contactForm button {
+  background: #171717;
+  color: #ffffff;
+}
+
+.panel-bottom-block.block-yellow #contactForm button:hover {
+  background: #ffffff;
+  color: #171717;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.panel-bottom-block.block-yellow .form-note {
+  color: rgba(23, 23, 23, 0.7);
 }
 
 /* ==========================================================================

@@ -1,5 +1,5 @@
 (() => {
-  const ids = ['hero', 'about', 'services', 'work', 'testimonial', 'contact', 'aboutus'];
+  const ids = ['hero', 'about', 'services', 'work', 'testimonial', 'aboutus', 'contact'];
   const panels = ids.map(id => document.getElementById(id));
   const contactForm = document.getElementById('contactForm');
 
