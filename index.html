@@ -861,8 +861,120 @@
 
                 <div class="panel-bottom-block block-yellow">
 
-                    <div class="team-workspace" data-slot="aboutus">
-                        TEAM WORKSPACE SLOT - ABOUT US
+                    <div class="team-grid-8" id="aboutusTeamGrid">
+                      <!-- Hidden SVG displacement filter for viscous entry snap -->
+                      <svg class="svg-membrane-filter" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
+                        <defs>
+                          <filter id="membraneSnap">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" result="noise" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+                          </filter>
+                        </defs>
+                      </svg>
+
+                      <!-- Member 1 -->
+                      <article class="member-card">
+                        <div class="member-avatar">
+                          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Gowrinath" loading="lazy" />
+                        </div>
+                        <div class="member-info">
+                          <h3>Gowrinath</h3>
+                          <span class="member-role">Lead Developer & UI Architect</span>
+                          <p>Architects fluid interactions, GSAP motion systems, and frontend repositories.</p>
+                          <div class="skill-chips"><span>React</span><span>GSAP</span><span>Tailwind</span></div>
+                        </div>
+                      </article>
+
+                      <!-- Member 2 -->
+                      <article class="member-card">
+                        <div class="member-avatar">
+                          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Hari Krishna" loading="lazy" />
+                        </div>
+                        <div class="member-info">
+                          <h3>Hari Krishna</h3>
+                          <span class="member-role">Full Stack Engineer</span>
+                          <p>Co-develops robust backend microservices, billing engines, and database logic.</p>
+                          <div class="skill-chips"><span>Node.js</span><span>PostgreSQL</span><span>REST APIs</span></div>
+                        </div>
+                      </article>
+
+                      <!-- Member 3 -->
+                      <article class="member-card">
+                        <div class="member-avatar">
+                          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Titu" loading="lazy" />
+                        </div>
+                        <div class="member-info">
+                          <h3>Titu</h3>
+                          <span class="member-role">Creative Direction & UI/UX</span>
+                          <p>Crafts design systems, responsive layout hierarchies, and brand identities.</p>
+                          <div class="skill-chips"><span>Figma</span><span>UI/UX</span><span>Branding</span></div>
+                        </div>
+                      </article>
+
+                      <!-- Member 4 -->
+                      <article class="member-card">
+                        <div class="member-avatar">
+                          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Karthik R." loading="lazy" />
+                        </div>
+                        <div class="member-info">
+                          <h3>Karthik R.</h3>
+                          <span class="member-role">Motion Graphics & 3D</span>
+                          <p>Engineers Three.js WebGL scenes, SVG animations, and dynamic transitions.</p>
+                          <div class="skill-chips"><span>Three.js</span><span>WebGL</span><span>SVG Motion</span></div>
+                        </div>
+                      </article>
+
+                      <!-- Member 5 -->
+                      <article class="member-card">
+                        <div class="member-avatar">
+                          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Priya S." loading="lazy" />
+                        </div>
+                        <div class="member-info">
+                          <h3>Priya S.</h3>
+                          <span class="member-role">Frontend Developer</span>
+                          <p>Transforms complex UI designs into accessible, high-performance web components.</p>
+                          <div class="skill-chips"><span>JavaScript</span><span>CSS Grid</span><span>Accessibility</span></div>
+                        </div>
+                      </article>
+
+                      <!-- Member 6 -->
+                      <article class="member-card">
+                        <div class="member-avatar">
+                          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80" alt="Dinesh K." loading="lazy" />
+                        </div>
+                        <div class="member-info">
+                          <h3>Dinesh K.</h3>
+                          <span class="member-role">Performance & SEO Engineer</span>
+                          <p>Optimizes Core Web Vitals, site accessibility, and Lighthouse audit metrics.</p>
+                          <div class="skill-chips"><span>Lighthouse</span><span>Next.js</span><span>SEO</span></div>
+                        </div>
+                      </article>
+
+                      <!-- Member 7 -->
+                      <article class="member-card">
+                        <div class="member-avatar">
+                          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Sneha M." loading="lazy" />
+                        </div>
+                        <div class="member-info">
+                          <h3>Sneha M.</h3>
+                          <span class="member-role">QA & Automation</span>
+                          <p>Guarantees bug-free releases, automated test pipelines, and cross-browser health.</p>
+                          <div class="skill-chips"><span>Cypress</span><span>Jest</span><span>Playwright</span></div>
+                        </div>
+                      </article>
+
+                      <!-- Member 8 -->
+                      <article class="member-card">
+                        <div class="member-avatar">
+                          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" alt="Manoj V." loading="lazy" />
+                        </div>
+                        <div class="member-info">
+                          <h3>Manoj V.</h3>
+                          <span class="member-role">DevOps & Cloud Systems</span>
+                          <p>Manages continuous deployment pipelines, edge CDN caching, and cloud servers.</p>
+                          <div class="skill-chips"><span>Docker</span><span>CI/CD</span><span>Cloudflare</span></div>
+                        </div>
+                      </article>
                     </div>
 
                     <div class="section-next-wrap">
