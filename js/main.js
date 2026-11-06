@@ -176,6 +176,71 @@
   }
 
   // ==========================================
+  // ABOUT US 8-MEMBER GRID MOTION
+  // ==========================================
+
+  function initAboutUsMotion() {
+    const cards = document.querySelectorAll('#aboutus .member-card');
+    if (!cards.length) return;
+
+    if (typeof gsap === 'undefined') {
+      if (!document.querySelector('script[src*="gsap"]')) {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+        script.onload = () => initAboutUsMotion();
+        document.head.appendChild(script);
+      }
+      return;
+    }
+
+    // Elastic staggered entry reveal
+    gsap.fromTo(cards,
+      {
+        opacity: 0,
+        scale: 0.9,
+        y: 40
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.85,
+        ease: "back.out(1.5)",
+        stagger: 0.08,
+        overwrite: "auto"
+      }
+    );
+
+    // 3D Perspective tilt
+    cards.forEach(card => {
+      if (card.dataset.tiltBound) return;
+      card.dataset.tiltBound = "true";
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        gsap.to(card, {
+          rotationY: x * 0.04,
+          rotationX: -y * 0.04,
+          transformPerspective: 900,
+          duration: 0.25,
+          ease: "power2.out"
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          rotationY: 0,
+          rotationX: 0,
+          duration: 0.6,
+          ease: "elastic.out(1, 0.6)"
+        });
+      });
+    });
+  }
+
+  // ==========================================
   // 5. OPEN SECTION
   // ==========================================
 
@@ -204,6 +269,8 @@
       return;
     }
 
+    const targetId = ids[targetIndex];
+
     // First page load
     if (currentIndex === -1) {
       currentIndex = targetIndex;
@@ -226,6 +293,9 @@
       });
 
       syncUI(targetIndex, { historyMode, hash });
+      if (targetId === 'aboutus') {
+        initAboutUsMotion();
+      }
       return;
     }
 
@@ -242,6 +312,10 @@
     currentIndex = targetIndex;
 
     syncUI(targetIndex, { historyMode, hash });
+
+    if (targetId === 'aboutus') {
+      initAboutUsMotion();
+    }
 
     // Instant transition fallback
     function instantSwitch() {
@@ -263,6 +337,10 @@
           initLenis(panel);
         }
       });
+
+      if (targetId === 'aboutus') {
+        initAboutUsMotion();
+      }
 
       isTransitioning = false;
       pendingCurrent = null;
