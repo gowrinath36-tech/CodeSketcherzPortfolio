@@ -44,7 +44,7 @@
 
     <header class="site-header">
 
-        <a class="brand" href="#hero">
+        <a class="brand" href="#about" data-section="about" aria-label="Go to About studio">
             <div class="brand-mark">C<span>•</span>S</div>
             <div class="brand-text">CODE<br>SKETCHERS</div>
         </a>
@@ -130,9 +130,13 @@
                     </div>
 
                     <div class="section-next-wrap">
-                        <button class="section-next-btn"
-                            data-next-target="about">
-                            NEXT SECTION <span>↘</span>
+                        <button class="cs-next-trigger" data-next-target="about" aria-label="Explore next section">
+                            <span class="btn-pulse-ring" aria-hidden="true"></span>
+                            <span class="btn-inner">
+                                <span class="tech-code-word" data-text="EXPLORE">EXPLORE</span>
+                                <span class="brush-paint-word" data-paint-word="STUDIO">STUDIO</span>
+                                <span class="btn-arrow-icon" aria-hidden="true">↘</span>
+                            </span>
                         </button>
                     </div>
 
@@ -143,10 +147,10 @@
                     <div class="footer-main-grid">
 
                         <div class="footer-brand-col">
-                            <div class="footer-brand">
+                            <a class="footer-brand" href="#about" data-section="about" style="text-decoration:none;">
                                 <span class="footer-brand-mark">C<span>•</span>S</span>
                                 <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-                            </div>
+                            </a>
 
                             <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
 
@@ -209,23 +213,22 @@
 
 
         <!-- =====================================
-             01 / ABOUT PAGE
+             01 / ABOUT PAGE (STUDIO MANIFESTO)
         ====================================== -->
 
-        <section class="panel section-panel about"
-            id="about" aria-label="About">
+        <section class="panel section-panel about about-panel"
+            id="about" aria-label="About studio">
 
             <div class="panel-inner">
 
+                <!-- Top Canvas (Paper White) -->
                 <div class="panel-top-canvas bg-white">
-
                     <div class="section-top">
                         <span>01 / ABOUT PAGE</span>
-                        <span>STUDIO PROFILE &amp; VISION</span>
+                        <span>STUDIO PROFILE & VISION</span>
                     </div>
 
                     <div class="section-main">
-
                         <p class="eyebrow">ABOUT PAGE</p>
 
                         <h2>
@@ -234,15 +237,12 @@
                         </h2>
 
                         <p class="section-desc">
-                            We're an independent creative technology studio
-                            combining strategy, design, and thoughtful engineering
-                            to create digital products with lasting momentum.
+                            We're an independent creative technology studio combining strategy, design, and thoughtful engineering to create digital products with lasting momentum.
                         </p>
-
                     </div>
-
                 </div>
 
+                <!-- Seamless S-Curve Wave Divider into Yellow Block -->
                 <div class="wave-divider-wrap">
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
                         <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z"
@@ -250,16 +250,71 @@
                     </svg>
                 </div>
 
+                <!-- Solid Yellow Container -->
                 <div class="panel-bottom-block block-yellow">
+                    <div class="studio-grid-layout">
+                        
+                        <!-- Left Column: Studio Pillars -->
+                        <div class="studio-pillars">
+                            <span class="pillars-eyebrow">HOW WE OPERATE</span>
+                            <div class="pillar-item">
+                                <b>01</b>
+                                <div>
+                                    <h4>Direct Builder Access</h4>
+                                    <p>No non-technical account managers playing telephone. When you have questions or updates, you collaborate directly with the designers and developers writing your code.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <b>02</b>
+                                <div>
+                                    <h4>Custom Code, Sub-Second Speed</h4>
+                                    <p>Zero recycled WordPress templates or bulky page builders. Every line is hand-crafted with modern web standards, guaranteeing 90+ Lighthouse mobile performance.</p>
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <b>03</b>
+                                <div>
+                                    <h4>100% Asset Ownership (Zero Lock-in)</h4>
+                                    <p>Every digital asset, domain, hosting setup, and clean GitHub codebase belongs entirely to you upon delivery. No hostage retainers or proprietary traps.</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="team-workspace" data-slot="about">
-                        TEAM WORKSPACE SLOT - ABOUT
+                        <!-- Right Column: The Contrast Card -->
+                        <div class="contrast-card">
+                            <div class="contrast-header">
+                                <span class="badge-tag">THE COMPARISON</span>
+                                <h3>Traditional Agency vs Code Sketchers</h3>
+                            </div>
+                            <div class="comparison-row">
+                                <div class="comp-col legacy">
+                                    <span class="comp-label">Typical Agencies</span>
+                                    <p>3 layers of sales reps before talking to a coder.</p>
+                                    <p>Bloated templates resold at premium prices.</p>
+                                    <p>Domains and hosting kept hostage for retainers.</p>
+                                    <p>Radio silence the moment final invoice clears.</p>
+                                </div>
+                                <div class="comp-col studio">
+                                    <span class="comp-label">Code Sketchers</span>
+                                    <p>Direct line to your lead developer & UI designer.</p>
+                                    <p>Hand-crafted, lightweight code built from zero.</p>
+                                    <p>Full GitHub code handover & client asset ownership.</p>
+                                    <p>14-day warranty & post-launch training included.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
+                    <!-- Inline Next Section Trigger -->
                     <div class="section-next-wrap">
-                        <button class="section-next-btn"
-                            data-next-target="services">
-                            NEXT SECTION <span>↘</span>
+                        <button class="cs-next-trigger" data-next-target="services" aria-label="Explore next section">
+                            <span class="btn-pulse-ring" aria-hidden="true"></span>
+                            <span class="btn-inner">
+                                <span class="tech-code-word" data-text="EXPLORE">EXPLORE</span>
+                                <span class="brush-paint-word" data-paint-word="SERVICES">SERVICES</span>
+                                <span class="btn-arrow-icon" aria-hidden="true">↘</span>
+                            </span>
                         </button>
                     </div>
 
@@ -269,10 +324,10 @@
                     <div class="footer-main-grid">
 
                         <div class="footer-brand-col">
-                            <div class="footer-brand">
+                            <a class="footer-brand" href="#about" data-section="about" style="text-decoration:none;">
                                 <span class="footer-brand-mark">C<span>•</span>S</span>
                                 <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-                            </div>
+                            </a>
                             <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
                             <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
                         </div>
@@ -543,9 +598,13 @@
                     </div>
 
                     <div class="section-next-wrap">
-                        <button class="section-next-btn"
-                            data-next-target="work">
-                            NEXT SECTION <span>↘</span>
+                        <button class="cs-next-trigger" data-next-target="work" aria-label="Explore next section">
+                            <span class="btn-pulse-ring" aria-hidden="true"></span>
+                            <span class="btn-inner">
+                                <span class="tech-code-word" data-text="EXPLORE">EXPLORE</span>
+                                <span class="brush-paint-word" data-paint-word="OUR WORK">OUR WORK</span>
+                                <span class="btn-arrow-icon" aria-hidden="true">↘</span>
+                            </span>
                         </button>
                     </div>
 
@@ -555,10 +614,10 @@
                     <div class="footer-main-grid">
 
                         <div class="footer-brand-col">
-                            <div class="footer-brand">
+                            <a class="footer-brand" href="#about" data-section="about" style="text-decoration:none;">
                                 <span class="footer-brand-mark">C<span>•</span>S</span>
                                 <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-                            </div>
+                            </a>
                             <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
                             <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
                         </div>
@@ -646,9 +705,13 @@
                     </div>
 
                     <div class="section-next-wrap">
-                        <button class="section-next-btn"
-                            data-next-target="testimonial">
-                            NEXT SECTION <span>↘</span>
+                        <button class="cs-next-trigger" data-next-target="testimonial" aria-label="Explore next section">
+                            <span class="btn-pulse-ring" aria-hidden="true"></span>
+                            <span class="btn-inner">
+                                <span class="tech-code-word" data-text="EXPLORE">EXPLORE</span>
+                                <span class="brush-paint-word" data-paint-word="TESTIMONIALS">TESTIMONIALS</span>
+                                <span class="btn-arrow-icon" aria-hidden="true">↘</span>
+                            </span>
                         </button>
                     </div>
 
@@ -658,10 +721,10 @@
                     <div class="footer-main-grid">
 
                         <div class="footer-brand-col">
-                            <div class="footer-brand">
+                            <a class="footer-brand" href="#about" data-section="about" style="text-decoration:none;">
                                 <span class="footer-brand-mark">C<span>•</span>S</span>
                                 <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-                            </div>
+                            </a>
                             <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
                             <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
                         </div>
@@ -762,9 +825,13 @@
                     </div>
 
                     <div class="section-next-wrap">
-                        <button class="section-next-btn"
-                            data-next-target="aboutus">
-                            NEXT SECTION <span>↘</span>
+                        <button class="cs-next-trigger" data-next-target="aboutus" aria-label="Explore next section">
+                            <span class="btn-pulse-ring" aria-hidden="true"></span>
+                            <span class="btn-inner">
+                                <span class="tech-code-word" data-text="EXPLORE">EXPLORE</span>
+                                <span class="brush-paint-word" data-paint-word="THE SQUAD">THE SQUAD</span>
+                                <span class="btn-arrow-icon" aria-hidden="true">↘</span>
+                            </span>
                         </button>
                     </div>
 
@@ -774,10 +841,10 @@
                     <div class="footer-main-grid">
 
                         <div class="footer-brand-col">
-                            <div class="footer-brand">
+                            <a class="footer-brand" href="#about" data-section="about" style="text-decoration:none;">
                                 <span class="footer-brand-mark">C<span>•</span>S</span>
                                 <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-                            </div>
+                            </a>
                             <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
                             <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
                         </div>
@@ -978,9 +1045,13 @@
                     </div>
 
                     <div class="section-next-wrap">
-                        <button class="section-next-btn"
-                            data-next-target="contact">
-                            NEXT SECTION <span>↘</span>
+                        <button class="cs-next-trigger" data-next-target="contact" aria-label="Explore next section">
+                            <span class="btn-pulse-ring" aria-hidden="true"></span>
+                            <span class="btn-inner">
+                                <span class="tech-code-word" data-text="EXPLORE">EXPLORE</span>
+                                <span class="brush-paint-word" data-paint-word="LET'S TALK">LET'S TALK</span>
+                                <span class="btn-arrow-icon" aria-hidden="true">↘</span>
+                            </span>
                         </button>
                     </div>
 
@@ -990,10 +1061,10 @@
                     <div class="footer-main-grid">
 
                         <div class="footer-brand-col">
-                            <div class="footer-brand">
+                            <a class="footer-brand" href="#about" data-section="about" style="text-decoration:none;">
                                 <span class="footer-brand-mark">C<span>•</span>S</span>
                                 <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-                            </div>
+                            </a>
                             <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
                             <p class="footer-mission">Independent creative technology studio combining strategy, design, and thoughtful engineering.</p>
                         </div>
@@ -1219,9 +1290,13 @@
 
 
                     <div class="section-next-wrap">
-                        <button class="section-next-btn"
-                            data-next-target="hero">
-                            BACK TO TOP <span>↗</span>
+                        <button class="cs-next-trigger" data-next-target="about" aria-label="Explore next section">
+                            <span class="btn-pulse-ring" aria-hidden="true"></span>
+                            <span class="btn-inner">
+                                <span class="tech-code-word" data-text="EXPLORE">EXPLORE</span>
+                                <span class="brush-paint-word" data-paint-word="BACK TO TOP">BACK TO TOP</span>
+                                <span class="btn-arrow-icon" aria-hidden="true">↘</span>
+                            </span>
                         </button>
                     </div>
 
@@ -1235,10 +1310,10 @@
                     <div class="footer-main-grid">
 
                         <div class="footer-brand-col">
-                            <div class="footer-brand">
+                            <a class="footer-brand" href="#about" data-section="about" style="text-decoration:none;">
                                 <span class="footer-brand-mark">C<span>•</span>S</span>
                                 <span class="footer-brand-text">CODE<br>SKETCHERS</span>
-                            </div>
+                            </a>
 
                             <p class="footer-tagline">MAKE IT MEAN SOMETHING.</p>
 
