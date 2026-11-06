@@ -1954,3 +1954,177 @@ body.start-here-visible .about-nav-item::before {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   Scoped Studio Section (#about / .about-panel)
+   ========================================================================== */
+/* Studio Grid Layout (Pillars + Contrast Card) */
+.studio-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Left Column: Studio Pillars */
+.studio-pillars {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillars-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #171717;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 22px;
+}
+
+.pillar-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.15);
+}
+
+.pillar-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.pillar-item b {
+  font-family: 'DM Mono', monospace;
+  font-size: 18px;
+  font-weight: 800;
+  color: #171717;
+  line-height: 1.2;
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.pillar-item h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #171717;
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.pillar-item p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(23, 23, 23, 0.85);
+  margin: 0;
+}
+
+/* Right Column: Contrast Card */
+.contrast-card {
+  background: #171717;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+.contrast-header {
+  margin-bottom: 20px;
+}
+
+.badge-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #ffc928;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.contrast-header h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(20px, 2.5vw, 24px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.comp-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.comp-col.legacy .comp-label {
+  color: #a1a1aa;
+}
+
+.comp-col.studio .comp-label {
+  color: #ffc928;
+}
+
+.comp-col.legacy p {
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
+  padding-left: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #9f9fa9;
+  margin: 10px 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.comp-col.studio p {
+  border-left: 2px solid #ffc928;
+  padding-left: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 10px 0;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 960px) {
+  .studio-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .comparison-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .contrast-card {
+    padding: 20px;
+  }
+
+  .pillar-item {
+    gap: 14px;
+  }
+}
