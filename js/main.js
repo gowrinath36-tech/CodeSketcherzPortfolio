@@ -445,36 +445,147 @@
   });
 
   // ==========================================
-  // 7. NEXT SECTION BUTTONS
+  // 7. NEXT SECTION BUTTONS (SCRAMBLE + LETTER PAINT STROKE)
   // ==========================================
 
-  document.querySelectorAll('[data-next-target]').forEach(element => {
-    element.addEventListener('click', event => {
-      event.preventDefault();
+  function initNextSectionTriggers() {
+    const glyphs = '01#/<>$%_ABCXYZ';
+    const buttons = document.querySelectorAll('.cs-next-trigger');
+    if (!buttons.length) return;
 
-      const target = element.dataset.nextTarget;
+    buttons.forEach(btn => {
+      const codeEl = btn.querySelector('.tech-code-word');
+      const wordEl = btn.querySelector('.brush-paint-word');
+      if (!codeEl || !wordEl) return;
 
-      if (!target || !ids.includes(target)) {
-        return;
+      // 1. Split Word 2 into individual animated letter spans
+      const rawText = wordEl.dataset.paintWord || wordEl.textContent.trim();
+      wordEl.innerHTML = rawText
+        .split('')
+        .map((char, i) => {
+          if (char === ' ') return '<span style="display:inline-block;width:5px;">&nbsp;</span>';
+          return `<span class="paint-char" style="--paint-delay: ${i * 0.045}s">${char}</span>`;
+        })
+        .join('');
+
+      const originalCode = codeEl.dataset.text || 'EXPLORE';
+      let isRunning = false;
+      let loopTimer = null;
+      let scrambleTimer = null;
+
+      // 2. Play Sequence: Word 1 Scramble -> Word 2 Letter-by-Letter Paint Stroke
+      function playPaintSequence(speedMultiplier = 1) {
+        if (isRunning) return;
+        isRunning = true;
+
+        // Reset letters
+        btn.classList.remove('is-brushing');
+        void wordEl.offsetWidth; // Reflow to reset animation
+
+        // Phase 1: Scramble Word 1
+        let iteration = 0;
+        clearInterval(scrambleTimer);
+        const scrambleSpeed = 30 / speedMultiplier;
+
+        scrambleTimer = setInterval(() => {
+          codeEl.textContent = originalCode
+            .split('')
+            .map((char, index) => {
+              if (index < iteration) return originalCode[index];
+              return glyphs[Math.floor(Math.random() * glyphs.length)];
+            })
+            .join('');
+
+          if (iteration >= originalCode.length) {
+            clearInterval(scrambleTimer);
+            codeEl.textContent = originalCode;
+
+            // Phase 2: Paint Word 2 Letter-by-Letter
+            const chars = wordEl.querySelectorAll('.paint-char');
+            chars.forEach((c, idx) => {
+              c.style.setProperty('--paint-delay', `${(idx * 0.045) / speedMultiplier}s`);
+            });
+            btn.classList.add('is-brushing');
+
+            // Phase 3: Settle & Allow Next Cycle
+            const totalSweepTime = (chars.length * 45 + 220) / speedMultiplier + 400;
+            setTimeout(() => {
+              isRunning = false;
+            }, totalSweepTime);
+          }
+          iteration += 0.55 * speedMultiplier;
+        }, scrambleSpeed);
       }
 
-      if (!hasNavigatedFromHero && target !== 'hero') {
-        hasNavigatedFromHero = true;
+      // Automated 2.5s Idle Attract Loop when visible in viewport
+      function scheduleNextLoop() {
+        clearTimeout(loopTimer);
+        loopTimer = setTimeout(() => {
+          if (btn._isInView) {
+            playPaintSequence(1);
+          }
+          scheduleNextLoop();
+        }, 2800);
+      }
 
-        goToSection(target, {
-          historyMode: 'push'
-        });
+      // Viewport Visibility Observer (Works on desktop & mobile)
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            btn._isInView = entry.isIntersecting;
+            if (entry.isIntersecting) {
+              playPaintSequence(1);
+              scheduleNextLoop();
+            } else {
+              clearTimeout(loopTimer);
+              clearInterval(scrambleTimer);
+              isRunning = false;
+            }
+          });
+        }, { threshold: 0.35 });
+        observer.observe(btn);
       } else {
-        if (target === 'hero') {
-          hasNavigatedFromHero = false;
-        }
-
-        goToSection(target, {
-          historyMode: 'replace'
-        });
+        btn._isInView = true;
+        scheduleNextLoop();
       }
+
+      // User Hover / Direct Touch: Accelerate immediately
+      btn.addEventListener('mouseenter', () => {
+        clearTimeout(loopTimer);
+        playPaintSequence(1.6);
+      });
+
+      btn.addEventListener('touchstart', () => {
+        clearTimeout(loopTimer);
+        playPaintSequence(1.6);
+      }, { passive: true });
+
+      btn.addEventListener('mouseleave', () => {
+        scheduleNextLoop();
+      });
+
+      // Panel Transition Execution
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = btn.dataset.nextTarget;
+        if (target && typeof goToSection === 'function') {
+          if (!hasNavigatedFromHero && target !== 'hero') {
+            hasNavigatedFromHero = true;
+          } else if (target === 'hero') {
+            hasNavigatedFromHero = false;
+          }
+          goToSection(target, { historyMode: 'push' });
+        }
+      });
     });
-  });
+  }
+
+  // Call on startup
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNextSectionTriggers);
+  } else {
+    initNextSectionTriggers();
+  }
 
   // ==========================================
   // 8. BROWSER BACK AND FORWARD

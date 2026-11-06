@@ -764,79 +764,132 @@ button {
 .section-next-wrap {
   display: flex;
   justify-content: flex-end;
-  margin: 28px 0 16px;
+  margin: 36px 0 20px;
   width: 100%;
 }
 
-.section-next-btn {
+.cs-next-trigger {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #171717;
+  color: #ffffff;
+  padding: 13px 26px;
   border-radius: 999px;
-  background: #ffffff;
-  color: var(--black);
-  border: 1px solid rgba(23, 23, 23, 0.15);
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.35);
+  transform: translateZ(0);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.panel-bottom-block.block-yellow .cs-next-trigger {
+  background: #171717;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.cs-next-trigger:hover,
+.cs-next-trigger:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 201, 40, 0.6);
+}
+
+.btn-pulse-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 999px;
+  border: 1.5px solid #ffc928;
+  opacity: 0;
+  pointer-events: none;
+  animation: csApplePulse 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes csApplePulse {
+  0% { transform: scale(0.97); opacity: 0.6; }
+  60% { transform: scale(1.06); opacity: 0; }
+  100% { transform: scale(1.06); opacity: 0; }
+}
+
+.btn-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
 }
 
-.section-next-btn span {
+/* Word 1: Tech Scramble */
+.tech-code-word {
+  color: #ffc928;
+  letter-spacing: 0.12em;
+  display: inline-block;
+  min-width: 62px;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Word 2: Letter-by-Letter Paint Container */
+.brush-paint-word {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* Individual Paint Character */
+.paint-char {
+  display: inline-block;
+  position: relative;
+  will-change: clip-path, transform;
+  /* Default painted state: 100% visible */
+  clip-path: inset(0 0% 0 0);
+  transform: skewX(0deg);
+}
+
+/* When triggered, animate letter wipe */
+.cs-next-trigger.is-brushing .paint-char {
+  animation: letterBrushSweep 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--paint-delay, 0s);
+}
+
+/* Crisp left-to-right brush wipe across the letter with brush slant */
+@keyframes letterBrushSweep {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    transform: skewX(-12deg) translateX(-2px);
+    opacity: 0.1;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0% 0 0);
+    transform: skewX(0deg) translateX(0);
+    opacity: 1;
+  }
+}
+
+.btn-arrow-icon {
   font-size: 13px;
-  line-height: 1;
-  transition: transform 0.2s ease;
+  color: #ffc928;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.section-next-btn:hover {
-  transform: translateY(-2px);
-}
-
-.section-next-btn:hover span {
+.cs-next-trigger:hover .btn-arrow-icon {
   transform: translate(2px, 2px);
-}
-
-/* Button contrast in yellow block */
-.panel-bottom-block.block-yellow .section-next-btn {
-  background: #ffffff;
-  color: #171717;
-  border-color: rgba(23, 23, 23, 0.15);
-}
-
-.panel-bottom-block.block-yellow .section-next-btn:hover {
-  background: #171717;
-  color: #ffffff;
-  border-color: #171717;
-}
-
-/* Button contrast in white block */
-.panel-bottom-block.block-white .section-next-btn {
-  background: #171717;
-  color: #ffffff;
-  border-color: #171717;
-}
-
-.panel-bottom-block.block-white .section-next-btn:hover {
-  background: var(--yellow);
-  color: var(--black);
-  border-color: var(--yellow);
-}
-
-/* Button contrast in black block */
-.panel-bottom-block.block-black .section-next-btn {
-  background: #ffffff;
-  color: #171717;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.panel-bottom-block.block-black .section-next-btn:hover {
-  background: var(--yellow);
-  color: var(--black);
-  border-color: var(--yellow);
 }
 
 /* ==========================================================================
@@ -2127,4 +2180,31 @@ body.start-here-visible .about-nav-item::before {
   .pillar-item {
     gap: 14px;
   }
+}
+
+/* ==========================================================================
+   About Page Micro-Interactions (#about)
+   ========================================================================== */
+.about-panel.active .section-main h2 {
+  animation: csFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.about-panel.active .section-desc {
+  animation: csFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.about-panel .pillar-item {
+  transition: transform 0.3s ease, background 0.3s ease;
+  padding: 14px 16px;
+  border-radius: 8px;
+}
+
+.about-panel .pillar-item:hover {
+  transform: translateX(8px);
+  background: rgba(23, 23, 23, 0.05);
+}
+
+@keyframes csFadeUp {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
