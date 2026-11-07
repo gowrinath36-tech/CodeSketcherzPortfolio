@@ -166,7 +166,7 @@ button {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0px;
   text-decoration: none;
   color: var(--text-primary);
   width: max-content;
@@ -174,14 +174,15 @@ button {
 }
 
 .brand-mark {
-  font-size: 29px;
-  font-weight: 800;
-  letter-spacing: -0.1em;
+  display: flex;
+  align-items: center;
 }
 
-.brand-mark span {
-  color: var(--accent-yellow);
-  font-size: 16px;
+.brand-mark img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .brand-text {
