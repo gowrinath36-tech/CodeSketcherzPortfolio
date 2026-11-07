@@ -346,6 +346,7 @@ button {
   color: var(--canvas-text-dark);
 }
 
+
 .panel.testimonial {
   background: var(--canvas-white);
   color: var(--canvas-text-dark);
@@ -571,51 +572,6 @@ button {
 .panel-bottom-block.block-black .team-workspace:hover {
   border-color: var(--yellow);
   background: rgba(255, 201, 40, 0.04);
-}
-
-/* Testimonial Rich Black Card inside Yellow Block */
-.testimonial-rich-card {
-  background: #171717;
-  color: #ffffff;
-  border-radius: 14px;
-  padding: clamp(32px, 5vw, 56px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
-  margin: 16px 0;
-  text-align: left;
-}
-
-.testimonial-rich-card h3 {
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
-  font-size: clamp(26px, 3.8vw, 42px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: #ffffff;
-  margin: 0 0 14px;
-}
-
-.testimonial-rich-card p {
-  font-size: clamp(14px, 1.8vw, 17px);
-  line-height: 1.6;
-  color: #d4d4d8;
-  max-width: 650px;
-  margin: 0;
-}
-
-.testimonial-rich-card .testimonial-quote-icon {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 52px;
-  line-height: 1;
-  color: var(--yellow);
-  display: block;
-  margin-top: 14px;
-}
-
-.testimonial-rich-card .team-workspace {
-  border-color: rgba(255, 201, 40, 0.35);
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.03);
-  margin-top: 20px;
 }
 
 /* ==========================================================================
@@ -893,195 +849,422 @@ button {
 }
 
 /* ==========================================================================
-   Full-Width Minimal Studio Footer (100% Flush Floor)
+   Full-Width Minimal Studio Footer (Sleek Dark Theme & Bright Yellow Accents)
+   Left: Brand, Action Badge, Custom Desc, Copyright
+   Center: CONNECT & Social Media Icons
+   Right: NAVIGATE Links & Back To Top Button
+   ========================================================================== */
+/* ==========================================================================
+   FOOTER & BOTTOM IDENTITY BAR (Full Deck Integration)
    ========================================================================== */
 .section-footer {
   margin-top: auto;
   width: 100%;
   margin-bottom: 0;
   border-radius: 0;
-  background: #09090b;
+  background: #0b0b0b;
   color: #ffffff;
-  padding: clamp(36px, 5vw, 56px) clamp(24px, 6vw, 80px) 24px;
+  padding: clamp(48px, 6vw, 76px) clamp(24px, 6vw, 80px) 28px;
   box-sizing: border-box;
   position: relative;
   z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-main-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1.2fr;
-  gap: clamp(24px, 4vw, 48px);
-  padding-bottom: clamp(28px, 4vw, 40px);
+  grid-template-columns: 1.6fr 1.05fr 1.35fr;
+  gap: clamp(28px, 4.5vw, 56px);
+  padding-bottom: clamp(36px, 4.5vw, 48px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Brand Column */
-.footer-brand-col {
+/* Footer Column Base */
+.footer-col {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-brand-mark {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  color: #ffffff;
-}
-
-.footer-brand-mark span {
-  color: var(--yellow);
-}
-
-.footer-brand-text {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 9px;
-  line-height: 0.95;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #a1a1aa;
-}
-
-.footer-tagline {
+.footer-col-title {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--yellow);
-  margin: 0;
-}
-
-.footer-mission {
-  font-size: 12.5px;
-  line-height: 1.55;
-  color: #a1a1aa;
-  max-width: 320px;
-  margin: 0;
-}
-
-/* Navigation Column */
-.footer-nav-col {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.footer-col-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  color: #71717a;
+  letter-spacing: 0.14em;
+  color: #ffcc00;
+  margin: 0 0 20px;
   text-transform: uppercase;
 }
 
-.footer-nav {
+/* ==========================================================================
+   Column 1 (Left): Brand Logo, Action Badge, Description & Copyright
+   ========================================================================== */
+.footer-brand-col {
+  gap: 16px;
+}
+
+.footer-identity-brand {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.footer-nav-btn {
-  background: none;
-  border: 0;
-  padding: 0;
-  text-align: left;
-  font-size: 13px;
-  color: #d4d4d8;
-  cursor: pointer;
-  transition: color 0.2s ease, transform 0.2s ease;
-  width: max-content;
-}
-
-.footer-nav-btn:hover {
-  color: var(--yellow);
-  transform: translateX(3px);
-}
-
-/* Connect Column */
-.footer-contact-col {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 14px;
 }
 
-.footer-social-row {
-  display: flex;
-  gap: 10px;
-}
-
-.social-icon-btn {
+.footer-cs-badge {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: #ffcc00;
+  color: #0b0b0b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  box-shadow: 0 4px 16px rgba(255, 204, 0, 0.25);
+  flex-shrink: 0;
 }
 
-.social-icon-btn:hover {
-  background: var(--yellow);
-  border-color: var(--yellow);
-  color: var(--black);
-  transform: translateY(-2px);
+.footer-cs-badge .badge-dot {
+  color: #0b0b0b;
+  font-size: 14px;
+  margin: 0 1px;
 }
 
-.footer-direct-contact {
+.footer-brand-meta {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 6px;
 }
 
-.footer-contact-prompt {
+.footer-brand-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+.footer-brand-sub {
   font-family: 'DM Mono', monospace;
   font-size: 9px;
-  letter-spacing: 0.1em;
-  color: #71717a;
-  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #94969c;
+  margin-top: 4px;
 }
 
-.footer-email-link {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--yellow);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-  display: inline-block;
-}
-
-.footer-email-link:hover {
-  opacity: 0.8;
-  text-decoration: underline;
-}
-
-/* Bottom Bar */
-.footer-bottom-bar {
-  display: flex;
-  justify-content: space-between;
+/* Stylish & Bold Action Badge */
+.footer-action-badge {
+  display: inline-flex;
   align-items: center;
-  padding-top: 24px;
+  gap: 9px;
+  background: rgba(255, 204, 0, 0.08);
+  border: 1px solid rgba(255, 204, 0, 0.35);
+  border-radius: 999px;
+  padding: 8px 16px;
+  width: fit-content;
+  box-shadow: 0 0 16px rgba(255, 204, 0, 0.12);
+  transition: all 0.25s ease;
+}
+
+.footer-action-badge:hover {
+  background: rgba(255, 204, 0, 0.14);
+  border-color: #ffcc00;
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+.action-badge-star {
+  color: #ffcc00;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.action-badge-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #ffcc00;
+}
+
+/* Custom Description Text */
+.footer-mission-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.68;
+  color: #94969c;
+  margin: 0;
+  max-width: 420px;
+}
+
+/* Left-Side Copyright Notice */
+.footer-brand-copyright {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.08em;
   color: #71717a;
-  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Column 2 (Middle): NAVIGATE Links
+   ========================================================================== */
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.footer-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #d4d4d8;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.22s ease, transform 0.22s ease;
+  width: max-content;
+}
+
+.footer-star {
+  font-size: 10px;
+  color: #ffcc00;
+  line-height: 1;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.footer-nav-link:hover {
+  color: #ffcc00;
+  transform: translateX(4px);
+}
+
+.footer-nav-link:hover .footer-star {
+  transform: rotate(45deg) scale(1.15);
+  filter: drop-shadow(0 0 6px rgba(255, 204, 0, 0.6));
+}
+
+/* ==========================================================================
+   Column 3 (Right): CONNECT Details, "FOLLOW US" Social & Back To Top
+   ========================================================================== */
+.footer-connect-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-connect-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.68;
+  color: #94969c;
+  margin: 0 0 16px;
+  max-width: 340px;
+}
+
+.footer-email-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ffcc00;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  width: max-content;
+}
+
+.footer-email-cta:hover {
+  opacity: 0.85;
+  transform: translateX(3px);
+  text-decoration: underline;
+}
+
+.footer-social-wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
+/* Bold & Styled Modern Heading */
+.footer-social-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #ffcc00;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.footer-social-grid {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.footer-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #e4e4e7;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-social-icon:hover {
+  background: #ffcc00;
+  border-color: #ffcc00;
+  color: #0b0b0b;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(255, 204, 0, 0.25);
+}
+
+/* Prominent Smooth-Scroll Back To Top Yellow Button */
+.footer-back-to-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: #ffcc00;
+  color: #0b0b0b;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  width: fit-content;
+  margin-top: 24px;
+  box-shadow: 0 4px 14px rgba(255, 204, 0, 0.25);
+}
+
+.footer-back-to-top:hover {
+  background: #e6b800;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 204, 0, 0.35);
+}
+
+.btt-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.footer-back-to-top:hover .btt-arrow {
+  transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   Bottom Studio Details Bar
+   ========================================================================== */
+.footer-bottom-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 28px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: #71717a;
+  text-align: center;
+}
+
+.bottom-studio-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.studio-detail-item {
+  color: #a1a1aa;
+}
+
+.studio-detail-item.highlight-motto {
+  color: #d4d4d8;
+  letter-spacing: 0.12em;
+}
+
+.bottom-separator {
+  color: #ffcc00;
+  font-size: 12px;
+}
+
+/* ==========================================================================
+   Footer Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 36px 40px;
+  }
+
+  .footer-brand-col {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 28px;
+  }
+}
+
+@media (max-width: 680px) {
+  .section-footer {
+    padding: 38px 20px 24px;
+  }
+
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-nav-col {
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-connect-col {
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-back-to-top {
+    width: 100%;
+  }
+
+  .bottom-studio-details {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .bottom-separator {
+    display: none;
+  }
+}
 /* Permanent hidden utility */
 .corner-note {
   display: none !important;
@@ -2207,4 +2390,304 @@ body.start-here-visible .about-nav-item::before {
 @keyframes csFadeUp {
   0% { opacity: 0; transform: translateY(16px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   CODE SKETCHERS - ZIGZAG TESTIMONIALS SECTION
+   Alternating Staggered Rows, Circular Avatars (#ffcc00) & Dark Theme (#0b0b0b)
+   ========================================================================== */
+
+.testimonials-zigzag-section {
+  background-color: #0b0b0b;
+  color: #ffffff;
+  padding: clamp(12px, 1.8vw, 24px) 0 clamp(36px, 4.5vw, 56px);
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.testimonials-zigzag-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.testimonials-zigzag-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4.5vw, 56px);
+}
+
+/* ==========================================================================
+   Zigzag Row: Alternating Staggered Items
+   ========================================================================== */
+.zigzag-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 4.5vw, 52px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Alternating Reverse Row: Card Left, Media Right */
+.zigzag-item:nth-child(even),
+.zigzag-item.zigzag-reversed {
+  flex-direction: row-reverse;
+}
+
+/* ==========================================================================
+   Clean Circular Profile Image & Glowing Yellow Border
+   ========================================================================== */
+.zigzag-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.zigzag-avatar-wrapper {
+  position: relative;
+  width: clamp(96px, 11vw, 120px);
+  height: clamp(96px, 11vw, 120px);
+  border-radius: 50%;
+  border: 2px solid #ffcc00;
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.6);
+  padding: 3px;
+  box-sizing: border-box;
+  background: #0b0b0b;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zigzag-item:hover .zigzag-avatar-wrapper {
+  border-color: #ffe066;
+  box-shadow: 0 0 30px rgba(255, 204, 0, 0.45), 0 12px 28px rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
+}
+
+.zigzag-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.zigzag-item:hover .zigzag-avatar-img {
+  transform: scale(1.08);
+  filter: grayscale(0%) contrast(1.1);
+}
+
+/* Circular Verified Client Badge */
+.zigzag-avatar-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  background: #ffcc00;
+  color: #0b0b0b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border: 2px solid #0b0b0b;
+  transition: all 0.25s ease;
+}
+
+.zigzag-item:hover .zigzag-avatar-badge {
+  background: #ffffff;
+  color: #0b0b0b;
+  transform: scale(1.15) rotate(15deg);
+}
+
+/* Star Rating */
+.zigzag-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #ffcc00;
+  font-size: 14px;
+  letter-spacing: 2px;
+  opacity: 0.95;
+  transition: transform 0.2s ease;
+}
+
+.zigzag-item:hover .zigzag-rating {
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Quote Card Container
+   ========================================================================== */
+.zigzag-card {
+  flex: 1;
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: clamp(26px, 3.5vw, 36px) clamp(24px, 4vw, 40px);
+  position: relative;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+/* Subtle leading-edge accent indicator */
+.zigzag-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 60%;
+  background: #ffcc00;
+  border-radius: 4px;
+  opacity: 0.8;
+  transition: height 0.3s ease;
+}
+
+.zigzag-item:nth-child(even) .zigzag-card::before,
+.zigzag-item.zigzag-reversed .zigzag-card::before {
+  left: auto;
+  right: 0;
+}
+
+.zigzag-card:hover {
+  border-color: rgba(255, 204, 0, 0.4);
+  background: #181818;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 204, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.zigzag-card:hover::before {
+  height: 100%;
+}
+
+.zigzag-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.zigzag-quote-mark {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 48px;
+  line-height: 0.8;
+  color: #ffcc00;
+  opacity: 0.7;
+  user-select: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.zigzag-card:hover .zigzag-quote-mark {
+  opacity: 0.9;
+  transform: translateX(3px);
+}
+
+.zigzag-quote-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(15px, 1.7vw, 17.5px);
+  line-height: 1.65;
+  color: #e4e4e7;
+  font-weight: 400;
+  margin: 0;
+}
+
+.zigzag-author-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.zigzag-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.zigzag-author-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.zigzag-role-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+}
+
+.zigzag-designation {
+  color: #ffcc00;
+  font-weight: 500;
+}
+
+.zigzag-dot {
+  color: #71717a;
+}
+
+.zigzag-company {
+  color: #a1a1aa;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 768px) {
+  .testimonials-zigzag-section {
+    padding: 12px 14px 44px;
+  }
+
+  .testimonials-zigzag-stack {
+    gap: 32px;
+  }
+
+  /* Clean Single Column Collapse on Mobile */
+  .zigzag-item,
+  .zigzag-item:nth-child(even),
+  .zigzag-item.zigzag-reversed {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .zigzag-card {
+    width: 100%;
+    padding: 24px 18px;
+    text-align: center;
+  }
+
+  .zigzag-card::before {
+    left: 0 !important;
+    right: auto !important;
+  }
+
+  .zigzag-card-inner {
+    align-items: center;
+  }
+
+  .zigzag-author-meta {
+    justify-content: center;
+  }
+
+  .zigzag-author-info {
+    align-items: center;
+  }
+
+  .zigzag-role-group {
+    justify-content: center;
+  }
 }

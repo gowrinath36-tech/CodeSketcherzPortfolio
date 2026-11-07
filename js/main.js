@@ -828,6 +828,34 @@
   initTheme();
 
   // ==========================================
+  // 10.6. FOOTER INTERACTION (SMOOTH BACK TO TOP)
+  // ==========================================
+
+  function initFooter() {
+    document.querySelectorAll('.footer-back-to-top').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const activePanel = document.querySelector('.panel.active');
+        if (activePanel) {
+          if (typeof lenis !== 'undefined' && lenis) {
+            try {
+              lenis.scrollTo(0, { duration: 1.2 });
+            } catch (err) {
+              activePanel.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          } else {
+            activePanel.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  initFooter();
+
+  // ==========================================
   // 11. INITIAL PAGE LOAD
   // ==========================================
 
