@@ -1570,34 +1570,26 @@
 
                 <div class="panel-bottom-block block-yellow">
 
-                    <div class="lanyard-rail-wrapper" id="lanyardRailSection">
-  <div class="lanyard-header">
-    <span class="lanyard-eyebrow">MEET THE SQUAD · 8 BUILDERS</span>
-    <h3 class="lanyard-heading">Interactive team passes — brush, pull, or tap to flip.</h3>
+                    <div class="sketcherz-squad-wrapper" id="sketcherzSquadSection">
+  <div class="squad-header">
+    <span class="squad-badge">TEAM · MEET THE BUILDERS</span>
+    <h3 class="squad-code-title">CODE</h3>
+    <p class="squad-subtitle">The eight creative engineers &amp; designers behind <strong>SKETCHERZ</strong>.</p>
   </div>
 
-  <!-- Interactive Physics Rail Stage -->
-  <div class="lanyard-stage" id="lanyardStage" role="group" aria-label="Code Sketcherz Team Rail">
-    <div class="lanyard-bar" aria-hidden="true">
-      <span class="rail-cap left"></span>
-      <span class="rail-cap right"></span>
-    </div>
-    <div class="lanyard-slots" id="lanyardSlots"></div>
-  </div>
+  <!-- 8 Members (S-K-E-T-C-H-E-R) + 9th Interactive Z Card -->
+  <div class="sketcherz-grid" id="sketcherzGrid"></div>
 
-  <!-- Mobile/Tablet Dot Pagination -->
-  <div class="lanyard-dots" id="lanyardDots" aria-label="Select team member"></div>
-
-  <!-- Active Member Caption & Hiring CTA -->
-  <div class="lanyard-footer-bar">
-    <div class="lanyard-caption" aria-live="polite">
-      <p class="lanyard-active-title" id="lanyardActiveTitle">Brush along the rail to meet the squad</p>
-      <p class="lanyard-active-hint" id="lanyardActiveHint">Click or tap any badge to flip for bio &amp; skills</p>
+  <!-- Interactive Drawer/Modal triggered when clicking the 'Z' card -->
+  <div class="squad-z-modal" id="squadZModal" aria-hidden="true">
+    <div class="squad-z-card">
+      <button type="button" class="squad-z-close" id="squadZClose" aria-label="Close modal">✕</button>
+      <span class="squad-badge">Z · ZERO LIMITS</span>
+      <h4>Full Squad Capabilities &amp; Collaboration</h4>
+      <p>From UI/UX systems and custom web engineering to SEO and cloud deployment, all 8 builders collaborate directly with you—zero middlemen.</p>
+      <div class="squad-z-roster" id="squadZRoster"></div>
+      <button type="button" class="squad-z-cta" data-section="contact">Work With The Squad ↗</button>
     </div>
-    <button type="button" class="lanyard-hiring-btn" data-section="contact">
-      <span class="hiring-dot" aria-hidden="true"></span>
-      Want to join us? Let's talk ↗
-    </button>
   </div>
 </div>
 

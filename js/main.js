@@ -176,328 +176,163 @@
   }
 
   // ==========================================
-  // ABOUT US TEAM LANYARD RAIL & PHYSICS ENGINE
+  // ABOUT US GEOMETRIC S-K-E-T-C-H-E-R-Z SHOWCASE
   // ==========================================
 
-  const TEAM_LANYARD_MEMBERS = [
+  const SKETCHERZ_MEMBERS = [
     {
-      id: "gowrinath",
+      letter: "S",
       name: "Gowrinath",
       role: "Lead Developer & UI Architect",
-      team: "SKETCHERZ · CORE",
-      tone: 1,
-      drop: 8,
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
-      bio: "Architects fluid interactions, motion systems, and frontend repositories.",
-      tags: ["React", "Motion", "UI/UX"]
+      shape: "shape-double-pill",
+      photo: "Images/about us/member-1.jpg",
+      fallback: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80",
+      website: "https://github.com/gowrinath36-tech",
+      linkedin: "#"
     },
     {
-      id: "harikrishna",
+      letter: "K",
       name: "Hari Krishna",
       role: "Full Stack Engineer",
-      team: "SKETCHERZ · SYSTEMS",
-      tone: 2,
-      drop: 22,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
-      bio: "Builds backend microservices, GST billing engines, and scalable database logic.",
-      tags: ["Node.js", "MySQL", "APIs"]
+      shape: "shape-arch",
+      photo: "Images/about us/member-2.jpg",
+      fallback: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
     },
     {
-      id: "titu",
+      letter: "E",
       name: "Titu",
       role: "Creative Direction & UI/UX",
-      team: "SKETCHERZ · DESIGN",
-      tone: 3,
-      drop: 2,
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
-      bio: "Crafts design systems, responsive hierarchies, and unmistakable brand identities.",
-      tags: ["Figma", "Design", "Brand"]
+      shape: "shape-circle",
+      photo: "Images/about us/member-3.jpg",
+      fallback: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
     },
     {
-      id: "karthik",
+      letter: "T",
       name: "Karthik R.",
       role: "Motion Graphics & 3D",
-      team: "SKETCHERZ · MOTION",
-      tone: 4,
-      drop: 16,
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
-      bio: "Engineers WebGL scenes, SVG choreography, and dynamic page transitions.",
-      tags: ["Three.js", "WebGL", "SVG"]
+      shape: "shape-triple-pill",
+      photo: "Images/about us/member-4.jpg",
+      fallback: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
     },
     {
-      id: "priya",
+      letter: "C",
       name: "Priya S.",
       role: "Frontend Developer",
-      team: "SKETCHERZ · WEB",
-      tone: 5,
-      drop: 24,
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
-      bio: "Turns complex interface concepts into accessible, sub-second web components.",
-      tags: ["JS", "CSS Grid", "A11y"]
+      shape: "shape-arch",
+      photo: "Images/about us/member-5.jpg",
+      fallback: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
     },
     {
-      id: "dinesh",
+      letter: "H",
       name: "Dinesh K.",
       role: "Performance & SEO Engineer",
-      team: "SKETCHERZ · GROWTH",
-      tone: 2,
-      drop: 6,
-      image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80",
-      bio: "Optimizes Core Web Vitals, search indexing, and 95+ Lighthouse audit scores.",
-      tags: ["SEO", "Next.js", "Vitals"]
+      shape: "shape-double-pill",
+      photo: "Images/about us/member-6.jpg",
+      fallback: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
     },
     {
-      id: "sneha",
+      letter: "E",
       name: "Sneha M.",
       role: "QA & Automation",
-      team: "SKETCHERZ · QUALITY",
-      tone: 1,
-      drop: 18,
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
-      bio: "Guarantees bug-free launches, test automation pipelines, and cross-device polish.",
-      tags: ["Cypress", "Testing", "QA"]
+      shape: "shape-triple-pill",
+      photo: "Images/about us/member-7.jpg",
+      fallback: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
     },
     {
-      id: "manoj",
+      letter: "R",
       name: "Manoj V.",
       role: "DevOps & Cloud Systems",
-      team: "SKETCHERZ · CLOUD",
-      tone: 3,
-      drop: 10,
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
-      bio: "Manages continuous deployment pipelines, edge CDN caching, and cloud infrastructure.",
-      tags: ["Cloudflare", "CI/CD", "Docker"]
+      shape: "shape-circle",
+      photo: "Images/about us/member-8.jpg",
+      fallback: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
     }
   ];
 
   function initAboutUsMotion() {
-    const stage = document.getElementById("lanyardStage");
-    const slotsWrap = document.getElementById("lanyardSlots");
-    const dotsWrap = document.getElementById("lanyardDots");
-    const titleEl = document.getElementById("lanyardActiveTitle");
-    const hintEl = document.getElementById("lanyardActiveHint");
-    if (!stage || !slotsWrap) return;
-    if (slotsWrap.dataset.ready) {
-      if (typeof window._recomputeLanyard === "function") {
-        window._recomputeLanyard();
-      }
-      return;
-    }
-    slotsWrap.dataset.ready = "true";
+    const grid = document.getElementById("sketcherzGrid");
+    const modal = document.getElementById("squadZModal");
+    const closeBtn = document.getElementById("squadZClose");
+    const rosterEl = document.getElementById("squadZRoster");
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = "true";
 
-    const count = TEAM_LANYARD_MEMBERS.length;
-    const BADGE_W = 132;
-    let activeIndex = 0;
-    let flippedIndex = -1;
-    let isCarousel = window.innerWidth <= 960;
-    let dragStartX = 0;
-    let swipeOffset = 0;
-    let isDragging = false;
+    const globeSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+    const linkedinSvg = `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.633 13.633h-2.37V9.92c0-.885-.017-2.025-1.234-2.025-1.235 0-1.424.965-1.424 1.96v3.778h-2.37V5.998H8.51v1.043h.031a2.5 2.5 0 0 1 2.246-1.233c2.403 0 2.846 1.58 2.846 3.637zM3.56 4.954a1.376 1.376 0 1 1 0-2.751 1.376 1.376 0 0 1 0 2.751m1.185 8.679H2.372V5.998h2.373zM14.815.001H1.18A1.17 1.17 0 0 0 0 1.154v13.691A1.17 1.17 0 0 0 1.18 16h13.635A1.17 1.17 0 0 0 16 14.845V1.153A1.17 1.17 0 0 0 14.815 0"/></svg>`;
 
-    // Physics state per badge
-    const state = TEAM_LANYARD_MEMBERS.map((_, i) => ({
-      x: 0,
-      tx: 0,
-      angle: (i % 2 === 0 ? -1.4 : 1.4),
-      vel: 0,
-      pull: 0
-    }));
-
-    // Build DOM slots & dots
-    const slotEls = [];
-    const swingEls = [];
-    const btnEls = [];
-    const dotEls = [];
-
-    TEAM_LANYARD_MEMBERS.forEach((m, i) => {
-      const strapLen = 42 + (m.drop || 0);
-      const reelTop = 22 + strapLen;
-      const cordTop = reelTop + 20;
-      const clipTop = cordTop + 12;
-      const cardTop = clipTop + 8;
-
-      const slot = document.createElement("div");
-      slot.className = `lanyard-slot tone-${m.tone || ((i % 5) + 1)}`;
-      slot.innerHTML = `
-        <span class="lanyard-ring" aria-hidden="true"></span>
-        <span class="lanyard-swing">
-          <span class="lanyard-strap" style="height:${strapLen}px"></span>
-          <span class="lanyard-reel" style="top:${reelTop}px"></span>
-          <span class="lanyard-cord" style="top:${cordTop}px"></span>
-          <span class="lanyard-clip" style="top:${clipTop}px"></span>
-          <button type="button" class="badge-btn" style="top:${cardTop}px" data-idx="${i}" data-flipped="false" aria-label="${m.name}, ${m.role}">
-            <span class="badge-flipper">
-              <span class="badge-face front">
-                <span class="badge-band"></span>
-                <span class="badge-hole"></span>
-                <span class="badge-avatar"><img src="${m.image}" alt="${m.name}" loading="lazy" /></span>
-                <span class="badge-name">${m.name}</span>
-                <span class="badge-role">${m.role}</span>
-                <span class="badge-team">${m.team || "CODE SKETCHERZ"}</span>
-                <span class="badge-barcode">|||| || | |||| |||</span>
-              </span>
-              <span class="badge-face back">
-                <span class="badge-band"></span>
-                <span class="badge-hole"></span>
-                <span class="badge-back-name">${m.name}</span>
-                <span class="badge-back-role">${m.role}</span>
-                <span class="badge-bio">${m.bio || ""}</span>
-                <span class="badge-tags">${(m.tags || []).map(t => `<span>${t}</span>`).join("")}</span>
-              </span>
-            </span>
-          </button>
-        </span>
+    // Render 8 Members (S-K-E-T-C-H-E-R)
+    SKETCHERZ_MEMBERS.forEach(m => {
+      const article = document.createElement("article");
+      article.className = "sk-member-card";
+      article.innerHTML = `
+        <div class="sk-portrait-box ${m.shape}">
+          <span class="sk-letter-tag">${m.letter}</span>
+          <img src="${m.photo}" onerror="this.onerror=null;this.src='${m.fallback}';" alt="${m.name}" loading="lazy" />
+        </div>
+        <div class="sk-meta">
+          <h4>${m.name}</h4>
+          <p>${m.role}</p>
+          <div class="sk-socials">
+            <a href="${m.website}" target="_blank" rel="noopener noreferrer" aria-label="${m.name} Website">${globeSvg}</a>
+            <a href="${m.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="${m.name} LinkedIn">${linkedinSvg}</a>
+          </div>
+        </div>
       `;
-      slotsWrap.appendChild(slot);
-      slotEls.push(slot);
-      swingEls.push(slot.querySelector(".lanyard-swing"));
-      const btn = slot.querySelector(".badge-btn");
-      btnEls.push(btn);
-
-      // Click to flip badge
-      btn.addEventListener("click", () => {
-        if (Math.abs(swipeOffset) > 10) return;
-        flippedIndex = flippedIndex === i ? -1 : i;
-        activeIndex = i;
-        state[i].vel += (i % 2 === 0 ? 14 : -14);
-        updateCaption();
-        syncFlipStates();
-      });
-
-      // Hover impulse
-      btn.addEventListener("mouseenter", () => {
-        if (!isCarousel) {
-          activeIndex = i;
-          state[i].vel += (Math.random() > 0.5 ? 12 : -12);
-          updateCaption();
-          syncZIndex();
-        }
-      });
-
-      // Dot button for tablet/mobile
-      if (dotsWrap) {
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.className = "lanyard-dot" + (i === 0 ? " active" : "");
-        dot.setAttribute("aria-label", `Show ${m.name}`);
-        dot.addEventListener("click", () => {
-          activeIndex = i;
-          flippedIndex = -1;
-          state[i].vel += 10;
-          syncFlipStates();
-          updateCaption();
-          computeTargets();
-        });
-        dotsWrap.appendChild(dot);
-        dotEls.push(dot);
-      }
+      grid.appendChild(article);
     });
 
-    function syncFlipStates() {
-      btnEls.forEach((b, idx) => {
-        b.dataset.flipped = flippedIndex === idx ? "true" : "false";
+    // Render 9th Interactive "Z" Card (Click to see more)
+    const zBtn = document.createElement("button");
+    zBtn.type = "button";
+    zBtn.className = "sk-member-card sk-z-trigger-card";
+    zBtn.setAttribute("aria-label", "See more about Code Sketcherz team");
+    zBtn.innerHTML = `
+      <div class="sk-z-box">
+        <span class="sk-z-giant">Z</span>
+        <span class="sk-z-pill">Click to see more ↗</span>
+      </div>
+      <div class="sk-meta">
+        <h4>More &amp; Careers</h4>
+        <p>Full Stack · Motion · Cloud</p>
+      </div>
+    `;
+    grid.appendChild(zBtn);
+
+    if (rosterEl) {
+      rosterEl.innerHTML = SKETCHERZ_MEMBERS.map(m => `<span>${m.letter} · ${m.name} (${m.role})</span>`).join("");
+    }
+
+    if (modal) {
+      zBtn.addEventListener("click", () => {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
       });
-      syncZIndex();
-    }
-
-    function syncZIndex() {
-      slotEls.forEach((s, idx) => {
-        s.style.zIndex = idx === flippedIndex ? "40" : idx === activeIndex ? "30" : String(10 + idx);
+      const closeModal = () => {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+      };
+      closeBtn?.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
       });
-      dotEls.forEach((d, idx) => d.classList.toggle("active", idx === activeIndex));
-    }
-
-    function updateCaption() {
-      const m = TEAM_LANYARD_MEMBERS[activeIndex];
-      if (!m || !titleEl || !hintEl) return;
-      titleEl.textContent = `${m.name} — ${m.role}`;
-      hintEl.textContent = flippedIndex === activeIndex
-        ? "Tap badge again to turn back to photo"
-        : "Tap badge to flip for bio & tech stack";
-    }
-
-    function computeTargets() {
-      const W = stage.clientWidth || stage.parentElement?.clientWidth || window.innerWidth;
-      isCarousel = W <= 960;
-      if (!isCarousel) {
-        const usable = W - 64;
-        const pitch = usable / Math.max(1, count);
-        const start = (W - pitch * (count - 1)) / 2;
-        state.forEach((st, i) => {
-          st.tx = start + i * pitch;
-        });
-      } else {
-        const pitch = W < 540 ? 156 : 168;
-        state.forEach((st, i) => {
-          let diff = i - activeIndex;
-          if (diff > count / 2) diff -= count;
-          if (diff < -count / 2) diff += count;
-          st.tx = W / 2 + diff * pitch + swipeOffset;
-        });
-      }
-      syncZIndex();
-    }
-
-    window._recomputeLanyard = () => {
-      computeTargets();
-    };
-
-    // Touch & Mouse Horizontal Swipe on Mobile/Tablet
-    stage.addEventListener("pointerdown", (e) => {
-      if (!isCarousel) return;
-      isDragging = true;
-      dragStartX = e.clientX;
-      swipeOffset = 0;
-    });
-
-    window.addEventListener("pointermove", (e) => {
-      if (!isDragging || !isCarousel) return;
-      swipeOffset = e.clientX - dragStartX;
-      computeTargets();
-    });
-
-    window.addEventListener("pointerup", () => {
-      if (!isDragging) return;
-      isDragging = false;
-      if (Math.abs(swipeOffset) > 36) {
-        const dir = swipeOffset < 0 ? 1 : -1;
-        activeIndex = (activeIndex + dir + count) % count;
-        flippedIndex = -1;
-        state[activeIndex].vel += dir * -14;
-        syncFlipStates();
-        updateCaption();
-      }
-      swipeOffset = 0;
-      computeTargets();
-    });
-
-    window.addEventListener("resize", computeTargets);
-    computeTargets();
-    state.forEach(st => { st.x = st.tx; });
-    updateCaption();
-
-    // Spring Physics Loop
-    let lastT = performance.now();
-    function animateRail(now) {
-      const dt = Math.min(0.05, (now - lastT) / 1000);
-      lastT = now;
-
-      state.forEach((st, i) => {
-        const prevX = st.x;
-        st.x += (st.tx - st.x) * Math.min(1, dt * 11);
-        const dx = (st.x - prevX) / Math.max(0.008, dt);
-
-        // Pendulum spring
-        st.vel += (-26 * st.angle - 2.4 * st.vel - dx * 0.035) * dt;
-        st.angle = Math.max(-18, Math.min(18, st.angle + st.vel * dt));
-
-        slotEls[i].style.transform = `translate3d(${(st.x - BADGE_W / 2).toFixed(2)}px, 0, 0)`;
-        swingEls[i].style.transform = `rotate(${st.angle.toFixed(2)}deg)`;
+      const ctaBtn = modal.querySelector(".squad-z-cta");
+      ctaBtn?.addEventListener("click", () => {
+        closeModal();
       });
-
-      requestAnimationFrame(animateRail);
     }
-    requestAnimationFrame(animateRail);
   }
 
   // ==========================================
@@ -1114,6 +949,7 @@
   }
 
   initFooter();
+  initAboutUsMotion();
 
   // ==========================================
   // 11. INITIAL PAGE LOAD
