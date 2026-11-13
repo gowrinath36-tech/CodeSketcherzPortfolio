@@ -176,68 +176,328 @@
   }
 
   // ==========================================
-  // ABOUT US 8-MEMBER GRID MOTION
+  // ABOUT US TEAM LANYARD RAIL & PHYSICS ENGINE
   // ==========================================
 
-  function initAboutUsMotion() {
-    const cards = document.querySelectorAll('#aboutus .member-card');
-    if (!cards.length) return;
+  const TEAM_LANYARD_MEMBERS = [
+    {
+      id: "gowrinath",
+      name: "Gowrinath",
+      role: "Lead Developer & UI Architect",
+      team: "SKETCHERZ · CORE",
+      tone: 1,
+      drop: 8,
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      bio: "Architects fluid interactions, motion systems, and frontend repositories.",
+      tags: ["React", "Motion", "UI/UX"]
+    },
+    {
+      id: "harikrishna",
+      name: "Hari Krishna",
+      role: "Full Stack Engineer",
+      team: "SKETCHERZ · SYSTEMS",
+      tone: 2,
+      drop: 22,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      bio: "Builds backend microservices, GST billing engines, and scalable database logic.",
+      tags: ["Node.js", "MySQL", "APIs"]
+    },
+    {
+      id: "titu",
+      name: "Titu",
+      role: "Creative Direction & UI/UX",
+      team: "SKETCHERZ · DESIGN",
+      tone: 3,
+      drop: 2,
+      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+      bio: "Crafts design systems, responsive hierarchies, and unmistakable brand identities.",
+      tags: ["Figma", "Design", "Brand"]
+    },
+    {
+      id: "karthik",
+      name: "Karthik R.",
+      role: "Motion Graphics & 3D",
+      team: "SKETCHERZ · MOTION",
+      tone: 4,
+      drop: 16,
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+      bio: "Engineers WebGL scenes, SVG choreography, and dynamic page transitions.",
+      tags: ["Three.js", "WebGL", "SVG"]
+    },
+    {
+      id: "priya",
+      name: "Priya S.",
+      role: "Frontend Developer",
+      team: "SKETCHERZ · WEB",
+      tone: 5,
+      drop: 24,
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+      bio: "Turns complex interface concepts into accessible, sub-second web components.",
+      tags: ["JS", "CSS Grid", "A11y"]
+    },
+    {
+      id: "dinesh",
+      name: "Dinesh K.",
+      role: "Performance & SEO Engineer",
+      team: "SKETCHERZ · GROWTH",
+      tone: 2,
+      drop: 6,
+      image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80",
+      bio: "Optimizes Core Web Vitals, search indexing, and 95+ Lighthouse audit scores.",
+      tags: ["SEO", "Next.js", "Vitals"]
+    },
+    {
+      id: "sneha",
+      name: "Sneha M.",
+      role: "QA & Automation",
+      team: "SKETCHERZ · QUALITY",
+      tone: 1,
+      drop: 18,
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      bio: "Guarantees bug-free launches, test automation pipelines, and cross-device polish.",
+      tags: ["Cypress", "Testing", "QA"]
+    },
+    {
+      id: "manoj",
+      name: "Manoj V.",
+      role: "DevOps & Cloud Systems",
+      team: "SKETCHERZ · CLOUD",
+      tone: 3,
+      drop: 10,
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+      bio: "Manages continuous deployment pipelines, edge CDN caching, and cloud infrastructure.",
+      tags: ["Cloudflare", "CI/CD", "Docker"]
+    }
+  ];
 
-    if (typeof gsap === 'undefined') {
-      if (!document.querySelector('script[src*="gsap"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
-        script.onload = () => initAboutUsMotion();
-        document.head.appendChild(script);
+  function initAboutUsMotion() {
+    const stage = document.getElementById("lanyardStage");
+    const slotsWrap = document.getElementById("lanyardSlots");
+    const dotsWrap = document.getElementById("lanyardDots");
+    const titleEl = document.getElementById("lanyardActiveTitle");
+    const hintEl = document.getElementById("lanyardActiveHint");
+    if (!stage || !slotsWrap) return;
+    if (slotsWrap.dataset.ready) {
+      if (typeof window._recomputeLanyard === "function") {
+        window._recomputeLanyard();
       }
       return;
     }
+    slotsWrap.dataset.ready = "true";
 
-    // Elastic staggered entry reveal
-    gsap.fromTo(cards,
-      {
-        opacity: 0,
-        scale: 0.9,
-        y: 40
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 0.85,
-        ease: "back.out(1.5)",
-        stagger: 0.08,
-        overwrite: "auto"
+    const count = TEAM_LANYARD_MEMBERS.length;
+    const BADGE_W = 132;
+    let activeIndex = 0;
+    let flippedIndex = -1;
+    let isCarousel = window.innerWidth <= 960;
+    let dragStartX = 0;
+    let swipeOffset = 0;
+    let isDragging = false;
+
+    // Physics state per badge
+    const state = TEAM_LANYARD_MEMBERS.map((_, i) => ({
+      x: 0,
+      tx: 0,
+      angle: (i % 2 === 0 ? -1.4 : 1.4),
+      vel: 0,
+      pull: 0
+    }));
+
+    // Build DOM slots & dots
+    const slotEls = [];
+    const swingEls = [];
+    const btnEls = [];
+    const dotEls = [];
+
+    TEAM_LANYARD_MEMBERS.forEach((m, i) => {
+      const strapLen = 42 + (m.drop || 0);
+      const reelTop = 22 + strapLen;
+      const cordTop = reelTop + 20;
+      const clipTop = cordTop + 12;
+      const cardTop = clipTop + 8;
+
+      const slot = document.createElement("div");
+      slot.className = `lanyard-slot tone-${m.tone || ((i % 5) + 1)}`;
+      slot.innerHTML = `
+        <span class="lanyard-ring" aria-hidden="true"></span>
+        <span class="lanyard-swing">
+          <span class="lanyard-strap" style="height:${strapLen}px"></span>
+          <span class="lanyard-reel" style="top:${reelTop}px"></span>
+          <span class="lanyard-cord" style="top:${cordTop}px"></span>
+          <span class="lanyard-clip" style="top:${clipTop}px"></span>
+          <button type="button" class="badge-btn" style="top:${cardTop}px" data-idx="${i}" data-flipped="false" aria-label="${m.name}, ${m.role}">
+            <span class="badge-flipper">
+              <span class="badge-face front">
+                <span class="badge-band"></span>
+                <span class="badge-hole"></span>
+                <span class="badge-avatar"><img src="${m.image}" alt="${m.name}" loading="lazy" /></span>
+                <span class="badge-name">${m.name}</span>
+                <span class="badge-role">${m.role}</span>
+                <span class="badge-team">${m.team || "CODE SKETCHERZ"}</span>
+                <span class="badge-barcode">|||| || | |||| |||</span>
+              </span>
+              <span class="badge-face back">
+                <span class="badge-band"></span>
+                <span class="badge-hole"></span>
+                <span class="badge-back-name">${m.name}</span>
+                <span class="badge-back-role">${m.role}</span>
+                <span class="badge-bio">${m.bio || ""}</span>
+                <span class="badge-tags">${(m.tags || []).map(t => `<span>${t}</span>`).join("")}</span>
+              </span>
+            </span>
+          </button>
+        </span>
+      `;
+      slotsWrap.appendChild(slot);
+      slotEls.push(slot);
+      swingEls.push(slot.querySelector(".lanyard-swing"));
+      const btn = slot.querySelector(".badge-btn");
+      btnEls.push(btn);
+
+      // Click to flip badge
+      btn.addEventListener("click", () => {
+        if (Math.abs(swipeOffset) > 10) return;
+        flippedIndex = flippedIndex === i ? -1 : i;
+        activeIndex = i;
+        state[i].vel += (i % 2 === 0 ? 14 : -14);
+        updateCaption();
+        syncFlipStates();
+      });
+
+      // Hover impulse
+      btn.addEventListener("mouseenter", () => {
+        if (!isCarousel) {
+          activeIndex = i;
+          state[i].vel += (Math.random() > 0.5 ? 12 : -12);
+          updateCaption();
+          syncZIndex();
+        }
+      });
+
+      // Dot button for tablet/mobile
+      if (dotsWrap) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "lanyard-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("aria-label", `Show ${m.name}`);
+        dot.addEventListener("click", () => {
+          activeIndex = i;
+          flippedIndex = -1;
+          state[i].vel += 10;
+          syncFlipStates();
+          updateCaption();
+          computeTargets();
+        });
+        dotsWrap.appendChild(dot);
+        dotEls.push(dot);
       }
-    );
-
-    // 3D Perspective tilt
-    cards.forEach(card => {
-      if (card.dataset.tiltBound) return;
-      card.dataset.tiltBound = "true";
-
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        gsap.to(card, {
-          rotationY: x * 0.04,
-          rotationX: -y * 0.04,
-          transformPerspective: 900,
-          duration: 0.25,
-          ease: "power2.out"
-        });
-      });
-
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, {
-          rotationY: 0,
-          rotationX: 0,
-          duration: 0.6,
-          ease: "elastic.out(1, 0.6)"
-        });
-      });
     });
+
+    function syncFlipStates() {
+      btnEls.forEach((b, idx) => {
+        b.dataset.flipped = flippedIndex === idx ? "true" : "false";
+      });
+      syncZIndex();
+    }
+
+    function syncZIndex() {
+      slotEls.forEach((s, idx) => {
+        s.style.zIndex = idx === flippedIndex ? "40" : idx === activeIndex ? "30" : String(10 + idx);
+      });
+      dotEls.forEach((d, idx) => d.classList.toggle("active", idx === activeIndex));
+    }
+
+    function updateCaption() {
+      const m = TEAM_LANYARD_MEMBERS[activeIndex];
+      if (!m || !titleEl || !hintEl) return;
+      titleEl.textContent = `${m.name} — ${m.role}`;
+      hintEl.textContent = flippedIndex === activeIndex
+        ? "Tap badge again to turn back to photo"
+        : "Tap badge to flip for bio & tech stack";
+    }
+
+    function computeTargets() {
+      const W = stage.clientWidth || stage.parentElement?.clientWidth || window.innerWidth;
+      isCarousel = W <= 960;
+      if (!isCarousel) {
+        const usable = W - 64;
+        const pitch = usable / Math.max(1, count);
+        const start = (W - pitch * (count - 1)) / 2;
+        state.forEach((st, i) => {
+          st.tx = start + i * pitch;
+        });
+      } else {
+        const pitch = W < 540 ? 156 : 168;
+        state.forEach((st, i) => {
+          let diff = i - activeIndex;
+          if (diff > count / 2) diff -= count;
+          if (diff < -count / 2) diff += count;
+          st.tx = W / 2 + diff * pitch + swipeOffset;
+        });
+      }
+      syncZIndex();
+    }
+
+    window._recomputeLanyard = () => {
+      computeTargets();
+    };
+
+    // Touch & Mouse Horizontal Swipe on Mobile/Tablet
+    stage.addEventListener("pointerdown", (e) => {
+      if (!isCarousel) return;
+      isDragging = true;
+      dragStartX = e.clientX;
+      swipeOffset = 0;
+    });
+
+    window.addEventListener("pointermove", (e) => {
+      if (!isDragging || !isCarousel) return;
+      swipeOffset = e.clientX - dragStartX;
+      computeTargets();
+    });
+
+    window.addEventListener("pointerup", () => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (Math.abs(swipeOffset) > 36) {
+        const dir = swipeOffset < 0 ? 1 : -1;
+        activeIndex = (activeIndex + dir + count) % count;
+        flippedIndex = -1;
+        state[activeIndex].vel += dir * -14;
+        syncFlipStates();
+        updateCaption();
+      }
+      swipeOffset = 0;
+      computeTargets();
+    });
+
+    window.addEventListener("resize", computeTargets);
+    computeTargets();
+    state.forEach(st => { st.x = st.tx; });
+    updateCaption();
+
+    // Spring Physics Loop
+    let lastT = performance.now();
+    function animateRail(now) {
+      const dt = Math.min(0.05, (now - lastT) / 1000);
+      lastT = now;
+
+      state.forEach((st, i) => {
+        const prevX = st.x;
+        st.x += (st.tx - st.x) * Math.min(1, dt * 11);
+        const dx = (st.x - prevX) / Math.max(0.008, dt);
+
+        // Pendulum spring
+        st.vel += (-26 * st.angle - 2.4 * st.vel - dx * 0.035) * dt;
+        st.angle = Math.max(-18, Math.min(18, st.angle + st.vel * dt));
+
+        slotEls[i].style.transform = `translate3d(${(st.x - BADGE_W / 2).toFixed(2)}px, 0, 0)`;
+        swingEls[i].style.transform = `rotate(${st.angle.toFixed(2)}deg)`;
+      });
+
+      requestAnimationFrame(animateRail);
+    }
+    requestAnimationFrame(animateRail);
   }
 
   // ==========================================
@@ -754,7 +1014,7 @@
       );
 
       let body =
-        'Hello Code Sketchers,\n\n' +
+        'Hello Code Sketcherz,\n\n' +
         'You have received a new website enquiry.\n\n' +
         'Name: ' + name + '\n' +
         'Email: ' + email + '\n';
@@ -768,7 +1028,7 @@
         '\n\nThank you!';
 
       const mailto =
-        'mailto:hello@codesketchers.studio' +
+        'mailto:hello@codesketcherz.studio' +
         '?subject=' + subject +
         '&body=' + encodeURIComponent(body);
 

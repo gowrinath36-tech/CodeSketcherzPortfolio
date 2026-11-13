@@ -1,39 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
 
 /* ==========================================================================
-   Code Sketchers Theme Variables (Light & Dark Mode)
-   Sampling & Architecture from Studio Reference
+   Code Sketcherz Theme Variables (Light & Dark Mode)
+   60-30-10 Color Architecture & Typography Tokens
    ========================================================================== */
 :root,
 [data-theme="dark"] {
   --header-h: 76px;
 
-  /* Brand & Accents (Exact Reference Sampling) */
+  /* 60% Dominant Primary Canvas */
+  --bg-dominant: #0b0b0b;
+  --canvas-black: #0b0b0b;
+  --canvas-white: #111113;
+  --canvas-paper: #111113;
+
+  /* 30% Secondary Surfaces & Elevated Cards */
+  --bg-secondary: #18181b;
+  --bg-card: #1e1e22;
+  --border-subtle: rgba(255, 255, 255, 0.09);
+
+  /* 10% Brand Accent */
+  --accent-primary: #fed000;
+  --accent-heading: #fed000;
   --yellow: #fed000;
   --yellow-hover: #e5bc00;
   --accent-yellow: #fed000;
-  --accent-heading: #fed000;
   --accent-btn-text: #0b0b0b;
+
+  /* Text Hierarchy */
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --canvas-text-light: #f4f4f5;
+  --canvas-text-dark: #f4f4f5;
 
   /* Surfaces & Backgrounds */
   --black: #0b0b0b;
   --white: #ffffff;
-  --paper: #141414;
-  --muted: #8e908c;
+  --paper: #111113;
+  --muted: #71717a;
 
   --bg-page: #0b0b0b;
-  --bg-surface: #141414;
-  --bg-surface-elevated: #1a1a1a;
+  --bg-surface: #18181b;
+  --bg-surface-elevated: #1e1e22;
   --bg-header: rgba(11, 11, 11, 0.92);
 
-  /* Typography Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #8e908c;
-  --text-muted: #5a5a58;
-
   /* Navigation & Controls */
-  --nav-bg: #1a1a1a;
-  --nav-text: #e4e4e7;
+  --nav-bg: #1e1e22;
+  --nav-text: #f4f4f5;
   --nav-hover-bg: #fed000;
   --nav-hover-text: #0b0b0b;
 
@@ -49,72 +63,70 @@
   --badge-border: #3b341b;
   --badge-text: #d4be48;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
   --border-card: #222220;
   --live-dot: #a3e635;
-
-  /* Two-Tone Section Canvases (Seamless Transitions) */
-  --canvas-black: #0b0b0b;
-  --canvas-white: #161616;
-  --canvas-paper: #121212;
-  --canvas-text-light: #ffffff;
-  --canvas-text-dark: #e4e4e7;
 }
 
 [data-theme="light"] {
   --header-h: 76px;
 
-  /* Brand & Accents */
+  /* 60% Dominant Primary Canvas */
+  --bg-dominant: #f8f8f7;
+  --canvas-black: #141416; /* Intentional dark contrast hero/services */
+  --canvas-white: #ffffff;
+  --canvas-paper: #f8f8f7;
+
+  /* 30% Secondary Surfaces & Elevated Cards */
+  --bg-secondary: #f1f1ef;
+  --bg-card: #ffffff;
+  --border-subtle: rgba(20, 20, 22, 0.1);
+
+  /* 10% Brand Accent */
+  --accent-primary: #fed000;
+  --accent-heading: #b45309; /* High-contrast amber on light surfaces */
   --yellow: #fed000;
   --yellow-hover: #e5bc00;
   --accent-yellow: #fed000;
-  --accent-heading: #b45309; /* Accessible warm amber text on light bg */
   --accent-btn-text: #0b0b0b;
 
+  /* Text Hierarchy */
+  --text-primary: #141416;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --canvas-text-light: #ffffff;
+  --canvas-text-dark: #141416;
+
   /* Surfaces & Backgrounds */
-  --black: #171717;
+  --black: #141416;
   --white: #ffffff;
-  --paper: #f5f5f4;
-  --muted: #71717a;
+  --paper: #f8f8f7;
+  --muted: #6b7280;
 
-  --bg-page: #f9f9f8;
+  --bg-page: #f8f8f7;
   --bg-surface: #ffffff;
-  --bg-surface-elevated: #f4f4f2;
-  --bg-header: rgba(249, 249, 248, 0.95);
-
-  /* Typography Colors */
-  --text-primary: #111111;
-  --text-secondary: #57595c;
-  --text-muted: #8c8f94;
+  --bg-surface-elevated: #f1f1ef;
+  --bg-header: rgba(248, 248, 247, 0.95);
 
   /* Navigation & Controls */
   --nav-bg: #e5e5e5;
-  --nav-text: #171717;
+  --nav-text: #141416;
   --nav-hover-bg: #fed000;
   --nav-hover-text: #0b0b0b;
 
-  --cta-bg: #171717;
+  --cta-bg: #141416;
   --cta-text: #ffffff;
   --cta-arrow: #fed000;
 
   --btn-dark-bg: transparent;
   --btn-dark-border: #d1d5db;
-  --btn-dark-text: #111111;
+  --btn-dark-text: #141416;
 
   --badge-bg: #fef3c7;
   --badge-border: #fde68a;
   --badge-text: #92400e;
 
-  --border-subtle: rgba(23, 23, 23, 0.08);
   --border-card: #e5e7eb;
   --live-dot: #16a34a;
-
-  /* Two-Tone Section Canvases */
-  --canvas-black: #171717;
-  --canvas-white: #ffffff;
-  --canvas-paper: #f5f5f4;
-  --canvas-text-light: #ffffff;
-  --canvas-text-dark: #171717;
 }
 
 * {
@@ -378,7 +390,7 @@ button {
    ========================================================================== */
 .panel-top-canvas {
   width: 100%;
-  padding: 40px clamp(24px, 6vw, 80px) 24px;
+  padding: clamp(36px, 5vw, 64px) clamp(24px, 6vw, 84px) clamp(28px, 4vw, 44px);
   box-sizing: border-box;
 }
 
@@ -398,56 +410,53 @@ button {
   justify-content: space-between;
   align-items: center;
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   padding-bottom: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .panel-top-canvas.bg-black .section-top {
   color: #a1a1aa;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .panel-top-canvas.bg-white .section-top {
-  color: #71717a;
-  border-bottom: 1px solid rgba(23, 23, 23, 0.08);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .section-main {
-  max-width: 960px;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .eyebrow {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin: 0 0 18px;
   color: var(--accent-heading);
-  opacity: 0.95;
+  margin: 0 0 14px 0;
 }
 
-.section-main h1 {
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
-  font-size: clamp(44px, 6.2vw, 84px);
+.section-main h1,
+.section-main h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(40px, 5.6vw, 76px);
   line-height: 1.08;
   letter-spacing: -0.025em;
   font-weight: 400;
-  margin: 0;
-}
-
-.section-main h2 {
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
-  font-size: clamp(38px, 5.2vw, 72px);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  font-weight: 400;
-  margin: 0;
+  margin: 0 0 22px 0;
 }
 
 .highlight {
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
   font-weight: 400;
   color: var(--accent-heading);
@@ -458,19 +467,16 @@ button {
 
 .period {
   color: var(--accent-heading);
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 .section-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(15px, 1.35vw, 17.5px);
-  line-height: 1.68;
-  max-width: 560px;
-  margin-top: 22px;
-  color: var(--text-secondary);
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.65;
+  max-width: 58ch;
+  margin: 0;
   font-weight: 400;
-  letter-spacing: -0.01em;
-  opacity: 0.9;
 }
 
 /* ==========================================================================
@@ -520,7 +526,7 @@ button {
    ========================================================================== */
 .panel-bottom-block {
   width: 100%;
-  padding: 40px clamp(24px, 6vw, 80px) 60px;
+  padding: clamp(40px, 5vw, 64px) clamp(24px, 6vw, 84px) clamp(48px, 6vw, 72px);
   box-sizing: border-box;
   flex: 1 0 auto;
 }
@@ -1478,7 +1484,7 @@ body.start-here-visible .about-nav-item::before {
 }
 
 /* ==========================================
-   CODE SKETCHERS - NEW SERVICES DESIGN
+   CODE SKETCHERZ - NEW SERVICES DESIGN
 ========================================== */
 
 .services-content {
@@ -2069,126 +2075,466 @@ body.start-here-visible .about-nav-item::before {
 }
 
 /* ==========================================================================
-   Scoped 8-Member Team Grid in About Us Section
+   TEAM LANYARD RAIL (#aboutus) — DESKTOP RAIL + MOBILE SWIPE CAROUSEL
    ========================================================================== */
-.team-grid-8 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+.lanyard-rail-wrapper {
+  position: relative;
   width: 100%;
-  margin: 30px 0 50px;
-}
-
-.member-card {
-  background: #202023;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.member-card:hover {
-  border-color: rgba(255, 201, 40, 0.45);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45), 0 0 20px rgba(255, 201, 40, 0.12);
-}
-
-.member-avatar {
-  width: 112px;
-  height: 112px;
-  aspect-ratio: 1 / 1;
-  border-radius: 10px;
+  max-width: 1280px;
+  margin: 0 auto 36px;
+  background: var(--bg-dominant, #0b0b0b);
+  color: var(--text-primary, #f4f4f5);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.1));
+  border-radius: 20px;
+  padding: clamp(24px, 3.5vw, 40px) 0 clamp(24px, 3.5vw, 36px);
   overflow: hidden;
-  background: #141416;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  flex-shrink: 0;
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.35);
 }
 
-.member-avatar img {
+.lanyard-header {
+  text-align: center;
+  padding: 0 24px;
+  margin-bottom: 12px;
+}
+
+.lanyard-eyebrow {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-heading, #fed000);
+  margin-bottom: 8px;
+}
+
+.lanyard-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--text-primary, #ffffff);
+}
+
+/* Stage & Metallic Rail */
+.lanyard-stage {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  touch-action: pan-y;
+  user-select: none;
+  overflow: hidden;
+}
+
+.lanyard-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 18px;
+  height: 8px;
+  background: linear-gradient(to bottom, #e4e4e7 0%, #ffffff 25%, #a1a1aa 65%, #52525b 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.rail-cap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 26px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #71717a, #d4d4d8, #52525b);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+.rail-cap.left { left: 8px; }
+.rail-cap.right { right: 8px; }
+
+.lanyard-slots {
+  position: relative;
   width: 100%;
   height: 100%;
+}
+
+/* Individual Hanging Lanyard Slot */
+.lanyard-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 132px;
+  height: 340px;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.lanyard-ring {
+  position: absolute;
+  left: 50%;
+  top: 13px;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 2.5px solid #d4d4d8;
+  z-index: 2;
+}
+
+.lanyard-swing {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 22px;
+  will-change: transform;
+}
+
+/* Woven Ribbon Strap */
+.lanyard-strap {
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  width: 12px;
+  transform: translateX(-50%);
+  border-radius: 0 0 2px 2px;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
+}
+.lanyard-strap::after {
+  content: "";
+  position: absolute;
+  inset: 0 2px;
+  border-left: 1px dashed rgba(255, 255, 255, 0.4);
+  border-right: 1px dashed rgba(255, 255, 255, 0.4);
+}
+
+/* Tone Colours */
+.tone-1 { --band-color: #fed000; --band-text: #141416; }
+.tone-2 { --band-color: #2563eb; --band-text: #ffffff; }
+.tone-3 { --band-color: #10b981; --band-text: #06281e; }
+.tone-4 { --band-color: #f97316; --band-text: #ffffff; }
+.tone-5 { --band-color: #a855f7; --band-text: #ffffff; }
+
+.lanyard-strap {
+  background: linear-gradient(90deg, rgba(0,0,0,0.2), var(--band-color) 25%, var(--band-color) 75%, rgba(0,0,0,0.25));
+}
+
+/* Retractable Reel & Cord */
+.lanyard-reel {
+  position: absolute;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #52525b, #18181b 75%);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.lanyard-cord {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 14px;
+  transform: translateX(-50%);
+  transform-origin: top center;
+  background: #a1a1aa;
+}
+
+.lanyard-clip {
+  position: absolute;
+  left: 50%;
+  width: 28px;
+  height: 12px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #d4d4d8, #71717a);
+  clip-path: polygon(22% 0, 78% 0, 100% 75%, 92% 100%, 8% 100%, 0 75%);
+}
+
+/* 3D Flip Badge Button */
+.badge-btn {
+  pointer-events: auto;
+  position: absolute;
+  left: 0;
+  width: 132px;
+  height: 204px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 950px;
+  outline: none;
+}
+
+.badge-flipper {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.badge-btn[data-flipped="true"] .badge-flipper {
+  transform: rotateY(180deg);
+}
+
+.badge-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: var(--bg-card, #18181b);
+  color: var(--text-primary, #f4f4f5);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.14));
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.4);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px 10px;
+  text-align: center;
+}
+
+.badge-face.back {
+  transform: rotateY(180deg);
+  align-items: flex-start;
+  text-align: left;
+  padding: 34px 11px 10px;
+}
+
+.badge-band {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 46px;
+  background: var(--band-color);
+}
+
+.badge-face.back .badge-band {
+  height: 24px;
+}
+
+.badge-hole {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-dominant, #0b0b0b);
+}
+
+.badge-avatar {
+  position: relative;
+  z-index: 2;
+  margin-top: 22px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  padding: 2.5px;
+  background: var(--bg-card, #18181b);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.badge-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   object-fit: cover;
-  filter: grayscale(100%);
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.45s ease;
+  display: block;
 }
 
-.member-card:hover .member-avatar img {
-  filter: grayscale(0%);
-  transform: scale(1.08);
-}
-
-.member-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.member-info h3 {
+.badge-name {
+  margin-top: 8px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
+  font-size: 13.5px;
   font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 4px;
-  letter-spacing: -0.03em;
+  line-height: 1.2;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.member-role {
-  display: inline-block;
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: #ffc928;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.member-info p {
+.badge-role {
+  margin-top: 3px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #9f9fa9;
-  margin: 0 0 12px;
+  font-size: 11px;
+  color: var(--text-secondary, #a1a1aa);
+  line-height: 1.25;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge-team {
+  margin-top: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-heading, #fed000);
+}
+
+.badge-barcode {
+  margin-top: auto;
+  width: 100%;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-subtle, rgba(255, 255, 255, 0.15));
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: var(--text-muted, #71717a);
+}
+
+/* Back Face Details */
+.badge-back-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.badge-back-role {
+  font-size: 10px;
+  color: var(--accent-heading, #fed000);
+  margin-bottom: 6px;
+}
+
+.badge-bio {
+  font-size: 10.5px;
+  line-height: 1.38;
+  color: var(--text-secondary, #d4d4d8);
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 8px;
 }
 
-.skill-chips {
+.badge-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 3px;
+  margin-top: auto;
 }
 
-.skill-chips span {
+.badge-tags span {
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #d4d4d8;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 8.5px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
 }
 
-@media (max-width: 900px) {
-  .team-grid-8 {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+/* Mobile Carousel Dots */
+.lanyard-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin: 6px 0 12px;
 }
 
-@media (max-width: 540px) {
-  .member-card {
-    flex-direction: column;
-    text-align: center;
-    padding: 18px;
+.lanyard-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  background: var(--text-muted, #52525b);
+  transition: width 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+.lanyard-dot.active {
+  width: 24px;
+  background: var(--accent-primary, #fed000);
+}
+
+/* Bottom Caption & Hiring CTA */
+.lanyard-footer-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 8px 24px 0;
+}
+
+.lanyard-active-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.lanyard-active-hint {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text-secondary, #a1a1aa);
+  margin: 0;
+}
+
+.lanyard-hiring-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent-primary, #fed000);
+  color: #141416;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  box-shadow: 0 8px 20px rgba(254, 208, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.lanyard-hiring-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(254, 208, 0, 0.35);
+}
+
+.hiring-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+/* Light Theme Adaptations */
+[data-theme="light"] .lanyard-rail-wrapper {
+  background: var(--bg-dominant, #f8f8f7);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .badge-face {
+  background: #ffffff;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .badge-bio {
+  color: var(--text-secondary, #4b5563);
+}
+
+[data-theme="light"] .badge-tags span {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary, #141416);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 960px) {
+  .lanyard-dots {
+    display: flex;
   }
-  .skill-chips {
-    justify-content: center;
+  .rail-cap {
+    display: none;
   }
 }
 
@@ -2198,11 +2544,11 @@ body.start-here-visible .about-nav-item::before {
 /* Studio Grid Layout (Pillars + Contrast Card) */
 .studio-grid-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(32px, 5vw, 64px);
   align-items: start;
-  margin-top: 20px;
-  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 /* Left Column: Studio Pillars */
@@ -2214,67 +2560,67 @@ body.start-here-visible .about-nav-item::before {
 .pillars-eyebrow {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  letter-spacing: 0.12em;
   font-weight: 700;
-  color: #171717;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  margin-bottom: 24px;
   display: block;
-  margin-bottom: 22px;
 }
 
 .pillar-item {
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  margin-bottom: 24px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(23, 23, 23, 0.15);
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(20, 20, 22, 0.14);
 }
 
-.pillar-item:last-child {
+.pillar-item:first-of-type {
+  padding-top: 0;
+}
+
+.pillar-item:last-of-type {
   border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
 }
 
 .pillar-item b {
   font-family: 'DM Mono', monospace;
-  font-size: 18px;
-  font-weight: 800;
-  color: #171717;
-  line-height: 1.2;
-  flex-shrink: 0;
-  width: 28px;
+  font-size: 15px;
+  font-weight: 700;
+  padding-top: 2px;
 }
 
 .pillar-item h4 {
   font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
-  color: #171717;
-  margin: 0 0 6px;
   letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
 }
 
 .pillar-item p {
   font-family: 'DM Sans', sans-serif;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: rgba(23, 23, 23, 0.85);
+  font-size: 14.5px;
+  line-height: 1.6;
   margin: 0;
+  max-width: 50ch;
 }
 
-/* Right Column: Contrast Card */
+/* Right Column: Contrast Card (30% Secondary Dark Anchor inside Yellow Block) */
 .contrast-card {
-  background: #171717;
-  color: #ffffff;
-  border-radius: 12px;
-  padding: 28px;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  background: #141416;
+  color: #f4f4f5;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: clamp(24px, 3.5vw, 36px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.28);
 }
 
 .contrast-header {
+  padding-bottom: 18px;
   margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .badge-tag {
@@ -2289,19 +2635,18 @@ body.start-here-visible .about-nav-item::before {
 }
 
 .contrast-header h3 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(20px, 2.5vw, 24px);
-  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 6px 0 0 0;
   color: #ffffff;
-  margin: 0;
-  letter-spacing: -0.02em;
 }
 
 .comparison-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 16px;
+  gap: 24px;
 }
 
 .comp-label {
@@ -2324,39 +2669,34 @@ body.start-here-visible .about-nav-item::before {
 
 .comp-col.legacy p {
   border-left: 2px solid rgba(255, 255, 255, 0.15);
-  padding-left: 10px;
-  font-size: 12px;
-  line-height: 1.5;
+  padding-left: 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
   color: #9f9fa9;
-  margin: 10px 0;
+  margin: 0 0 12px 0;
   font-family: 'DM Sans', sans-serif;
 }
 
 .comp-col.studio p {
   border-left: 2px solid #ffc928;
-  padding-left: 10px;
-  font-size: 12px;
-  line-height: 1.5;
+  padding-left: 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
   color: #ffffff;
-  margin: 10px 0;
+  margin: 0 0 12px 0;
   font-weight: 500;
   font-family: 'DM Sans', sans-serif;
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 960px) {
-  .studio-grid-layout {
+@media (max-width: 900px) {
+  .studio-grid-layout,
+  .comparison-row {
     grid-template-columns: 1fr;
-    gap: 32px;
   }
 }
 
 @media (max-width: 600px) {
-  .comparison-row {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
   .contrast-card {
     padding: 20px;
   }
@@ -2379,13 +2719,12 @@ body.start-here-visible .about-nav-item::before {
 
 .about-panel .pillar-item {
   transition: transform 0.3s ease, background 0.3s ease;
-  padding: 14px 16px;
   border-radius: 8px;
 }
 
 .about-panel .pillar-item:hover {
   transform: translateX(8px);
-  background: rgba(23, 23, 23, 0.05);
+  background: rgba(20, 20, 22, 0.04);
 }
 
 @keyframes csFadeUp {
@@ -2394,7 +2733,7 @@ body.start-here-visible .about-nav-item::before {
 }
 
 /* ==========================================================================
-   CODE SKETCHERS - ZIGZAG TESTIMONIALS SECTION
+   CODE SKETCHERZ - ZIGZAG TESTIMONIALS SECTION
    Alternating Staggered Rows, Circular Avatars (#ffcc00) & Dark Theme (#0b0b0b)
    ========================================================================== */
 
@@ -2690,5 +3029,417 @@ body.start-here-visible .about-nav-item::before {
 
   .zigzag-role-group {
     justify-content: center;
+  }
+}
+
+
+/* ==========================================================================
+   APPLE HIG TYPOGRAPHY, READABILITY & SPACING OVERHAUL
+   ========================================================================== */
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 1. Header & Navigation Readability */
+.brand-mark {
+  font-size: 30px;
+}
+
+.brand-text {
+  font-size: 11px;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+}
+
+.nav-item {
+  padding: 10px 14px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+}
+
+.mode-toggle-btn {
+  padding: 9px 15px;
+  font-size: 12px;
+}
+
+.mode-text {
+  font-size: 11.5px;
+}
+
+.work-cta {
+  padding: 11px 18px;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+}
+
+/* 2. Global Section Headers & Display Hierarchy */
+.panel-top-canvas {
+  padding: clamp(44px, 5.5vw, 72px) clamp(24px, 6vw, 88px) clamp(32px, 4.5vw, 52px);
+}
+
+.section-top {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  padding-bottom: 18px;
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  margin: 0 0 16px 0;
+}
+
+.section-main {
+  max-width: 920px;
+}
+
+.section-main h1 {
+  font-size: clamp(44px, 6.2vw, 84px);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin: 0 0 24px 0;
+}
+
+.section-main h2 {
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0 0 24px 0;
+}
+
+.section-desc {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.65;
+  max-width: 58ch;
+  letter-spacing: -0.01em;
+}
+
+/* 3. About Studio (#about) Pillars & Comparison Card */
+.panel-bottom-block {
+  padding: clamp(48px, 6vw, 76px) clamp(24px, 6vw, 88px) clamp(56px, 7vw, 84px);
+}
+
+.pillars-eyebrow {
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  margin-bottom: 28px;
+}
+
+.pillar-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 18px;
+  padding: 24px 16px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  border-bottom: 1px solid rgba(20, 20, 22, 0.15);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+.pillar-item:last-of-type {
+  border-bottom: 1px solid transparent;
+}
+
+.pillar-item:hover {
+  transform: translateX(6px);
+  background: rgba(20, 20, 22, 0.05);
+}
+
+.pillar-item b {
+  font-size: 17px;
+  font-weight: 700;
+  padding-top: 3px;
+}
+
+.pillar-item h4 {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+}
+
+.pillar-item p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(20, 20, 22, 0.88);
+  max-width: 52ch;
+}
+
+/* Comparison Card */
+.contrast-card {
+  padding: clamp(28px, 4vw, 42px);
+  border-radius: 18px;
+}
+
+.badge-tag {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.contrast-header h3 {
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.25;
+}
+
+.comp-label {
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.comp-col.legacy p,
+.comp-col.studio p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 14px 0;
+  padding-left: 14px;
+}
+
+/* 4. Services (#services) Cards & Intro */
+.services-label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
+.services-intro h3 {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+}
+
+.services-intro > p {
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+.service-card {
+  padding: 30px;
+  border-radius: 16px;
+  min-height: 290px;
+}
+
+.service-number {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.service-card h3 {
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.service-card > p {
+  font-size: 15.5px;
+  line-height: 1.65;
+  opacity: 0.85;
+  margin: 0 0 24px;
+}
+
+.service-tags span {
+  font-size: 11.5px;
+  padding: 6px 12px;
+}
+
+.services-bottom {
+  padding: 32px 36px;
+  border-radius: 16px;
+}
+
+.services-bottom h3 {
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.services-contact-btn {
+  padding: 16px 24px;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+}
+
+/* 5. Testimonial (#testimonial) Card */
+.testimonial-rich-card {
+  padding: clamp(36px, 5vw, 60px);
+  border-radius: 18px;
+}
+
+.testimonial-rich-card h3 {
+  font-size: clamp(28px, 3.8vw, 44px);
+}
+
+.testimonial-rich-card p {
+  font-size: clamp(16.5px, 1.8vw, 19px);
+  line-height: 1.65;
+}
+
+/* 7. Contact (#contact) Info & Form Readability (16px Inputs Prevent Mobile Zoom) */
+.new-contact-wrapper {
+  gap: 28px;
+}
+
+.contact-info-card {
+  padding: clamp(32px, 4.5vw, 52px);
+  border-radius: 18px;
+}
+
+.contact-small-label {
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+}
+
+.contact-info-card h3 {
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.1;
+  margin: 28px 0 20px;
+}
+
+.contact-description {
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 44ch;
+  margin-bottom: 36px;
+}
+
+.contact-detail {
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.contact-detail-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+}
+
+.contact-detail small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.contact-detail a {
+  font-size: 15.5px;
+  font-weight: 500;
+}
+
+.contact-form-card {
+  padding: clamp(30px, 4vw, 48px);
+  border-radius: 18px;
+}
+
+.contact-form-heading > span {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
+.contact-form-heading h3 {
+  font-size: clamp(26px, 3vw, 36px);
+  margin: 12px 0 10px;
+}
+
+.contact-form-heading p {
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+#contactForm {
+  gap: 20px;
+}
+
+#contactForm label {
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  gap: 8px;
+}
+
+#contactForm input,
+#contactForm textarea,
+#contactForm select {
+  padding: 15px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.contact-submit-btn {
+  padding: 18px 24px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  border-radius: 8px;
+}
+
+#contactForm .form-note {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* 8. Footer Readability */
+.section-footer {
+  padding: clamp(48px, 6vw, 68px) clamp(24px, 6vw, 88px) 32px;
+}
+
+.footer-brand-text {
+  font-size: 11px;
+  line-height: 1.05;
+}
+
+.footer-tagline {
+  font-size: 12.5px;
+}
+
+.footer-mission {
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 36ch;
+}
+
+.footer-col-label,
+.footer-contact-prompt {
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+}
+
+.footer-nav {
+  gap: 10px;
+}
+
+.footer-nav-btn {
+  font-size: 15px;
+}
+
+.footer-email-link {
+  font-size: 15px;
+}
+
+.footer-bottom-bar {
+  font-size: 12px;
+  padding-top: 28px;
+}
+
+/* 9. Next Section Button Scale */
+.btn-inner {
+  font-size: 12.5px;
+}
+
+.tech-code-word {
+  min-width: 68px;
+}
+
+@media (max-width: 760px) {
+  .pillar-item {
+    grid-template-columns: 34px 1fr;
+    padding: 20px 10px;
+  }
+  .pillar-item h4 {
+    font-size: 19px;
+  }
+  .pillar-item p {
+    font-size: 15px;
   }
 }

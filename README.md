@@ -1,4 +1,4 @@
-# Code Sketchers — Full-screen creative studio site
+# Code Sketcherz — Full-screen creative studio site
 
 An original, Studio Damini-inspired concept site using HTML, CSS and vanilla JavaScript. It is not an exact copy of the reference.
 
