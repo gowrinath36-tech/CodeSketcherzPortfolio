@@ -176,68 +176,163 @@
   }
 
   // ==========================================
-  // ABOUT US 8-MEMBER GRID MOTION
+  // ABOUT US GEOMETRIC S-K-E-T-C-H-E-R-Z SHOWCASE
   // ==========================================
 
-  function initAboutUsMotion() {
-    const cards = document.querySelectorAll('#aboutus .member-card');
-    if (!cards.length) return;
+  const SKETCHERZ_MEMBERS = [
+    {
+      letter: "S",
+      name: "Gowrinath",
+      role: "Lead Developer & UI Architect",
+      shape: "shape-double-pill",
+      photo: "Images/about us/member-1.jpg",
+      fallback: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80",
+      website: "https://github.com/gowrinath36-tech",
+      linkedin: "#"
+    },
+    {
+      letter: "K",
+      name: "Hari Krishna",
+      role: "Full Stack Engineer",
+      shape: "shape-arch",
+      photo: "Images/about us/member-2.jpg",
+      fallback: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
+    },
+    {
+      letter: "E",
+      name: "Titu",
+      role: "Creative Direction & UI/UX",
+      shape: "shape-circle",
+      photo: "Images/about us/member-3.jpg",
+      fallback: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
+    },
+    {
+      letter: "T",
+      name: "Karthik R.",
+      role: "Motion Graphics & 3D",
+      shape: "shape-triple-pill",
+      photo: "Images/about us/member-4.jpg",
+      fallback: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
+    },
+    {
+      letter: "C",
+      name: "Priya S.",
+      role: "Frontend Developer",
+      shape: "shape-arch",
+      photo: "Images/about us/member-5.jpg",
+      fallback: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
+    },
+    {
+      letter: "H",
+      name: "Dinesh K.",
+      role: "Performance & SEO Engineer",
+      shape: "shape-double-pill",
+      photo: "Images/about us/member-6.jpg",
+      fallback: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
+    },
+    {
+      letter: "E",
+      name: "Sneha M.",
+      role: "QA & Automation",
+      shape: "shape-triple-pill",
+      photo: "Images/about us/member-7.jpg",
+      fallback: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
+    },
+    {
+      letter: "R",
+      name: "Manoj V.",
+      role: "DevOps & Cloud Systems",
+      shape: "shape-circle",
+      photo: "Images/about us/member-8.jpg",
+      fallback: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80",
+      website: "#",
+      linkedin: "#"
+    }
+  ];
 
-    if (typeof gsap === 'undefined') {
-      if (!document.querySelector('script[src*="gsap"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
-        script.onload = () => initAboutUsMotion();
-        document.head.appendChild(script);
-      }
-      return;
+  function initAboutUsMotion() {
+    const grid = document.getElementById("sketcherzGrid");
+    const modal = document.getElementById("squadZModal");
+    const closeBtn = document.getElementById("squadZClose");
+    const rosterEl = document.getElementById("squadZRoster");
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = "true";
+
+    const globeSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+    const linkedinSvg = `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.633 13.633h-2.37V9.92c0-.885-.017-2.025-1.234-2.025-1.235 0-1.424.965-1.424 1.96v3.778h-2.37V5.998H8.51v1.043h.031a2.5 2.5 0 0 1 2.246-1.233c2.403 0 2.846 1.58 2.846 3.637zM3.56 4.954a1.376 1.376 0 1 1 0-2.751 1.376 1.376 0 0 1 0 2.751m1.185 8.679H2.372V5.998h2.373zM14.815.001H1.18A1.17 1.17 0 0 0 0 1.154v13.691A1.17 1.17 0 0 0 1.18 16h13.635A1.17 1.17 0 0 0 16 14.845V1.153A1.17 1.17 0 0 0 14.815 0"/></svg>`;
+
+    // Render 8 Members (S-K-E-T-C-H-E-R)
+    SKETCHERZ_MEMBERS.forEach(m => {
+      const article = document.createElement("article");
+      article.className = "sk-member-card";
+      article.innerHTML = `
+        <div class="sk-portrait-box ${m.shape}">
+          <span class="sk-letter-tag">${m.letter}</span>
+          <img src="${m.photo}" onerror="this.onerror=null;this.src='${m.fallback}';" alt="${m.name}" loading="lazy" />
+        </div>
+        <div class="sk-meta">
+          <h4>${m.name}</h4>
+          <p>${m.role}</p>
+          <div class="sk-socials">
+            <a href="${m.website}" target="_blank" rel="noopener noreferrer" aria-label="${m.name} Website">${globeSvg}</a>
+            <a href="${m.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="${m.name} LinkedIn">${linkedinSvg}</a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(article);
+    });
+
+    // Render 9th Interactive "Z" Card (Click to see more)
+    const zBtn = document.createElement("button");
+    zBtn.type = "button";
+    zBtn.className = "sk-member-card sk-z-trigger-card";
+    zBtn.setAttribute("aria-label", "See more about Code Sketcherz team");
+    zBtn.innerHTML = `
+      <div class="sk-z-box">
+        <span class="sk-z-giant">Z</span>
+        <span class="sk-z-pill">Click to see more ↗</span>
+      </div>
+      <div class="sk-meta">
+        <h4>More &amp; Careers</h4>
+        <p>Full Stack · Motion · Cloud</p>
+      </div>
+    `;
+    grid.appendChild(zBtn);
+
+    if (rosterEl) {
+      rosterEl.innerHTML = SKETCHERZ_MEMBERS.map(m => `<span>${m.letter} · ${m.name} (${m.role})</span>`).join("");
     }
 
-    // Elastic staggered entry reveal
-    gsap.fromTo(cards,
-      {
-        opacity: 0,
-        scale: 0.9,
-        y: 40
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 0.85,
-        ease: "back.out(1.5)",
-        stagger: 0.08,
-        overwrite: "auto"
-      }
-    );
-
-    // 3D Perspective tilt
-    cards.forEach(card => {
-      if (card.dataset.tiltBound) return;
-      card.dataset.tiltBound = "true";
-
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        gsap.to(card, {
-          rotationY: x * 0.04,
-          rotationX: -y * 0.04,
-          transformPerspective: 900,
-          duration: 0.25,
-          ease: "power2.out"
-        });
+    if (modal) {
+      zBtn.addEventListener("click", () => {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
       });
-
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, {
-          rotationY: 0,
-          rotationX: 0,
-          duration: 0.6,
-          ease: "elastic.out(1, 0.6)"
-        });
+      const closeModal = () => {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+      };
+      closeBtn?.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
       });
-    });
+      const ctaBtn = modal.querySelector(".squad-z-cta");
+      ctaBtn?.addEventListener("click", () => {
+        closeModal();
+      });
+    }
   }
 
   // ==========================================
@@ -754,7 +849,7 @@
       );
 
       let body =
-        'Hello Code Sketchers,\n\n' +
+        'Hello Code Sketcherz,\n\n' +
         'You have received a new website enquiry.\n\n' +
         'Name: ' + name + '\n' +
         'Email: ' + email + '\n';
@@ -768,7 +863,7 @@
         '\n\nThank you!';
 
       const mailto =
-        'mailto:hello@codesketchers.studio' +
+        'mailto:hello@codesketcherz.studio' +
         '?subject=' + subject +
         '&body=' + encodeURIComponent(body);
 
@@ -854,6 +949,7 @@
   }
 
   initFooter();
+  initAboutUsMotion();
 
   // ==========================================
   // 11. INITIAL PAGE LOAD

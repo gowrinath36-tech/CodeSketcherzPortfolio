@@ -1,39 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
 
 /* ==========================================================================
-   Code Sketchers Theme Variables (Light & Dark Mode)
-   Sampling & Architecture from Studio Reference
+   Code Sketcherz Theme Variables (Light & Dark Mode)
+   60-30-10 Color Architecture & Typography Tokens
    ========================================================================== */
 :root,
 [data-theme="dark"] {
   --header-h: 76px;
 
-  /* Brand & Accents (Exact Reference Sampling) */
+  /* 60% Dominant Primary Canvas */
+  --bg-dominant: #0b0b0b;
+  --canvas-black: #0b0b0b;
+  --canvas-white: #111113;
+  --canvas-paper: #111113;
+
+  /* 30% Secondary Surfaces & Elevated Cards */
+  --bg-secondary: #18181b;
+  --bg-card: #1e1e22;
+  --border-subtle: rgba(255, 255, 255, 0.09);
+
+  /* 10% Brand Accent */
+  --accent-primary: #fed000;
+  --accent-heading: #fed000;
   --yellow: #fed000;
   --yellow-hover: #e5bc00;
   --accent-yellow: #fed000;
-  --accent-heading: #fed000;
   --accent-btn-text: #0b0b0b;
+
+  /* Text Hierarchy */
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --canvas-text-light: #f4f4f5;
+  --canvas-text-dark: #f4f4f5;
 
   /* Surfaces & Backgrounds */
   --black: #0b0b0b;
   --white: #ffffff;
-  --paper: #141414;
-  --muted: #8e908c;
+  --paper: #111113;
+  --muted: #71717a;
 
   --bg-page: #0b0b0b;
-  --bg-surface: #141414;
-  --bg-surface-elevated: #1a1a1a;
+  --bg-surface: #18181b;
+  --bg-surface-elevated: #1e1e22;
   --bg-header: rgba(11, 11, 11, 0.92);
 
-  /* Typography Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #8e908c;
-  --text-muted: #5a5a58;
-
   /* Navigation & Controls */
-  --nav-bg: #1a1a1a;
-  --nav-text: #e4e4e7;
+  --nav-bg: #1e1e22;
+  --nav-text: #f4f4f5;
   --nav-hover-bg: #fed000;
   --nav-hover-text: #0b0b0b;
 
@@ -49,72 +63,70 @@
   --badge-border: #3b341b;
   --badge-text: #d4be48;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
   --border-card: #222220;
   --live-dot: #a3e635;
-
-  /* Two-Tone Section Canvases (Seamless Transitions) */
-  --canvas-black: #0b0b0b;
-  --canvas-white: #161616;
-  --canvas-paper: #121212;
-  --canvas-text-light: #ffffff;
-  --canvas-text-dark: #e4e4e7;
 }
 
 [data-theme="light"] {
   --header-h: 76px;
 
-  /* Brand & Accents */
+  /* 60% Dominant Primary Canvas */
+  --bg-dominant: #f8f8f7;
+  --canvas-black: #141416; /* Intentional dark contrast hero/services */
+  --canvas-white: #ffffff;
+  --canvas-paper: #f8f8f7;
+
+  /* 30% Secondary Surfaces & Elevated Cards */
+  --bg-secondary: #f1f1ef;
+  --bg-card: #ffffff;
+  --border-subtle: rgba(20, 20, 22, 0.1);
+
+  /* 10% Brand Accent */
+  --accent-primary: #fed000;
+  --accent-heading: #b45309; /* High-contrast amber on light surfaces */
   --yellow: #fed000;
   --yellow-hover: #e5bc00;
   --accent-yellow: #fed000;
-  --accent-heading: #b45309; /* Accessible warm amber text on light bg */
   --accent-btn-text: #0b0b0b;
 
+  /* Text Hierarchy */
+  --text-primary: #141416;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --canvas-text-light: #ffffff;
+  --canvas-text-dark: #141416;
+
   /* Surfaces & Backgrounds */
-  --black: #171717;
+  --black: #141416;
   --white: #ffffff;
-  --paper: #f5f5f4;
-  --muted: #71717a;
+  --paper: #f8f8f7;
+  --muted: #6b7280;
 
-  --bg-page: #f9f9f8;
+  --bg-page: #f8f8f7;
   --bg-surface: #ffffff;
-  --bg-surface-elevated: #f4f4f2;
-  --bg-header: rgba(249, 249, 248, 0.95);
-
-  /* Typography Colors */
-  --text-primary: #111111;
-  --text-secondary: #57595c;
-  --text-muted: #8c8f94;
+  --bg-surface-elevated: #f1f1ef;
+  --bg-header: rgba(248, 248, 247, 0.95);
 
   /* Navigation & Controls */
   --nav-bg: #e5e5e5;
-  --nav-text: #171717;
+  --nav-text: #141416;
   --nav-hover-bg: #fed000;
   --nav-hover-text: #0b0b0b;
 
-  --cta-bg: #171717;
+  --cta-bg: #141416;
   --cta-text: #ffffff;
   --cta-arrow: #fed000;
 
   --btn-dark-bg: transparent;
   --btn-dark-border: #d1d5db;
-  --btn-dark-text: #111111;
+  --btn-dark-text: #141416;
 
   --badge-bg: #fef3c7;
   --badge-border: #fde68a;
   --badge-text: #92400e;
 
-  --border-subtle: rgba(23, 23, 23, 0.08);
   --border-card: #e5e7eb;
   --live-dot: #16a34a;
-
-  /* Two-Tone Section Canvases */
-  --canvas-black: #171717;
-  --canvas-white: #ffffff;
-  --canvas-paper: #f5f5f4;
-  --canvas-text-light: #ffffff;
-  --canvas-text-dark: #171717;
 }
 
 * {
@@ -378,7 +390,7 @@ button {
    ========================================================================== */
 .panel-top-canvas {
   width: 100%;
-  padding: 40px clamp(24px, 6vw, 80px) 24px;
+  padding: clamp(36px, 5vw, 64px) clamp(24px, 6vw, 84px) clamp(28px, 4vw, 44px);
   box-sizing: border-box;
 }
 
@@ -398,56 +410,53 @@ button {
   justify-content: space-between;
   align-items: center;
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   padding-bottom: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .panel-top-canvas.bg-black .section-top {
   color: #a1a1aa;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .panel-top-canvas.bg-white .section-top {
-  color: #71717a;
-  border-bottom: 1px solid rgba(23, 23, 23, 0.08);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .section-main {
-  max-width: 960px;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .eyebrow {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin: 0 0 18px;
   color: var(--accent-heading);
-  opacity: 0.95;
+  margin: 0 0 14px 0;
 }
 
-.section-main h1 {
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
-  font-size: clamp(44px, 6.2vw, 84px);
+.section-main h1,
+.section-main h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(40px, 5.6vw, 76px);
   line-height: 1.08;
   letter-spacing: -0.025em;
   font-weight: 400;
-  margin: 0;
-}
-
-.section-main h2 {
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
-  font-size: clamp(38px, 5.2vw, 72px);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  font-weight: 400;
-  margin: 0;
+  margin: 0 0 22px 0;
 }
 
 .highlight {
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
   font-weight: 400;
   color: var(--accent-heading);
@@ -458,19 +467,16 @@ button {
 
 .period {
   color: var(--accent-heading);
-  font-family: 'Playfair Display', 'DM Serif Display', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 .section-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(15px, 1.35vw, 17.5px);
-  line-height: 1.68;
-  max-width: 560px;
-  margin-top: 22px;
-  color: var(--text-secondary);
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.65;
+  max-width: 58ch;
+  margin: 0;
   font-weight: 400;
-  letter-spacing: -0.01em;
-  opacity: 0.9;
 }
 
 /* ==========================================================================
@@ -520,7 +526,7 @@ button {
    ========================================================================== */
 .panel-bottom-block {
   width: 100%;
-  padding: 40px clamp(24px, 6vw, 80px) 60px;
+  padding: clamp(40px, 5vw, 64px) clamp(24px, 6vw, 84px) clamp(48px, 6vw, 72px);
   box-sizing: border-box;
   flex: 1 0 auto;
 }
@@ -1478,7 +1484,7 @@ body.start-here-visible .about-nav-item::before {
 }
 
 /* ==========================================
-   CODE SKETCHERS - NEW SERVICES DESIGN
+   CODE SKETCHERZ - NEW SERVICES DESIGN
 ========================================== */
 
 .services-content {
@@ -2069,126 +2075,421 @@ body.start-here-visible .about-nav-item::before {
 }
 
 /* ==========================================================================
-   Scoped 8-Member Team Grid in About Us Section
+   S-K-E-T-C-H-E-R-Z GEOMETRIC TEAM SHOWCASE (#aboutus)
    ========================================================================== */
-.team-grid-8 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+.sketcherz-squad-wrapper {
   width: 100%;
-  margin: 30px 0 50px;
+  max-width: 1400px;
+  margin: 0 auto 36px;
+  background: var(--bg-dominant, #0b0b0b);
+  color: var(--text-primary, #f4f4f5);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.1));
+  border-radius: 22px;
+  padding: clamp(32px, 4.5vw, 56px) clamp(16px, 3vw, 36px);
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.35);
 }
 
-.member-card {
-  background: #202023;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 22px;
+.squad-header {
+  max-width: 680px;
+  margin: 0 auto clamp(28px, 4vw, 44px);
+  text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  gap: 10px;
 }
 
-.member-card:hover {
-  border-color: rgba(255, 201, 40, 0.45);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45), 0 0 20px rgba(255, 201, 40, 0.12);
+.squad-code-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  margin: 4px 0;
+  color: var(--text-primary, #ffffff);
+  padding-left: 0.16em; /* Optical centering for letter-spacing */
 }
 
-.member-avatar {
-  width: 112px;
-  height: 112px;
-  aspect-ratio: 1 / 1;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #141416;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  flex-shrink: 0;
+.squad-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(15px, 1.3vw, 17px);
+  color: var(--text-secondary, #a1a1aa);
+  margin: 0;
 }
 
-.member-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%);
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.45s ease;
+.squad-subtitle strong {
+  color: var(--accent-heading, #fed000);
+  letter-spacing: 0.08em;
 }
 
-.member-card:hover .member-avatar img {
-  filter: grayscale(0%);
-  transform: scale(1.08);
+/* Desktop: All 9 Letters (S-K-E-T-C-H-E-R-Z) in ONE Horizontal Line */
+.sketcherz-grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: clamp(8px, 1.1vw, 16px);
+  align-items: start;
 }
 
-.member-info {
-  flex: 1;
+.sk-member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
   min-width: 0;
 }
 
-.member-info h3 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 4px;
-  letter-spacing: -0.03em;
+.sk-portrait-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.member-role {
-  display: inline-block;
+.sk-member-card:hover .sk-portrait-box {
+  transform: translateY(-4px);
+}
+
+/* Geometric Cutout Shapes Scaled for 9-Column Row */
+.shape-double-pill {
+  background: #4f46e5;
+  border-radius: 36px;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 44%, 90% 50%, 100% 56%, 100% 100%,
+    0% 100%, 0% 56%, 10% 50%, 0% 44%
+  );
+}
+
+.shape-arch {
+  background: #fb923c;
+  border-radius: 999px 999px 12px 12px;
+}
+
+.shape-circle {
+  background: #e4e4e7;
+  border-radius: 50%;
+}
+
+.shape-triple-pill {
+  background: #38bdf8;
+  border-radius: 28px;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 30%, 90% 33.3%, 100% 36.6%, 100% 63.3%, 90% 66.6%, 100% 70%, 100% 100%,
+    0% 100%, 0% 70%, 10% 66.6%, 0% 63.3%, 0% 36.6%, 10% 33.3%, 0% 30%
+  );
+}
+
+.sk-letter-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 3;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(11, 11, 11, 0.82);
+  color: #fed000;
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: #ffc928;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  font-weight: 500;
+  font-size: 11.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.member-info p {
+.sk-portrait-box img {
+  position: relative;
+  z-index: 2;
+  width: 94%;
+  height: 92%;
+  object-fit: cover;
+  object-position: top center;
+  transition: filter 0.3s ease, transform 0.35s ease;
+}
+
+.sk-member-card:hover .sk-portrait-box img {
+  filter: grayscale(100%);
+  transform: scale(1.04);
+}
+
+/* Compact, Crisp Typography for 9-Column Row */
+.sk-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
+}
+
+.sk-meta h4 {
   font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #9f9fa9;
-  margin: 0 0 12px;
+  font-size: clamp(13px, 1.05vw, 15.5px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--text-primary, #ffffff);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-meta p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(11px, 0.85vw, 12.5px);
+  line-height: 1.3;
+  color: var(--text-secondary, #a1a1aa);
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.skill-chips {
+.sk-socials {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.sk-socials a {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary, #f4f4f5);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.1));
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="light"] .sk-socials a {
+  background: rgba(20, 20, 22, 0.06);
+}
+
+.sk-socials a:hover {
+  background: #fed000;
+  color: #141416;
+}
+
+/* 9th Card: "Z" Interactive Card */
+.sk-z-trigger-card {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  width: 100%;
+}
+
+.sk-z-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  border-radius: 22px;
+  background: #fed000;
+  color: #141416;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.sk-z-trigger-card:hover .sk-z-box {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(254, 208, 0, 0.3);
+}
+
+.sk-z-giant {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(36px, 3.6vw, 54px);
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+.sk-z-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #141416;
+  color: #fed000;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+/* Z Modal Overlay */
+.squad-z-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.squad-z-modal.is-open {
+  display: flex;
+}
+
+.squad-z-card {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  background: var(--bg-card, #18181b);
+  color: var(--text-primary, #f4f4f5);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.15));
+  border-radius: 20px;
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.squad-z-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.15));
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.squad-z-card h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  margin: 14px 0 10px;
+}
+
+.squad-z-card > p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary, #a1a1aa);
+  margin: 0 0 20px;
+}
+
+.squad-z-roster {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
-.skill-chips span {
+.squad-z-roster span {
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #d4d4d8;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11.5px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(254, 208, 0, 0.12);
+  color: var(--accent-heading, #fed000);
 }
 
-@media (max-width: 900px) {
-  .team-grid-8 {
-    grid-template-columns: 1fr;
-    gap: 16px;
+.squad-z-cta {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 0;
+  background: #fed000;
+  color: #141416;
+  font-family: 'DM Mono', monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+/* Light Theme Adaptations */
+[data-theme="light"] .sketcherz-squad-wrapper {
+  background: var(--bg-dominant, #f8f8f7);
+  box-shadow: 0 20px 44px -12px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .squad-code-title {
+  color: var(--text-primary, #141416);
+}
+
+[data-theme="light"] .sk-meta h4 {
+  color: var(--text-primary, #141416);
+}
+
+[data-theme="light"] .squad-z-card {
+  background: #ffffff;
+  color: #141416;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .squad-z-card > p {
+  color: var(--text-secondary, #4b5563);
+}
+
+[data-theme="light"] .squad-z-roster span {
+  background: rgba(254, 208, 0, 0.2);
+  color: #92400e;
+}
+
+/* Tablet Breakpoint: Smooth 3x3 Grid (S-K-E / T-C-H / E-R-Z) */
+@media (max-width: 1120px) {
+  .sketcherz-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 20px;
+  }
+  .sk-meta h4 {
+    font-size: 18px;
+  }
+  .sk-meta p {
+    font-size: 14px;
+  }
+  .sk-z-giant {
+    font-size: 64px;
+  }
+  .sk-z-pill {
+    font-size: 11px;
+    padding: 6px 12px;
   }
 }
 
-@media (max-width: 540px) {
-  .member-card {
-    flex-direction: column;
-    text-align: center;
-    padding: 18px;
+/* Mobile Breakpoint: Paired 2-Column Layout (S K / E T / C H / E R + Z) */
+@media (max-width: 640px) {
+  .sketcherz-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 14px;
   }
-  .skill-chips {
+  .sk-meta h4 {
+    font-size: 16px;
+  }
+  .sk-meta p {
+    font-size: 13px;
+  }
+  .sk-z-trigger-card {
+    grid-column: 1 / -1;
+  }
+  .sk-z-box {
+    aspect-ratio: auto;
+    padding: 20px 16px;
+    flex-direction: row;
     justify-content: center;
+    gap: 14px;
+  }
+  .sk-z-giant {
+    font-size: 46px;
   }
 }
 
@@ -2198,11 +2499,11 @@ body.start-here-visible .about-nav-item::before {
 /* Studio Grid Layout (Pillars + Contrast Card) */
 .studio-grid-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(32px, 5vw, 64px);
   align-items: start;
-  margin-top: 20px;
-  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 /* Left Column: Studio Pillars */
@@ -2214,67 +2515,67 @@ body.start-here-visible .about-nav-item::before {
 .pillars-eyebrow {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  letter-spacing: 0.12em;
   font-weight: 700;
-  color: #171717;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  margin-bottom: 24px;
   display: block;
-  margin-bottom: 22px;
 }
 
 .pillar-item {
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  margin-bottom: 24px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(23, 23, 23, 0.15);
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(20, 20, 22, 0.14);
 }
 
-.pillar-item:last-child {
+.pillar-item:first-of-type {
+  padding-top: 0;
+}
+
+.pillar-item:last-of-type {
   border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
 }
 
 .pillar-item b {
   font-family: 'DM Mono', monospace;
-  font-size: 18px;
-  font-weight: 800;
-  color: #171717;
-  line-height: 1.2;
-  flex-shrink: 0;
-  width: 28px;
+  font-size: 15px;
+  font-weight: 700;
+  padding-top: 2px;
 }
 
 .pillar-item h4 {
   font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
-  color: #171717;
-  margin: 0 0 6px;
   letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
 }
 
 .pillar-item p {
   font-family: 'DM Sans', sans-serif;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: rgba(23, 23, 23, 0.85);
+  font-size: 14.5px;
+  line-height: 1.6;
   margin: 0;
+  max-width: 50ch;
 }
 
-/* Right Column: Contrast Card */
+/* Right Column: Contrast Card (30% Secondary Dark Anchor inside Yellow Block) */
 .contrast-card {
-  background: #171717;
-  color: #ffffff;
-  border-radius: 12px;
-  padding: 28px;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  background: #141416;
+  color: #f4f4f5;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: clamp(24px, 3.5vw, 36px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.28);
 }
 
 .contrast-header {
+  padding-bottom: 18px;
   margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .badge-tag {
@@ -2289,19 +2590,18 @@ body.start-here-visible .about-nav-item::before {
 }
 
 .contrast-header h3 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(20px, 2.5vw, 24px);
-  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 6px 0 0 0;
   color: #ffffff;
-  margin: 0;
-  letter-spacing: -0.02em;
 }
 
 .comparison-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 16px;
+  gap: 24px;
 }
 
 .comp-label {
@@ -2324,39 +2624,34 @@ body.start-here-visible .about-nav-item::before {
 
 .comp-col.legacy p {
   border-left: 2px solid rgba(255, 255, 255, 0.15);
-  padding-left: 10px;
-  font-size: 12px;
-  line-height: 1.5;
+  padding-left: 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
   color: #9f9fa9;
-  margin: 10px 0;
+  margin: 0 0 12px 0;
   font-family: 'DM Sans', sans-serif;
 }
 
 .comp-col.studio p {
   border-left: 2px solid #ffc928;
-  padding-left: 10px;
-  font-size: 12px;
-  line-height: 1.5;
+  padding-left: 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
   color: #ffffff;
-  margin: 10px 0;
+  margin: 0 0 12px 0;
   font-weight: 500;
   font-family: 'DM Sans', sans-serif;
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 960px) {
-  .studio-grid-layout {
+@media (max-width: 900px) {
+  .studio-grid-layout,
+  .comparison-row {
     grid-template-columns: 1fr;
-    gap: 32px;
   }
 }
 
 @media (max-width: 600px) {
-  .comparison-row {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
   .contrast-card {
     padding: 20px;
   }
@@ -2379,13 +2674,12 @@ body.start-here-visible .about-nav-item::before {
 
 .about-panel .pillar-item {
   transition: transform 0.3s ease, background 0.3s ease;
-  padding: 14px 16px;
   border-radius: 8px;
 }
 
 .about-panel .pillar-item:hover {
   transform: translateX(8px);
-  background: rgba(23, 23, 23, 0.05);
+  background: rgba(20, 20, 22, 0.04);
 }
 
 @keyframes csFadeUp {
@@ -2394,7 +2688,7 @@ body.start-here-visible .about-nav-item::before {
 }
 
 /* ==========================================================================
-   CODE SKETCHERS - ZIGZAG TESTIMONIALS SECTION
+   CODE SKETCHERZ - ZIGZAG TESTIMONIALS SECTION
    Alternating Staggered Rows, Circular Avatars (#ffcc00) & Dark Theme (#0b0b0b)
    ========================================================================== */
 
@@ -2690,5 +2984,417 @@ body.start-here-visible .about-nav-item::before {
 
   .zigzag-role-group {
     justify-content: center;
+  }
+}
+
+
+/* ==========================================================================
+   APPLE HIG TYPOGRAPHY, READABILITY & SPACING OVERHAUL
+   ========================================================================== */
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 1. Header & Navigation Readability */
+.brand-mark {
+  font-size: 30px;
+}
+
+.brand-text {
+  font-size: 11px;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+}
+
+.nav-item {
+  padding: 10px 14px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+}
+
+.mode-toggle-btn {
+  padding: 9px 15px;
+  font-size: 12px;
+}
+
+.mode-text {
+  font-size: 11.5px;
+}
+
+.work-cta {
+  padding: 11px 18px;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+}
+
+/* 2. Global Section Headers & Display Hierarchy */
+.panel-top-canvas {
+  padding: clamp(44px, 5.5vw, 72px) clamp(24px, 6vw, 88px) clamp(32px, 4.5vw, 52px);
+}
+
+.section-top {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  padding-bottom: 18px;
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  margin: 0 0 16px 0;
+}
+
+.section-main {
+  max-width: 920px;
+}
+
+.section-main h1 {
+  font-size: clamp(44px, 6.2vw, 84px);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin: 0 0 24px 0;
+}
+
+.section-main h2 {
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0 0 24px 0;
+}
+
+.section-desc {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.65;
+  max-width: 58ch;
+  letter-spacing: -0.01em;
+}
+
+/* 3. About Studio (#about) Pillars & Comparison Card */
+.panel-bottom-block {
+  padding: clamp(48px, 6vw, 76px) clamp(24px, 6vw, 88px) clamp(56px, 7vw, 84px);
+}
+
+.pillars-eyebrow {
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  margin-bottom: 28px;
+}
+
+.pillar-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 18px;
+  padding: 24px 16px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  border-bottom: 1px solid rgba(20, 20, 22, 0.15);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+.pillar-item:last-of-type {
+  border-bottom: 1px solid transparent;
+}
+
+.pillar-item:hover {
+  transform: translateX(6px);
+  background: rgba(20, 20, 22, 0.05);
+}
+
+.pillar-item b {
+  font-size: 17px;
+  font-weight: 700;
+  padding-top: 3px;
+}
+
+.pillar-item h4 {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+}
+
+.pillar-item p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(20, 20, 22, 0.88);
+  max-width: 52ch;
+}
+
+/* Comparison Card */
+.contrast-card {
+  padding: clamp(28px, 4vw, 42px);
+  border-radius: 18px;
+}
+
+.badge-tag {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.contrast-header h3 {
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.25;
+}
+
+.comp-label {
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.comp-col.legacy p,
+.comp-col.studio p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 14px 0;
+  padding-left: 14px;
+}
+
+/* 4. Services (#services) Cards & Intro */
+.services-label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
+.services-intro h3 {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+}
+
+.services-intro > p {
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+.service-card {
+  padding: 30px;
+  border-radius: 16px;
+  min-height: 290px;
+}
+
+.service-number {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.service-card h3 {
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.service-card > p {
+  font-size: 15.5px;
+  line-height: 1.65;
+  opacity: 0.85;
+  margin: 0 0 24px;
+}
+
+.service-tags span {
+  font-size: 11.5px;
+  padding: 6px 12px;
+}
+
+.services-bottom {
+  padding: 32px 36px;
+  border-radius: 16px;
+}
+
+.services-bottom h3 {
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.services-contact-btn {
+  padding: 16px 24px;
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+}
+
+/* 5. Testimonial (#testimonial) Card */
+.testimonial-rich-card {
+  padding: clamp(36px, 5vw, 60px);
+  border-radius: 18px;
+}
+
+.testimonial-rich-card h3 {
+  font-size: clamp(28px, 3.8vw, 44px);
+}
+
+.testimonial-rich-card p {
+  font-size: clamp(16.5px, 1.8vw, 19px);
+  line-height: 1.65;
+}
+
+/* 7. Contact (#contact) Info & Form Readability (16px Inputs Prevent Mobile Zoom) */
+.new-contact-wrapper {
+  gap: 28px;
+}
+
+.contact-info-card {
+  padding: clamp(32px, 4.5vw, 52px);
+  border-radius: 18px;
+}
+
+.contact-small-label {
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+}
+
+.contact-info-card h3 {
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.1;
+  margin: 28px 0 20px;
+}
+
+.contact-description {
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 44ch;
+  margin-bottom: 36px;
+}
+
+.contact-detail {
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.contact-detail-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+}
+
+.contact-detail small {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.contact-detail a {
+  font-size: 15.5px;
+  font-weight: 500;
+}
+
+.contact-form-card {
+  padding: clamp(30px, 4vw, 48px);
+  border-radius: 18px;
+}
+
+.contact-form-heading > span {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
+.contact-form-heading h3 {
+  font-size: clamp(26px, 3vw, 36px);
+  margin: 12px 0 10px;
+}
+
+.contact-form-heading p {
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+#contactForm {
+  gap: 20px;
+}
+
+#contactForm label {
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  gap: 8px;
+}
+
+#contactForm input,
+#contactForm textarea,
+#contactForm select {
+  padding: 15px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.contact-submit-btn {
+  padding: 18px 24px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  border-radius: 8px;
+}
+
+#contactForm .form-note {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* 8. Footer Readability */
+.section-footer {
+  padding: clamp(48px, 6vw, 68px) clamp(24px, 6vw, 88px) 32px;
+}
+
+.footer-brand-text {
+  font-size: 11px;
+  line-height: 1.05;
+}
+
+.footer-tagline {
+  font-size: 12.5px;
+}
+
+.footer-mission {
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 36ch;
+}
+
+.footer-col-label,
+.footer-contact-prompt {
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+}
+
+.footer-nav {
+  gap: 10px;
+}
+
+.footer-nav-btn {
+  font-size: 15px;
+}
+
+.footer-email-link {
+  font-size: 15px;
+}
+
+.footer-bottom-bar {
+  font-size: 12px;
+  padding-top: 28px;
+}
+
+/* 9. Next Section Button Scale */
+.btn-inner {
+  font-size: 12.5px;
+}
+
+.tech-code-word {
+  min-width: 68px;
+}
+
+@media (max-width: 760px) {
+  .pillar-item {
+    grid-template-columns: 34px 1fr;
+    padding: 20px 10px;
+  }
+  .pillar-item h4 {
+    font-size: 19px;
+  }
+  .pillar-item p {
+    font-size: 15px;
   }
 }
