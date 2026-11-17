@@ -12,8 +12,9 @@
   --bg-card: #1e1e22;
   --border-subtle: rgba(255, 255, 255, 0.09);
   --accent-heading: #b45309;
-  --yellow: #fed000;
-  --accent-yellow: #fed000;
+  --accent-explore: #FFC928;
+  --yellow: #FFC928;
+  --accent-yellow: #FFC928;
   --text-primary: #f4f4f5;
   --text-secondary: #a1a1aa;
   --canvas-text-light: #f4f4f5;
@@ -26,9 +27,9 @@
   --bg-header: rgba(11, 11, 11, 0.92);
   --nav-bg: #1e1e22;
   --nav-text: #f4f4f5;
-  --nav-hover-bg: #fed000;
+  --nav-hover-bg: #FFC928;
   --nav-hover-text: #0b0b0b;
-  --cta-bg: #fed000;
+  --cta-bg: #FFC928;
   --cta-text: #0b0b0b;
   --cta-arrow: #0b0b0b;
   --surface-grey: #27272a;
@@ -42,8 +43,9 @@
   --bg-card: #ffffff;
   --border-subtle: rgba(20, 20, 22, 0.1);
   --accent-heading: #b45309;
-  --yellow: #fed000;
-  --accent-yellow: #fed000;
+  --accent-explore: #b45309;
+  --yellow: #FFC928;
+  --accent-yellow: #FFC928;
   --text-primary: #141416;
   --text-secondary: #4b5563;
   --black: #141416;
@@ -54,11 +56,11 @@
   --bg-header: rgba(248, 248, 247, 0.95);
   --nav-bg: #e5e5e5;
   --nav-text: #141416;
-  --nav-hover-bg: #fed000;
+  --nav-hover-bg: #FFC928;
   --nav-hover-text: #0b0b0b;
   --cta-bg: #141416;
   --cta-text: #ffffff;
-  --cta-arrow: #fed000;
+  --cta-arrow: #FFC928;
   --surface-grey: #F0DCC5;
   --card-beige: #f3eee3;
   --card-white: #ffffff;
@@ -464,10 +466,7 @@ button {
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-.team-workspace:hover {
-  border-color: rgba(23, 23, 23, 0.55);
-  background: rgba(23, 23, 23, 0.04);
-}
+
 
 /* ==========================================================================
    Clean Contact Form Wrapper
@@ -636,7 +635,7 @@ button {
 /* Word 1: Tech Scramble */
 
 .tech-code-word {
-  color: #ffc928;
+  color: #b45309;
   letter-spacing: 0.12em;
   display: inline-block;
   text-align: left;
@@ -735,7 +734,7 @@ button {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #ffcc00;
+  color: var(--accent-explore);
   margin: 0 0 20px;
   text-transform: uppercase;
 }
@@ -1358,8 +1357,8 @@ body.start-here-visible .about-nav-item::before {
 }
 
 .services-intro > p {
-  color: #71717a;
-  max-width: 470px;
+  color: #000000;
+  max-width: 540px;
   margin: 0;
 }
 
@@ -1492,7 +1491,7 @@ body.start-here-visible .about-nav-item::before {
 }
 
 .services-bottom .services-label {
-  color: #FFC928;
+  color: #b45309;
 }
 
 .services-bottom h3 {
@@ -1636,7 +1635,7 @@ body.start-here-visible .about-nav-item::before {
 
 .contact-form-heading > span {
   font-family: 'DM Mono', monospace;
-  color: #2563EB;
+  color: var(--accent-explore);
   font-weight: 700;
 }
 
@@ -2511,7 +2510,7 @@ body.start-here-visible .about-nav-item::before {
   box-shadow: 0 0 20px rgba(255, 204, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.6);
   padding: 3px;
   box-sizing: border-box;
-  background: #0b0b0b;
+  background: var(--bg-card);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2653,7 +2652,7 @@ body.start-here-visible .about-nav-item::before {
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(15px, 1.7vw, 17.5px);
   line-height: 1.65;
-  color: #e4e4e7;
+  color: var(--text-primary);
   font-weight: 400;
   margin: 0;
 }
@@ -2931,7 +2930,7 @@ html {
 /* 4. Services (#services) Cards & Intro */
 
 .services-label {
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.14em;
 }
 
@@ -3669,6 +3668,7 @@ html {
   --section-surface-raised: #18181b;
   --section-ink: #f4f4f5;
   --section-muted: #a1a1aa;
+  --section-black: #000000;
   --section-border: rgba(255,255,255,.10);
   --footer-surface: #0b0b0b;
   --footer-ink: #f4f4f5;
@@ -3679,6 +3679,7 @@ html {
   --section-surface-raised: #ffffff;
   --section-ink: #141416;
   --section-muted: #4b5563;
+  --section-black: #000000;
   --section-border: rgba(20,20,22,.12);
   --footer-surface: #ffffff;
   --footer-ink: #141416;
@@ -3748,7 +3749,7 @@ html {
 .panel:not(.hero) .zigzag-company,
 .panel:not(.hero) .contact-description,
 .panel:not(.hero) .services-intro > p {
-  color: var(--section-muted);
+  color: var(--text-primary);
 }
 
 .panel:not(.hero) .comp-col.studio p,
@@ -3756,7 +3757,7 @@ html {
 .panel:not(.hero) .badge-tag,
 .panel:not(.hero) .zigzag-designation,
 .panel:not(.hero) .footer-col-title {
-  color: var(--accent-yellow);
+  color: var(--accent-explore);
 }
 
 .panel:not(.hero) .contrast-header,
@@ -3790,7 +3791,7 @@ html {
 
 .panel:not(.hero) .footer-col-title,
 .panel:not(.hero) .footer-social-label {
-  color: var(--accent-yellow);
+  color: var(--accent-explore);
 }
 
 /* Explore/next-section buttons invert with the theme. */
@@ -3809,7 +3810,7 @@ html {
 }
 
 .panel:not(.hero) .cs-next-trigger .tech-code-word {
-  color: var(--accent-yellow);
+  color: var(--accent-explore);
 }
 
 /* The contact section's LET'S TALK trigger gets the inverse treatment. */
@@ -3825,7 +3826,7 @@ html {
 }
 
 .panel.contact .cs-next-trigger .tech-code-word {
-  color: var(--accent-yellow) !important;
+  color: var(--accent-explore) !important;
 }
 
 /* Contact form controls and labels also need readable theme-aware contrast. */
