@@ -888,7 +888,7 @@
 
     function updateButtonUI(theme) {
       if (modeIcon) {
-        modeIcon.textContent = theme === 'dark' ? '\u2600' : '\uD83C\uDF19';
+        modeIcon.textContent = theme === 'dark' ? '\uD83C\uDF19' : '\u2600';
       }
       toggleBtn.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
       toggleBtn.setAttribute('title', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
