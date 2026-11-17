@@ -585,7 +585,7 @@
         scrambleTimer = setInterval(() => {
           codeEl.textContent = originalCode
             .split('')
-            .map((char, index) => {
+            .map((_, index) => {
               if (index < iteration) return originalCode[index];
               return glyphs[Math.floor(Math.random() * glyphs.length)];
             })
