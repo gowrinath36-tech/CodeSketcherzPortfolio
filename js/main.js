@@ -335,8 +335,288 @@
     }
   }
 
+      // ==========================================
+  // 4B. OUR WORK HERO-PARALLAX DROP & SERVICE BRIDGE
   // ==========================================
-  // 5. OPEN SECTION
+
+  // Easy-to-update Placeholder Slots (Drop real screenshots in `Images/our works/work-1.jpg` etc.)
+  const SKETCHERZ_PROJECTS = [
+    {
+      title: "Project Slot 01 · Forest Cafe",
+      category: "web",
+      tag: "WEB & HOSPITALITY",
+      desc: "Replace Images/our works/work-1.jpg to showcase your live hospitality build.",
+      image: "Images/our works/work-1.jpg",
+      fallback: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80",
+      link: "https://forestcafehills.in"
+    },
+    {
+      title: "Project Slot 02 · GST Billing Suite",
+      category: "systems",
+      tag: "BUSINESS SYSTEMS",
+      desc: "Replace Images/our works/work-2.jpg to showcase custom invoice & billing software.",
+      image: "Images/our works/work-2.jpg",
+      fallback: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+      link: "#contact"
+    },
+    {
+      title: "Project Slot 03 · Brand Identity",
+      category: "brand",
+      tag: "BRANDING & UI/UX",
+      desc: "Replace Images/our works/work-3.jpg to highlight visual identity & design systems.",
+      image: "Images/our works/work-3.jpg",
+      fallback: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80",
+      link: "#about"
+    },
+    {
+      title: "Project Slot 04 · E-Commerce Store",
+      category: "web",
+      tag: "WEB & PLATFORMS",
+      desc: "Replace Images/our works/work-4.jpg to display high-speed storefront builds.",
+      image: "Images/our works/work-4.jpg",
+      fallback: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80",
+      link: "#contact"
+    },
+    {
+      title: "Project Slot 05 · Retail POS Hub",
+      category: "systems",
+      tag: "BUSINESS SYSTEMS",
+      desc: "Replace Images/our works/work-5.jpg to showcase inventory & retail operations.",
+      image: "Images/our works/work-5.jpg",
+      fallback: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+      link: "#contact"
+    },
+    {
+      title: "Project Slot 06 · Editorial UI",
+      category: "brand",
+      tag: "BRANDING & UI/UX",
+      desc: "Replace Images/our works/work-6.jpg to showcase typographic & UI craft.",
+      image: "Images/our works/work-6.jpg",
+      fallback: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=80",
+      link: "#contact"
+    }
+  ];
+
+  function initWaveDropShowcase(options = {}) {
+    const {
+      sectionId = "work",
+      topRow1Id = "workTopRow1",
+      topRow2Id = "workTopRow2",
+      row1Id = "workRow1",
+      row2Id = "workRow2",
+      row3Id = "workRow3",
+      items = SKETCHERZ_PROJECTS
+    } = options;
+
+    const section = document.getElementById(sectionId);
+    const topRow1 = document.getElementById(topRow1Id);
+    const topRow2 = document.getElementById(topRow2Id);
+    const row1 = document.getElementById(row1Id);
+    const row2 = document.getElementById(row2Id);
+    const row3 = document.getElementById(row3Id);
+    const pills = section ? section.querySelectorAll(".work-filter-pill") : [];
+
+    if (!section || !row1 || !row2 || !row3) return;
+
+    let currentFilter = "all";
+    let topCardSprings = [];
+    let bottomCardSprings = [];
+    let currentDrift = 0;
+    let velocityDrift = 0;
+    let lastTime = performance.now();
+
+    function buildCardHTML(item, interactive = true) {
+      const imgTag = `<img src="${item.image}" onerror="this.onerror=null;this.src='${item.fallback}';" alt="${interactive ? item.title : ""}" loading="lazy" />`;
+      if (!interactive) {
+        return `<div class="work-project-card">${imgTag}</div>`;
+      }
+      const ext = item.link.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : "";
+      return `
+        <article class="work-project-card" data-hovered="false" onclick="window.open('${item.link}', '${item.link.startsWith("http") ? "_blank" : "_self"}')">
+          ${imgTag}
+          <div class="work-card-overlay">
+            <span class="work-card-tag">${item.tag}</span>
+            <div class="work-card-info">
+              <h4>${item.title}</h4>
+              <p>${item.desc}</p>
+              <a href="${item.link}" ${ext} class="work-card-link" onclick="event.stopPropagation()">VIEW PROJECT ↗</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function bindCardSprings() {
+      // 1. Bind Top Ghost Cards with uniform column stagger
+      topCardSprings = [];
+      [topRow1, topRow2].forEach((rowEl, rIdx) => {
+        if (!rowEl) return;
+        Array.from(rowEl.children).forEach((el, cIdx) => {
+          topCardSprings.push({
+            el,
+            delay: cIdx * 0.065 + rIdx * 0.05,
+            val: 0,
+            vel: 0
+          });
+        });
+      });
+
+      // 2. Bind Bottom Yellow Landing Cards with uniform cascade stagger + hover lift tracking
+      bottomCardSprings = [];
+      [row1, row2, row3].forEach((rowEl, rIdx) => {
+        if (!rowEl) return;
+        Array.from(rowEl.children).forEach((el, cIdx) => {
+          el.addEventListener("mouseenter", () => { el.dataset.hovered = "true"; });
+          el.addEventListener("mouseleave", () => { el.dataset.hovered = "false"; });
+          bottomCardSprings.push({
+            el,
+            // Staggered release so cards fall & pop uniformly one after another rather than as a clump
+            delay: rIdx * 0.07 + cIdx * 0.055,
+            val: 0,
+            vel: 0,
+            hoverLift: 0
+          });
+        });
+      });
+    }
+
+    function renderWork(filter = "all") {
+      currentFilter = filter;
+      pills.forEach(p => p.classList.toggle("active", p.dataset.filter === filter));
+
+      if (topRow1 && topRow2) {
+        const ghost1 = [items[0], items[1], items[2], items[3]];
+        const ghost2 = [items[4], items[5], items[0], items[1]];
+        topRow1.innerHTML = ghost1.map(item => buildCardHTML(item, false)).join("");
+        topRow2.innerHTML = ghost2.map(item => buildCardHTML(item, false)).join("");
+      }
+
+      if (filter === "all") {
+        section.classList.remove("is-filtered");
+        const r1 = [items[0], items[1], items[2], items[0]];
+        const r2 = [items[3], items[4], items[5], items[3]];
+        const r3 = items.length > 6
+          ? items.slice(6)
+          : [items[1], items[5], items[0], items[4]];
+
+        row1.innerHTML = r1.map(item => buildCardHTML(item, true)).join("");
+        row2.innerHTML = r2.map(item => buildCardHTML(item, true)).join("");
+        row3.innerHTML = r3.map(item => buildCardHTML(item, true)).join("");
+        bindCardSprings();
+      } else {
+        section.classList.add("is-filtered");
+        const matches = items.filter(p => p.category === filter);
+        row1.innerHTML = matches.map(item => buildCardHTML(item, true)).join("");
+      }
+    }
+
+    pills.forEach(pill => {
+      pill.addEventListener("click", () => renderWork(pill.dataset.filter || "all"));
+    });
+
+    function animateIndividualCards(now) {
+      const dt = Math.min(0.05, (now - lastTime) / 1000);
+      lastTime = now;
+
+      const sectionRect = section.getBoundingClientRect();
+      const scrolledInside = Math.max(section.scrollTop || 0, window.scrollY || 0, Math.max(0, -sectionRect.top));
+      const rawProgress = Math.max(0, Math.min(1.35, scrolledInside / 340));
+
+      // Horizontal row drift (HeroParallax opposing slide)
+      const targetDrift = scrolledInside * 0.42;
+      velocityDrift = (velocityDrift + (targetDrift - currentDrift) * 160 * dt) * Math.exp(-22 * dt);
+      currentDrift += velocityDrift * dt;
+
+      // 1. Animate Top Ghost Cards Individually ("Stand up slightly & fall behind yellow wave")
+      topCardSprings.forEach((card) => {
+        const target = Math.max(0, Math.min(1, (rawProgress - card.delay) / 0.55));
+        // Spring solver per card
+        const force = (target - card.val) * 210;
+        card.vel = (card.vel + force * dt) * Math.exp(-24 * dt);
+        card.val += card.vel * dt;
+
+        const p = Math.max(0, Math.min(1.05, card.val));
+        // Straightens slightly ("stands up" from 15deg/20deg -> 4deg/6deg) as it drops down behind wave
+        const rx = 15 - 11 * Math.min(1, p * 1.2);
+        const rz = 20 - 14 * Math.min(1, p * 1.2);
+        const dropY = p * 310;
+        const op = 0.2 * (1 - Math.max(0, (p - 0.55) / 0.45));
+
+        card.el.style.opacity = Math.max(0, op).toFixed(3);
+        card.el.style.transform = `translate3d(0px, ${dropY.toFixed(1)}px, 0px) rotateX(${rx.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${(0.95 + 0.03 * p).toFixed(3)})`;
+      });
+
+      // 2. Animate Yellow Landing Cards Individually ("Cascade through Featured Works & pop flat")
+      if (currentFilter === "all") {
+        bottomCardSprings.forEach((card) => {
+          // Each card starts falling only after its staggered threshold passes
+          const startGate = 0.22 + card.delay;
+          const target = Math.max(0, Math.min(1, (rawProgress - startGate) / 0.48));
+
+          // Bouncy HeroParallax-style spring (stiffness: 240, damping: 22)
+          const force = (target - card.val) * 240;
+          card.vel = (card.vel + force * dt) * Math.exp(-22 * dt);
+          card.val += card.vel * dt;
+
+          // Smooth hover lift (-16px like Framer Motion whileHover={{ y: -20 }})
+          const targetHover = card.el.dataset.hovered === "true" ? -16 : 0;
+          card.hoverLift += (targetHover - card.hoverLift) * Math.min(1, dt * 14);
+
+          const p = card.val;
+          const fallY = -260 * (1 - p) + card.hoverLift;
+          const rx = 15 * (1 - Math.min(1, p));
+          const rz = 20 * (1 - Math.min(1, p));
+          const sc = 0.9 + 0.1 * Math.min(1.03, p);
+          const op = p <= 0.03 ? 0 : Math.min(1, p * 1.45);
+
+          card.el.style.opacity = op.toFixed(3);
+          card.el.style.transform = `translate3d(0px, ${fallY.toFixed(1)}px, 0px) rotateX(${rx.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
+        });
+
+        // Opposing horizontal row glide
+        row1.style.transform = `translate3d(${(-currentDrift - 40).toFixed(1)}px, 0, 0)`;
+        row2.style.transform = `translate3d(${(currentDrift - 220).toFixed(1)}px, 0, 0)`;
+        row3.style.transform = `translate3d(${(-currentDrift - 20).toFixed(1)}px, 0, 0)`;
+      }
+
+      requestAnimationFrame(animateIndividualCards);
+    }
+
+    renderWork("all");
+    requestAnimationFrame(animateIndividualCards);
+
+    return { renderWork };
+  }
+
+  function initWorkParallaxAndServiceBridge() {
+    const workController = initWaveDropShowcase();
+    const workSection = document.getElementById("work");
+    if (!workController || !workSection) return;
+
+    // Connect #services cards -> Swipe-back -> Navigate to #work & filter
+    const serviceCards = document.querySelectorAll(".service-card");
+    serviceCards.forEach((card, idx) => {
+      if (!card.dataset.serviceFilter) {
+        const categories = ["web", "brand", "systems"];
+        card.dataset.serviceFilter = categories[idx % categories.length];
+      }
+
+      card.addEventListener("click", () => {
+        const cat = card.dataset.serviceFilter || "all";
+        card.classList.add("is-swiping-back");
+
+        setTimeout(() => {
+          workController.renderWork(cat);
+          if (typeof goToSection === "function") {
+            goToSection("work", { historyMode: "push" });
+          } else {
+            workSection.scrollIntoView({ behavior: "smooth" });
+          }
+          setTimeout(() => card.classList.remove("is-swiping-back"), 450);
+        }, 220);
+      });
+    });
+  }
   // ==========================================
 
   function goToSection(to, options = {}) {
@@ -950,6 +1230,7 @@
 
   initFooter();
   initAboutUsMotion();
+  initWorkParallaxAndServiceBridge();
 
   // ==========================================
   // 11. INITIAL PAGE LOAD
