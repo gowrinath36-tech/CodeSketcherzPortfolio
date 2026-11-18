@@ -5130,3 +5130,325 @@ body.start-here-visible .about-nav-item::after {
     font-weight: 400;
     max-width: 650px;
 }
+
+
+/* ==========================================================================
+   OUR WORK (#work) — SEAMLESS WAVE CLIP & SCROLL-DROP REVEAL
+   ========================================================================== */
+#work {
+  position: relative;
+  overflow-x: clip;
+  background: var(--bg-dominant, #0b0b0b);
+}
+
+[data-theme="light"] #work {
+  background: #ffffff;
+}
+
+/* 1. Top Canvas: Tilted Faded Cards Behind Title */
+#work .panel-top-canvas.work-top-stage {
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+  overflow: visible;
+}
+
+#work .panel-top-canvas.work-top-stage .section-top,
+#work .panel-top-canvas.work-top-stage .section-main {
+  position: relative;
+  z-index: 5;
+}
+
+.work-top-parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -110px; /* Tucks directly behind the opaque wave curve */
+  z-index: 2;
+  pointer-events: none;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.work-top-plane {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  opacity: 0.22;
+  transform-origin: center top;
+  transform: translate3d(0px, -10px, 0px) rotateX(16deg) rotateZ(16deg) scale(0.95);
+  will-change: transform, opacity;
+}
+
+/* 2. Seamless 100% Opaque Yellow Wave & Landing Block (Zero White Line) */
+#work .wave-divider,
+#work .wave-divider-wrap,
+#work .work-solid-wave {
+  position: relative;
+  z-index: 8;
+  display: block;
+  width: 100%;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+}
+
+#work .wave-divider svg,
+#work .wave-divider-wrap svg,
+#work .work-solid-wave svg {
+  display: block;
+  width: 100%;
+  height: 56px;
+  vertical-align: bottom;
+}
+
+#work .wave-divider path,
+#work .wave-divider-wrap path,
+#work .work-solid-wave path {
+  fill: #fed000 !important;
+  fill-opacity: 1 !important;
+}
+
+#work .panel-bottom-block.work-yellow-landing {
+  position: relative;
+  z-index: 8;
+  margin-top: -2px; /* Eliminates sub-pixel gap under SVG wave */
+  background-color: #fed000 !important;
+  opacity: 1 !important;
+  height: auto !important;
+  min-height: 680px;
+  padding-top: 8px;
+}
+
+/* 3. Opaque Yellow Header Mask (z:10 — Cards emerge from behind this on scroll) */
+.work-featured-header {
+  position: relative;
+  z-index: 10;
+  background-color: #fed000;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto 24px;
+  padding: 8px 20px 20px;
+}
+
+.work-featured-eyebrow {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(23, 23, 23, 0.72);
+  margin-bottom: 6px;
+}
+
+.work-featured-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #171717;
+  margin: 0 0 20px;
+}
+
+.work-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.work-filter-pill {
+  background: rgba(23, 23, 23, 0.08);
+  color: #171717;
+  border: 1.5px solid rgba(23, 23, 23, 0.25);
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.work-filter-pill:hover {
+  background: rgba(23, 23, 23, 0.16);
+  transform: translateY(-2px);
+}
+
+.work-filter-pill.active {
+  background: #171717;
+  color: #fed000;
+  border-color: #171717;
+}
+
+/* 4. Reveal Stage (z:6 — Starts hidden/tucked up behind wave & header, drops down on scroll) */
+.work-reveal-viewport {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0 40px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.work-reveal-plane {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  width: 100%;
+  transform-origin: center top;
+  will-change: transform, opacity;
+  /* Hidden & tucked upward before scrolling */
+  opacity: 0;
+  transform: translate3d(0px, -220px, 0px) rotateX(16deg) rotateZ(12deg) scale(0.92);
+}
+
+.work-parallax-row {
+  display: flex;
+  flex-direction: row;
+  gap: 26px;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Project Cards */
+.work-project-card {
+  position: relative;
+  width: clamp(280px, 28vw, 410px);
+  height: clamp(190px, 19vw, 265px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #171717;
+  border: 2px solid #171717;
+  box-shadow: 0 18px 36px -12px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-project-card:hover {
+  transform: translateY(-14px) scale(1.02);
+  box-shadow: 0 28px 50px -10px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+.work-project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+  transition: transform 0.5s ease, filter 0.35s ease;
+}
+
+.work-project-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.4);
+}
+
+.work-card-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(23,23,23,0.1) 0%, rgba(23,23,23,0.92) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.work-project-card:hover .work-card-overlay {
+  opacity: 1;
+}
+
+.work-card-tag {
+  align-self: flex-start;
+  background: #fed000;
+  color: #171717;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+.work-card-info h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 6px;
+}
+
+.work-card-info p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #e4e4e7;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.work-card-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #fed000;
+  text-decoration: none;
+}
+
+/* Filtered View: Static Grid inside Yellow Block */
+#work.is-filtered .work-reveal-plane {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+#work.is-filtered .work-reveal-viewport {
+  padding: 12px 24px 36px;
+}
+
+#work.is-filtered #workRow1 {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 380px));
+  justify-content: center;
+  gap: 24px;
+  transform: none !important;
+}
+
+#work.is-filtered #workRow1 .work-project-card {
+  width: 100%;
+  height: 250px;
+}
+
+#work.is-filtered #workRow2,
+#work.is-filtered #workRow3 {
+  display: none;
+}
+
+/* Service Card Click Swipe-Back Animation (#services) */
+.service-card {
+  cursor: pointer;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.service-card.is-swiping-back {
+  transform: translateX(-52px) scale(0.93) rotate(-1.5deg) !important;
+  opacity: 0.2 !important;
+}
+
+@media (max-width: 768px) {
+  .work-project-card {
+    width: 240px;
+    height: 165px;
+  }
+}
