@@ -5133,7 +5133,7 @@ body.start-here-visible .about-nav-item::after {
 
 
 /* ==========================================================================
-   OUR WORK (#work) — SEAMLESS WAVE CLIP & SCROLL-DROP REVEAL
+   OUR WORK (#work) — NATURAL FLOW + SPRING-DAMPED PARALLAX CARD DROP
    ========================================================================== */
 #work {
   position: relative;
@@ -5145,7 +5145,7 @@ body.start-here-visible .about-nav-item::after {
   background: #ffffff;
 }
 
-/* 1. Top Canvas: Tilted Faded Cards Behind Title */
+/* Top Canvas: Normal position (no sticky lock pushing yellow wave down) */
 #work .panel-top-canvas.work-top-stage {
   position: relative;
   z-index: 2;
@@ -5164,7 +5164,7 @@ body.start-here-visible .about-nav-item::after {
   top: 0;
   left: 0;
   right: 0;
-  bottom: -110px; /* Tucks directly behind the opaque wave curve */
+  bottom: -120px; /* Extends behind the solid yellow wave so wave cuts the bottom of cards */
   z-index: 2;
   pointer-events: none;
   perspective: 1000px;
@@ -5177,11 +5177,11 @@ body.start-here-visible .about-nav-item::after {
   gap: 24px;
   opacity: 0.22;
   transform-origin: center top;
-  transform: translate3d(0px, -10px, 0px) rotateX(16deg) rotateZ(16deg) scale(0.95);
+  transform: translate3d(0px, -10px, 0px) rotateX(15deg) rotateZ(20deg) scale(0.95);
   will-change: transform, opacity;
 }
 
-/* 2. Seamless 100% Opaque Yellow Wave & Landing Block (Zero White Line) */
+/* 100% Solid Opaque Yellow Wave & Bottom Section (Zero Seam, Zero Bottom-to-Up Curtain) */
 #work .wave-divider,
 #work .wave-divider-wrap,
 #work .work-solid-wave {
@@ -5200,8 +5200,6 @@ body.start-here-visible .about-nav-item::after {
 #work .work-solid-wave svg {
   display: block;
   width: 100%;
-  height: 56px;
-  vertical-align: bottom;
 }
 
 #work .wave-divider path,
@@ -5214,23 +5212,23 @@ body.start-here-visible .about-nav-item::after {
 #work .panel-bottom-block.work-yellow-landing {
   position: relative;
   z-index: 8;
-  margin-top: -2px; /* Eliminates sub-pixel gap under SVG wave */
+  margin-top: -2px;
   background-color: #fed000 !important;
   opacity: 1 !important;
   height: auto !important;
-  min-height: 680px;
+  min-height: 720px;
   padding-top: 8px;
 }
 
-/* 3. Opaque Yellow Header Mask (z:10 — Cards emerge from behind this on scroll) */
+/* Opaque Yellow Header Mask (z:12 — Cards pass behind this and emerge below) */
 .work-featured-header {
   position: relative;
-  z-index: 10;
+  z-index: 12;
   background-color: #fed000;
   text-align: center;
-  max-width: 100%;
-  margin: 0 auto 24px;
-  padding: 8px 20px 20px;
+  width: 100%;
+  margin: 0 auto 20px;
+  padding: 10px 20px 22px;
 }
 
 .work-featured-eyebrow {
@@ -5285,13 +5283,13 @@ body.start-here-visible .about-nav-item::after {
   border-color: #171717;
 }
 
-/* 4. Reveal Stage (z:6 — Starts hidden/tucked up behind wave & header, drops down on scroll) */
+/* Reveal Viewport (z:6 — Cards fall down from behind "Featured Works" into this area) */
 .work-reveal-viewport {
   position: relative;
   z-index: 6;
   width: 100%;
   overflow: hidden;
-  padding: 12px 0 40px;
+  padding: 14px 0 44px;
   perspective: 1000px;
   transform-style: preserve-3d;
 }
@@ -5303,9 +5301,8 @@ body.start-here-visible .about-nav-item::after {
   width: 100%;
   transform-origin: center top;
   will-change: transform, opacity;
-  /* Hidden & tucked upward before scrolling */
   opacity: 0;
-  transform: translate3d(0px, -220px, 0px) rotateX(16deg) rotateZ(12deg) scale(0.92);
+  transform: translate3d(0px, -320px, 0px) rotateX(15deg) rotateZ(20deg) scale(0.92);
 }
 
 .work-parallax-row {
@@ -5316,7 +5313,7 @@ body.start-here-visible .about-nav-item::after {
   will-change: transform;
 }
 
-/* Project Cards */
+/* Placeholder Project Cards */
 .work-project-card {
   position: relative;
   width: clamp(280px, 28vw, 410px);
@@ -5333,7 +5330,7 @@ body.start-here-visible .about-nav-item::after {
 }
 
 .work-project-card:hover {
-  transform: translateY(-14px) scale(1.02);
+  transform: translateY(-16px) scale(1.02);
   box-shadow: 0 28px 50px -10px rgba(0, 0, 0, 0.5);
   z-index: 20;
 }

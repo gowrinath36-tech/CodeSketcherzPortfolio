@@ -339,85 +339,107 @@
   // 4B. OUR WORK HERO-PARALLAX DROP & SERVICE BRIDGE
   // ==========================================
 
+  // Easy-to-update Placeholder Slots (Drop real screenshots in `Images/our works/work-1.jpg` etc.)
   const SKETCHERZ_PROJECTS = [
     {
-      title: "Villimalai Forest Cafe",
+      title: "Project Slot 01 · Forest Cafe",
       category: "web",
       tag: "WEB & HOSPITALITY",
-      desc: "Mountain cafe & stay experience deployed live at forestcafehills.in.",
-      image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80",
+      desc: "Replace Images/our works/work-1.jpg to showcase your live hospitality build.",
+      image: "Images/our works/work-1.jpg",
+      fallback: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80",
       link: "https://forestcafehills.in"
     },
     {
-      title: "Textile GST Billing App",
+      title: "Project Slot 02 · GST Billing Suite",
       category: "systems",
       tag: "BUSINESS SYSTEMS",
-      desc: "Custom invoice layout generator, automated tax calculations & print engine.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+      desc: "Replace Images/our works/work-2.jpg to showcase custom invoice & billing software.",
+      image: "Images/our works/work-2.jpg",
+      fallback: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
       link: "#contact"
     },
     {
-      title: "Code Sketcherz Design System",
+      title: "Project Slot 03 · Brand Identity",
       category: "brand",
       tag: "BRANDING & UI/UX",
-      desc: "60-30-10 color architecture, Apple HIG type scales, and kinetic UI triggers.",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80",
+      desc: "Replace Images/our works/work-3.jpg to highlight visual identity & design systems.",
+      image: "Images/our works/work-3.jpg",
+      fallback: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80",
       link: "#about"
     },
     {
-      title: "Artisan Storefront Platform",
+      title: "Project Slot 04 · E-Commerce Store",
       category: "web",
       tag: "WEB & PLATFORMS",
-      desc: "Sub-second product catalog with instant filtering and UPI checkout.",
-      image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80",
+      desc: "Replace Images/our works/work-4.jpg to display high-speed storefront builds.",
+      image: "Images/our works/work-4.jpg",
+      fallback: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80",
       link: "#contact"
     },
     {
-      title: "Retail POS & Inventory Suite",
+      title: "Project Slot 05 · Retail POS Hub",
       category: "systems",
       tag: "BUSINESS SYSTEMS",
-      desc: "High-speed barcode billing dashboard built for retail counters.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+      desc: "Replace Images/our works/work-5.jpg to showcase inventory & retail operations.",
+      image: "Images/our works/work-5.jpg",
+      fallback: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
       link: "#contact"
     },
     {
-      title: "Editorial Brand Identity",
+      title: "Project Slot 06 · Editorial UI",
       category: "brand",
       tag: "BRANDING & UI/UX",
-      desc: "Minimalist typography, monochrome portrait direction, and digital guidelines.",
-      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=80",
+      desc: "Replace Images/our works/work-6.jpg to showcase typographic & UI craft.",
+      image: "Images/our works/work-6.jpg",
+      fallback: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=80",
       link: "#contact"
     }
   ];
 
-  function initWorkParallaxAndServiceBridge() {
-    const workSection = document.getElementById("work");
-    const topPlane = document.getElementById("workTopPlane");
-    const topRow1 = document.getElementById("workTopRow1");
-    const topRow2 = document.getElementById("workTopRow2");
-    const revealViewport = document.getElementById("workRevealViewport");
-    const revealPlane = document.getElementById("workRevealPlane");
-    const row1 = document.getElementById("workRow1");
-    const row2 = document.getElementById("workRow2");
-    const row3 = document.getElementById("workRow3");
-    const pills = document.querySelectorAll(".work-filter-pill");
+  function initWaveDropShowcase(options = {}) {
+    const {
+      sectionId = "work",
+      topPlaneId = "workTopPlane",
+      topRow1Id = "workTopRow1",
+      topRow2Id = "workTopRow2",
+      revealPlaneId = "workRevealPlane",
+      row1Id = "workRow1",
+      row2Id = "workRow2",
+      row3Id = "workRow3",
+      items = SKETCHERZ_PROJECTS
+    } = options;
 
-    if (!workSection || !revealPlane || !row1 || !row2 || !row3) return;
+    const section = document.getElementById(sectionId);
+    const topPlane = document.getElementById(topPlaneId);
+    const topRow1 = document.getElementById(topRow1Id);
+    const topRow2 = document.getElementById(topRow2Id);
+    const revealPlane = document.getElementById(revealPlaneId);
+    const row1 = document.getElementById(row1Id);
+    const row2 = document.getElementById(row2Id);
+    const row3 = document.getElementById(row3Id);
+    const pills = section ? section.querySelectorAll(".work-filter-pill") : [];
+
+    if (!section || !revealPlane || !row1 || !row2 || !row3) return;
 
     let currentFilter = "all";
 
+    // Spring physics state (replicates Framer Motion useSpring stiffness: 300, damping: 30)
+    let currentDrop = 0;
+    let velocityDrop = 0;
+    let currentDrift = 0;
+    let velocityDrift = 0;
+    let lastTime = performance.now();
+
     function buildCardHTML(item, interactive = true) {
+      const imgTag = `<img src="${item.image}" onerror="this.onerror=null;this.src='${item.fallback}';" alt="${interactive ? item.title : ""}" loading="lazy" />`;
       if (!interactive) {
-        return `
-          <div class="work-project-card">
-            <img src="${item.image}" alt="" loading="lazy" />
-          </div>
-        `;
+        return `<div class="work-project-card">${imgTag}</div>`;
       }
       const ext = item.link.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : "";
       return `
         <article class="work-project-card" onclick="window.open('${item.link}', '${item.link.startsWith("http") ? "_blank" : "_self"}')">
-          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          ${imgTag}
           <div class="work-card-overlay">
             <span class="work-card-tag">${item.tag}</span>
             <div class="work-card-info">
@@ -434,28 +456,27 @@
       currentFilter = filter;
       pills.forEach(p => p.classList.toggle("active", p.dataset.filter === filter));
 
-      // Populate top faded ghost rows behind title (cut by the solid yellow wave)
       if (topRow1 && topRow2) {
-        const ghost1 = [SKETCHERZ_PROJECTS[0], SKETCHERZ_PROJECTS[1], SKETCHERZ_PROJECTS[2], SKETCHERZ_PROJECTS[3]];
-        const ghost2 = [SKETCHERZ_PROJECTS[4], SKETCHERZ_PROJECTS[5], SKETCHERZ_PROJECTS[0], SKETCHERZ_PROJECTS[1]];
+        const ghost1 = [items[0], items[1], items[2], items[3]];
+        const ghost2 = [items[4], items[5], items[0], items[1]];
         topRow1.innerHTML = ghost1.map(item => buildCardHTML(item, false)).join("");
         topRow2.innerHTML = ghost2.map(item => buildCardHTML(item, false)).join("");
       }
 
       if (filter === "all") {
-        workSection.classList.remove("is-filtered");
-        const r1 = [SKETCHERZ_PROJECTS[0], SKETCHERZ_PROJECTS[1], SKETCHERZ_PROJECTS[2], SKETCHERZ_PROJECTS[0]];
-        const r2 = [SKETCHERZ_PROJECTS[3], SKETCHERZ_PROJECTS[4], SKETCHERZ_PROJECTS[5], SKETCHERZ_PROJECTS[3]];
-        const r3 = SKETCHERZ_PROJECTS.length > 6
-          ? SKETCHERZ_PROJECTS.slice(6)
-          : [SKETCHERZ_PROJECTS[1], SKETCHERZ_PROJECTS[5], SKETCHERZ_PROJECTS[0], SKETCHERZ_PROJECTS[4]];
+        section.classList.remove("is-filtered");
+        const r1 = [items[0], items[1], items[2], items[0]];
+        const r2 = [items[3], items[4], items[5], items[3]];
+        const r3 = items.length > 6
+          ? items.slice(6)
+          : [items[1], items[5], items[0], items[4]];
 
         row1.innerHTML = r1.map(item => buildCardHTML(item, true)).join("");
         row2.innerHTML = r2.map(item => buildCardHTML(item, true)).join("");
         row3.innerHTML = r3.map(item => buildCardHTML(item, true)).join("");
       } else {
-        workSection.classList.add("is-filtered");
-        const matches = SKETCHERZ_PROJECTS.filter(p => p.category === filter);
+        section.classList.add("is-filtered");
+        const matches = items.filter(p => p.category === filter);
         row1.innerHTML = matches.map(item => buildCardHTML(item, true)).join("");
       }
     }
@@ -464,48 +485,71 @@
       pill.addEventListener("click", () => renderWork(pill.dataset.filter || "all"));
     });
 
-    // Two-Stage Scroll Animation:
-    // Stage A: Top faded cards behind title slide down behind the solid yellow wave
-    // Stage B: Yellow area cards start invisible (opacity: 0, y: -220px) and fall into place on scroll
-    function syncWaveDropAndReveal() {
-      const sectionRect = workSection.getBoundingClientRect();
-      // How far the user has scrolled into #work (reading panel scrollTop, window scroll, and section rect)
-      const scrolledInside = Math.max(workSection.scrollTop || 0, window.scrollY || 0, Math.max(0, -sectionRect.top));
+    // Realistic Spring-Damped Falling & Un-Tilting Animation
+    function animateSpringDrop(now) {
+      const dt = Math.min(0.05, (now - lastTime) / 1000);
+      lastTime = now;
 
-      // Stage A: Top faded cards behind title slide down behind the solid yellow wave
+      const sectionRect = section.getBoundingClientRect();
+      const scrolledInside = Math.max(section.scrollTop || 0, window.scrollY || 0, Math.max(0, -sectionRect.top));
+
+      // Target 0 -> 1 over the first 340px of scrolling down #work
+      const targetDrop = Math.max(0, Math.min(1, scrolledInside / 340));
+      // Target horizontal parallax drift across the whole section scroll
+      const targetDrift = scrolledInside * 0.45;
+
+      // Spring solver (stiffness = 180, damping = 24 for silky gravity-like fall)
+      const stiffness = 180;
+      const damping = 24;
+
+      const forceDrop = (targetDrop - currentDrop) * stiffness;
+      velocityDrop = (velocityDrop + forceDrop * dt) * Math.exp(-damping * dt);
+      currentDrop += velocityDrop * dt;
+
+      const forceDrift = (targetDrift - currentDrift) * 140;
+      velocityDrift = (velocityDrift + forceDrift * dt) * Math.exp(-22 * dt);
+      currentDrift += velocityDrift * dt;
+
+      const p = Math.max(0, Math.min(1.05, currentDrop));
+
+      // 1. Top Faded Cards: Drop downward behind the solid yellow wave as you scroll
       if (topPlane) {
-        const topProg = Math.max(0, Math.min(1, scrolledInside / 260));
-        const dropY = -10 + topProg * 230;
-        const topOpacity = 0.22 * (1 - topProg * 0.9);
-        topPlane.style.opacity = topOpacity.toFixed(3);
-        topPlane.style.transform = `translate3d(${(-topProg * 50).toFixed(1)}px, ${dropY.toFixed(1)}px, 0px) rotateX(${(16 * (1 - topProg * 0.4)).toFixed(2)}deg) rotateZ(${(16 * (1 - topProg * 0.4)).toFixed(2)}deg) scale(0.95)`;
+        const topY = -10 + p * 340; // Falls behind the opaque yellow wave
+        const topOpacity = 0.22 * (1 - Math.min(1, p * 1.15));
+        topPlane.style.opacity = Math.max(0, topOpacity).toFixed(3);
+        topPlane.style.transform = `translate3d(${(-currentDrift * 0.4).toFixed(1)}px, ${topY.toFixed(1)}px, 0px) rotateX(${(15 * (1 - p * 0.4)).toFixed(2)}deg) rotateZ(${(20 * (1 - p * 0.4)).toFixed(2)}deg) scale(0.95)`;
       }
 
-      // Stage B: Yellow area cards start invisible (opacity: 0, y: -220px) and fall into place on scroll
+      // 2. Yellow Section Cards: Fall from behind "Featured Works" (-320px -> 0px) & flatten 3D tilt (15deg/20deg -> 0deg)
       if (currentFilter === "all" && revealPlane) {
-        // Starts revealing once user begins scrolling past the hero title (40px -> 360px)
-        const raw = (scrolledInside - 30) / 320;
-        const progress = Math.max(0, Math.min(1, raw));
-        const ease = 1 - Math.pow(1 - progress, 2.3);
+        const fallY = -320 * (1 - p);
+        const rx = 15 * (1 - p);
+        const rz = 20 * (1 - p);
+        const sc = 0.92 + 0.08 * p;
+        const op = p <= 0.02 ? 0 : Math.min(1, p * 1.35);
 
-        const emergeY = -220 * (1 - ease);
-        const rx = 16 * (1 - ease);
-        const rz = 12 * (1 - ease);
-        const scale = 0.92 + 0.08 * ease;
-        const opacity = progress <= 0.01 ? 0 : Math.min(1, ease * 1.15);
+        revealPlane.style.opacity = op.toFixed(3);
+        revealPlane.style.transform = `translate3d(0px, ${fallY.toFixed(1)}px, 0px) rotateX(${rx.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
 
-        revealPlane.style.opacity = opacity.toFixed(3);
-        revealPlane.style.transform = `translate3d(0px, ${emergeY.toFixed(1)}px, 0px) rotateX(${rx.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
-
-        // Smooth opposing horizontal drift as the user continues scrolling through the rows
-        const drift = Math.max(0, scrolledInside - 120) * 0.35;
-        row1.style.transform = `translate3d(${(-drift - 60).toFixed(1)}px, 0, 0)`;
-        row2.style.transform = `translate3d(${(drift - 180).toFixed(1)}px, 0, 0)`;
-        row3.style.transform = `translate3d(${(-drift - 40).toFixed(1)}px, 0, 0)`;
+        // Opposing horizontal row glide (Row 1 & 3 right-to-left, Row 2 left-to-right)
+        row1.style.transform = `translate3d(${(-currentDrift - 40).toFixed(1)}px, 0, 0)`;
+        row2.style.transform = `translate3d(${(currentDrift - 220).toFixed(1)}px, 0, 0)`;
+        row3.style.transform = `translate3d(${(-currentDrift - 20).toFixed(1)}px, 0, 0)`;
       }
 
-      requestAnimationFrame(syncWaveDropAndReveal);
+      requestAnimationFrame(animateSpringDrop);
     }
+
+    renderWork("all");
+    requestAnimationFrame(animateSpringDrop);
+
+    return { renderWork };
+  }
+
+  function initWorkParallaxAndServiceBridge() {
+    const workController = initWaveDropShowcase();
+    const workSection = document.getElementById("work");
+    if (!workController || !workSection) return;
 
     // Connect #services cards -> Swipe-back -> Navigate to #work & filter
     const serviceCards = document.querySelectorAll(".service-card");
@@ -520,7 +564,7 @@
         card.classList.add("is-swiping-back");
 
         setTimeout(() => {
-          renderWork(cat);
+          workController.renderWork(cat);
           if (typeof goToSection === "function") {
             goToSection("work", { historyMode: "push" });
           } else {
@@ -530,11 +574,7 @@
         }, 220);
       });
     });
-
-    renderWork("all");
-    requestAnimationFrame(syncWaveDropAndReveal);
   }
-
   // ==========================================
 
   function goToSection(to, options = {}) {
