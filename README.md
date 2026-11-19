@@ -30,3 +30,10 @@ The content and studio identity are original placeholder content. Contact form u
 
 ### Next button visibility
 The bottom Next Section button is hidden on the Hero section. It becomes visible when visitors open About Page or any later section. There is no next control on the hero itself; use the header to enter the site.
+
+
+## Design system (current)
+- `css/style.css` is a single token-driven stylesheet (light/dark via `html[data-theme]`); no `!important` overrides.
+- Header is fully transparent in both themes. Header links: Home, Studio (`#about`), Services, Our Work, Testimonials, About Us (`#aboutus`), Contact. Below 960px they collapse into a full-screen menu.
+- Type: DM Sans (primary), DM Mono (labels), DM Serif Display italic (editorial emphasis only).
+- Portfolio content lives in `SKETCHERZ_PROJECTS` in `js/main.js`; drop real images at `Images/our works/work-N.jpg`.

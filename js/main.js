@@ -127,6 +127,101 @@
   }
 
   // ==========================================
+  // IMAGE FAILURE HANDLING
+  // Photos fall back once (inline onerror); if that fails too, hide the
+  // broken-image glyph so the designed placeholder surface shows instead.
+  // ==========================================
+
+  document.addEventListener('error', event => {
+    const img = event.target;
+    if (!(img instanceof HTMLImageElement) || img.closest('.brand, .footer-cs-badge')) return;
+    const hasFallback = img.hasAttribute('onerror');
+    if (hasFallback && !img.dataset.failedOnce) {
+      img.dataset.failedOnce = '1';
+      return;
+    }
+    img.style.visibility = 'hidden';
+  }, true);
+
+  // ==========================================
+  // 3B. TRANSPARENT HEADER: SCROLL STATE + INK TONE
+  // The header never has a background. While a panel scrolls, we only
+  // pick the ink colour that stays readable over whatever is beneath it.
+  // ==========================================
+
+  function updateHeaderState() {
+    const panel = panels[currentIndex];
+    if (!panel) return;
+
+    const probeY = 40;
+    let tone = '';
+
+    if (panel.scrollTop > 8) {
+      const regions = panel.querySelectorAll('.panel-bottom-block, .section-footer');
+      regions.forEach(region => {
+        const rect = region.getBoundingClientRect();
+        if (rect.top <= probeY && rect.bottom > probeY) {
+          if (region.classList.contains('section-footer')) {
+            tone = 'light';
+          } else if (region.classList.contains('block-yellow') || region.matches('.panel.work .panel-bottom-block')) {
+            tone = 'ink';
+          }
+        }
+      });
+    }
+
+    document.body.classList.toggle('is-scrolled', panel.scrollTop > 8);
+    if (tone) {
+      document.body.dataset.headerTone = tone;
+    } else {
+      delete document.body.dataset.headerTone;
+    }
+  }
+
+  let headerTick = null;
+  function onPanelScroll() {
+    if (headerTick) return;
+    headerTick = requestAnimationFrame(() => {
+      headerTick = null;
+      updateHeaderState();
+    });
+  }
+  panels.forEach(panel => panel.addEventListener('scroll', onPanelScroll, { passive: true }));
+  window.addEventListener('resize', onPanelScroll);
+
+  // ==========================================
+  // 3C. MOBILE MENU
+  // ==========================================
+
+  const navToggle = document.getElementById('navToggle');
+
+  function setMenu(open) {
+    document.body.classList.toggle('menu-open', open);
+    if (navToggle) {
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+  }
+
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      setMenu(!document.body.classList.contains('menu-open'));
+    });
+  }
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && document.body.classList.contains('menu-open')) {
+      setMenu(false);
+      if (navToggle) navToggle.focus();
+    }
+  });
+
+  // Leaving the narrow layout while the menu is open should not strand it open.
+  window.matchMedia('(min-width: 961px)').addEventListener('change', event => {
+    if (event.matches) setMenu(false);
+  });
+
+  // ==========================================
   // 4. FINISH SECTION TRANSITION
   // ==========================================
 
@@ -142,6 +237,7 @@
       pendingCurrent.style.visibility = 'hidden';
       pendingCurrent.style.transition = 'none';
       pendingCurrent.style.transform = '';
+      pendingCurrent.style.opacity = '1';
       pendingCurrent.scrollTop = 0;
       pendingCurrent.setAttribute('aria-hidden', 'true');
     }
@@ -152,6 +248,7 @@
       pendingTarget.style.visibility = 'visible';
       pendingTarget.style.transition = 'none';
       pendingTarget.style.transform = '';
+      pendingTarget.style.opacity = '1';
       pendingTarget.style.zIndex = '2';
       pendingTarget.scrollTop = 0;
       pendingTarget.setAttribute('aria-hidden', 'false');
@@ -166,6 +263,7 @@
         panel.style.visibility = 'hidden';
         panel.style.transition = 'none';
         panel.style.transform = '';
+        panel.style.opacity = '1';
         panel.setAttribute('aria-hidden', 'true');
       }
     });
@@ -173,88 +271,73 @@
     isTransitioning = false;
     pendingCurrent = null;
     pendingTarget = null;
+    updateHeaderState();
   }
 
   // ==========================================
-  // ABOUT US GEOMETRIC S-K-E-T-C-H-E-R-Z SHOWCASE
+  // ABOUT US · SEAMLESS TEAM MARQUEE
   // ==========================================
 
   const SKETCHERZ_MEMBERS = [
     {
-      letter: "S",
       name: "Gowrinath",
       role: "Lead Developer & UI Architect",
-      shape: "shape-double-pill",
       photo: "Images/about us/member-1.jpg",
       fallback: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80",
       website: "https://github.com/gowrinath36-tech",
       linkedin: "#"
     },
     {
-      letter: "K",
       name: "Hari Krishna",
       role: "Full Stack Engineer",
-      shape: "shape-arch",
       photo: "Images/about us/member-2.jpg",
       fallback: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80",
       website: "#",
       linkedin: "#"
     },
     {
-      letter: "E",
       name: "Titu",
       role: "Creative Direction & UI/UX",
-      shape: "shape-circle",
       photo: "Images/about us/member-3.jpg",
       fallback: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80",
       website: "#",
       linkedin: "#"
     },
     {
-      letter: "T",
       name: "Karthik R.",
       role: "Motion Graphics & 3D",
-      shape: "shape-triple-pill",
       photo: "Images/about us/member-4.jpg",
       fallback: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80",
       website: "#",
       linkedin: "#"
     },
     {
-      letter: "C",
       name: "Priya S.",
       role: "Frontend Developer",
-      shape: "shape-arch",
       photo: "Images/about us/member-5.jpg",
       fallback: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
       website: "#",
       linkedin: "#"
     },
     {
-      letter: "H",
       name: "Dinesh K.",
       role: "Performance & SEO Engineer",
-      shape: "shape-double-pill",
       photo: "Images/about us/member-6.jpg",
       fallback: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=500&q=80",
       website: "#",
       linkedin: "#"
     },
     {
-      letter: "E",
       name: "Sneha M.",
       role: "QA & Automation",
-      shape: "shape-triple-pill",
       photo: "Images/about us/member-7.jpg",
       fallback: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80",
       website: "#",
       linkedin: "#"
     },
     {
-      letter: "R",
       name: "Manoj V.",
       role: "DevOps & Cloud Systems",
-      shape: "shape-circle",
       photo: "Images/about us/member-8.jpg",
       fallback: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80",
       website: "#",
@@ -263,76 +346,153 @@
   ];
 
   function initAboutUsMotion() {
-    const grid = document.getElementById("sketcherzGrid");
-    const modal = document.getElementById("squadZModal");
-    const closeBtn = document.getElementById("squadZClose");
-    const rosterEl = document.getElementById("squadZRoster");
-    if (!grid || grid.dataset.rendered) return;
-    grid.dataset.rendered = "true";
+    const root = document.getElementById("sketcherzGrid");
+    if (!root || root.dataset.rendered) return;
+    root.dataset.rendered = "true";
 
-    const globeSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
-    const linkedinSvg = `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.633 13.633h-2.37V9.92c0-.885-.017-2.025-1.234-2.025-1.235 0-1.424.965-1.424 1.96v3.778h-2.37V5.998H8.51v1.043h.031a2.5 2.5 0 0 1 2.246-1.233c2.403 0 2.846 1.58 2.846 3.637zM3.56 4.954a1.376 1.376 0 1 1 0-2.751 1.376 1.376 0 0 1 0 2.751m1.185 8.679H2.372V5.998h2.373zM14.815.001H1.18A1.17 1.17 0 0 0 0 1.154v13.691A1.17 1.17 0 0 0 1.18 16h13.635A1.17 1.17 0 0 0 16 14.845V1.153A1.17 1.17 0 0 0 14.815 0"/></svg>`;
+    const globeSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+    const linkedinSvg = `<svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.633 13.633h-2.37V9.92c0-.885-.017-2.025-1.234-2.025-1.235 0-1.424.965-1.424 1.96v3.778h-2.37V5.998H8.51v1.043h.031a2.5 2.5 0 0 1 2.246-1.233c2.403 0 2.846 1.58 2.846 3.637zM3.56 4.954a1.376 1.376 0 1 1 0-2.751 1.376 1.376 0 0 1 0 2.751m1.185 8.679H2.372V5.998h2.373zM14.815.001H1.18A1.17 1.17 0 0 0 0 1.154v13.691A1.17 1.17 0 0 0 1.18 16h13.635A1.17 1.17 0 0 0 16 14.845V1.153A1.17 1.17 0 0 0 14.815 0"/></svg>`;
 
-    // Render 8 Members (S-K-E-T-C-H-E-R)
-    SKETCHERZ_MEMBERS.forEach(m => {
-      const article = document.createElement("article");
-      article.className = "sk-member-card";
-      article.innerHTML = `
-        <div class="sk-portrait-box ${m.shape}">
-          <span class="sk-letter-tag">${m.letter}</span>
-          <img src="${m.photo}" onerror="this.onerror=null;this.src='${m.fallback}';" alt="${m.name}" loading="lazy" />
-        </div>
-        <div class="sk-meta">
-          <h4>${m.name}</h4>
-          <p>${m.role}</p>
-          <div class="sk-socials">
-            <a href="${m.website}" target="_blank" rel="noopener noreferrer" aria-label="${m.name} Website">${globeSvg}</a>
-            <a href="${m.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="${m.name} LinkedIn">${linkedinSvg}</a>
+    // One <ul> per copy of the eight members. Copy B exists only for visual continuity:
+    // it is aria-hidden + inert, so it adds no accessible content and no tab stops.
+    const buildGroup = (isClone) => {
+      const ul = document.createElement("ul");
+      ul.className = "sk-group";
+      ul.setAttribute("role", "list");
+      if (isClone) {
+        ul.setAttribute("aria-hidden", "true");
+        ul.setAttribute("inert", "");
+      }
+      ul.innerHTML = SKETCHERZ_MEMBERS.map(m => `
+        <li class="sk-card">
+          <div class="sk-portrait">
+            <img src="${m.photo}" data-fallback="${m.fallback}" alt="${isClone ? "" : m.name}" width="600" height="800" decoding="async" draggable="false" />
           </div>
-        </div>
-      `;
-      grid.appendChild(article);
+          <div class="sk-meta">
+            <h4>${m.name}</h4>
+            <p>${m.role}</p>
+            <div class="sk-socials">
+              <a href="${m.website}" target="_blank" rel="noopener noreferrer" aria-label="${m.name} website">${globeSvg}</a>
+              <a href="${m.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="${m.name} LinkedIn">${linkedinSvg}</a>
+            </div>
+          </div>
+        </li>`).join("");
+      return ul;
+    };
+
+    const track = document.createElement("div");
+    track.className = "sk-track";
+    const groupA = buildGroup(false);
+    track.append(groupA, buildGroup(true));
+    root.appendChild(track);
+
+    // Image fallback (error events don't bubble, so listen in the capture phase once)
+    root.addEventListener("error", (e) => {
+      const img = e.target;
+      if (img.tagName === "IMG" && img.dataset.fallback && img.src !== img.dataset.fallback) {
+        img.src = img.dataset.fallback;
+        delete img.dataset.fallback;
+      }
+    }, true);
+
+    initSquadMarquee(root, track, groupA);
+  }
+
+  /*
+   * Seamless loop: the track holds two identical, equally-wide groups and a single
+   * linear animation moves it from 0 to -50% of its own width. At -50% the second group
+   * sits exactly where the first started, so the restart is pixel-identical (no jump,
+   * no gap, no easing at the seam). One Web Animation drives everything; hover/focus
+   * eases playbackRate to 0 and back instead of pausing abruptly.
+   */
+  function initSquadMarquee(root, track, groupA) {
+    const reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileMQ = window.matchMedia("(max-width: 640px)");
+    let anim = null;
+    let visible = false;
+    let hovering = false;
+    let focused = false;
+    let rate = 0;
+    let raf = 0;
+    let lastT = 0;
+
+    const speed = () => (mobileMQ.matches ? 44 : 64);          // px per second
+    const targetRate = () => (visible && !hovering && !focused ? 1 : 0);
+
+    const tick = (t) => {
+      const dt = lastT ? Math.min(t - lastT, 64) : 16;
+      lastT = t;
+      const target = targetRate();
+      rate += (target - rate) * (1 - Math.exp(-dt / 140));
+      if (Math.abs(target - rate) < 0.004) rate = target;
+      if (anim) anim.playbackRate = rate;
+      if (rate !== target) raf = requestAnimationFrame(tick);
+      else { raf = 0; lastT = 0; }
+    };
+    const updateRate = () => { if (!raf && anim) raf = requestAnimationFrame(tick); };
+
+    const sync = () => {
+      const w = groupA.offsetWidth;
+      if (!anim || !w) return;
+      const duration = (w / speed()) * 1000;
+      const cur = anim.effect.getComputedTiming();
+      if (Math.abs(cur.duration - duration) < 1) return;
+      const progress = cur.progress || 0;                      // keep position when resizing
+      anim.effect.updateTiming({ duration });
+      anim.currentTime = progress * duration;
+    };
+
+    const start = () => {
+      if (anim || !track.animate) return;
+      root.classList.remove("is-static");
+      anim = track.animate(
+        [{ transform: "translate3d(0,0,0)" }, { transform: "translate3d(-50%,0,0)" }],
+        { duration: 60000, iterations: Infinity, easing: "linear" }
+      );
+      anim.playbackRate = rate = 0;
+      sync();
+      updateRate();
+    };
+    const stop = () => {
+      if (anim) { anim.cancel(); anim = null; }
+      cancelAnimationFrame(raf); raf = 0; lastT = 0; rate = 0;
+      root.classList.add("is-static");
+    };
+    const applyMotionPref = () => (reduceMQ.matches ? stop() : start());
+
+    // Only the mouse pauses on hover; touch keeps flowing so taps on links never fight the motion
+    root.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") { hovering = true; updateRate(); } });
+    root.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") { hovering = false; updateRate(); } });
+
+    // Keyboard: pause while focus is inside, and bring an off-screen card into view
+    root.addEventListener("focusin", (e) => {
+      focused = true;
+      updateRate();
+      const card = e.target.closest(".sk-card");
+      if (!card || !anim) return;
+      const r = card.getBoundingClientRect();
+      const v = root.getBoundingClientRect();
+      if (r.left >= v.left && r.right <= v.right) return;
+      const w = groupA.offsetWidth;
+      const T = card.offsetLeft - (v.width - card.offsetWidth) / 2;
+      const p = (((T % w) + w) % w) / w;
+      anim.currentTime = p * anim.effect.getComputedTiming().duration;
+    });
+    root.addEventListener("focusout", (e) => {
+      if (!root.contains(e.relatedTarget)) { focused = false; updateRate(); }
     });
 
-    // Render 9th Interactive "Z" Card (Click to see more)
-    const zBtn = document.createElement("button");
-    zBtn.type = "button";
-    zBtn.className = "sk-member-card sk-z-trigger-card";
-    zBtn.setAttribute("aria-label", "See more about Code Sketcherz team");
-    zBtn.innerHTML = `
-      <div class="sk-z-box">
-        <span class="sk-z-giant">Z</span>
-        <span class="sk-z-pill">Click to see more ↗</span>
-      </div>
-      <div class="sk-meta">
-        <h4>More &amp; Careers</h4>
-        <p>Full Stack · Motion · Cloud</p>
-      </div>
-    `;
-    grid.appendChild(zBtn);
-
-    if (rosterEl) {
-      rosterEl.innerHTML = SKETCHERZ_MEMBERS.map(m => `<span>${m.letter} · ${m.name} (${m.role})</span>`).join("");
+    // Run only while on screen (also covers hidden panels / section transitions)
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; updateRate(); }, { threshold: 0 }).observe(root);
+    } else {
+      visible = true;
     }
+    if ("ResizeObserver" in window) new ResizeObserver(sync).observe(groupA);
+    window.addEventListener("resize", sync, { passive: true });
+    (reduceMQ.addEventListener ? reduceMQ.addEventListener.bind(reduceMQ, "change") : reduceMQ.addListener.bind(reduceMQ))(applyMotionPref);
 
-    if (modal) {
-      zBtn.addEventListener("click", () => {
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-      });
-      const closeModal = () => {
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-      };
-      closeBtn?.addEventListener("click", closeModal);
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) closeModal();
-      });
-      const ctaBtn = modal.querySelector(".squad-z-cta");
-      ctaBtn?.addEventListener("click", () => {
-        closeModal();
-      });
-    }
+    applyMotionPref();
   }
 
       // ==========================================
@@ -397,194 +557,75 @@
     }
   ];
 
+  // Escapes text that is interpolated into card markup.
+  function esc(value) {
+    return String(value).replace(/[&<>"']/g, ch => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]
+    ));
+  }
+
+  // Portfolio: a clean, consistent case-study grid with category filtering.
   function initWaveDropShowcase(options = {}) {
     const {
       sectionId = "work",
-      topRow1Id = "workTopRow1",
-      topRow2Id = "workTopRow2",
-      row1Id = "workRow1",
-      row2Id = "workRow2",
-      row3Id = "workRow3",
+      gridId = "workGrid",
       items = SKETCHERZ_PROJECTS
     } = options;
 
     const section = document.getElementById(sectionId);
-    const topRow1 = document.getElementById(topRow1Id);
-    const topRow2 = document.getElementById(topRow2Id);
-    const row1 = document.getElementById(row1Id);
-    const row2 = document.getElementById(row2Id);
-    const row3 = document.getElementById(row3Id);
+    const grid = document.getElementById(gridId);
     const pills = section ? section.querySelectorAll(".work-filter-pill") : [];
 
-    if (!section || !row1 || !row2 || !row3) return;
+    if (!section || !grid) return;
 
-    let currentFilter = "all";
-    let topCardSprings = [];
-    let bottomCardSprings = [];
-    let currentDrift = 0;
-    let velocityDrift = 0;
-    let lastTime = performance.now();
-
-    function buildCardHTML(item, interactive = true) {
-      const imgTag = `<img src="${item.image}" onerror="this.onerror=null;this.src='${item.fallback}';" alt="${interactive ? item.title : ""}" loading="lazy" />`;
-      if (!interactive) {
-        return `<div class="work-project-card">${imgTag}</div>`;
-      }
-      const ext = item.link.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : "";
+    function buildCardHTML(item) {
+      const isExternal = /^https?:/i.test(item.link);
+      const ext = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      // "Project Slot 01 · Forest Cafe" → index "Project Slot 01" + title "Forest Cafe"
+      const parts = String(item.title).split(' · ');
+      const index = parts.length > 1 ? parts[0] : '';
+      const title = parts.length > 1 ? parts.slice(1).join(' · ') : item.title;
       return `
-        <article class="work-project-card" data-hovered="false" onclick="window.open('${item.link}', '${item.link.startsWith("http") ? "_blank" : "_self"}')">
-          ${imgTag}
-          <div class="work-card-overlay">
-            <span class="work-card-tag">${item.tag}</span>
-            <div class="work-card-info">
-              <h4>${item.title}</h4>
-              <p>${item.desc}</p>
-              <a href="${item.link}" ${ext} class="work-card-link" onclick="event.stopPropagation()">VIEW PROJECT ↗</a>
-            </div>
+        <article class="work-card">
+          <div class="work-card-media">
+            <img src="${esc(item.image)}" onerror="this.onerror=null;this.src='${esc(item.fallback)}';" alt="${esc(title)}" loading="lazy" />
+            <span class="work-card-tag">${esc(item.tag)}</span>
+          </div>
+          <div class="work-card-body">
+            ${index ? `<span class="work-card-index">${esc(index)}</span>` : ''}
+            <h4>${esc(title)}</h4>
+            <p>${esc(item.desc)}</p>
+            <a href="${esc(item.link)}"${ext} class="work-card-link" aria-label="View project: ${esc(title)}">VIEW PROJECT ↗</a>
           </div>
         </article>
       `;
     }
 
-    function bindCardSprings() {
-      // 1. Bind Top Ghost Cards with uniform column stagger
-      topCardSprings = [];
-      [topRow1, topRow2].forEach((rowEl, rIdx) => {
-        if (!rowEl) return;
-        Array.from(rowEl.children).forEach((el, cIdx) => {
-          topCardSprings.push({
-            el,
-            delay: cIdx * 0.065 + rIdx * 0.05,
-            val: 0,
-            vel: 0
-          });
-        });
-      });
-
-      // 2. Bind Bottom Yellow Landing Cards with uniform cascade stagger + hover lift tracking
-      bottomCardSprings = [];
-      [row1, row2, row3].forEach((rowEl, rIdx) => {
-        if (!rowEl) return;
-        Array.from(rowEl.children).forEach((el, cIdx) => {
-          el.addEventListener("mouseenter", () => { el.dataset.hovered = "true"; });
-          el.addEventListener("mouseleave", () => { el.dataset.hovered = "false"; });
-          bottomCardSprings.push({
-            el,
-            // Staggered release so cards fall & pop uniformly one after another rather than as a clump
-            delay: rIdx * 0.07 + cIdx * 0.055,
-            val: 0,
-            vel: 0,
-            hoverLift: 0
-          });
-        });
-      });
-    }
-
     function renderWork(filter = "all") {
-      currentFilter = filter;
       pills.forEach(p => p.classList.toggle("active", p.dataset.filter === filter));
-
-      if (topRow1 && topRow2) {
-        const ghost1 = [items[0], items[1], items[2], items[3]];
-        const ghost2 = [items[4], items[5], items[0], items[1]];
-        topRow1.innerHTML = ghost1.map(item => buildCardHTML(item, false)).join("");
-        topRow2.innerHTML = ghost2.map(item => buildCardHTML(item, false)).join("");
-      }
-
-      if (filter === "all") {
-        section.classList.remove("is-filtered");
-        const r1 = [items[0], items[1], items[2], items[0]];
-        const r2 = [items[3], items[4], items[5], items[3]];
-        const r3 = items.length > 6
-          ? items.slice(6)
-          : [items[1], items[5], items[0], items[4]];
-
-        row1.innerHTML = r1.map(item => buildCardHTML(item, true)).join("");
-        row2.innerHTML = r2.map(item => buildCardHTML(item, true)).join("");
-        row3.innerHTML = r3.map(item => buildCardHTML(item, true)).join("");
-        bindCardSprings();
-      } else {
-        section.classList.add("is-filtered");
-        const matches = items.filter(p => p.category === filter);
-        row1.innerHTML = matches.map(item => buildCardHTML(item, true)).join("");
-      }
+      const matches = filter === "all" ? items : items.filter(p => p.category === filter);
+      grid.innerHTML = matches.length
+        ? matches.map(buildCardHTML).join("")
+        : '<p class="work-empty">No projects in this category yet.</p>';
     }
 
     pills.forEach(pill => {
       pill.addEventListener("click", () => renderWork(pill.dataset.filter || "all"));
     });
 
-    function animateIndividualCards(now) {
-      const dt = Math.min(0.05, (now - lastTime) / 1000);
-      lastTime = now;
-
-      const sectionRect = section.getBoundingClientRect();
-      const scrolledInside = Math.max(section.scrollTop || 0, window.scrollY || 0, Math.max(0, -sectionRect.top));
-      const rawProgress = Math.max(0, Math.min(1.35, scrolledInside / 340));
-
-      // Horizontal row drift (HeroParallax opposing slide)
-      const targetDrift = scrolledInside * 0.42;
-      velocityDrift = (velocityDrift + (targetDrift - currentDrift) * 160 * dt) * Math.exp(-22 * dt);
-      currentDrift += velocityDrift * dt;
-
-      // 1. Animate Top Ghost Cards Individually ("Stand up slightly & fall behind yellow wave")
-      topCardSprings.forEach((card) => {
-        const target = Math.max(0, Math.min(1, (rawProgress - card.delay) / 0.55));
-        // Spring solver per card
-        const force = (target - card.val) * 210;
-        card.vel = (card.vel + force * dt) * Math.exp(-24 * dt);
-        card.val += card.vel * dt;
-
-        const p = Math.max(0, Math.min(1.05, card.val));
-        // Straightens slightly ("stands up" from 15deg/20deg -> 4deg/6deg) as it drops down behind wave
-        const rx = 15 - 11 * Math.min(1, p * 1.2);
-        const rz = 20 - 14 * Math.min(1, p * 1.2);
-        const dropY = p * 310;
-        const op = 0.2 * (1 - Math.max(0, (p - 0.55) / 0.45));
-
-        card.el.style.opacity = Math.max(0, op).toFixed(3);
-        card.el.style.transform = `translate3d(0px, ${dropY.toFixed(1)}px, 0px) rotateX(${rx.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${(0.95 + 0.03 * p).toFixed(3)})`;
-      });
-
-      // 2. Animate Yellow Landing Cards Individually ("Cascade through Featured Works & pop flat")
-      if (currentFilter === "all") {
-        bottomCardSprings.forEach((card) => {
-          // Each card starts falling only after its staggered threshold passes
-          const startGate = 0.22 + card.delay;
-          const target = Math.max(0, Math.min(1, (rawProgress - startGate) / 0.48));
-
-          // Bouncy HeroParallax-style spring (stiffness: 240, damping: 22)
-          const force = (target - card.val) * 240;
-          card.vel = (card.vel + force * dt) * Math.exp(-22 * dt);
-          card.val += card.vel * dt;
-
-          // Smooth hover lift (-16px like Framer Motion whileHover={{ y: -20 }})
-          const targetHover = card.el.dataset.hovered === "true" ? -16 : 0;
-          card.hoverLift += (targetHover - card.hoverLift) * Math.min(1, dt * 14);
-
-          const p = card.val;
-          const fallY = -260 * (1 - p) + card.hoverLift;
-          const rx = 15 * (1 - Math.min(1, p));
-          const rz = 20 * (1 - Math.min(1, p));
-          const sc = 0.9 + 0.1 * Math.min(1.03, p);
-          const op = p <= 0.03 ? 0 : Math.min(1, p * 1.45);
-
-          card.el.style.opacity = op.toFixed(3);
-          card.el.style.transform = `translate3d(0px, ${fallY.toFixed(1)}px, 0px) rotateX(${rx.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
-        });
-
-        // Opposing horizontal row glide
-        row1.style.transform = `translate3d(${(-currentDrift - 40).toFixed(1)}px, 0, 0)`;
-        row2.style.transform = `translate3d(${(currentDrift - 220).toFixed(1)}px, 0, 0)`;
-        row3.style.transform = `translate3d(${(-currentDrift - 20).toFixed(1)}px, 0, 0)`;
+    // Internal links (#contact, #about…) use the deck navigation, not a hash jump.
+    grid.addEventListener("click", event => {
+      const link = event.target.closest("a.work-card-link");
+      if (!link) return;
+      const href = link.getAttribute("href") || "";
+      if (href.startsWith("#") && ids.includes(href.slice(1))) {
+        event.preventDefault();
+        hasNavigatedFromHero = true;
+        goToSection(href.slice(1), { historyMode: "push" });
       }
-
-      requestAnimationFrame(animateIndividualCards);
-    }
+    });
 
     renderWork("all");
-    requestAnimationFrame(animateIndividualCards);
-
     return { renderWork };
   }
 
@@ -645,6 +686,9 @@
     }
 
     const targetId = ids[targetIndex];
+    setMenu(false);
+    document.body.classList.remove('is-scrolled');
+    delete document.body.dataset.headerTone;
 
     // First page load
     if (currentIndex === -1) {
@@ -657,6 +701,7 @@
         panel.style.display = active ? 'block' : 'none';
         panel.style.visibility = active ? 'visible' : 'hidden';
         panel.style.transform = '';
+        panel.style.opacity = '1';
         panel.style.transition = '';
 
         panel.setAttribute('aria-hidden', String(!active));
@@ -671,6 +716,7 @@
       if (targetId === 'aboutus') {
         initAboutUsMotion();
       }
+      updateHeaderState();
       return;
     }
 
@@ -703,6 +749,7 @@
         panel.style.display = active ? 'block' : 'none';
         panel.style.visibility = active ? 'visible' : 'hidden';
         panel.style.transform = '';
+        panel.style.opacity = '1';
         panel.style.transition = '';
 
         panel.setAttribute('aria-hidden', String(!active));
@@ -720,6 +767,7 @@
       isTransitioning = false;
       pendingCurrent = null;
       pendingTarget = null;
+      updateHeaderState();
     }
 
     if (!currentPanel || !targetPanel) {
@@ -750,48 +798,52 @@
       ? 'translateY(-100%)'
       : 'translateY(100%)';
 
-    // Prepare incoming panel
+    // Slide the next full-screen panel into place. Both panels remain opaque,
+    // so the deck background is never exposed during navigation.
     targetPanel.classList.remove('active');
     targetPanel.style.display = 'block';
     targetPanel.style.visibility = 'visible';
     targetPanel.style.transition = 'none';
-    targetPanel.style.transform = targetStart;
+    targetPanel.style.opacity = '1';
+    targetPanel.style.transform = isForward
+      ? 'translate3d(0, 100%, 0)'
+      : 'translate3d(0, -100%, 0)';
     targetPanel.style.zIndex = '3';
     targetPanel.scrollTop = 0;
-
     targetPanel.setAttribute('aria-hidden', 'false');
 
-    // Prepare outgoing panel
     currentPanel.style.display = 'block';
     currentPanel.style.visibility = 'visible';
     currentPanel.style.transition = 'none';
-    currentPanel.style.transform = 'translateY(0)';
+    currentPanel.style.opacity = '1';
+    currentPanel.style.transform = 'translate3d(0, 0, 0)';
     currentPanel.style.zIndex = '2';
 
-    // Force browser reflow
     void targetPanel.offsetHeight;
     void currentPanel.offsetHeight;
 
-    // Animate both panels together
-    const transition =
-      'transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)';
+    const slideTransition =
+      'transform 0.72s cubic-bezier(0.22, 1, 0.36, 1)';
+    targetPanel.style.transition = slideTransition;
+    currentPanel.style.transition = slideTransition;
 
-    targetPanel.style.transition = transition;
-    currentPanel.style.transition = transition;
-
-    targetPanel.style.transform = 'translateY(0)';
-    currentPanel.style.transform = currentEnd;
+    requestAnimationFrame(() => {
+      targetPanel.style.transform = 'translate3d(0, 0, 0)';
+      currentPanel.style.transform = isForward
+        ? 'translate3d(0, -100%, 0)'
+        : 'translate3d(0, 100%, 0)';
+    });
 
     transitionTimeout = setTimeout(() => {
       finalizeTransition();
-    }, 650);
+    }, 760);
   }
 
   // ==========================================
   // 6. NAVIGATION LINKS
   // ==========================================
 
-  document.querySelectorAll('[data-section]').forEach(element => {
+  document.querySelectorAll('[data-section]:not(.marketplace-work-btn)').forEach(element => {
     element.addEventListener('click', event => {
       event.preventDefault();
 
@@ -818,6 +870,35 @@
       }
     });
   });
+
+  // The hero's central EXPLORE CTA has its own explicit route so it always
+  // uses the same panel-slide navigation as the header (without duplicate handlers).
+  const heroWorkButton = document.querySelector('.marketplace-work-btn');
+  if (heroWorkButton) {
+    heroWorkButton.setAttribute('type', 'button');
+    heroWorkButton.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const aboutIndex = ids.indexOf('about');
+      if (aboutIndex < 0) return;
+
+      hasNavigatedFromHero = true;
+
+      // If already on About, simply return to the top instead of replaying
+      // a section transition against the same panel.
+      if (currentIndex === aboutIndex && panels[aboutIndex].classList.contains('active')) {
+        if (lenis) {
+          lenis.scrollTo(0, { duration: 0.8 });
+        } else {
+          panels[aboutIndex].scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        return;
+      }
+
+      goToSection('about', { historyMode: 'push' });
+    });
+  }
 
   // ==========================================
   // 7. NEXT SECTION BUTTONS (SCRAMBLE + LETTER PAINT STROKE)
@@ -892,8 +973,14 @@
         }, scrambleSpeed);
       }
 
-      // Automated 2.5s Idle Attract Loop when visible in viewport
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) {
+        wordEl.querySelectorAll('.paint-char').forEach(c => { c.style.clipPath = 'none'; });
+      }
+
+      // Automated idle attract loop when visible in viewport (skipped for reduced motion)
       function scheduleNextLoop() {
+        if (reduceMotion) return;
         clearTimeout(loopTimer);
         loopTimer = setTimeout(() => {
           if (btn._isInView) {
@@ -908,6 +995,7 @@
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             btn._isInView = entry.isIntersecting;
+            if (entry.isIntersecting && reduceMotion) return;
             if (entry.isIntersecting) {
               playPaintSequence(1);
               scheduleNextLoop();
@@ -926,11 +1014,13 @@
 
       // User Hover / Direct Touch: Accelerate immediately
       btn.addEventListener('mouseenter', () => {
+        if (reduceMotion) return;
         clearTimeout(loopTimer);
         playPaintSequence(1.6);
       });
 
       btn.addEventListener('touchstart', () => {
+        if (reduceMotion) return;
         clearTimeout(loopTimer);
         playPaintSequence(1.6);
       }, { passive: true });
@@ -1187,6 +1277,7 @@
         console.warn('localStorage theme save error:', err);
       }
       updateButtonUI(next);
+      updateHeaderState();
     });
 
     if (window.matchMedia) {

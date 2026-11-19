@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
@@ -49,21 +49,24 @@
             <span class="brand-text">Code Sketcherz</span>
         </a>
 
-        <nav class="header-nav" aria-label="Primary sections">
+        <nav class="header-nav" id="primaryNav" aria-label="Primary sections">
             <button class="nav-item" data-section="hero">HOME</button>
-            <button class="nav-item" data-section="about">ABOUT</button>
+            <button class="nav-item" data-section="about">STUDIO</button>
             <button class="nav-item" data-section="services">SERVICES</button>
             <button class="nav-item" data-section="work">OUR WORK</button>
             <button class="nav-item" data-section="testimonial">TESTIMONIALS</button>
+            <button class="nav-item" data-section="aboutus">ABOUT US</button>
             <button class="nav-item" data-section="contact">CONTACT</button>
         </nav>
 
         <div class="header-actions">
             <button class="work-cta" data-section="contact">LET'S WORK TOGETHER <span>↗</span></button>
-            <button id="themeToggle" class="mode-toggle-btn" aria-label="Toggle light and dark mode"
-                title="Toggle theme">
+            <button id="themeToggle" class="mode-toggle-btn" aria-label="Toggle light and dark mode" title="Toggle theme">
                 <span class="mode-icon" aria-hidden="true">☼</span>
                 <span class="mode-text" aria-hidden="true">☾</span>
+            </button>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+                <span class="nav-toggle-bars" aria-hidden="true"><i></i></span>
             </button>
         </div>
     </header>
@@ -80,87 +83,56 @@
         ====================================== -->
 
         <section class="panel hero active" id="hero" aria-label="Hero section">
-            <div class="panel-inner hero-inner">
-                <div class="hero-split-glow" aria-hidden="true"></div>
-                <div class="hero-orbit-glow" aria-hidden="true"></div>
-
-                <div class="hero-layout">
-                    <div class="hero-copy">
-                        <h1>Ideas deserve to<br>become <span>extraordinary.</span></h1>
-                        <p class="hero-mantra">THINK. <span>EXPLORE.</span> BUILD.</p>
-                        <p class="hero-description">
-                            Code Sketcherz is a creative digital agency bringing ideas to life through<br>web
-                            development,
-                            UI/UX design, content creation and digital marketing.<br>We combine creativity and
-                            technology
-                            to build brands, create meaningful experiences and make businesses stand out.
-                        </p>
-                        <div class="hero-actions">
-                            <button class="hero-primary-btn" data-section="contact">LET'S WORK TOGETHER
-                                <span>↗</span></button>
-                            <button class="hero-secondary-btn" data-section="work">EXPLORE OUR WORK
-                                <span>↗</span></button>
-                        </div>
-
-                        <div class="hero-proof-row">
-                            <div class="hero-proof-item"><span class="hero-proof-symbol">✦</span><span><strong>Creative
-                                        Solutions</strong><small>for Growing Brands</small></span></div>
-                            <i></i>
-                            <div class="hero-proof-item"><span
-                                    class="hero-proof-symbol">♟</span><span><strong>50+</strong><small>Happy
-                                        Clients</small></span></div>
-                            <i></i>
-                            <div class="hero-proof-item"><span
-                                    class="hero-proof-symbol">★</span><span><strong>100+</strong><small>Projects
-                                        Delivered</small></span></div>
-                        </div>
+            <div class="panel-inner hero-inner marketplace-hero">
+                <div class="hero-grid">
+                <div class="marketplace-center">
+                    <p class="hero-mantra">THINK. <span>EXPLORE.</span> BUILD.</p>
+                    <h1>Ideas deserve to <br>become <span>extraordinary.</span></h1>
+                    <p class="hero-description">Code Sketcherz is a creative digital agency bringing ideas to life through web development, UI/UX design, content creation and digital marketing. We combine creativity and technology to build brands, create meaningful experiences and make businesses stand out.</p>
+                    <div class="hero-actions">
+                        <button type="button" class="hero-secondary-btn marketplace-work-btn" aria-label="Explore Code Sketcherz">EXPLORE <span>↗</span></button>
+                        <button type="button" class="hero-edge-nav hero-edge-nav--left" data-section="work" aria-label="View our work">
+                    <span>OUR WORK</span><i>↗</i>
+                </button>
+                        <button type="button" class="hero-edge-nav hero-edge-nav--right" data-section="contact" aria-label="Let's talk, go to contact">
+                    <span>LET'S TALK</span><i>↗</i>
+                </button>
                     </div>
+                </div>
 
-                    <div class="hero-visual" aria-label="Code Sketcherz six services">
-                        <div class="hero-visual-halo" aria-hidden="true"></div>
-                        <img class="hero-emblem" src="Images/hero-orbital-flame.webp"
-                            alt="Code Sketcherz golden orbital flame emblem">
+                <div class="marketplace-collage" aria-label="Creative services showcase">
+                    <button class="market-card card-web" data-section="services" aria-label="Web Development">
+                        <span class="market-art art-orange"><i class="art-window"></i><i class="art-cursor">↗</i><i class="art-orb"></i></span>
+                        <span class="market-caption">Web Development</span>
+                    </button>
+                    <button class="market-card card-ux" data-section="services" aria-label="UI and UX Design">
+                        <span class="market-art art-yellow"><i class="art-grid"></i><i class="art-spark">✦</i></span>
+                        <span class="market-caption">UI / UX Design</span>
+                    </button>
+                    <button class="market-card card-software" data-section="services" aria-label="Software Solutions">
+                        <span class="market-art art-dark"><i class="art-dashboard"><b></b><b></b><b></b><b></b></i></span>
+                        <span class="market-caption">Software Solutions</span>
+                    </button>
+                    <button class="market-card card-brand" data-section="services" aria-label="Brand Identity">
+                        <span class="market-art art-beige"><i class="art-letter">C</i><i class="art-line"></i></span>
+                        <span class="market-caption">Brand Identity</span>
+                    </button>
+                    <button class="market-card card-marketing" data-section="services" aria-label="Digital Marketing">
+                        <span class="market-art art-orange-two"><i class="art-bars"><b></b><b></b><b></b><b></b></i><i class="art-arrow">↗</i></span>
+                        <span class="market-caption">Digital Marketing</span>
+                    </button>
+                    <button class="market-card card-consulting" data-section="services" aria-label="Creative Consulting">
+                        <span class="market-art art-cream"><i class="art-circle"></i><i class="art-cross">✳</i></span>
+                        <span class="market-caption">Creative Consulting</span>
+                    </button>
+                </div>
 
-                        <button class="hero-service-card hero-card-web" data-section="services">
-                            <span class="hero-service-icon">&lt;/&gt;</span>
-                            <span class="hero-service-copy"><strong>Web Development</strong><small>Fast, modern websites
-                                    built for your brand.</small></span>
-                            <span class="hero-service-arrow">↗</span>
-                        </button>
-                        <button class="hero-service-card hero-card-ux" data-section="services">
-                            <span class="hero-service-icon">◈</span>
-                            <span class="hero-service-copy"><strong>UI / UX Design</strong><small>Simple, intuitive
-                                    digital experiences.</small></span>
-                            <span class="hero-service-arrow">↗</span>
-                        </button>
-                        <button class="hero-service-card hero-card-software" data-section="services">
-                            <span class="hero-service-icon">⌘</span>
-                            <span class="hero-service-copy"><strong>Software Solutions</strong><small>Smart tools that
-                                    simplify your workflow.</small></span>
-                            <span class="hero-service-arrow">↗</span>
-                        </button>
-                        <button class="hero-service-card hero-card-brand" data-section="services">
-                            <span class="hero-service-icon">◎</span>
-                            <span class="hero-service-copy"><strong>Brand Identity</strong><small>Distinctive visuals
-                                    that make you stand out.</small></span>
-                            <span class="hero-service-arrow">↗</span>
-                        </button>
-                        <button class="hero-service-card hero-card-marketing" data-section="services">
-                            <span class="hero-service-icon">↗</span>
-                            <span class="hero-service-copy"><strong>Digital Marketing</strong><small>Creative campaigns
-                                    that grow your reach.</small></span>
-                            <span class="hero-service-arrow">↗</span>
-                        </button>
-                        <button class="hero-service-card hero-card-consulting" data-section="services">
-                            <span class="hero-service-icon">✧</span>
-                            <span class="hero-service-copy"><strong>Creative Consulting</strong><small>Clear strategies
-                                    that turn ideas into action.</small></span>
-                            <span class="hero-service-arrow">↗</span>
-                        </button>
-                    </div>
+                </div>
 
-
-                    <!-- HERO SOCIAL MEDIA LINKS -->
+                <div class="hero-footer">
+                    <div class="marketplace-proof" aria-label="Studio highlights">
+                    <span>✦ Creative Solutions</span><i></i><span><b>50+</b> Happy Clients</span><i></i><span><b>100+</b> Projects Delivered</span>
+                </div>
                     <div class="hero-social-grid">
 
                         <!-- Instagram -->
@@ -360,7 +332,7 @@
                                 <li>
                                     <button class="footer-nav-link" data-section="about">
                                         <span class="footer-star">✦</span>
-                                        <span>About Page</span>
+                                        <span>Studio</span>
                                     </button>
                                 </li>
                                 <li>
@@ -527,7 +499,7 @@
                                 </div>
 
                                 <p>
-                                    From the first idea to the final product,we create <br>meaningful digital solutions
+                                    From the first idea to the final product, we create meaningful digital solutions
                                     through thoughtful design, modern technology and creative thinking.
                                 </p>
                             </div>
@@ -743,7 +715,7 @@
                                 <li>
                                     <button class="footer-nav-link" data-section="about">
                                         <span class="footer-star">✦</span>
-                                        <span>About Page</span>
+                                        <span>Studio</span>
                                     </button>
                                 </li>
                                 <li>
@@ -874,14 +846,7 @@
             <div class="panel-inner">
 
                 <!-- TOP CANVAS: Normal flow, faded tilted cards (z:2) behind Title (z:5) -->
-                <div class="panel-top-canvas work-top-stage">
-                    <div class="work-top-parallax" id="workTopParallax" aria-hidden="true">
-                        <div class="work-top-plane" id="workTopPlane">
-                            <div class="work-parallax-row" id="workTopRow1"></div>
-                            <div class="work-parallax-row" id="workTopRow2"></div>
-                        </div>
-                    </div>
-
+                <div class="panel-top-canvas bg-black">
                     <div class="section-main">
                         <p class="eyebrow">OUR WORK</p>
 
@@ -898,13 +863,13 @@
 
                 </div>
 
-                <div class="wave-divider wave-divider-wrap work-solid-wave" aria-hidden="true">
+                <div class="wave-divider-wrap" aria-hidden="true">
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-                        <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#fed000" />
+                        <path d="M0,0 L1200,0 L1200,30 C1000,0 800,60 600,30 C400,0 200,60 0,30 Z" />
                     </svg>
                 </div>
 
-                <div class="panel-bottom-block block-yellow work-yellow-landing" id="workYellowLanding">
+                <div class="panel-bottom-block block-yellow" id="workYellowLanding">
 
                     <div class="work-featured-header">
                         <span class="work-featured-eyebrow">SELECTED ARCHIVE · 2026</span>
@@ -922,13 +887,7 @@
                     </div>
 
                     <!-- Masked Reveal Viewport: Cards emerge smoothly from below "Featured Works" -->
-                    <div class="work-reveal-viewport" id="workRevealViewport">
-                        <div class="work-reveal-plane" id="workRevealPlane">
-                            <div class="work-parallax-row" id="workRow1"></div>
-                            <div class="work-parallax-row" id="workRow2"></div>
-                            <div class="work-parallax-row" id="workRow3"></div>
-                        </div>
-                    </div>
+                    <div class="work-grid" id="workGrid" aria-live="polite"></div>
 
                     <div class="section-next-wrap">
                         <button class="cs-next-trigger" data-next-target="testimonial"
@@ -983,7 +942,7 @@
                                 <li>
                                     <button class="footer-nav-link" data-section="about">
                                         <span class="footer-star">✦</span>
-                                        <span>About Page</span>
+                                        <span>Studio</span>
                                     </button>
                                 </li>
                                 <li>
@@ -1136,7 +1095,7 @@
                     </svg>
                 </div>
 
-                <div class="panel-bottom-block block-yellow">
+                <div class="panel-bottom-block block-grey">
                     <!-- ==========================================
                          CLIENT TESTIMONIALS (ZIGZAG CIRCULAR LAYOUT)
                     ========================================== -->
@@ -1325,7 +1284,7 @@
                                 <li>
                                     <button class="footer-nav-link" data-section="about">
                                         <span class="footer-star">✦</span>
-                                        <span>About Page</span>
+                                        <span>Studio</span>
                                     </button>
                                 </li>
                                 <li>
@@ -1489,21 +1448,7 @@
                                 <strong>SKETCHERZ</strong>.</p>
                         </div>
 
-                        <div class="sketcherz-grid" id="sketcherzGrid"></div>
-
-                        <div class="squad-z-modal" id="squadZModal" aria-hidden="true">
-                            <div class="squad-z-card">
-                                <button type="button" class="squad-z-close" id="squadZClose"
-                                    aria-label="Close modal">✕</button>
-                                <span>Z · ZERO LIMITS</span>
-                                <h4>Full Squad Capabilities &amp; Collaboration</h4>
-                                <p>From UI/UX systems and custom web engineering to SEO and cloud deployment, all 8
-                                    builders collaborate directly with you—zero middlemen.</p>
-                                <div class="squad-z-roster" id="squadZRoster"></div>
-                                <button type="button" class="squad-z-cta" data-section="contact">Work With The Squad
-                                    ↗</button>
-                            </div>
-                        </div>
+                        <div class="sk-marquee" id="sketcherzGrid" role="region" aria-label="Code Sketcherz team members"></div>
                     </div>
 
                     <div class="section-next-wrap">
@@ -1558,7 +1503,7 @@
                                 <li>
                                     <button class="footer-nav-link" data-section="about">
                                         <span class="footer-star">✦</span>
-                                        <span>About Page</span>
+                                        <span>Studio</span>
                                     </button>
                                 </li>
                                 <li>
@@ -1888,7 +1833,7 @@
                                 <li>
                                     <button class="footer-nav-link" data-section="about">
                                         <span class="footer-star">✦</span>
-                                        <span>About Page</span>
+                                        <span>Studio</span>
                                     </button>
                                 </li>
                                 <li>
