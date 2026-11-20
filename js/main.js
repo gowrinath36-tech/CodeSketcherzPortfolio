@@ -84,6 +84,15 @@
   // 3. HEADER AND NAVIGATION SYNCHRONIZATION
   // ==========================================
 
+  // Bottom nav can scroll horizontally on narrow screens: keep the active item in view.
+  function centerActiveNavItem() {
+    const nav = document.getElementById('primaryNav');
+    const active = nav && nav.querySelector('.nav-item.active');
+    if (!nav || !active || nav.scrollWidth <= nav.clientWidth + 1) return;
+    const left = active.offsetLeft - (nav.clientWidth - active.offsetWidth) / 2;
+    nav.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  }
+
   function syncUI(index, options = {}) {
     const {
       historyMode = 'replace',
@@ -96,11 +105,15 @@
     );
 
     document.querySelectorAll('.nav-item').forEach(item => {
-      item.classList.toggle(
-        'active',
-        item.dataset.section === ids[index]
-      );
+      const isActive = item.dataset.section === ids[index];
+      item.classList.toggle('active', isActive);
+      if (isActive) {
+        item.setAttribute('aria-current', 'page');
+      } else {
+        item.removeAttribute('aria-current');
+      }
     });
+    centerActiveNavItem();
 
     if (hash) {
       const targetHash =
@@ -161,9 +174,10 @@
       regions.forEach(region => {
         const rect = region.getBoundingClientRect();
         if (rect.top <= probeY && rect.bottom > probeY) {
-          if (region.classList.contains('section-footer')) {
-            tone = 'light';
-          } else if (region.classList.contains('block-yellow') || region.matches('.panel.work .panel-bottom-block')) {
+          // The footer follows the theme (white in light, black in dark), so only
+          // the yellow content blocks need the dark ink override.
+          if (!region.classList.contains('section-footer') &&
+              (region.classList.contains('block-yellow') || region.matches('.panel.work .panel-bottom-block'))) {
             tone = 'ink';
           }
         }
@@ -188,38 +202,6 @@
   }
   panels.forEach(panel => panel.addEventListener('scroll', onPanelScroll, { passive: true }));
   window.addEventListener('resize', onPanelScroll);
-
-  // ==========================================
-  // 3C. MOBILE MENU
-  // ==========================================
-
-  const navToggle = document.getElementById('navToggle');
-
-  function setMenu(open) {
-    document.body.classList.toggle('menu-open', open);
-    if (navToggle) {
-      navToggle.setAttribute('aria-expanded', String(open));
-      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    }
-  }
-
-  if (navToggle) {
-    navToggle.addEventListener('click', () => {
-      setMenu(!document.body.classList.contains('menu-open'));
-    });
-  }
-
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && document.body.classList.contains('menu-open')) {
-      setMenu(false);
-      if (navToggle) navToggle.focus();
-    }
-  });
-
-  // Leaving the narrow layout while the menu is open should not strand it open.
-  window.matchMedia('(min-width: 961px)').addEventListener('change', event => {
-    if (event.matches) setMenu(false);
-  });
 
   // ==========================================
   // 4. FINISH SECTION TRANSITION
@@ -630,34 +612,105 @@
   }
 
   function initWorkParallaxAndServiceBridge() {
-    const workController = initWaveDropShowcase();
-    const workSection = document.getElementById("work");
-    if (!workController || !workSection) return;
+    // The Our Work showcase still initialises exactly as before.
+    initWaveDropShowcase();
+    initServiceToContact();
+  }
 
-    // Connect #services cards -> Swipe-back -> Navigate to #work & filter
-    const serviceCards = document.querySelectorAll(".service-card");
-    serviceCards.forEach((card, idx) => {
-      if (!card.dataset.serviceFilter) {
-        const categories = ["web", "brand", "systems"];
-        card.dataset.serviceFilter = categories[idx % categories.length];
+  // ==========================================
+  // SERVICES -> CONTACT (pre-selects Project Type)
+  // The six service names match the <select name="project"> option labels
+  // exactly; SERVICE_TO_PROJECT keeps the mapping explicit and falls back to a
+  // whitespace-normalised label match if a label is ever tweaked.
+  // ==========================================
+  const SERVICE_TO_PROJECT = {
+    'Web Development': 'Web Development',
+    'UI / UX Design': 'UI / UX Design',
+    'Software Solutions': 'Software Solutions',
+    'Brand Identity': 'Brand Identity',
+    'Digital Marketing': 'Digital Marketing',
+    'Creative Consulting': 'Creative Consulting'
+  };
+
+  function normalizeLabel(text) {
+    return String(text || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  }
+
+  function selectProjectType(service) {
+    const select = contactForm && contactForm.querySelector('select[name="project"]');
+    if (!select) return null;
+
+    const wanted = normalizeLabel(SERVICE_TO_PROJECT[service] || service);
+    const option = Array.from(select.options).find(opt =>
+      normalizeLabel(opt.value || opt.textContent) === wanted ||
+      normalizeLabel(opt.textContent) === wanted
+    );
+    if (!option) return null;
+
+    select.value = option.value;       // real form state, submitted with the form
+    option.selected = true;
+    select.dispatchEvent(new Event('input', { bubbles: true }));
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    return select;
+  }
+
+  function revealProjectField(select) {
+    const panel = panels[ids.indexOf('contact')];
+    if (!panel || !select) return;
+
+    const field = select.closest('label') || select;
+    const panelRect = panel.getBoundingClientRect();
+    const fieldRect = field.getBoundingClientRect();
+    const headerClearance = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 72) + 24;
+    // Keep the field comfortably in the upper part of the visible area.
+    const topOffset = Math.max(headerClearance, panel.clientHeight * 0.3);
+    const target = Math.max(0, panel.scrollTop + (fieldRect.top - panelRect.top) - topOffset);
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (lenis && !reduce) {
+      lenis.scrollTo(target, { duration: 1.1 });
+    } else {
+      panel.scrollTo({ top: target, behavior: reduce ? 'auto' : 'smooth' });
+    }
+
+    field.classList.remove('is-prefilled');
+    void field.offsetWidth;            // restart the highlight animation on repeat clicks
+    field.classList.add('is-prefilled');
+    setTimeout(() => field.classList.remove('is-prefilled'), 2200);
+
+    try { select.focus({ preventScroll: true }); } catch (e) { select.focus(); }
+  }
+
+  function openContactForService(service) {
+    const select = selectProjectType(service);   // set first: state is right even if the scroll is interrupted
+    hasNavigatedFromHero = true;
+    goToSection('contact', { historyMode: 'push' });
+
+    // Wait for the panel slide to finish (and Lenis to re-attach), then scroll to the field.
+    const started = Date.now();
+    (function waitThenReveal() {
+      if (isTransitioning && Date.now() - started < 2000) {
+        setTimeout(waitThenReveal, 60);
+        return;
       }
+      setTimeout(() => revealProjectField(select), 60);
+    })();
+  }
 
-      card.addEventListener("click", () => {
-        const cat = card.dataset.serviceFilter || "all";
-        card.classList.add("is-swiping-back");
+  function initServiceToContact() {
+    document.querySelectorAll('.service-card[data-project]').forEach(card => {
+      const service = card.dataset.project;
 
-        setTimeout(() => {
-          workController.renderWork(cat);
-          if (typeof goToSection === "function") {
-            goToSection("work", { historyMode: "push" });
-          } else {
-            workSection.scrollIntoView({ behavior: "smooth" });
-          }
-          setTimeout(() => card.classList.remove("is-swiping-back"), 450);
-        }, 220);
+      card.addEventListener('click', () => openContactForService(service));
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openContactForService(service);
+        }
       });
     });
   }
+
   // ==========================================
 
   function goToSection(to, options = {}) {
@@ -686,7 +739,6 @@
     }
 
     const targetId = ids[targetIndex];
-    setMenu(false);
     document.body.classList.remove('is-scrolled');
     delete document.body.dataset.headerTone;
 

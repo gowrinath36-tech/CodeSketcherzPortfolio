@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Code Sketcherz · Independent Creative Technology Studio</title>
 
@@ -60,13 +60,11 @@
         </nav>
 
         <div class="header-actions">
-            <button class="work-cta" data-section="contact">LET'S WORK TOGETHER <span>↗</span></button>
+            <button type="button" class="work-cta work-cta--secondary" data-section="work" aria-label="Our work">OUR WORKS<span aria-hidden="true">↗</span></button>
+            <button type="button" class="work-cta work-cta--primary" data-section="contact" aria-label="Let's talk, go to contact">LET'S TALK <span aria-hidden="true">↗</span></button>
             <button id="themeToggle" class="mode-toggle-btn" aria-label="Toggle light and dark mode" title="Toggle theme">
                 <span class="mode-icon" aria-hidden="true">☼</span>
                 <span class="mode-text" aria-hidden="true">☾</span>
-            </button>
-            <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
-                <span class="nav-toggle-bars" aria-hidden="true"><i></i></span>
             </button>
         </div>
     </header>
@@ -87,16 +85,10 @@
                 <div class="hero-grid">
                 <div class="marketplace-center">
                     <p class="hero-mantra">THINK. <span>EXPLORE.</span> BUILD.</p>
-                    <h1>Ideas deserve to <br>become <span>extraordinary.</span></h1>
+                    <h1>Ideas deserve to <br>become <span>extraordinary</span></h1>
                     <p class="hero-description">Code Sketcherz is a creative digital agency bringing ideas to life through web development, UI/UX design, content creation and digital marketing. We combine creativity and technology to build brands, create meaningful experiences and make businesses stand out.</p>
                     <div class="hero-actions">
                         <button type="button" class="hero-secondary-btn marketplace-work-btn" aria-label="Explore Code Sketcherz">EXPLORE <span>↗</span></button>
-                        <button type="button" class="hero-edge-nav hero-edge-nav--left" data-section="work" aria-label="View our work">
-                    <span>OUR WORK</span><i>↗</i>
-                </button>
-                        <button type="button" class="hero-edge-nav hero-edge-nav--right" data-section="contact" aria-label="Let's talk, go to contact">
-                    <span>LET'S TALK</span><i>↗</i>
-                </button>
                     </div>
                 </div>
 
@@ -131,7 +123,7 @@
 
                 <div class="hero-footer">
                     <div class="marketplace-proof" aria-label="Studio highlights">
-                    <span>✦ Creative Solutions</span><i></i><span><b>50+</b> Happy Clients</span><i></i><span><b>100+</b> Projects Delivered</span>
+                    <span>✦ Creative Solutions</span><i></i><span><b>100+</b> Projects Delivered</span>
                 </div>
                     <div class="hero-social-grid">
 
@@ -373,8 +365,8 @@
                             <p class="footer-connect-desc">
                                 Got a vision or project in mind? Let’s turn it into reality.
                             </p>
-                            <a class="footer-email-cta" href="mailto:hello@codesketcherz.studio">
-                                hello@codesketcherz.studio <span>↗</span>
+                            <a class="footer-email-cta" href="mailto:codesketcherz26@gmail.com">
+                                codesketcherz26@gmail.com <span>↗</span>
                             </a>
 
                             <div class="footer-social-wrapper">
@@ -440,7 +432,7 @@
 
                     <div class="footer-bottom-bar">
                         <div class="bottom-studio-details">
-                            <span class="studio-detail-item">CHENNAI · EVERYWHERE</span>
+                            <span class="studio-detail-item">SALEM · EVERYWHERE</span>
                             <span class="bottom-separator">·</span>
                             <span class="studio-detail-item">INDEPENDENT DIGITAL PRACTICE</span>
                             <span class="bottom-separator">·</span>
@@ -506,7 +498,7 @@
 
                             <div class="services-grid">
 
-                                <article class="service-card service-yellow" data-service-filter="web">
+                                <article class="service-card service-yellow" data-service-filter="web" data-project="Web Development" role="button" tabindex="0" aria-label="Web Development – start an enquiry">
                                     <div class="service-card-top">
                                         <span class="service-number">01 / DEVELOPMENT</span>
                                         <span class="service-icon">✳</span>
@@ -529,7 +521,7 @@
                                     <span class="service-arrow">↗</span>
                                 </article>
 
-                                <article class="service-card service-beige" data-service-filter="brand">
+                                <article class="service-card service-beige" data-service-filter="brand" data-project="UI / UX Design" role="button" tabindex="0" aria-label="UI / UX Design – start an enquiry">
                                     <div class="service-card-top">
                                         <span class="service-number">02 / EXPERIENCE</span>
                                         <span class="service-icon">◈</span>
@@ -552,7 +544,7 @@
                                     <span class="service-arrow">↗</span>
                                 </article>
 
-                                <article class="service-card service-white" data-service-filter="systems">
+                                <article class="service-card service-white" data-service-filter="systems" data-project="Software Solutions" role="button" tabindex="0" aria-label="Software Solutions – start an enquiry">
                                     <div class="service-card-top">
                                         <span class="service-number">03 / TECHNOLOGY</span>
                                         <span class="service-icon">⌘</span>
@@ -575,7 +567,7 @@
                                     <span class="service-arrow">↗</span>
                                 </article>
 
-                                <article class="service-card service-beige" data-service-filter="brand">
+                                <article class="service-card service-beige" data-service-filter="brand" data-project="Brand Identity" role="button" tabindex="0" aria-label="Brand Identity – start an enquiry">
                                     <div class="service-card-top">
                                         <span class="service-number">04 / IDENTITY</span>
                                         <span class="service-icon">◎</span>
@@ -598,7 +590,7 @@
                                     <span class="service-arrow">↗</span>
                                 </article>
 
-                                <article class="service-card service-white" data-service-filter="web">
+                                <article class="service-card service-white" data-service-filter="web" data-project="Digital Marketing" role="button" tabindex="0" aria-label="Digital Marketing – start an enquiry">
                                     <div class="service-card-top">
                                         <span class="service-number">05 / GROWTH</span>
                                         <span class="service-icon">⌁</span>
@@ -621,7 +613,7 @@
                                     <span class="service-arrow">↗</span>
                                 </article>
 
-                                <article class="service-card service-yellow" data-service-filter="systems">
+                                <article class="service-card service-yellow" data-service-filter="systems" data-project="Creative Consulting" role="button" tabindex="0" aria-label="Creative Consulting – start an enquiry">
                                     <div class="service-card-top">
                                         <span class="service-number">06 / INNOVATION</span>
                                         <span class="service-icon">✧</span>
@@ -756,8 +748,8 @@
                             <p class="footer-connect-desc">
                                 Got a vision or project in mind? Let’s turn it into reality.
                             </p>
-                            <a class="footer-email-cta" href="mailto:hello@codesketcherz.studio">
-                                hello@codesketcherz.studio <span>↗</span>
+                            <a class="footer-email-cta" href="mailto:codesketcherz26@gmail.com">
+                                codesketcherz26@gmail.com <span>↗</span>
                             </a>
 
                             <div class="footer-social-wrapper">
@@ -823,7 +815,7 @@
 
                     <div class="footer-bottom-bar">
                         <div class="bottom-studio-details">
-                            <span class="studio-detail-item">CHENNAI · EVERYWHERE</span>
+                            <span class="studio-detail-item">SALEM · EVERYWHERE</span>
                             <span class="bottom-separator">·</span>
                             <span class="studio-detail-item">INDEPENDENT DIGITAL PRACTICE</span>
                             <span class="bottom-separator">·</span>
@@ -983,8 +975,8 @@
                             <p class="footer-connect-desc">
                                 Got a vision or project in mind? Let’s turn it into reality.
                             </p>
-                            <a class="footer-email-cta" href="mailto:hello@codesketcherz.studio">
-                                hello@codesketcherz.studio <span>↗</span>
+                            <a class="footer-email-cta" href="mailto:codesketcherz26@gmail.com">
+                                codesketcherz26@gmail.com <span>↗</span>
                             </a>
 
                             <div class="footer-social-wrapper">
@@ -1050,7 +1042,7 @@
 
                     <div class="footer-bottom-bar">
                         <div class="bottom-studio-details">
-                            <span class="studio-detail-item">CHENNAI · EVERYWHERE</span>
+                            <span class="studio-detail-item">SALEM · EVERYWHERE</span>
                             <span class="bottom-separator">·</span>
                             <span class="studio-detail-item">INDEPENDENT DIGITAL PRACTICE</span>
                             <span class="bottom-separator">·</span>
@@ -1325,8 +1317,8 @@
                             <p class="footer-connect-desc">
                                 Got a vision or project in mind? Let’s turn it into reality.
                             </p>
-                            <a class="footer-email-cta" href="mailto:hello@codesketcherz.studio">
-                                hello@codesketcherz.studio <span>↗</span>
+                            <a class="footer-email-cta" href="mailto:codesketcherz26@gmail.com">
+                                codesketcherz26@gmail.com <span>↗</span>
                             </a>
 
                             <div class="footer-social-wrapper">
@@ -1392,7 +1384,7 @@
 
                     <div class="footer-bottom-bar">
                         <div class="bottom-studio-details">
-                            <span class="studio-detail-item">CHENNAI · EVERYWHERE</span>
+                            <span class="studio-detail-item">SALEM · EVERYWHERE</span>
                             <span class="bottom-separator">·</span>
                             <span class="studio-detail-item">INDEPENDENT DIGITAL PRACTICE</span>
                             <span class="bottom-separator">·</span>
@@ -1544,8 +1536,8 @@
                             <p class="footer-connect-desc">
                                 Got a vision or project in mind? Let’s turn it into reality.
                             </p>
-                            <a class="footer-email-cta" href="mailto:hello@codesketcherz.studio">
-                                hello@codesketcherz.studio <span>↗</span>
+                            <a class="footer-email-cta" href="mailto:codesketcherz26@gmail.com">
+                                codesketcherz26@gmail.com <span>↗</span>
                             </a>
 
                             <div class="footer-social-wrapper">
@@ -1611,7 +1603,7 @@
 
                     <div class="footer-bottom-bar">
                         <div class="bottom-studio-details">
-                            <span class="studio-detail-item">CHENNAI · EVERYWHERE</span>
+                            <span class="studio-detail-item">SALEM · EVERYWHERE</span>
                             <span class="bottom-separator">·</span>
                             <span class="studio-detail-item">INDEPENDENT DIGITAL PRACTICE</span>
                             <span class="bottom-separator">·</span>
@@ -1684,8 +1676,8 @@
                                 <span class="contact-detail-icon">✉</span>
                                 <div>
                                     <small>EMAIL US</small>
-                                    <a href="mailto:hello@codesketcherz.studio">
-                                        hello@codesketcherz.studio
+                                    <a href="mailto:codesketcherz26@gmail.com">
+                                        codesketcherz26@gmail.com
                                     </a>
                                 </div>
                             </div>
@@ -1874,8 +1866,8 @@
                             <p class="footer-connect-desc">
                                 Got a vision or project in mind? Let’s turn it into reality.
                             </p>
-                            <a class="footer-email-cta" href="mailto:hello@codesketcherz.studio">
-                                hello@codesketcherz.studio <span>↗</span>
+                            <a class="footer-email-cta" href="mailto:codesketcherz26@gmail.com">
+                                codesketcherz26@gmail.com <span>↗</span>
                             </a>
 
                             <div class="footer-social-wrapper">
@@ -1941,7 +1933,7 @@
 
                     <div class="footer-bottom-bar">
                         <div class="bottom-studio-details">
-                            <span class="studio-detail-item">CHENNAI · EVERYWHERE</span>
+                            <span class="studio-detail-item">SALEM · EVERYWHERE</span>
                             <span class="bottom-separator">·</span>
                             <span class="studio-detail-item">INDEPENDENT DIGITAL PRACTICE</span>
                             <span class="bottom-separator">·</span>
