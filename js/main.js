@@ -577,7 +577,7 @@
             ${index ? `<span class="work-card-index">${esc(index)}</span>` : ''}
             <h4>${esc(title)}</h4>
             <p>${esc(item.desc)}</p>
-            <a href="${esc(item.link)}"${ext} class="work-card-link" aria-label="View project: ${esc(title)}">VIEW PROJECT ↗</a>
+            <a href="${esc(item.link)}"${ext} class="work-card-link" aria-label="View project: ${esc(title)}">VIEW PROJECT <span class="btn-arrow" aria-hidden="true">↗</span></a>
           </div>
         </article>
       `;
@@ -905,6 +905,26 @@
         return;
       }
 
+      const targetIndex = ids.indexOf(target);
+
+      // Already on this section (e.g. a footer nav link to the current
+      // page): goToSection() would no-op and leave the old scroll position.
+      // Reset the panel's own scroll to the top instead.
+      if (
+        currentIndex === targetIndex &&
+        !isTransitioning &&
+        panels[targetIndex] &&
+        panels[targetIndex].classList.contains('active')
+      ) {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (lenis && !reduce) {
+          lenis.scrollTo(0, { duration: 0.8 });
+        } else {
+          panels[targetIndex].scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        }
+        return;
+      }
+
       if (!hasNavigatedFromHero && target !== 'hero') {
         hasNavigatedFromHero = true;
 
@@ -1216,6 +1236,64 @@
   });
 
   // ==========================================
+  // 9b. CONTACT FORM — preset sentence chips + Email/WhatsApp quick actions
+  // ==========================================
+
+  (function initContactHelpers() {
+    const messageField = document.getElementById('contactMessage');
+
+    // Preset chips: optional starting sentences for the one shared textarea.
+    document.querySelectorAll('.contact-preset-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        if (!messageField) return;
+        const preset = chip.dataset.preset || '';
+        const current = messageField.value.trim();
+        messageField.value = current ? current + ' ' + preset : preset;
+        messageField.dispatchEvent(new Event('input', { bubbles: true }));
+        messageField.focus();
+        // Move the cursor to the end so the visitor can keep typing.
+        const end = messageField.value.length;
+        try { messageField.setSelectionRange(end, end); } catch (e) { /* no-op */ }
+      });
+    });
+
+    // Email Us / WhatsApp Us: if the visitor has already filled in the form,
+    // carry that over; otherwise the static mailto:/wa.me links already on
+    // these buttons (reusing the site's existing contact configuration)
+    // still work exactly as they are.
+    const emailBtn = document.getElementById('contactEmailBtn');
+    const whatsappBtn = document.getElementById('contactWhatsappBtn');
+
+    function currentFormText() {
+      if (!contactForm) return { name: '', message: '' };
+      const data = new FormData(contactForm);
+      return {
+        name: String(data.get('name') || '').trim(),
+        message: String(data.get('message') || '').trim()
+      };
+    }
+
+    if (emailBtn) {
+      emailBtn.addEventListener('click', () => {
+        const { name, message } = currentFormText();
+        if (!message) return; // keep the plain mailto: link as-is
+        const subject = encodeURIComponent('New Studio Enquiry' + (name ? ' - ' + name : ''));
+        const body = encodeURIComponent(message);
+        emailBtn.setAttribute('href', 'mailto:codesketcherz26@gmail.com?subject=' + subject + '&body=' + body);
+      });
+    }
+
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener('click', () => {
+        const { name, message } = currentFormText();
+        if (!message) return; // keep the plain wa.me link as-is
+        const text = encodeURIComponent((name ? 'Hi, I\'m ' + name + '. ' : '') + message);
+        whatsappBtn.setAttribute('href', 'https://wa.me/919999999999?text=' + text);
+      });
+    }
+  })();
+
+  // ==========================================
   // 10. CONTACT FORM
   // ==========================================
 
@@ -1237,11 +1315,15 @@
         formData.get('message') || ''
       ).trim();
 
+      const project = String(
+        formData.get('project') || ''
+      ).trim();
+
       const formNote =
         document.getElementById('formNote');
 
       // Basic validation
-      if (!name || !email || !message) {
+      if (!name || !email || !project || !message) {
         if (formNote) {
           formNote.textContent =
             'Please fill in all the required fields.';
@@ -1261,10 +1343,6 @@
 
         return;
       }
-
-      // Optional project type field
-      const project =
-        String(formData.get('project') || '').trim();
 
       const subject = encodeURIComponent(
         'New Studio Enquiry - ' + name

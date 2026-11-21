@@ -117,6 +117,7 @@
   --bg-raised: #ffffff;
   --block-yellow: var(--yellow);
   --block-grey: #ece6d8;
+  --block-grey-desktop: #e3d9bd; /* only used above 960px, see media query below */
   --text: #141416;
   --text-muted: #55555d;
   --line: rgba(20, 20, 22, 0.12);
@@ -155,6 +156,13 @@
   color-scheme: light;
 }
 
+/* Services/Testimonials beige block was nearly indistinguishable from the
+   page background on laptop and wider screens. Swap in a slightly deeper
+   beige there only — mobile/tablet (≤960px) keep the original colour. */
+@media (min-width: 961px) {
+  :root[data-theme="light"] { --block-grey: var(--block-grey-desktop); }
+}
+
 /* ==========================================================================
    02  BASE + DECK MECHANICS
    ========================================================================== */
@@ -181,10 +189,30 @@ button { cursor: pointer; }
 a { color: inherit; }
 img { max-width: 100%; display: block; }
 
+/* Kill the default mobile blue flash/selection highlight on every interactive
+   control (buttons, links, nav items, filter pills, cards). Keyboard focus is
+   NOT affected: :focus-visible below still draws a clear, intentional ring. */
+html { -webkit-tap-highlight-color: transparent; }
+a, button, [role="button"], [role="tab"], .nav-item, .footer-nav-link,
+.work-filter-pill, .market-card, .service-card, select, input, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+a, button, [role="button"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 :focus-visible {
   outline: 2px solid var(--yellow);
   outline-offset: 3px;
   border-radius: 4px;
+}
+/* Mouse/touch clicks shouldn't show the browser's default blue focus ring;
+   keyboard users still get the amber :focus-visible ring above. */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Deck fills the viewport; the (transparent) header floats above it. */
@@ -463,19 +491,29 @@ h2 .period {
   line-height: 1.55;
 }
 
-/* ---- Wave divider (canvas → block) ---- */
+/* ---- Wave divider (canvas → block) ----
+   The svg is deliberately rendered 2px taller than its wrapper and nudged up
+   by 1px, then clipped by overflow:hidden. That overscan hides the hairline
+   of mismatched background color that sub-pixel rounding/antialiasing would
+   otherwise leave along the crest on some mobile screens. */
 .wave-divider-wrap,
 .wave-divider {
   display: block;
   position: relative;
   line-height: 0;
+  overflow: hidden;
   background: var(--block-yellow);
-  margin-top: -1px;
 }
 .panel.services .wave-divider-wrap,
 .panel.testimonial .wave-divider-wrap { background: var(--block-grey); }
-.wave-divider-wrap svg { display: block; width: 100%; height: clamp(28px, 4vw, 56px); }
-.wave-divider-wrap path { fill: var(--bg); }
+.wave-divider-wrap svg {
+  display: block;
+  width: 100%;
+  height: calc(clamp(28px, 4vw, 56px) + 2px);
+  margin: -1px 0;
+  shape-rendering: geometricPrecision;
+}
+.wave-divider-wrap path { fill: var(--bg); stroke: none; }
 
 /* ---- Content block ---- */
 .panel-bottom-block {
@@ -546,9 +584,32 @@ h2 .period {
   box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.4);
 }
 .hero-secondary-btn span,
-.contact-submit-btn span { transition: transform var(--t-med) var(--ease); }
+.contact-submit-btn span,
+.services-contact-btn .btn-arrow,
+.footer-email-cta span,
+.work-card-link .btn-arrow,
+.cta-call-btn .btn-arrow,
+.channel-btn .btn-arrow { transition: transform var(--t-med) var(--ease); display: inline-block; }
 .hero-secondary-btn:hover span,
-.contact-submit-btn:hover span { transform: translate(3px, -3px); }
+.contact-submit-btn:hover span,
+.services-contact-btn:hover .btn-arrow,
+.footer-email-cta:hover span,
+.work-card-link:hover .btn-arrow,
+.cta-call-btn:hover .btn-arrow,
+.channel-btn:hover .btn-arrow { transform: translate(3px, -3px); }
+
+/* Touch devices have no hover: nudge the arrow on press instead so the
+   feedback is still there without requiring a pointer. */
+@media (hover: none) {
+  .hero-secondary-btn:active span,
+  .contact-submit-btn:active span,
+  .services-contact-btn:active .btn-arrow,
+  .footer-email-cta:active span,
+  .work-card-link:active .btn-arrow,
+  .cta-call-btn:active .btn-arrow,
+  .channel-btn:active .btn-arrow,
+  .work-cta:active span[aria-hidden="true"] { transform: translate(3px, -3px); }
+}
 
 /* ==========================================================================
    05  HERO
@@ -620,11 +681,49 @@ h2 .period {
   color: var(--text-muted);
 }
 
+.cta-call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform var(--t-fast) ease, background-color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+.cta-call-btn--header {
+  min-height: 40px;
+  padding: 0 var(--s-4);
+  border-radius: var(--radius-s);
+  border: 1px solid var(--line-strong);
+  color: var(--header-ink);
+  font-size: 0.6875rem;
+}
+.cta-call-btn--header:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-1px); }
+.cta-call-btn--hero {
+  min-height: 46px;
+  padding: 0 var(--s-5);
+  border-radius: var(--radius-s);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  font-size: 0.75rem;
+}
+.cta-call-btn--hero:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+@media (max-width: 640px) {
+  .cta-call-btn--header span { display: none; } /* icon-only on small phones to save header space */
+  .cta-call-btn--header { min-height: 34px; padding: 0 9px; }
+  .cta-call-btn--hero { min-height: 42px; padding: 0 var(--s-5); font-size: 0.6875rem; }
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: var(--s-3);
   margin-top: var(--s-1);
 }
 .hero-secondary-btn { min-height: 46px; padding: 0 var(--s-6); font-size: 0.8125rem; }
@@ -1184,6 +1283,48 @@ h2 .period {
 .contact-detail a { text-decoration: none; font-weight: 500; overflow-wrap: anywhere; }
 .contact-detail a:hover { color: var(--accent-on-card); text-decoration: underline; text-underline-offset: 4px; }
 
+/* Email Us / WhatsApp Us quick-action buttons */
+.contact-channel-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-6); }
+.channel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 48px;
+  padding: 0 var(--s-5);
+  border-radius: var(--radius-s);
+  border: 1px solid var(--card-line);
+  background: var(--card-bg);
+  color: var(--card-text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform var(--t-fast) ease, background-color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+.channel-btn:hover { transform: translateY(-2px); border-color: var(--accent-on-card); }
+.channel-btn--email:hover { color: var(--accent-on-card); }
+.channel-btn--whatsapp:hover { color: #25D366; border-color: #25D366; }
+@media (max-width: 640px) { .contact-channel-actions { flex-direction: column; } .channel-btn { width: 100%; justify-content: center; } }
+
+/* Preset sentence chips: optional starting points for the one shared textarea */
+.contact-preset-list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: calc(-1 * var(--s-3)); }
+.contact-preset-hint { flex-basis: 100%; font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.1em; color: var(--card-muted); text-transform: uppercase; }
+.contact-preset-chip {
+  min-height: 36px;
+  padding: 0 var(--s-4);
+  border-radius: 999px;
+  border: 1px solid var(--card-line);
+  background: transparent;
+  color: var(--card-muted);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+.contact-preset-chip:hover { border-color: var(--accent-on-card); color: var(--card-text); }
+
 .contact-form-heading { margin-bottom: var(--s-6); }
 .contact-form-heading > span { color: var(--accent-on-card); }
 .contact-form-heading h3 { margin-top: var(--s-2); font-size: var(--fs-h3); font-weight: 600; line-height: 1.05; letter-spacing: -0.04em; }
@@ -1281,12 +1422,36 @@ h2 .period {
 .footer-social-grid { display: flex; flex-wrap: wrap; gap: var(--s-1); }
 .footer-social-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--footer-line-strong); border-radius: 50%; color: var(--footer-text); transition: color var(--t-fast) ease, border-color var(--t-fast) ease, background-color var(--t-fast) ease; }
 .footer-social-icon:hover { color: #141416; background: var(--yellow); border-color: var(--yellow); }
-.footer-back-to-top { align-self: flex-start; display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--footer-text); font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em; }
-.footer-back-to-top:hover { color: var(--footer-accent); }
+.footer-back-to-top {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 44px;
+  padding: 0 var(--s-4) 0 var(--s-3);
+  border: 1px solid var(--footer-line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--footer-text);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  transition: color var(--t-fast) ease, border-color var(--t-fast) ease, background-color var(--t-fast) ease, transform var(--t-fast) ease;
+}
+.footer-back-to-top:hover { color: #141416; background: var(--yellow); border-color: var(--yellow); transform: translateY(-2px); }
+.footer-back-to-top .btt-arrow { display: inline-grid; place-items: center; width: 20px; height: 20px; transition: transform var(--t-med) var(--ease); }
+.footer-back-to-top:hover .btt-arrow { transform: translateY(-2px); }
+
+/* Salem/location line now sits higher, inside the brand column */
+.footer-brand-location { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); text-transform: uppercase; font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em; color: var(--footer-muted); }
+.highlight-motto { color: var(--footer-accent); }
 
 .footer-bottom-bar { margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--footer-line); }
-.bottom-studio-details { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); text-transform: uppercase; }
-.highlight-motto { color: var(--footer-accent); }
+.footer-bottom-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.footer-legal-links { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); }
+.footer-legal-links a { color: var(--footer-muted); text-decoration: none; transition: color var(--t-fast) ease; }
+.footer-legal-links a:hover { color: var(--footer-accent); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 640px) { .footer-bottom-row { justify-content: flex-start; } }
 
 /* ==========================================================================
    13  NEXT-SECTION TRIGGER  (scramble + brush behaviour driven by main.js)
@@ -1454,6 +1619,24 @@ h2 .period {
   .comparison-row { grid-template-columns: 1fr; }
   .services-grid,
   .work-grid { grid-template-columns: 1fr; }
+
+  /* Featured Works category filters: two even columns, text wraps instead
+     of clipping/overlapping, tap targets stay comfortable. */
+  .work-filter-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+  .work-filter-pill {
+    height: auto;
+    min-height: 44px;
+    padding: 10px var(--s-3);
+    border-radius: var(--radius-l);
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .service-card { min-height: 0; gap: var(--s-4); }
   .service-card h3 { margin-top: var(--s-5); }
   .service-arrow { opacity: 1; transform: none; }
