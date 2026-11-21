@@ -399,7 +399,15 @@
     let lastT = 0;
 
     const speed = () => (mobileMQ.matches ? 44 : 64);          // px per second
-    const targetRate = () => (visible && !hovering && !focused ? 1 : 0);
+    const TAP_PAUSE_MS = 5000;
+    let tapPaused = false;
+    let tapTimer = 0;
+    let watchingScroll = false;
+    let tapScrollBase = 0;
+    let touchStartY = 0;
+    const scrollPanel = root.closest(".panel");
+
+    const targetRate = () => (visible && !hovering && !focused && !tapPaused ? 1 : 0);
 
     const tick = (t) => {
       const dt = lastT ? Math.min(t - lastT, 64) : 16;
@@ -438,9 +446,71 @@
     const stop = () => {
       if (anim) { anim.cancel(); anim = null; }
       cancelAnimationFrame(raf); raf = 0; lastT = 0; rate = 0;
+      endTapPause();
       root.classList.add("is-static");
     };
     const applyMotionPref = () => (reduceMQ.matches ? stop() : start());
+
+    // Mobile tap-to-pause: a tap on a card holds the marquee for 5s. Any real user scroll
+    // (touch drag, wheel, or the panel's own scroll position changing) ends the hold at once.
+    // The marquee itself moves with transforms, so it never produces scroll events.
+    const isUserScrollTouch = (e) => {
+      const t = e.touches && e.touches[0];
+      return !!t && Math.abs(t.clientY - touchStartY) > 8;
+    };
+    const onWatchTouchStart = (e) => { if (e.touches && e.touches[0]) touchStartY = e.touches[0].clientY; };
+    const onWatchTouchMove = (e) => { if (isUserScrollTouch(e)) endTapPause(); };
+    const onWatchWheel = () => endTapPause();
+    const onWatchScroll = () => {
+      if (scrollPanel && Math.abs(scrollPanel.scrollTop - tapScrollBase) > 2) endTapPause();
+    };
+    const watchScroll = () => {
+      if (watchingScroll) return;
+      watchingScroll = true;
+      document.addEventListener("touchstart", onWatchTouchStart, { passive: true, capture: true });
+      document.addEventListener("touchmove", onWatchTouchMove, { passive: true, capture: true });
+      document.addEventListener("wheel", onWatchWheel, { passive: true, capture: true });
+      if (scrollPanel) scrollPanel.addEventListener("scroll", onWatchScroll, { passive: true });
+    };
+    const unwatchScroll = () => {
+      if (!watchingScroll) return;
+      watchingScroll = false;
+      document.removeEventListener("touchstart", onWatchTouchStart, { capture: true });
+      document.removeEventListener("touchmove", onWatchTouchMove, { capture: true });
+      document.removeEventListener("wheel", onWatchWheel, { capture: true });
+      if (scrollPanel) scrollPanel.removeEventListener("scroll", onWatchScroll);
+    };
+    function endTapPause() {
+      clearTimeout(tapTimer);
+      tapTimer = 0;
+      unwatchScroll();
+      if (!tapPaused) return;
+      tapPaused = false;
+      updateRate();                                          // eases back to full speed
+    }
+    const startTapPause = () => {
+      if (!anim || !mobileMQ.matches) return;
+      tapPaused = true;
+      tapScrollBase = scrollPanel ? scrollPanel.scrollTop : 0;
+      rate = 0;                                              // stop immediately, no easing
+      anim.playbackRate = 0;
+      clearTimeout(tapTimer);                                // re-tap restarts the 5s, never stacks timers
+      tapTimer = setTimeout(endTapPause, TAP_PAUSE_MS);
+      watchScroll();
+      updateRate();
+    };
+    const pointOnCard = (x, y) => Array.from(root.querySelectorAll(".sk-card")).some((card) => {
+      const r = card.getBoundingClientRect();
+      return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    });
+    // Geometry-based hit test: the duplicate group is inert, so taps on it never reach event targets.
+    root.addEventListener("click", (e) => {
+      if (!e.clientX && !e.clientY) return;                  // keyboard-triggered click: focus already pauses
+      if (pointOnCard(e.clientX, e.clientY)) startTapPause();
+    });
+    (mobileMQ.addEventListener ? mobileMQ.addEventListener.bind(mobileMQ, "change") : mobileMQ.addListener.bind(mobileMQ))(
+      () => { if (!mobileMQ.matches) endTapPause(); }
+    );
 
     // Only the mouse pauses on hover; touch keeps flowing so taps on links never fight the motion
     root.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") { hovering = true; updateRate(); } });
@@ -466,7 +536,11 @@
 
     // Run only while on screen (also covers hidden panels / section transitions)
     if ("IntersectionObserver" in window) {
-      new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; updateRate(); }, { threshold: 0 }).observe(root);
+      new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        if (!visible) endTapPause();
+        updateRate();
+      }, { threshold: 0 }).observe(root);
     } else {
       visible = true;
     }
@@ -1236,145 +1310,228 @@
   });
 
   // ==========================================
-  // 9b. CONTACT FORM — preset sentence chips + Email/WhatsApp quick actions
+  // 9b. CONTACT FORM — starting-point chips, "Other" project type, validation,
+  //     and WhatsApp hand-off
   // ==========================================
 
-  (function initContactHelpers() {
-    const messageField = document.getElementById('contactMessage');
+  // Temporary business WhatsApp number (country code + number, digits only).
+  const WHATSAPP_NUMBER = '919789672327';
 
-    // Preset chips: optional starting sentences for the one shared textarea.
-    document.querySelectorAll('.contact-preset-chip').forEach(chip => {
+  (function initContactForm() {
+    if (!contactForm) return;
+
+    const els = {
+      name: document.getElementById('contactName'),
+      email: document.getElementById('contactEmail'),
+      project: document.getElementById('contactProject'),
+      other: document.getElementById('contactProjectOther'),
+      otherWrap: document.getElementById('contactProjectOtherWrap'),
+      message: document.getElementById('contactMessage')
+    };
+    const errorEls = {
+      name: document.getElementById('contactNameError'),
+      email: document.getElementById('contactEmailError'),
+      project: document.getElementById('contactProjectError'),
+      other: document.getElementById('contactProjectOtherError'),
+      message: document.getElementById('contactMessageError')
+    };
+    const formNote = document.getElementById('formNote');
+    const chips = Array.from(contactForm.querySelectorAll('.contact-preset-chip'));
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const touched = {};
+
+    // ---------- Starting point: strictly single selection ----------
+    let activeChip = null;
+    let activePreset = '';
+
+    function setActiveChip(chip) {
+      activeChip = chip;
+      activePreset = chip ? (chip.dataset.preset || '') : '';
+      chips.forEach(c => {
+        const on = c === chip;
+        c.classList.toggle('is-selected', on);
+        c.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+
+    chips.forEach(chip => {
       chip.addEventListener('click', () => {
-        if (!messageField) return;
-        const preset = chip.dataset.preset || '';
-        const current = messageField.value.trim();
-        messageField.value = current ? current + ' ' + preset : preset;
-        messageField.dispatchEvent(new Event('input', { bubbles: true }));
-        messageField.focus();
-        // Move the cursor to the end so the visitor can keep typing.
-        const end = messageField.value.length;
-        try { messageField.setSelectionRange(end, end); } catch (e) { /* no-op */ }
+        const field = els.message;
+        if (!field) return;
+        if (chip !== activeChip) {
+          const preset = chip.dataset.preset || '';
+          const current = field.value;
+          if (activePreset && current.includes(activePreset)) {
+            // Replace the previous starting point in place: only one is ever present.
+            field.value = current.replace(activePreset, () => preset);
+          } else {
+            const trimmed = current.trim();
+            field.value = trimmed ? trimmed + ' ' + preset : preset;
+          }
+          setActiveChip(chip);
+          field.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        field.focus();
+        const end = field.value.length;
+        try { field.setSelectionRange(end, end); } catch (e) { /* not supported */ }
       });
     });
 
-    // Email Us / WhatsApp Us: if the visitor has already filled in the form,
-    // carry that over; otherwise the static mailto:/wa.me links already on
-    // these buttons (reusing the site's existing contact configuration)
-    // still work exactly as they are.
-    const emailBtn = document.getElementById('contactEmailBtn');
-    const whatsappBtn = document.getElementById('contactWhatsappBtn');
+    // If the visitor edits the inserted sentence away, the chip is no longer selected.
+    els.message.addEventListener('input', () => {
+      if (activeChip && !els.message.value.includes(activePreset)) setActiveChip(null);
+    });
 
-    function currentFormText() {
-      if (!contactForm) return { name: '', message: '' };
-      const data = new FormData(contactForm);
-      return {
-        name: String(data.get('name') || '').trim(),
-        message: String(data.get('message') || '').trim()
-      };
+    // ---------- Project type: "Other" reveals a required text input ----------
+    function isOtherSelected() {
+      return els.project.value === 'Other';
     }
 
-    if (emailBtn) {
-      emailBtn.addEventListener('click', () => {
-        const { name, message } = currentFormText();
-        if (!message) return; // keep the plain mailto: link as-is
-        const subject = encodeURIComponent('New Studio Enquiry' + (name ? ' - ' + name : ''));
-        const body = encodeURIComponent(message);
-        emailBtn.setAttribute('href', 'mailto:codesketcherz26@gmail.com?subject=' + subject + '&body=' + body);
+    function syncOtherField() {
+      const other = isOtherSelected();
+      els.otherWrap.hidden = !other;
+      els.other.required = other;
+      if (!other) {
+        els.other.value = '';
+        touched.other = false;
+        clearError('other');
+      }
+    }
+
+    els.project.addEventListener('change', () => {
+      syncOtherField();
+      touched.project = true;
+      validateField('project');
+    });
+
+    // ---------- Validation ----------
+    function messageFor(key) {
+      const value = (els[key].value || '').trim();
+      switch (key) {
+        case 'name':
+          return value ? '' : 'Please enter your name.';
+        case 'email':
+          if (!value) return 'Please enter your email address.';
+          return emailPattern.test(value) ? '' : 'Please enter a valid email address, like name@example.com.';
+        case 'project':
+          return value ? '' : 'Please select a project type.';
+        case 'other':
+          return isOtherSelected() && !value ? 'Please specify your project type.' : '';
+        case 'message':
+          return value ? '' : 'Please tell us a little about your idea.';
+        default:
+          return '';
+      }
+    }
+
+    function showError(key, text) {
+      const el = errorEls[key];
+      els[key].classList.add('is-invalid');
+      els[key].setAttribute('aria-invalid', 'true');
+      el.textContent = text;
+      el.hidden = false;
+    }
+
+    function clearError(key) {
+      const el = errorEls[key];
+      els[key].classList.remove('is-invalid');
+      els[key].removeAttribute('aria-invalid');
+      el.textContent = '';
+      el.hidden = true;
+    }
+
+    function validateField(key) {
+      const text = messageFor(key);
+      if (text) showError(key, text); else clearError(key);
+      return !text;
+    }
+
+    ['name', 'email', 'other', 'message'].forEach(key => {
+      // Errors appear only after the visitor has left the field (or submitted)...
+      els[key].addEventListener('blur', () => {
+        touched[key] = true;
+        validateField(key);
       });
-    }
-
-    if (whatsappBtn) {
-      whatsappBtn.addEventListener('click', () => {
-        const { name, message } = currentFormText();
-        if (!message) return; // keep the plain wa.me link as-is
-        const text = encodeURIComponent((name ? 'Hi, I\'m ' + name + '. ' : '') + message);
-        whatsappBtn.setAttribute('href', 'https://wa.me/919999999999?text=' + text);
+      // ...and then update live while they fix it.
+      els[key].addEventListener('input', () => {
+        if (touched[key]) validateField(key);
       });
+    });
+
+    // ---------- WhatsApp message ----------
+    function buildWhatsAppMessage() {
+      const lines = [
+        'Hello Code Sketcherz, I would like to discuss a project.',
+        '',
+        '*Name:* ' + els.name.value.trim(),
+        '*Email:* ' + els.email.value.trim(),
+        '*Project Type:* ' + els.project.value
+      ];
+      if (isOtherSelected()) {
+        lines.push('*Custom Project Type:* ' + els.other.value.trim());
+      }
+      if (activeChip) {
+        lines.push('*Starting Point:* ' + activeChip.textContent.trim());
+      }
+      lines.push('', '*Project Details:*', els.message.value.trim());
+      return lines.join('\n');
     }
-  })();
 
-  // ==========================================
-  // 10. CONTACT FORM
-  // ==========================================
+    function whatsappUrl() {
+      return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(buildWhatsAppMessage());
+    }
 
-  if (contactForm) {
+    function setNote(text, url) {
+      if (!formNote) return;
+      formNote.textContent = text;
+      if (url) {
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Tap here if WhatsApp did not open.';
+        formNote.append(' ', link);
+      }
+    }
+
     contactForm.addEventListener('submit', event => {
       event.preventDefault();
 
-      const formData = new FormData(contactForm);
+      const keys = ['name', 'email', 'project', 'other', 'message'];
+      keys.forEach(key => { touched[key] = true; });
+      const invalid = keys.filter(key => !validateField(key));
 
-      const name = String(
-        formData.get('name') || ''
-      ).trim();
-
-      const email = String(
-        formData.get('email') || ''
-      ).trim();
-
-      const message = String(
-        formData.get('message') || ''
-      ).trim();
-
-      const project = String(
-        formData.get('project') || ''
-      ).trim();
-
-      const formNote =
-        document.getElementById('formNote');
-
-      // Basic validation
-      if (!name || !email || !project || !message) {
-        if (formNote) {
-          formNote.textContent =
-            'Please fill in all the required fields.';
-        }
-
+      if (invalid.length) {
+        setNote('Please fix the highlighted fields and try again.');
+        try { els[invalid[0]].focus(); } catch (e) { /* no-op */ }
         return;
       }
 
-      const emailPattern =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!emailPattern.test(email)) {
-        if (formNote) {
-          formNote.textContent =
-            'Please enter a valid email address.';
-        }
-
-        return;
+      const url = whatsappUrl();
+      // Opened synchronously inside the click/submit gesture so popup blockers allow it.
+      const win = window.open(url, '_blank');
+      if (win) {
+        try { win.opener = null; } catch (e) { /* cross-origin guard */ }
+        setNote('WhatsApp is opening with your message ready. Press Send there to deliver it.', url);
+      } else {
+        setNote('Your browser blocked the new tab.', url);
       }
-
-      const subject = encodeURIComponent(
-        'New Studio Enquiry - ' + name
-      );
-
-      let body =
-        'Hello Code Sketcherz,\n\n' +
-        'You have received a new website enquiry.\n\n' +
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n';
-
-      if (project) {
-        body += 'Project Type: ' + project + '\n';
-      }
-
-      body +=
-        '\nMessage:\n' + message +
-        '\n\nThank you!';
-
-      const mailto =
-        'mailto:hello@codesketcherz.studio' +
-        '?subject=' + subject +
-        '&body=' + encodeURIComponent(body);
-
-      if (formNote) {
-        formNote.textContent =
-          'Opening your email application...';
-      }
-
-      window.location.href = mailto;
     });
-  }
+
+    // Contact-card WhatsApp link: carry over the typed message when there is one.
+    const whatsappLink = document.getElementById('contactWhatsappBtn');
+    if (whatsappLink) {
+      whatsappLink.addEventListener('click', () => {
+        const name = els.name.value.trim();
+        const message = els.message.value.trim();
+        if (!message) { whatsappLink.setAttribute('href', 'https://wa.me/' + WHATSAPP_NUMBER); return; }
+        const text = encodeURIComponent((name ? 'Hi, I\'m ' + name + '. ' : '') + message);
+        whatsappLink.setAttribute('href', 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + text);
+      });
+    }
+
+    syncOtherField();
+  })();
 
   // ==========================================
   // 10.5. THEME SYSTEM (LIGHT & DARK MODE)

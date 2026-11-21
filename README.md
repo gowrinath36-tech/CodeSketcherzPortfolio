@@ -18,7 +18,7 @@ Open `index.html` in a browser, or serve this folder with VS Code Live Server.
 - Pure White: `#FFFFFF`
 
 ## Notes
-The content and studio identity are original placeholder content. Contact form uses a `mailto:` link and does not submit to a server. Replace the email and branding with your own before publishing.
+The content and studio identity are original placeholder content. Contact form opens WhatsApp (`wa.me`) with a prefilled message and does not submit to a server; set `WHATSAPP_NUMBER` in `js/main.js` (and the `wa.me` link in the Contact section) to the real business number. Replace the email and branding with your own before publishing.
 
 
 ## Navigation behavior

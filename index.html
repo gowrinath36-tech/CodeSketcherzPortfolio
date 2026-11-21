@@ -50,7 +50,6 @@
         </a>
 
         <nav class="header-nav" id="primaryNav" aria-label="Primary sections">
-            <button class="nav-item" data-section="hero">HOME</button>
             <button class="nav-item" data-section="about">STUDIO</button>
             <button class="nav-item" data-section="services">SERVICES</button>
             <button class="nav-item" data-section="work">OUR WORK</button>
@@ -60,16 +59,14 @@
         </nav>
 
         <div class="header-actions">
-            <!-- TODO: replace +910000000000 with the real Code Sketcherz business phone number -->
-            <a class="cta-call-btn cta-call-btn--header" href="tel:+910000000000" aria-label="Call Code Sketcherz">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <span>CALL US</span>
-            </a>
-            <button type="button" class="work-cta work-cta--secondary" data-section="work" aria-label="Our work">OUR WORKS<span aria-hidden="true">↗</span></button>
-            <button type="button" class="work-cta work-cta--primary" data-section="contact" aria-label="Let's talk, go to contact">LET'S TALK <span aria-hidden="true">↗</span></button>
+            <button type="button" class="work-cta work-cta--secondary" data-section="work" aria-label="Our works" title="Our works">
+                <svg class="work-cta-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <span class="work-cta-label">OUR WORKS</span><span class="work-cta-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="work-cta work-cta--primary" data-section="contact" aria-label="Let's talk, go to contact" title="Let's talk">
+                <svg class="work-cta-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <span class="work-cta-label">LET'S TALK</span><span class="work-cta-arrow" aria-hidden="true">↗</span>
+            </button>
             <button id="themeToggle" class="mode-toggle-btn" aria-label="Toggle light and dark mode" title="Toggle theme">
                 <span class="mode-icon" aria-hidden="true">☼</span>
                 <span class="mode-text" aria-hidden="true">☾</span>
@@ -97,8 +94,8 @@
                     <p class="hero-description">Code Sketcherz is a creative digital agency bringing ideas to life through web development, UI/UX design, content creation and digital marketing. We combine creativity and technology to build brands, create meaningful experiences and make businesses stand out.</p>
                     <div class="hero-actions">
                         <button type="button" class="hero-secondary-btn marketplace-work-btn" aria-label="Explore Code Sketcherz">EXPLORE <span>↗</span></button>
-                        <!-- TODO: replace +910000000000 with the real Code Sketcherz business phone number -->
-                        <a class="cta-call-btn cta-call-btn--hero" href="tel:+910000000000" aria-label="Call Code Sketcherz">
+                        <!-- Business phone number used by the Call Us button (placeholder number) -->
+                        <a class="cta-call-btn cta-call-btn--hero" href="tel:+919789672327" aria-label="Call Code Sketcherz">
                             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -191,7 +188,7 @@
                         </a>
 
                         <!-- WhatsApp -->
-                        <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
+                        <a href="https://wa.me/919789672327" target="_blank" rel="noopener noreferrer"
                             class="hero-social-icon" aria-label="WhatsApp">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                 <path
@@ -217,7 +214,7 @@
                     <div class="section-main">
                         <p class="eyebrow">INDEPENDENT CREATIVE TECHNOLOGY</p>
 
-                        <h2>Small studio.<br><span class="highlight">Big picture.</span></h2>
+                        <h2>Small studio<br><span class="highlight">Big picture</span></h2>
 
                         <p class="section-desc">We combine strategy, interface design, and custom engineering to build
                             fast, scalable digital products with lasting momentum.</p>
@@ -433,7 +430,7 @@
                                                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                         </svg>
                                     </a>
-                                    <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
+                                    <a href="https://wa.me/919789672327" target="_blank" rel="noopener noreferrer"
                                         class="footer-social-icon" aria-label="WhatsApp">
                                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                             <path
@@ -482,7 +479,7 @@
 
                         <h2>
                             Ideas into<br>
-                            <span class="highlight">impact.</span>
+                            <span class="highlight">impact</span>
                         </h2>
 
                         <p class="section-desc">
@@ -509,7 +506,7 @@
                             <div class="services-intro">
                                 <div>
                                     <span class="services-label">OUR EXPERTISE</span>
-                                    <h3>What we bring<br>to the <span>table.</span></h3>
+                                    <h3>What we bring<br>to the <span>table</span></h3>
                                 </div>
 
                                 <p>
@@ -664,7 +661,7 @@
 
                                 <div>
                                     <span class="services-label">HAVE A PROJECT IN MIND?</span>
-                                    <h3>Let's make something <span>meaningful.</span></h3>
+                                    <h3>Let's make something <span>meaningful</span></h3>
                                 </div>
 
                                 <button class="services-contact-btn" data-section="contact">
@@ -822,7 +819,7 @@
                                                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                         </svg>
                                     </a>
-                                    <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
+                                    <a href="https://wa.me/919789672327" target="_blank" rel="noopener noreferrer"
                                         class="footer-social-icon" aria-label="WhatsApp">
                                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                             <path
@@ -871,8 +868,8 @@
                         <p class="eyebrow">OUR WORK</p>
 
                         <h2>
-                            Made with curiosity.<br>
-                            <span class="highlight">Portfolio showcases.</span>
+                            Made with curiosity<br>
+                            <span class="highlight">Portfolio showcases</span>
                         </h2>
 
                         <p class="section-desc">
@@ -1055,7 +1052,7 @@
                                                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                         </svg>
                                     </a>
-                                    <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
+                                    <a href="https://wa.me/919789672327" target="_blank" rel="noopener noreferrer"
                                         class="footer-social-icon" aria-label="WhatsApp">
                                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                             <path
@@ -1104,7 +1101,7 @@
 
                         <h2>
                             Don't just take<br>
-                            <span class="highlight">our word.</span>
+                            <span class="highlight">our word</span>
                         </h2>
 
                         <p class="section-desc">
@@ -1403,7 +1400,7 @@
                                                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                         </svg>
                                     </a>
-                                    <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
+                                    <a href="https://wa.me/919789672327" target="_blank" rel="noopener noreferrer"
                                         class="footer-social-icon" aria-label="WhatsApp">
                                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                             <path
@@ -1452,7 +1449,7 @@
 
                         <h2>
                             Meet the<br>
-                            <span class="highlight">squad.</span>
+                            <span class="highlight">squad</span>
                         </h2>
 
                         <p class="section-desc">
@@ -1477,7 +1474,7 @@
                             <span>TEAM · MEET THE BUILDERS</span>
                             <h3 class="squad-code-title">CODE</h3>
                             <p class="squad-subtitle">The eight creative engineers &amp; designers behind
-                                <strong>SKETCHERZ</strong>.</p>
+                                <strong>SKETCHERZ</strong></p>
                         </div>
 
                         <div class="sk-marquee" id="sketcherzGrid" role="region" aria-label="Code Sketcherz team members"></div>
@@ -1628,7 +1625,7 @@
                                                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                         </svg>
                                     </a>
-                                    <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
+                                    <a href="https://wa.me/919789672327" target="_blank" rel="noopener noreferrer"
                                         class="footer-social-icon" aria-label="WhatsApp">
                                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                             <path
@@ -1750,27 +1747,19 @@
                                 </div>
                             </div>
 
-                            <div class="contact-channel-actions">
-                                <a id="contactEmailBtn" class="channel-btn channel-btn--email"
-                                    href="mailto:codesketcherz26@gmail.com" aria-label="Email us">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M4 4h16v16H4z"></path>
-                                        <path d="m22 6-10 7L2 6"></path>
+                            <div class="contact-detail">
+                                <span class="contact-detail-icon">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                                     </svg>
-                                    <span>EMAIL US</span>
-                                    <span class="btn-arrow" aria-hidden="true">↗</span>
-                                </a>
-                                <a id="contactWhatsappBtn" class="channel-btn channel-btn--whatsapp"
-                                    href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
-                                    aria-label="Message us on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                        <path
-                                            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-                                    </svg>
-                                    <span>WHATSAPP US</span>
-                                    <span class="btn-arrow" aria-hidden="true">↗</span>
-                                </a>
+                                </span>
+                                <div>
+                                    <small>CHAT WITH US</small>
+                                    <a id="contactWhatsappBtn" href="https://wa.me/919789672327" target="_blank"
+                                        rel="noopener noreferrer" aria-label="Message us on WhatsApp">
+                                        WhatsApp ↗
+                                    </a>
+                                </div>
                             </div>
 
                         </div>
@@ -1787,20 +1776,25 @@
                                 </p>
                             </div>
 
-                            <form id="contactForm">
+                            <form id="contactForm" novalidate>
 
                                 <div class="contact-input-row">
 
                                     <label>
                                         YOUR NAME
 
-                                        <input required name="name" placeholder="Enter your name">
+                                        <input required name="name" id="contactName" maxlength="80" autocomplete="name"
+                                            placeholder="Enter your name" aria-describedby="contactNameError">
+                                        <span class="field-error" id="contactNameError" role="alert" hidden></span>
                                     </label>
 
                                     <label>
                                         YOUR EMAIL
 
-                                        <input required type="email" name="email" placeholder="Enter your email">
+                                        <input required type="email" name="email" id="contactEmail" maxlength="120" autocomplete="email"
+                                            inputmode="email" placeholder="Enter your email"
+                                            aria-describedby="contactEmailError">
+                                        <span class="field-error" id="contactEmailError" role="alert" hidden></span>
                                     </label>
 
                                 </div>
@@ -1808,7 +1802,7 @@
                                 <label>
                                     PROJECT TYPE
 
-                                    <select name="project" required>
+                                    <select name="project" id="contactProject" required aria-describedby="contactProjectError">
                                         <option value="" disabled selected hidden>Select a type</option>
                                         <option>Web Development</option>
                                         <option>UI / UX Design</option>
@@ -1818,29 +1812,40 @@
                                         <option>Creative Consulting</option>
                                         <option>Other</option>
                                     </select>
+                                    <span class="field-error" id="contactProjectError" role="alert" hidden></span>
+                                </label>
+
+                                <label class="contact-other-field" id="contactProjectOtherWrap" hidden>
+                                    PLEASE SPECIFY YOUR PROJECT TYPE
+
+                                    <input name="projectOther" id="contactProjectOther" maxlength="80"
+                                        placeholder="Enter your project type" aria-describedby="contactProjectOtherError">
+                                    <span class="field-error" id="contactProjectOtherError" role="alert" hidden></span>
                                 </label>
 
                                 <label>
                                     TELL US ABOUT YOUR IDEA
 
-                                    <textarea required name="message" rows="4" id="contactMessage"
-                                        placeholder="Describe your project and what you have in mind..."></textarea>
+                                    <textarea required name="message" rows="4" id="contactMessage" maxlength="1500"
+                                        placeholder="Describe your project and what you have in mind..."
+                                        aria-describedby="contactMessageError"></textarea>
+                                    <span class="field-error" id="contactMessageError" role="alert" hidden></span>
                                 </label>
 
-                                <div class="contact-preset-list" role="group" aria-label="Suggested sentences — optional, click to add to your message">
+                                <div class="contact-preset-list" role="group" aria-label="Suggested starting points — optional, choose one to add to your message">
                                     <span class="contact-preset-hint">NEED A STARTING POINT? TAP TO ADD:</span>
-                                    <button type="button" class="contact-preset-chip" data-preset="I'm looking to build a new website from scratch and would like your help shaping the scope.">New website from scratch</button>
-                                    <button type="button" class="contact-preset-chip" data-preset="I already have a website, but it needs a redesign to feel more modern and work better on mobile.">Redesign an existing site</button>
-                                    <button type="button" class="contact-preset-chip" data-preset="I need an online store where customers can browse products and check out securely.">Online store / e-commerce</button>
-                                    <button type="button" class="contact-preset-chip" data-preset="I have a rough idea but I'm not sure yet what I need — I'd love a quick call to talk it through.">Not sure yet — let's talk</button>
+                                    <button type="button" class="contact-preset-chip" aria-pressed="false" data-preset="I'm looking to build a new website from scratch and would like your help shaping the scope.">New website from scratch</button>
+                                    <button type="button" class="contact-preset-chip" aria-pressed="false" data-preset="I already have a website, but it needs a redesign to feel more modern and work better on mobile.">Redesign an existing site</button>
+                                    <button type="button" class="contact-preset-chip" aria-pressed="false" data-preset="I need an online store where customers can browse products and check out securely.">Online store / e-commerce</button>
+                                    <button type="button" class="contact-preset-chip" aria-pressed="false" data-preset="I have a rough idea but I'm not sure yet what I need — I'd love a quick call to talk it through.">Not sure yet — let's talk</button>
                                 </div>
 
                                 <button type="submit" class="contact-submit-btn">
                                     SEND YOUR MESSAGE <span>↗</span>
                                 </button>
 
-                                <p class="form-note" id="formNote">
-                                    Your message will open in your default email application.
+                                <p class="form-note" id="formNote" role="status" aria-live="polite">
+                                    Submitting opens WhatsApp with your message ready to send. Press Send in WhatsApp to deliver it.
                                 </p>
 
                             </form>
@@ -1994,7 +1999,7 @@
                                                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                         </svg>
                                     </a>
-                                    <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer"
+                                    <a href="https://wa.me/919789672327" target="_blank" rel="noopener noreferrer"
                                         class="footer-social-icon" aria-label="WhatsApp">
                                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                             <path

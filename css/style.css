@@ -347,6 +347,8 @@ body[data-header-tone="light"] .site-header { --hdr-ink: #f4f4f5; --hdr-muted: r
 .nav-item.active::after { transform: scaleX(1); }
 @media (min-width: 1121px) {
   body[data-header-tone="ink"] .nav-item::after { background: #141416; }
+  /* Desktop header has no Home item (the logo returns to the hero); the bottom nav on tablet/mobile keeps it */
+  .header-nav .nav-item[data-section="hero"] { display: none; }
 }
 
 .header-actions {
@@ -369,8 +371,9 @@ body[data-header-tone="light"] .site-header { --hdr-ink: #f4f4f5; --hdr-muted: r
   cursor: pointer;
   transition: background-color var(--t-fast) ease, color var(--t-fast) ease, border-color var(--t-fast) ease, transform var(--t-fast) ease;
 }
-.work-cta span { display: inline-block; transition: transform var(--t-med) var(--ease); }
-.work-cta:hover span { transform: translate(2px, -2px); }
+.work-cta .work-cta-arrow { display: inline-block; transition: transform var(--t-med) var(--ease); }
+.work-cta:hover .work-cta-arrow { transform: translate(2px, -2px); }
+.work-cta-icon { display: none; flex: none; }
 
 /* Primary: LET'S TALK (theme button colours) */
 .work-cta--primary {
@@ -588,15 +591,13 @@ h2 .period {
 .services-contact-btn .btn-arrow,
 .footer-email-cta span,
 .work-card-link .btn-arrow,
-.cta-call-btn .btn-arrow,
-.channel-btn .btn-arrow { transition: transform var(--t-med) var(--ease); display: inline-block; }
+.cta-call-btn .btn-arrow { transition: transform var(--t-med) var(--ease); display: inline-block; }
 .hero-secondary-btn:hover span,
 .contact-submit-btn:hover span,
 .services-contact-btn:hover .btn-arrow,
 .footer-email-cta:hover span,
 .work-card-link:hover .btn-arrow,
-.cta-call-btn:hover .btn-arrow,
-.channel-btn:hover .btn-arrow { transform: translate(3px, -3px); }
+.cta-call-btn:hover .btn-arrow { transform: translate(3px, -3px); }
 
 /* Touch devices have no hover: nudge the arrow on press instead so the
    feedback is still there without requiring a pointer. */
@@ -607,7 +608,6 @@ h2 .period {
   .footer-email-cta:active span,
   .work-card-link:active .btn-arrow,
   .cta-call-btn:active .btn-arrow,
-  .channel-btn:active .btn-arrow,
   .work-cta:active span[aria-hidden="true"] { transform: translate(3px, -3px); }
 }
 
@@ -693,15 +693,6 @@ h2 .period {
   white-space: nowrap;
   transition: transform var(--t-fast) ease, background-color var(--t-fast) ease, border-color var(--t-fast) ease;
 }
-.cta-call-btn--header {
-  min-height: 40px;
-  padding: 0 var(--s-4);
-  border-radius: var(--radius-s);
-  border: 1px solid var(--line-strong);
-  color: var(--header-ink);
-  font-size: 0.6875rem;
-}
-.cta-call-btn--header:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-1px); }
 .cta-call-btn--hero {
   min-height: 46px;
   padding: 0 var(--s-5);
@@ -713,8 +704,6 @@ h2 .period {
 .cta-call-btn--hero:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
 @media (max-width: 640px) {
-  .cta-call-btn--header span { display: none; } /* icon-only on small phones to save header space */
-  .cta-call-btn--header { min-height: 34px; padding: 0 9px; }
   .cta-call-btn--hero { min-height: 42px; padding: 0 var(--s-5); font-size: 0.6875rem; }
 }
 
@@ -1283,30 +1272,7 @@ h2 .period {
 .contact-detail a { text-decoration: none; font-weight: 500; overflow-wrap: anywhere; }
 .contact-detail a:hover { color: var(--accent-on-card); text-decoration: underline; text-underline-offset: 4px; }
 
-/* Email Us / WhatsApp Us quick-action buttons */
-.contact-channel-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-6); }
-.channel-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-2);
-  min-height: 48px;
-  padding: 0 var(--s-5);
-  border-radius: var(--radius-s);
-  border: 1px solid var(--card-line);
-  background: var(--card-bg);
-  color: var(--card-text);
-  font-family: var(--font-mono);
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: transform var(--t-fast) ease, background-color var(--t-fast) ease, border-color var(--t-fast) ease;
-}
-.channel-btn:hover { transform: translateY(-2px); border-color: var(--accent-on-card); }
-.channel-btn--email:hover { color: var(--accent-on-card); }
-.channel-btn--whatsapp:hover { color: #25D366; border-color: #25D366; }
-@media (max-width: 640px) { .contact-channel-actions { flex-direction: column; } .channel-btn { width: 100%; justify-content: center; } }
+.contact-detail a#contactWhatsappBtn:hover { color: #1a8f4a; }
 
 /* Preset sentence chips: optional starting points for the one shared textarea */
 .contact-preset-list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: calc(-1 * var(--s-3)); }
@@ -1324,6 +1290,8 @@ h2 .period {
   transition: background-color var(--t-fast) ease, color var(--t-fast) ease, border-color var(--t-fast) ease;
 }
 .contact-preset-chip:hover { border-color: var(--accent-on-card); color: var(--card-text); }
+.contact-preset-chip.is-selected,
+.contact-preset-chip[aria-pressed="true"] { border-color: var(--accent-on-card); background: color-mix(in srgb, var(--accent-on-card) 14%, transparent); color: var(--card-text); font-weight: 500; }
 
 .contact-form-heading { margin-bottom: var(--s-6); }
 .contact-form-heading > span { color: var(--accent-on-card); }
@@ -1357,6 +1325,9 @@ h2 .period {
   20%  { box-shadow: 0 0 0 4px rgba(255, 201, 40, 0.65); }
   100% { box-shadow: 0 0 0 10px rgba(255, 201, 40, 0); }
 }
+#contactForm input,
+#contactForm select,
+#contactForm textarea { scroll-margin-top: calc(var(--header-h) + 32px); }
 #contactForm textarea { min-height: 140px; resize: vertical; line-height: 1.5; }
 #contactForm select option { background: var(--bg-raised); color: var(--text); }
 #contactForm ::placeholder { color: var(--card-muted); opacity: 0.7; }
@@ -1364,7 +1335,32 @@ h2 .period {
 #contactForm select:focus,
 #contactForm textarea:focus { outline: none; border-color: var(--accent-on-card); background: color-mix(in srgb, var(--card-text) 8%, transparent); }
 .contact-submit-btn { width: 100%; min-height: 60px; font-size: 0.9375rem; }
-.form-note { font-size: var(--fs-small); color: var(--card-muted); text-align: center; min-height: 1.5em; }
+
+/* Inline validation: sits under its input, wraps on small screens, grows the card naturally */
+#contactForm label[hidden] { display: none; }
+.field-error {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: #b3261e;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.field-error[hidden] { display: none; }
+:root[data-theme="dark"] .field-error { color: #ff8f86; }
+:root[data-theme="dark"] #contactForm input.is-invalid,
+:root[data-theme="dark"] #contactForm select.is-invalid,
+:root[data-theme="dark"] #contactForm textarea.is-invalid { border-color: #ff8f86; }
+#contactForm input.is-invalid,
+#contactForm select.is-invalid,
+#contactForm textarea.is-invalid { border-color: #b3261e; }
+.form-note a { color: var(--accent-on-card); text-decoration: underline; text-underline-offset: 3px; }
+.form-note { font-size: var(--fs-small); color: var(--card-muted); text-align: center; min-height: 1.5em; overflow-wrap: anywhere; }
 
 /* ==========================================================================
    12  FOOTER  (white in light mode, black in dark mode — via --footer-* tokens)
@@ -1685,17 +1681,19 @@ h2 .period {
   .brand-mark img { width: 30px; height: 30px; }
   .brand-text { font-size: 0.8125rem; letter-spacing: -0.03em; }
   .header-actions { gap: 6px; }
-  .work-cta { gap: 3px; }
-  .work-cta--primary { min-height: 34px; padding: 0 10px; font-size: 0.625rem; letter-spacing: 0.03em; }
-  .work-cta--secondary { min-height: 30px; padding: 0 9px; font-size: 0.5625rem; letter-spacing: 0.03em; }
+  /* Our Works / Let's Talk: compact icon buttons (36px, radius and icon size shared) */
+  .work-cta { gap: 0; }
+  .work-cta--primary,
+  .work-cta--secondary { width: 36px; min-height: 36px; height: 36px; padding: 0; }
+  .work-cta .work-cta-label,
+  .work-cta .work-cta-arrow { display: none; }
+  .work-cta-icon { display: block; width: 16px; height: 16px; }
   .mode-toggle-btn { width: 36px; height: 36px; }
 }
 @media (max-width: 380px) {
   .brand-text { font-size: 0.75rem; letter-spacing: -0.04em; }
   .brand { gap: 5px; }
   .header-actions { gap: 5px; }
-  .work-cta--primary { padding: 0 8px; }
-  .work-cta--secondary { padding: 0 7px; }
 }
 
 /* Short laptop screens: keep the hero inside one view */
