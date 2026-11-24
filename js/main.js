@@ -552,142 +552,108 @@
   }
 
       // ==========================================
-  // 4B. OUR WORK HERO-PARALLAX DROP & SERVICE BRIDGE
+  // 4B. OUR WORK SHOWCASE, FILTERING & PREVIEW MODAL
   // ==========================================
+  function initWorkShowcase() {
+    const pills = document.querySelectorAll('.work-filter-pills .filter-pill');
+    const cards = document.querySelectorAll('.projects-showcase-grid .project-showcase-card');
+    const modal = document.getElementById('projectPreviewModal');
+    if (!cards.length) return;
 
-  // Easy-to-update Placeholder Slots (Drop real screenshots in `Images/our works/work-1.jpg` etc.)
-  const SKETCHERZ_PROJECTS = [
-    {
-      title: "Project Slot 01 · Forest Cafe",
-      category: "web",
-      tag: "WEB & HOSPITALITY",
-      desc: "Replace Images/our works/work-1.jpg to showcase your live hospitality build.",
-      image: "Images/our works/work-1.jpg",
-      fallback: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80",
-      link: "https://forestcafehills.in"
-    },
-    {
-      title: "Project Slot 02 · GST Billing Suite",
-      category: "systems",
-      tag: "BUSINESS SYSTEMS",
-      desc: "Replace Images/our works/work-2.jpg to showcase custom invoice & billing software.",
-      image: "Images/our works/work-2.jpg",
-      fallback: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
-      link: "#contact"
-    },
-    {
-      title: "Project Slot 03 · Brand Identity",
-      category: "brand",
-      tag: "BRANDING & UI/UX",
-      desc: "Replace Images/our works/work-3.jpg to highlight visual identity & design systems.",
-      image: "Images/our works/work-3.jpg",
-      fallback: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80",
-      link: "#about"
-    },
-    {
-      title: "Project Slot 04 · E-Commerce Store",
-      category: "web",
-      tag: "WEB & PLATFORMS",
-      desc: "Replace Images/our works/work-4.jpg to display high-speed storefront builds.",
-      image: "Images/our works/work-4.jpg",
-      fallback: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80",
-      link: "#contact"
-    },
-    {
-      title: "Project Slot 05 · Retail POS Hub",
-      category: "systems",
-      tag: "BUSINESS SYSTEMS",
-      desc: "Replace Images/our works/work-5.jpg to showcase inventory & retail operations.",
-      image: "Images/our works/work-5.jpg",
-      fallback: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
-      link: "#contact"
-    },
-    {
-      title: "Project Slot 06 · Editorial UI",
-      category: "brand",
-      tag: "BRANDING & UI/UX",
-      desc: "Replace Images/our works/work-6.jpg to showcase typographic & UI craft.",
-      image: "Images/our works/work-6.jpg",
-      fallback: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=80",
-      link: "#contact"
-    }
-  ];
-
-  // Escapes text that is interpolated into card markup.
-  function esc(value) {
-    return String(value).replace(/[&<>"']/g, ch => (
-      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]
-    ));
-  }
-
-  // Portfolio: a clean, consistent case-study grid with category filtering.
-  function initWaveDropShowcase(options = {}) {
-    const {
-      sectionId = "work",
-      gridId = "workGrid",
-      items = SKETCHERZ_PROJECTS
-    } = options;
-
-    const section = document.getElementById(sectionId);
-    const grid = document.getElementById(gridId);
-    const pills = section ? section.querySelectorAll(".work-filter-pill") : [];
-
-    if (!section || !grid) return;
-
-    function buildCardHTML(item) {
-      const isExternal = /^https?:/i.test(item.link);
-      const ext = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
-      // "Project Slot 01 · Forest Cafe" → index "Project Slot 01" + title "Forest Cafe"
-      const parts = String(item.title).split(' · ');
-      const index = parts.length > 1 ? parts[0] : '';
-      const title = parts.length > 1 ? parts.slice(1).join(' · ') : item.title;
-      return `
-        <article class="work-card">
-          <div class="work-card-media">
-            <img src="${esc(item.image)}" onerror="this.onerror=null;this.src='${esc(item.fallback)}';" alt="${esc(title)}" loading="lazy" />
-            <span class="work-card-tag">${esc(item.tag)}</span>
-          </div>
-          <div class="work-card-body">
-            ${index ? `<span class="work-card-index">${esc(index)}</span>` : ''}
-            <h4>${esc(title)}</h4>
-            <p>${esc(item.desc)}</p>
-            <a href="${esc(item.link)}"${ext} class="work-card-link" aria-label="View project: ${esc(title)}">VIEW PROJECT <span class="btn-arrow" aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-      `;
-    }
-
-    function renderWork(filter = "all") {
-      pills.forEach(p => p.classList.toggle("active", p.dataset.filter === filter));
-      const matches = filter === "all" ? items : items.filter(p => p.category === filter);
-      grid.innerHTML = matches.length
-        ? matches.map(buildCardHTML).join("")
-        : '<p class="work-empty">No projects in this category yet.</p>';
-    }
-
-    pills.forEach(pill => {
-      pill.addEventListener("click", () => renderWork(pill.dataset.filter || "all"));
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const filter = pill.dataset.filter || 'all';
+        pills.forEach((p) => {
+          const active = p === pill;
+          p.classList.toggle('is-active', active);
+          p.setAttribute('aria-selected', String(active));
+        });
+        cards.forEach((card) => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.classList.toggle('is-hidden', !match);
+        });
+      });
     });
 
-    // Internal links (#contact, #about…) use the deck navigation, not a hash jump.
-    grid.addEventListener("click", event => {
-      const link = event.target.closest("a.work-card-link");
-      if (!link) return;
-      const href = link.getAttribute("href") || "";
-      if (href.startsWith("#") && ids.includes(href.slice(1))) {
-        event.preventDefault();
-        hasNavigatedFromHero = true;
-        goToSection(href.slice(1), { historyMode: "push" });
+    const ppmImage = document.getElementById('ppmImage');
+    const ppmTag = document.getElementById('ppmTag');
+    const ppmTitle = document.getElementById('ppmTitle');
+    const ppmDesc = document.getElementById('ppmDesc');
+    const ppmDeliverables = document.getElementById('ppmDeliverables');
+    const ppmEnquireBtn = document.getElementById('ppmEnquireBtn');
+    let activeProjectType = 'Custom Websites';
+
+    const closeModal = () => {
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    };
+
+    const openCardAction = (card) => {
+      const liveUrl = (card.dataset.liveUrl || '').trim();
+      if (liveUrl) {
+        window.open(liveUrl, '_blank', 'noopener,noreferrer');
+        return;
+      }
+      if (!modal) return;
+      const img = card.querySelector('.project-thumb');
+      const tag = card.querySelector('.project-badge');
+      const title = card.querySelector('h4');
+      const desc = card.querySelector('p');
+
+      if (ppmImage && img) {
+        ppmImage.src = img.getAttribute('src') || '';
+        ppmImage.alt = img.getAttribute('alt') || '';
+      }
+      if (ppmTag && tag) ppmTag.textContent = tag.textContent;
+      if (ppmTitle && title) ppmTitle.textContent = title.textContent;
+      if (ppmDesc && desc) ppmDesc.textContent = desc.textContent;
+      if (ppmDeliverables) ppmDeliverables.textContent = card.dataset.deliverables || '';
+      activeProjectType = card.dataset.projectType || 'Custom Websites';
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => openCardAction(card));
+      const btn = card.querySelector('.project-link-btn');
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openCardAction(card);
+        });
       }
     });
 
-    renderWork("all");
-    return { renderWork };
+    if (modal) {
+      modal.querySelectorAll('[data-ppm-close]').forEach((el) => {
+        el.addEventListener('click', closeModal);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    }
+
+    if (ppmEnquireBtn) {
+      ppmEnquireBtn.addEventListener('click', () => {
+        closeModal();
+        const contactSelect = document.getElementById('contactProject');
+        if (contactSelect) contactSelect.value = activeProjectType;
+        const contactNav = document.querySelector('[data-section="contact"]');
+        if (contactNav) contactNav.click();
+      });
+    }
   }
 
-  function initWorkParallaxAndServiceBridge() {
-    // The Our Work showcase still initialises exactly as before.
-    initWaveDropShowcase();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWorkShowcase);
+  } else {
+    initWorkShowcase();
+  }
+
+    function initWorkParallaxAndServiceBridge() {
+    initWorkShowcase();
     initServiceToContact();
   }
 
@@ -698,12 +664,13 @@
   // whitespace-normalised label match if a label is ever tweaked.
   // ==========================================
   const SERVICE_TO_PROJECT = {
-    'Web Development': 'Web Development',
-    'UI / UX Design': 'UI / UX Design',
-    'Software Solutions': 'Software Solutions',
-    'Brand Identity': 'Brand Identity',
+    'Custom Websites': 'Custom Websites',
+    'UI / UX Design': 'UI/UX Design',
+    'UI/UX Design': 'UI/UX Design',
+    'Business Software': 'Business Software',
+    'Brand & Visual Design': 'Brand & Visual Design',
     'Digital Marketing': 'Digital Marketing',
-    'Creative Consulting': 'Creative Consulting'
+    'Website Redesign & Care': 'Website Redesign & Care'
   };
 
   function normalizeLabel(text) {
@@ -1336,51 +1303,8 @@
       message: document.getElementById('contactMessageError')
     };
     const formNote = document.getElementById('formNote');
-    const chips = Array.from(contactForm.querySelectorAll('.contact-preset-chip'));
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const touched = {};
-
-    // ---------- Starting point: strictly single selection ----------
-    let activeChip = null;
-    let activePreset = '';
-
-    function setActiveChip(chip) {
-      activeChip = chip;
-      activePreset = chip ? (chip.dataset.preset || '') : '';
-      chips.forEach(c => {
-        const on = c === chip;
-        c.classList.toggle('is-selected', on);
-        c.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-    }
-
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const field = els.message;
-        if (!field) return;
-        if (chip !== activeChip) {
-          const preset = chip.dataset.preset || '';
-          const current = field.value;
-          if (activePreset && current.includes(activePreset)) {
-            // Replace the previous starting point in place: only one is ever present.
-            field.value = current.replace(activePreset, () => preset);
-          } else {
-            const trimmed = current.trim();
-            field.value = trimmed ? trimmed + ' ' + preset : preset;
-          }
-          setActiveChip(chip);
-          field.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-        field.focus();
-        const end = field.value.length;
-        try { field.setSelectionRange(end, end); } catch (e) { /* not supported */ }
-      });
-    });
-
-    // If the visitor edits the inserted sentence away, the chip is no longer selected.
-    els.message.addEventListener('input', () => {
-      if (activeChip && !els.message.value.includes(activePreset)) setActiveChip(null);
-    });
 
     // ---------- Project type: "Other" reveals a required text input ----------
     function isOtherSelected() {
@@ -1470,8 +1394,9 @@
       if (isOtherSelected()) {
         lines.push('*Custom Project Type:* ' + els.other.value.trim());
       }
-      if (activeChip) {
-        lines.push('*Starting Point:* ' + activeChip.textContent.trim());
+      const activePromptChip = contactForm.querySelector('.prompt-chip.is-selected');
+      if (activePromptChip) {
+        lines.push('*Starting Point:* ' + activePromptChip.textContent.trim());
       }
       lines.push('', '*Project Details:*', els.message.value.trim());
       return lines.join('\n');
@@ -1643,3 +1568,97 @@
   });
 
 })();
+
+
+// ==========================================
+// CONTACT STARTER PROMPT CHIPS
+// ==========================================
+function initContactPromptChips() {
+  const chips = document.querySelectorAll('#contact .prompt-chip');
+  const messageBox = document.getElementById('contactMessage') || document.querySelector('#contact textarea');
+  const projectSelect = document.getElementById('contactProject') || document.querySelector('#contact select');
+  if (!chips.length || !messageBox) return;
+
+  const promptTemplates = {
+    website: [
+      'Hi Code Sketcherz, I am planning a new website for my business. Could you share how your design and development process works, typical timelines, and how we get started?',
+      '',
+      '(Optional details, feel free to send as is or add below)',
+      '1. My business or industry: ',
+      '2. Main goal of the website: ',
+      '3. Preferred launch timeline: '
+    ].join('\n'),
+    software: [
+      'Hi Code Sketcherz, we are facing a challenge in our everyday workflow and are looking for a custom digital solution to automate or simplify it.',
+      '',
+      '(Optional details, feel free to send as is or add below)',
+      '1. The workflow challenge we are facing: ',
+      '2. How we currently handle this task: ',
+      '3. Preferred time for a quick discussion: '
+    ].join('\n'),
+    problem: [
+      'Hi Code Sketcherz, we are facing a challenge in our everyday workflow and are looking for a custom digital solution to automate or simplify it.',
+      '',
+      '(Optional details, feel free to send as is or add below)',
+      '1. The workflow challenge we are facing: ',
+      '2. How we currently handle this task: ',
+      '3. Preferred time for a quick discussion: '
+    ].join('\n'),
+    brand: [
+      'Hi Code Sketcherz, I want to create a clean brand identity and interface design. Could you share how your design process, concepts, and revisions work?',
+      '',
+      '(Optional details, feel free to send as is or add below)',
+      '1. What I am building (Brand / Website / App): ',
+      '2. Style or feel I have in mind: ',
+      '3. Preferred timeline: '
+    ].join('\n'),
+    redesign: [
+      'Hi Code Sketcherz, I want to upgrade my existing website for better design and mobile performance. Could you share how you handle redesigns smoothly?',
+      '',
+      '(Optional details, feel free to send as is or add below)',
+      '1. Current website link: ',
+      '2. Main improvements I want: ',
+      '3. Preferred timeline: '
+    ].join('\n'),
+    guidance: [
+      'Hi Code Sketcherz, I have a project idea in mind and would love your guidance on the best approach and next steps before starting.',
+      '',
+      '(Optional details, feel free to send as is or add below)',
+      '1. What I am trying to build or solve: ',
+      '2. Where I need clarity (Design / Tech / Scope): ',
+      '3. Preferred time to connect: '
+    ].join('\n')
+  };
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => c.classList.remove('is-selected'));
+      chip.classList.add('is-selected');
+
+      const projectType = chip.dataset.projectType;
+      if (projectSelect && projectType) {
+        projectSelect.value = projectType;
+        try { projectSelect.dispatchEvent(new Event('change', { bubbles: true })); } catch (e) {}
+      }
+
+      const key = chip.dataset.promptKey;
+      const filledText = promptTemplates[key] || chip.textContent.trim();
+      messageBox.value = filledText;
+      try { messageBox.dispatchEvent(new Event('input', { bubbles: true })); } catch (e) {}
+      messageBox.focus();
+
+      const firstColonPos = filledText.indexOf(': ') + 2;
+      if (firstColonPos > 1) {
+        messageBox.setSelectionRange(firstColonPos, firstColonPos);
+      } else {
+        messageBox.setSelectionRange(filledText.length, filledText.length);
+      }
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initContactPromptChips);
+} else {
+  initContactPromptChips();
+}
