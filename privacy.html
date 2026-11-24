@@ -4,20 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Privacy Policy · Code Sketcherz</title>
-    <meta name="description" content="How Code Sketcherz collects, uses and protects your information.">
+    <meta name="description" content="How Code Sketcherz collects, uses, and protects your information.">
     <meta name="theme-color" content="#171717">
     <link rel="icon" type="image/png" href="Images/logo.webp">
     <link rel="apple-touch-icon" href="Images/logo.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('cs-theme') || localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) {}
+        })();
+    </script>
     <style>
         :root {
             --bg: #0b0b0c;
             --yellow: #FFC928;
+            --accent: #FFC928;
             --white: #f4f4f5;
             --muted: #a3a3ab;
             --border: rgba(255, 255, 255, 0.1);
+        }
+        html[data-theme="light"] {
+            --bg: #faf9f5;
+            --accent: #a16207;
+            --white: #141416;
+            --muted: #52525b;
+            --border: rgba(20, 20, 22, 0.12);
         }
         * { box-sizing: border-box; }
         html { -webkit-tap-highlight-color: transparent; }
@@ -45,17 +63,17 @@
         .brand img { width: 30px; height: 30px; display: block; }
         .brand-text { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em; }
         .back-link { font-family: 'DM Mono', monospace; font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--muted); text-decoration: none; text-transform: uppercase; }
-        .back-link:hover { color: var(--yellow); }
-        main { max-width: 860px; width: 100%; margin: 0 auto; padding: 48px 24px 64px; }
-        .eyebrow { font-family: 'DM Mono', monospace; font-size: 0.6875rem; letter-spacing: 0.14em; color: var(--yellow); text-transform: uppercase; }
+        .back-link:hover { color: var(--accent); }
+        main { max-width: 860px; width: 100%; margin: 0 auto; padding: 48px 24px 64px; flex: 1; }
+        .eyebrow { font-family: 'DM Mono', monospace; font-size: 0.6875rem; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; }
         h1 { font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 700; letter-spacing: -0.03em; margin: 12px 0 8px; }
         .updated { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-bottom: 40px; }
         section { margin-bottom: 32px; }
         h2 { font-size: 1.125rem; font-weight: 700; margin: 0 0 10px; }
         p { color: var(--muted); margin: 0 0 12px; font-size: 0.9375rem; }
-        a { color: var(--yellow); }
-        .placeholder-note { border: 1px dashed var(--border); border-radius: 8px; padding: 14px 16px; font-size: 0.8125rem; color: var(--muted); margin-bottom: 36px; }
-        .placeholder-note strong { color: var(--white); }
+        ul { color: var(--muted); margin: 0 0 12px; padding-left: 20px; font-size: 0.9375rem; }
+        li { margin-bottom: 6px; }
+        a { color: var(--accent); }
         footer { max-width: 860px; width: 100%; margin: 0 auto; padding: 20px 24px; border-top: 1px solid var(--border); font-family: 'DM Mono', monospace; font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
     </style>
 </head>
@@ -71,65 +89,63 @@
     <main>
         <p class="eyebrow">Legal</p>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: 2026</p>
-
-        <div class="placeholder-note">
-            <strong>Note for Code Sketcherz:</strong> this page uses standard placeholder privacy wording so the footer
-            link works and the page matches your site's design. Please review and replace the wording below with
-            your studio's actual data-handling practices (what you collect from the contact form, how long you keep
-            it, and any tools like analytics you use) before publishing.
-        </div>
+        <p class="updated">Last updated: November 2026</p>
 
         <section>
-            <h2>1. Information We Collect</h2>
-            <p>When you use the contact form on this website, we collect the information you provide: your name,
-                email address, selected project type, and the message you enter. We do not collect this information
-                through any other means on this site.</p>
+            <h2>1. Overview</h2>
+            <p>Code Sketcherz respects your privacy and keeps data handling simple and transparent. This policy explains what information is shared when you visit our website or contact our team for websites, software, branding, or digital marketing services.</p>
         </section>
 
         <section>
-            <h2>2. How We Use Your Information</h2>
-            <p>We use the information you submit solely to respond to your enquiry and discuss your project. We do
-                not sell, rent or share your contact details with third parties for marketing purposes.</p>
+            <h2>2. Information You Choose to Share</h2>
+            <p>Our website does not require user accounts, logins, or hidden tracking forms. We only receive details that you voluntarily send us when starting a conversation via WhatsApp or email, including:</p>
+            <ul>
+                <li>Your name and business or brand name</li>
+                <li>Your email address or WhatsApp phone number</li>
+                <li>Project requirements, workflow goals, reference links, or files you share with us</li>
+            </ul>
         </section>
 
         <section>
-            <h2>3. Contact Form Submission</h2>
-            <p>Submitting the contact form opens your own email application (or WhatsApp, if you choose that option)
-                with your message pre-filled. The message is sent directly from you to Code Sketcherz &mdash; it does
-                not pass through or get stored on this website or any third-party server.</p>
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the information you share strictly to:</p>
+            <ul>
+                <li>Respond to your enquiries and discuss suitable digital solutions</li>
+                <li>Prepare project proposals, timelines, and pricing estimates</li>
+                <li>Design, develop, and support the websites, software, or brand assets you hire us for</li>
+            </ul>
+            <p>We never sell, rent, or share your contact details with third parties for advertising or marketing purposes.</p>
         </section>
 
         <section>
-            <h2>4. Cookies &amp; Local Storage</h2>
-            <p>This site may remember your light/dark theme preference using your browser's local storage. This
-                information stays on your device and is not transmitted to us.</p>
+            <h2>4. Direct Contact Form &amp; Storage</h2>
+            <p>Submitting the contact form on our website opens WhatsApp with your enquiry pre-filled so you can send it directly to our team. Your form input is not stored in an external website database or intercepted by third-party lead brokers.</p>
         </section>
 
         <section>
-            <h2>5. Third-Party Links</h2>
-            <p>This website links to third-party platforms (Instagram, YouTube, LinkedIn, Facebook, GitHub,
-                WhatsApp). We are not responsible for the privacy practices of those platforms once you leave our
-                site.</p>
+            <h2>5. Confidentiality of Client Information</h2>
+            <p>Any unpublished business ideas, internal workflows, pricing sheets, or brand materials you share during project discussions are treated as confidential and used solely to evaluate or build your project.</p>
         </section>
 
         <section>
-            <h2>6. Your Rights</h2>
-            <p>You may ask us to confirm what information we hold about you, or to delete it, at any time by
-                emailing us.</p>
+            <h2>6. Cookies &amp; Local Storage</h2>
+            <p>This website uses your browser's local storage solely to remember your light or dark theme preference. This setting remains on your own device and is never transmitted to our team.</p>
         </section>
 
         <section>
-            <h2>7. Contact</h2>
-            <p>Questions about this privacy policy can be sent to
-                <a href="mailto:codesketcherz26@gmail.com">codesketcherz26@gmail.com</a>.</p>
+            <h2>7. Third-Party Platforms</h2>
+            <p>Our website includes links to external platforms such as WhatsApp, Instagram, YouTube, LinkedIn, Facebook, and GitHub. Once you leave our site, your interactions are governed by the privacy policies of those respective platforms.</p>
         </section>
 
+        <section>
+            <h2>8. Your Rights &amp; Contact</h2>
+            <p>You may request to review, update, or delete your past project messages and contact details from our records at any time. For any privacy questions or requests, contact us at <a href="mailto:codesketcherz26@gmail.com">codesketcherz26@gmail.com</a> or via WhatsApp at <a href="https://wa.me/919789672327" target="_blank" rel="noopener noreferrer">+91 97896 72327</a>.</p>
+        </section>
     </main>
 
     <footer>
         <span>© 2026 CODE SKETCHERZ. ALL RIGHTS RESERVED.</span>
-        <span>SALEM · EVERYWHERE</span>
+        <span>SALEM, TAMIL NADU · INDIA &amp; GLOBAL</span>
     </footer>
 </body>
 </html>
