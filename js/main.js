@@ -966,21 +966,25 @@
         return;
       }
 
-      if (!hasNavigatedFromHero && target !== 'hero') {
+      if (target !== 'hero') {
         hasNavigatedFromHero = true;
-
-        goToSection(target, {
-          historyMode: 'push'
-        });
       } else {
-        if (target === 'hero') {
-          hasNavigatedFromHero = false;
-        }
-
-        goToSection(target, {
-          historyMode: 'replace'
-        });
+        hasNavigatedFromHero = false;
       }
+
+      // Save current panel scroll position before pushing new history entry
+      if (currentIndex >= 0 && panels[currentIndex]) {
+        const currentId = ids[currentIndex];
+        const currentState = { sectionId: currentId, scrollTop: panels[currentIndex].scrollTop };
+        try {
+          history.replaceState(currentState, '', '#' + currentId);
+          sessionStorage.setItem('cs_last_scroll_state', JSON.stringify(currentState));
+        } catch (e) {}
+      }
+
+      goToSection(target, {
+        historyMode: 'push'
+      });
     });
   });
 
@@ -1169,7 +1173,7 @@
   // 8. BROWSER BACK AND FORWARD
   // ==========================================
 
-  window.addEventListener('popstate', () => {
+  window.addEventListener('popstate', (event) => {
     const hash = location.hash.slice(1);
 
     const target = ids.includes(hash)
@@ -1178,9 +1182,26 @@
 
     hasNavigatedFromHero = target !== 'hero';
 
+    const savedScrollTop = event.state && typeof event.state.scrollTop === 'number'
+      ? event.state.scrollTop
+      : 0;
+
     goToSection(target, {
       hash: false
     });
+
+    if (savedScrollTop > 0) {
+      setTimeout(() => {
+        const activePanel = panels[ids.indexOf(target)];
+        if (activePanel) {
+          if (lenis && typeof lenis.scrollTo === 'function') {
+            lenis.scrollTo(savedScrollTop, { duration: 0.6 });
+          } else {
+            activePanel.scrollTo({ top: savedScrollTop, behavior: 'smooth' });
+          }
+        }
+      }, 450);
+    }
   });
 
   // ==========================================
@@ -1540,15 +1561,50 @@
   // ==========================================
 
   const initialHash = location.hash.slice(1);
+  let savedScrollState = null;
+  try {
+    savedScrollState = JSON.parse(sessionStorage.getItem('cs_last_scroll_state') || 'null');
+  } catch (e) {}
 
   const startSection = ids.includes(initialHash)
     ? initialHash
-    : 'hero';
+    : (savedScrollState && ids.includes(savedScrollState.sectionId) ? savedScrollState.sectionId : 'hero');
 
   hasNavigatedFromHero = startSection !== 'hero';
 
   goToSection(startSection, {
     hash: false
+  });
+
+  // Restore exact scroll position inside the active panel on refresh
+  if (savedScrollState && savedScrollState.sectionId === startSection && typeof savedScrollState.scrollTop === 'number' && savedScrollState.scrollTop > 0) {
+    requestAnimationFrame(() => {
+      const activePanel = panels[ids.indexOf(startSection)];
+      if (activePanel) {
+        activePanel.scrollTop = savedScrollState.scrollTop;
+        if (lenis && typeof lenis.scrollTo === 'function') {
+          lenis.scrollTo(savedScrollState.scrollTop, { immediate: true });
+        }
+      }
+      if (window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function') {
+        window.ScrollTrigger.refresh();
+      }
+    });
+  }
+
+  // Continuously save current panel scroll position for refresh restoration
+  let scrollSaveTimer = null;
+  panels.forEach((panel, idx) => {
+    panel.addEventListener('scroll', () => {
+      if (idx !== currentIndex || isTransitioning) return;
+      clearTimeout(scrollSaveTimer);
+      scrollSaveTimer = setTimeout(() => {
+        const state = { sectionId: ids[currentIndex], scrollTop: panel.scrollTop };
+        try {
+          sessionStorage.setItem('cs_last_scroll_state', JSON.stringify(state));
+        } catch (e) {}
+      }, 150);
+    }, { passive: true });
   });
 
   // ==========================================
