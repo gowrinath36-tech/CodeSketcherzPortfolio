@@ -2,23 +2,43 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 — Page Not Found · Code Sketcherz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>404 · Page Not Found · Code Sketcherz</title>
+    <meta name="description" content="Page not found on Code Sketcherz.">
     <meta name="theme-color" content="#171717">
     <link rel="icon" type="image/png" href="Images/logo.webp">
     <link rel="apple-touch-icon" href="Images/logo.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=DM+Sans:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('cs-theme') || localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) {}
+        })();
+    </script>
     <style>
         :root {
-            --bg: #0b0b0b;
-            --yellow: #fed000;
-            --white: #ffffff;
-            --muted: #8e908c;
-            --border: rgba(255, 255, 255, 0.08);
+            --bg: #0b0b0c;
+            --yellow: #FFC928;
+            --accent: #FFC928;
+            --white: #f4f4f5;
+            --muted: #a3a3ab;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        html[data-theme="light"] {
+            --bg: #faf9f5;
+            --accent: #a16207;
+            --white: #141416;
+            --muted: #52525b;
+            --border: rgba(20, 20, 22, 0.12);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { -webkit-tap-highlight-color: transparent; }
         body {
             background-color: var(--bg);
             color: var(--white);
@@ -28,12 +48,13 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 24px;
+            overflow-x: hidden;
         }
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            max-width: 1200px;
+            max-width: 860px;
             width: 100%;
             margin: 0 auto;
             padding-bottom: 20px;
@@ -46,18 +67,22 @@
             text-decoration: none;
             color: var(--white);
         }
-        .brand-mark {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -0.06em;
+        .brand img {
+            width: 30px;
+            height: 30px;
+            display: block;
         }
-        .brand-mark span { color: var(--yellow); }
         .brand-text {
-            font-size: 9px;
-            line-height: 0.95;
-            font-weight: 800;
-            letter-spacing: 0.05em;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .error-code-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6875rem;
             color: var(--muted);
+            letter-spacing: 0.1em;
         }
         main {
             display: flex;
@@ -65,93 +90,113 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 48px 20px;
             max-width: 680px;
             margin: auto;
         }
         .error-tag {
             font-family: 'DM Mono', monospace;
-            font-size: 11px;
+            font-size: 0.6875rem;
             letter-spacing: 0.16em;
-            color: var(--yellow);
+            color: var(--accent);
             text-transform: uppercase;
             margin-bottom: 16px;
             display: inline-block;
+            animation: csFadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
         h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(52px, 8vw, 96px);
-            font-weight: 400;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
             line-height: 1;
-            letter-spacing: -0.03em;
-            margin-bottom: 12px;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            animation: csFadeUp 0.65s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both, csFloat 5s 0.8s ease-in-out infinite;
+            will-change: transform, opacity;
         }
         h1 span {
+            font-family: 'DM Serif Display', Georgia, serif;
             font-style: italic;
-            color: var(--yellow);
+            font-weight: 400;
+            color: var(--accent);
         }
         p {
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 0.9375rem;
+            line-height: 1.65;
             color: var(--muted);
             margin-bottom: 32px;
-            max-width: 460px;
+            max-width: 440px;
+            animation: csFadeUp 0.7s 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
         .btn-home {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             background: var(--yellow);
-            color: #0b0b0b;
+            color: #141416;
             padding: 14px 28px;
-            border-radius: 4px;
+            border-radius: 999px;
             font-family: 'DM Mono', monospace;
-            font-size: 11px;
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-decoration: none;
-            transition: transform 0.2s ease, background 0.2s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            animation: csFadeUp 0.75s 0.24s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
         .btn-home:hover {
-            background: var(--white);
             transform: translateY(-2px);
+            opacity: 0.92;
         }
         footer {
-            max-width: 1200px;
+            max-width: 860px;
             width: 100%;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
             font-family: 'DM Mono', monospace;
-            font-size: 10px;
+            font-size: 0.6875rem;
             letter-spacing: 0.08em;
             color: var(--muted);
             border-top: 1px solid var(--border);
             padding-top: 20px;
+        }
+        @keyframes csFadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes csFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .error-tag, h1, p, .btn-home {
+                animation: none !important;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <a class="brand" href="index.html#hero">
-            <div class="brand-mark">C<span>•</span>S</div>
-            <div class="brand-text">CODE<br>SKETCHERZ</div>
+            <img src="Images/logo.webp" alt="Code Sketcherz">
+            <span class="brand-text">CODE SKETCHERZ</span>
         </a>
-        <span style="font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:0.1em;">ERROR 404</span>
+        <span class="error-code-label">ERROR 404</span>
     </header>
 
     <main>
-        <span class="error-tag">00 / LOST IN SPACE</span>
+        <span class="error-tag">00 / PAGE NOT FOUND</span>
         <h1>Off the<br><span>blueprint.</span></h1>
-        <p>The screen or path you are looking for has been moved, removed, or doesn't exist in our project directory.</p>
-        <a href="index.html#hero" class="btn-home">RETURN TO STUDIO <span>↗</span></a>
+        <p>The page or path you are looking for has been moved, removed, or does not exist in our project directory.</p>
+        <a href="index.html#hero" class="btn-home">BACK TO HOME <span>↗</span></a>
     </main>
 
     <footer>
         <span>© 2026 CODE SKETCHERZ. ALL RIGHTS RESERVED.</span>
-        <span>SALEM, INDIA · WORKING WORLDWIDE</span>
+        <span>SALEM, TAMIL NADU · INDIA &amp; GLOBAL</span>
     </footer>
 </body>
 </html>
-
